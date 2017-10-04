@@ -53,12 +53,12 @@
             </DataGrid.Columns>
 
         </DataGrid>
-        <Button HorizontalAlignment="Left" Margin="10,33,0,0" Background="White" VerticalAlignment="Top"  Width="163" Height="71" Grid.ColumnSpan="2">
+        <ToggleButton Name="btnGerer" HorizontalAlignment="Left" Margin="10,33,0,0" Background="White" VerticalAlignment="Top"  Width="163" Height="71" Grid.ColumnSpan="2" Click="btnGerer_Click">
             <StackPanel Width="140" Orientation="Horizontal">
                 <Image Source="images/Gerer.png" Width="40" Height="40" />
                 <TextBlock HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="21"><Run Text="Gérer"/></TextBlock>
             </StackPanel>
-        </Button>
+        </ToggleButton>
         <Button  FontSize="21" HorizontalAlignment="Left" Background="White" Margin="10,109,0,0" VerticalAlignment="Top" Width="163" Height="70" Grid.ColumnSpan="2">
             <StackPanel Width="140" Orientation="Horizontal">
                 <Image Source="images/Imprimante.png" Width="40" Height="40"  />

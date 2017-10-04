@@ -7,10 +7,38 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <Button Content="Annuler" HorizontalAlignment="Left" Margin="30,108,0,0" VerticalAlignment="Top" Width="93" Height="30"/>
-        <Button Content="Confirmer" HorizontalAlignment="Left" Margin="157,108,0,0" VerticalAlignment="Top" Width="93" Height="30"/>
-        <TextBox Name="tbCode" HorizontalAlignment="Left" Height="23" Margin="30,38,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Entrer votre code" HorizontalAlignment="Left" Margin="30,7,0,0" VerticalAlignment="Top"/>
-
+        <DataGrid HorizontalAlignment="Left" Height="296" VerticalAlignment="Top" Width="346" Margin="178,33,0,0" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nom" Binding="{Binding Nom}" />
+                <DataGridTextColumn Header="Prénom" Binding="{Binding Prenom}" />
+                <DataGridTextColumn Header="Téléphone" Binding="{Binding Telephone}" />
+                <DataGridTextColumn Header="Date d'embauche" Binding="{Binding DateEmbauche}" />
+                <DataGridTextColumn Header="Code" Binding="{Binding Code}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button HorizontalAlignment="Left" Margin="10,33,0,0" Background="White" VerticalAlignment="Top"  Width="163" Height="71" Grid.ColumnSpan="2" >
+            <StackPanel Width="140" Orientation="Horizontal">
+                <Image Source="image/Gerer.png" Width="40" Height="40" />
+                <TextBlock HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="21"><Run Text="Gérer"/></TextBlock>
+            </StackPanel>
+        </Button>
+        <Button  FontSize="21" HorizontalAlignment="Left" Background="White" Margin="10,109,0,0" VerticalAlignment="Top" Width="163" Height="70" Grid.ColumnSpan="2">
+            <StackPanel Width="140" Orientation="Horizontal">
+                <Image Source="image/Imprimante.png" Width="40" Height="40"  />
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Imprimer"/></TextBlock>
+            </StackPanel>
+        </Button>
+        <Button FontSize="21" HorizontalAlignment="Left" Background="White" Margin="10,184,0,0" VerticalAlignment="Top" Width="163" Height="70" Grid.ColumnSpan="2">
+            <StackPanel Width="140" Orientation="Horizontal">
+                <Image Source="image/NouvelUtilisateur.png" Width="40" Height="40"  />
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Ajouter"/></TextBlock>
+            </StackPanel>
+        </Button>
+        <Button FontSize="21" HorizontalAlignment="Left" Background="White" Margin="10,259,0,0" VerticalAlignment="Top" Width="163" Height="70" Grid.ColumnSpan="2">
+            <StackPanel Width="140" Orientation="Horizontal">
+                <Image Source="image/Flechearriere.png" Width="40" Height="40"  />
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Accueil"/></TextBlock>
+            </StackPanel>
+        </Button>
     </Grid>
 </UserControl>

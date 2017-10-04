@@ -59,5 +59,12 @@ namespace Barman
             EcranAjoutInventaire EAI = new EcranAjoutInventaire();
             ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EAI);
         }
+
+        private void btnGerer_Click(object sender, RoutedEventArgs e)
+        {
+            FenetreModifierBouteille popup = new FenetreModifierBouteille();
+            popup.ShowDialog();
+
+        }
     }
 }
