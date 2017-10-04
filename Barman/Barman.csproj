@@ -90,6 +90,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="EcranVente.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="FenetreAjouterEmploye.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -140,6 +144,9 @@
     </Compile>
     <Compile Include="EcranNouvelleCommande.xaml.cs">
       <DependentUpon>EcranNouvelleCommande.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EcranVente.xaml.cs">
+      <DependentUpon>EcranVente.xaml</DependentUpon>
     </Compile>
     <Compile Include="FenetreAjouterEmploye.xaml.cs">
       <DependentUpon>FenetreAjouterEmploye.xaml</DependentUpon>
