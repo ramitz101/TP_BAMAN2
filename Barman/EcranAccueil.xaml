@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="Barman.EcranAccueil"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Barman"
+             mc:Ignorable="d" 
+             d:DesignHeight="430.623" d:DesignWidth="300">
+    <Grid >
+        <StackPanel>
+
+            <Button Name="btnInventaire" Click="btnInventaire_Click" Width="200" Height="50" Margin="15">
+                <StackPanel Orientation="Horizontal"  Width="150" Height="36">
+                    <Image Source="images/inventaire.png" Width="39"/>
+                    <TextBlock Text="INVENTAIRE" FontSize="20" ></TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Name="btnEmploye" Click="btnEmploye_Click" Width="200" Height="50" Margin="15">
+                <StackPanel Orientation="Horizontal"  Width="150" Height="36">
+                    <Image Source="images/employe.png"/>
+                    <TextBlock Text="EMPLOYÉS" FontSize="20" ></TextBlock>
+                </StackPanel>
+            </Button>
+
+            <Button Name="btnVente" Click="btnVente_Click" Width="200" Height="50" Margin="15">
+                <StackPanel Orientation="Horizontal"  Width="150" Height="36">
+                    <Image Source="images/vente.png" />
+                    <TextBlock Text="VENTES" FontSize="20" ></TextBlock>
+                </StackPanel>
+            </Button>
+
+
+            <Button Name="btnCommande" Click="btnCommande_Click" Width="200" Height="50" Margin="15">
+                <StackPanel Orientation="Horizontal"  Width="150" Height="36">
+                    <Image Source="images/commande.png" />
+                    <TextBlock Text="COMMANDES" FontSize="20" ></TextBlock>
+                </StackPanel>
+            </Button>
+
+            <Button Name="btnFormulaireBouteille" Click="btnFormulaireBouteille_Click" Width="200" Height="50" Margin="15">
+                <StackPanel Orientation="Horizontal"  Width="155" Height="36">
+                    <Image Source="images/formulaire.png" />
+                    <TextBlock Text="FORMULAIRE" FontSize="20" ></TextBlock>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
+    </Grid>
+</UserControl>
