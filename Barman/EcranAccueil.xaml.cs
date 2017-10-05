@@ -18,9 +18,11 @@ namespace Barman
     /// <summary>
     /// Logique d'interaction pour EcranAccueil.xaml
     /// </summary>
+    /// 
+    //TESSSS
     public partial class EcranAccueil : UserControl
     {
-        private EcranInventaire Ecraninventaire { get; set; }
+        
         public EcranAccueil()
         {
             InitializeComponent();
@@ -30,30 +32,43 @@ namespace Barman
         {
             ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
 
-            Ecraninventaire = new EcranInventaire();
+            EcranInventaire Ecraninventaire = new EcranInventaire();
             ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(Ecraninventaire);
 
 
         }
 
+
         private void btnEmploye_Click(object sender, RoutedEventArgs e)
         {
+            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
 
+            EcranEmploye EcranEmploye = new EcranEmploye();
+            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EcranEmploye);
         }
 
         private void btnVente_Click(object sender, RoutedEventArgs e)
         {
+            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
 
+            EcranVente EcranVente = new EcranVente();
+            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EcranVente);
         }
 
         private void btnCommande_Click(object sender, RoutedEventArgs e)
         {
+            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
 
+            EcranCommande EcranCommand = new EcranCommande();
+            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EcranCommand);
         }
 
         private void btnFormulaireBouteille_Click(object sender, RoutedEventArgs e)
         {
+            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
 
+            EcranFormulaireBouteille EcranFormulaire = new EcranFormulaireBouteille();
+            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EcranFormulaire);
         }
     }
 }
