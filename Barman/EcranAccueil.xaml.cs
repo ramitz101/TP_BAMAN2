@@ -38,7 +38,7 @@ namespace Barman
 
         }
 
-
+// fdfsdfsdf
         private void btnEmploye_Click(object sender, RoutedEventArgs e)
         {
             ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
