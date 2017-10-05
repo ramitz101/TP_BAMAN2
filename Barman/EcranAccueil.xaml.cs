@@ -19,7 +19,7 @@ namespace Barman
     /// Logique d'interaction pour EcranAccueil.xaml
     /// </summary>
     /// 
-    //TESSSSTTTTTTTTTTT123
+    //TESSSSTTTTTTTTTTT12367
     public partial class EcranAccueil : UserControl
     {
         
