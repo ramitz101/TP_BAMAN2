@@ -18,6 +18,9 @@ namespace Barman
     /// <summary>
     /// Logique d'interaction pour EcranEmploye.xaml
     /// </summary>
+    /// 
+
+        // dfasdfasdf
     public partial class EcranEmploye : UserControl
     {
         public EcranEmploye()
