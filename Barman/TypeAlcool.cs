@@ -16,5 +16,16 @@ namespace Barman
             IdTypeAlcool = null;
             Nom = String.Empty;
         }
+
+        public TypeAlcool(string nom)
+        {
+            Nom = nom;
+        }
+
+        public TypeAlcool(string nom,int pIdTypeAlcool)
+        {
+            Nom = nom;
+            IdTypeAlcool = pIdTypeAlcool;
+        }
     }
 }

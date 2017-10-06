@@ -16,5 +16,16 @@ namespace Barman
             IdRole = null;
             Code = String.Empty;
         }
+
+        public Role(string code)
+        {
+            Code = code;
+        }
+
+        public Role(string code, int pIdRole)
+        {
+            Code = code;
+            IdRole = pIdRole;
+        }
     }
 }
