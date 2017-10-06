@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,7 @@ namespace Barman
     /// </summary>
     public partial class EcranInventaire : UserControl
     {
+        private static ObservableCollection<Bouteille> lstBouteilles = new ObservableCollection<Bouteille>();
         public EcranInventaire()
         {
             InitializeComponent();
@@ -47,5 +49,10 @@ namespace Barman
             ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
             ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EA);
         }
+
+        
+        // fonction charger tous les bouteille de l'inventaire (chargerListeBouteille) elle retourne la liste de la BD
+
+
     }
 }

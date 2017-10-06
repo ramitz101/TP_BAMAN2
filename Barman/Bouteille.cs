@@ -39,5 +39,13 @@ namespace Barman
             SaMarque = new Marque();
 
         }
+
+        public Bouteille(Marque saMarque, int volumeInitial, string codeSAQ)
+        {
+            SaMarque = saMarque;
+            VolumeInitial = volumeInitial;
+            //codeSAQ = codeSAQ;
+        }
+
     }
 }

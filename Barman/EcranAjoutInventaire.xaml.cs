@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +21,15 @@ namespace Barman
     /// </summary>
     public partial class EcranAjoutInventaire : UserControl
     {
+
+        private ObservableCollection<Bouteille> lstBouteilles = new ObservableCollection<Bouteille>();
+        private ObservableCollection<Marque> lstMarques = new ObservableCollection<Marque>();
+
         public EcranAjoutInventaire()
         {
             InitializeComponent();
+
+            
            
         }
 
@@ -70,6 +77,9 @@ namespace Barman
 
         private void btnConfirmer_Click(object sender, RoutedEventArgs e)
         {
+            lstBouteilles.Add(new Bouteille((Marque)cboMarque.SelectedItem, int.Parse(txtVolume.Text), txtCodeSAQ.Text));
+
+            
             ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
             EcranOnglets EO = new EcranOnglets(0);
             ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EO);
