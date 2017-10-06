@@ -40,17 +40,17 @@ namespace Barman
 
         private void Consulter_Click(object sender, RoutedEventArgs e)
         {
-            //EcranConsulterVente ECV = new EcranConsulterVente();
-            //((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
-            //((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(ECV);
-           
+            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
+            EcranConsulterVente EAI = new EcranConsulterVente();
+            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0, EAI);           
+
         }
 
         private void btnGerer_Click(object sender, RoutedEventArgs e)
         {
-            //EcranGererVente EGV = new EcranGererVente();
-            //dtgPrincipale.Children.Clear();
-            //dtgPrincipale.Children.Add(EGV);
+            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
+            EcranGererVente EAI = new EcranGererVente();
+            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0, EAI);
         }
 
         private void btnAugmenteQ_Click(object sender, RoutedEventArgs e)

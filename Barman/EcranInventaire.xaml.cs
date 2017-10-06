@@ -40,5 +40,12 @@ namespace Barman
             popup.ShowDialog();
 
         }
+
+        private void btnAccueil_Click(object sender, RoutedEventArgs e)
+        {
+            EcranAccueil EA = new EcranAccueil();
+            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
+            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EA);
+        }
     }
 }
