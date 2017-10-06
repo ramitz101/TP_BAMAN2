@@ -25,6 +25,16 @@ namespace Barman
             InitializeComponent();
         }
 
-      
+        private void btnRetour_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
+            EcranOnglets EO = new EcranOnglets(2);
+            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EO);
+        }
+
+        private void btnImprimer_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

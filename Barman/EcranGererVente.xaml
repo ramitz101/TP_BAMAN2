@@ -7,39 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="350" d:DesignWidth="550">
     <Grid>
-        <!--
-        <TabControl Name="tbcOnglet" SelectionChanged="tbcOnglet_SelectionChanged"  HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="600" BorderBrush="Gainsboro">
-            <TabControl.Resources>
-                <Style TargetType="TabItem">
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="TabItem">
-                                <Border Name="Border" BorderThickness="1,1,1,0" BorderBrush="Gainsboro" CornerRadius="4,4,0,0" Margin="2,0">
-                                    <ContentPresenter x:Name="ContentSite"
-                                        VerticalAlignment="Center"
-                                        HorizontalAlignment="Center"
-                                        ContentSource="Header"
-                                        Margin="10,2"/>
-                                </Border>
-                                <ControlTemplate.Triggers>
-                                    <Trigger Property="IsSelected" Value="True">
-                                        <Setter TargetName="Border" Property="Background" Value="LightSkyBlue" />
-                                    </Trigger>
-                                    <Trigger Property="IsSelected" Value="False">
-                                        <Setter TargetName="Border" Property="Background" Value="#FFE5E5E5" />
-                                    </Trigger>
-                                </ControlTemplate.Triggers>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </TabControl.Resources>
-            <TabItem Name="tbiInventaire"  Header="INVENTAIRE"   />
-            <TabItem Name="tbiEmploye"  Header="EMPLOYÉS"  />
-            <TabItem Name="tbiVente" Header="VENTES"/>
-            <TabItem Name="tbiCommande"   Header="COMMANDES"/>
-            <TabItem Header="FORMULAIRE BOUTEILLE"/>
-        </TabControl> -->
+       
         <Calendar HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Height="165"/>
         <DataGrid HorizontalAlignment="Left" Height="247" Margin="212,30,0,0" VerticalAlignment="Top" Width="320">
             <DataGrid.Columns>
@@ -51,9 +19,9 @@
         </DataGrid>
         <ComboBox HorizontalAlignment="Left" Margin="10,235,0,0" VerticalAlignment="Top" Width="157"/>
         <Label Content="Employé" FontWeight="Bold" FontSize="15" HorizontalAlignment="Left" Margin="10,204,0,0" VerticalAlignment="Top"/>
-        <Button Name="btnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="22,291,0,0" VerticalAlignment="Top" Width="136" Height="49"/>
-        <Button Name="btnSupprimer" Content="Supprimer" HorizontalAlignment="Left" Margin="373,291,0,0" VerticalAlignment="Top" Width="136" Height="49"/>
-        <Button Name="btnImprimer" Content="Imprimer" HorizontalAlignment="Left" Margin="203,291,0,0" VerticalAlignment="Top" Width="136" Height="49"/>
+        <Button Name="btnRetour" Content="Retour" HorizontalAlignment="Left" Margin="22,291,0,0" VerticalAlignment="Top" Width="136" Height="49" Click="btnRetour_Click"/>
+        <Button Name="btnSupprimer" Content="Supprimer" HorizontalAlignment="Left" Margin="373,291,0,0" VerticalAlignment="Top" Width="136" Height="49" Click="btnSupprimer_Click"/>
+        <Button Name="btnImprimer" Content="Imprimer" HorizontalAlignment="Left" Margin="203,291,0,0" VerticalAlignment="Top" Width="136" Height="49" Click="btnImprimer_Click"/>
 
 
     </Grid>

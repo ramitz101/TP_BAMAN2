@@ -24,5 +24,15 @@ namespace Barman
             InitializeComponent();
             this.Owner = App.Current.MainWindow;
         }
+
+        private void btnAnnuler_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnConfirmer_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

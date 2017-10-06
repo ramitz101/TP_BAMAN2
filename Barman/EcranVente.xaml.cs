@@ -31,7 +31,7 @@ namespace Barman
             // A FAIRE !! AJOUTER EN BD
         }
 
-        private void btnAnnuler_Click(object sender, RoutedEventArgs e)
+        private void btnAccueil_Click(object sender, RoutedEventArgs e)
         {
             EcranAccueil EA = new EcranAccueil();
             ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
