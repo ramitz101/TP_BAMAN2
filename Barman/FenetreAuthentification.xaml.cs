@@ -22,6 +22,7 @@ namespace Barman
         public FenetreAuthentification()
         {
             InitializeComponent();
+            this.Owner = App.Current.MainWindow;
         }
     }
 }

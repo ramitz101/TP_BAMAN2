@@ -36,6 +36,7 @@ namespace Barman
                     tbcOnglet.SelectedItem = tbiCommande;  break;
                 case 4:
                     tbcOnglet.SelectedItem = tbiFormulaireB; break;
+             
             }
             OngletCreer = true;
         }
@@ -81,6 +82,7 @@ namespace Barman
                 EcranFormulaireBouteille EFB = new EcranFormulaireBouteille();
                 ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0,EFB);
             }
+            
         }
     }
 }

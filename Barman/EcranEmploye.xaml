@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Barman"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="335.791" d:DesignWidth="529.887">
     <Grid>
         <DataGrid HorizontalAlignment="Left" Height="296" VerticalAlignment="Top" Width="346" Margin="178,33,0,0" >
             <DataGrid.Columns>
@@ -16,27 +16,27 @@
                 <DataGridTextColumn Header="Code" Binding="{Binding Code}" />
             </DataGrid.Columns>
         </DataGrid>
-        <Button HorizontalAlignment="Left" Margin="10,33,0,0" Background="White" VerticalAlignment="Top"  Width="163" Height="71" Grid.ColumnSpan="2" >
+        <Button HorizontalAlignment="Left" Margin="10,33,0,0" Background="White" VerticalAlignment="Top"  Width="163" Height="71" Grid.ColumnSpan="2" Click="btnGerer_Click" >
             <StackPanel Width="140" Orientation="Horizontal">
-                <Image Source="image/Gerer.png" Width="40" Height="40" />
+                <Image Source="images/Gerer.png" Width="40" Height="40" />
                 <TextBlock HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="21"><Run Text="Gérer"/></TextBlock>
             </StackPanel>
         </Button>
         <Button  FontSize="21" HorizontalAlignment="Left" Background="White" Margin="10,109,0,0" VerticalAlignment="Top" Width="163" Height="70" Grid.ColumnSpan="2">
             <StackPanel Width="140" Orientation="Horizontal">
-                <Image Source="image/Imprimante.png" Width="40" Height="40"  />
+                <Image Source="images/Imprimante.png" Width="40" Height="40"  />
                 <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Imprimer"/></TextBlock>
             </StackPanel>
         </Button>
-        <Button FontSize="21" HorizontalAlignment="Left" Background="White" Margin="10,184,0,0" VerticalAlignment="Top" Width="163" Height="70" Grid.ColumnSpan="2">
+        <Button FontSize="21" HorizontalAlignment="Left" Background="White" Margin="10,184,0,0" VerticalAlignment="Top" Width="163" Height="70" Grid.ColumnSpan="2" Click="btnAjouterEmploye_Click">
             <StackPanel Width="140" Orientation="Horizontal">
-                <Image Source="image/NouvelUtilisateur.png" Width="40" Height="40"  />
+                <Image Source="images/NouvelUtilisateur.png" Width="40" Height="40"  />
                 <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Ajouter"/></TextBlock>
             </StackPanel>
         </Button>
-        <Button FontSize="21" HorizontalAlignment="Left" Background="White" Margin="10,259,0,0" VerticalAlignment="Top" Width="163" Height="70" Grid.ColumnSpan="2">
+        <Button FontSize="21" HorizontalAlignment="Left" Background="White" Margin="10,259,0,0" VerticalAlignment="Top" Width="163" Height="70" Grid.ColumnSpan="2" Click="btnAccueil_Click">
             <StackPanel Width="140" Orientation="Horizontal">
-                <Image Source="image/Flechearriere.png" Width="40" Height="40"  />
+                <Image Source="images/Flechearriere.png" Width="40" Height="40"  />
                 <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Accueil"/></TextBlock>
             </StackPanel>
         </Button>

@@ -11,40 +11,8 @@
             <ColumnDefinition Width="147*"/>
             <ColumnDefinition Width="370*"/>
         </Grid.ColumnDefinitions>
-        <!--
-        <TabControl Name="tbcOnglet"  SelectionChanged="tbcOnglet_SelectionChanged" HorizontalAlignment="Left" Height="342" VerticalAlignment="Top" Width="600" Grid.ColumnSpan="2" BorderBrush="Gainsboro">
-            <TabControl.Resources>
-                <Style TargetType="TabItem">
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="TabItem">
-                                <Border Name="Border" BorderThickness="1,1,1,0" BorderBrush="Gainsboro" CornerRadius="4,4,0,0" Margin="2,0">
-                                    <ContentPresenter x:Name="ContentSite"
-                                        VerticalAlignment="Center"
-                                        HorizontalAlignment="Center"
-                                        ContentSource="Header"
-                                        Margin="10,2"/>
-                                </Border>
-                                <ControlTemplate.Triggers>
-                                    <Trigger Property="IsSelected" Value="True">
-                                        <Setter TargetName="Border" Property="Background" Value="LightSkyBlue" />
-                                    </Trigger>
-                                    <Trigger Property="IsSelected" Value="False">
-                                        <Setter TargetName="Border" Property="Background" Value="#FFE5E5E5" />
-                                    </Trigger>
-                                </ControlTemplate.Triggers>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </TabControl.Resources>
-            <TabItem Name="tbiInventaire"  Header="INVENTAIRE"   />
-            <TabItem Name="tbiEmploye"  Header="EMPLOYÉS"  />
-            <TabItem Name="tbiVente" Header="VENTES"/>
-            <TabItem Name="tbiCommande"   Header="COMMANDES"/>
-            <TabItem Name="tbiFormulaireB" Header="FORMULAIRE BOUTEILLE"/>
-        </TabControl>
-        -->
+        
+        
         <DataGrid HorizontalAlignment="Left" Height="299" VerticalAlignment="Top" Width="381" Margin="31,33,0,0" Grid.Column="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nom" Width="2*" Binding="{Binding Nom}" />
@@ -73,7 +41,7 @@
                 <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Ajouter"/></TextBlock>
             </StackPanel>
         </Button>
-        <Button FontSize="21" HorizontalAlignment="Left" Background="White" Margin="10,259,0,0" VerticalAlignment="Top" Width="163" Height="70" Grid.ColumnSpan="2">
+        <Button FontSize="21" HorizontalAlignment="Left" Background="White" Margin="10,259,0,0" VerticalAlignment="Top" Width="163" Height="70" Grid.ColumnSpan="2" Click="btnAccueil_Click">
             <StackPanel Width="140" Orientation="Horizontal">
                 <Image Source="images/Flechearriere.png" Width="40" Height="40"  />
                 <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Accueil"/></TextBlock>

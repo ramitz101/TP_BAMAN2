@@ -27,5 +27,24 @@ namespace Barman
         {
             InitializeComponent();
         }
+
+        private void btnGerer_Click(object sender, RoutedEventArgs e)
+        {
+            FenetreModifierEmploye popup = new FenetreModifierEmploye();
+            popup.ShowDialog();
+        }
+
+        private void btnAjouterEmploye_Click(object sender, RoutedEventArgs e)
+        {
+            FenetreAjouterEmploye popup = new FenetreAjouterEmploye();
+            popup.ShowDialog();
+        }
+
+        private void btnAccueil_Click(object sender, RoutedEventArgs e)
+        {
+            EcranAccueil EA = new EcranAccueil();
+            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
+            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EA);
+        }
     }
 }
