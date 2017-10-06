@@ -8,6 +8,7 @@ namespace Barman
 {
     public class Bouteille
     {
+        public virtual int? IdBouteille { get; set; }
         public virtual string Numero { get; set; }
         public virtual int? VolumeRestant { get; set; }
         public virtual int? VolumeInitial { get; set; }
@@ -25,6 +26,7 @@ namespace Barman
 
         public Bouteille()
         {
+            IdBouteille = null;
             Numero = String.Empty;
             VolumeInitial = null;
             VolumeRestant = null;

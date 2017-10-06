@@ -66,8 +66,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BouteilleMap.cs" />
     <Compile Include="Commande.cs" />
+    <Compile Include="CommandeMap.cs" />
+    <Compile Include="EmplacementMap.cs" />
     <Compile Include="Employe.cs" />
+    <Compile Include="EmployeMap.cs" />
+    <Compile Include="NHibernateConnexion.cs" />
     <Compile Include="Role.cs" />
     <Compile Include="TypeAlcool.cs" />
     <Compile Include="Vente.cs" />
