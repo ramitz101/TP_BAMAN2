@@ -23,8 +23,7 @@ namespace Barman
         public EcranCommande()
         {
             InitializeComponent();
-            //tbcOnglet.SelectedItem = tbiCommande;
-            //tbiCommande.IsSelected = true;
+        
 
         }
 
@@ -33,6 +32,13 @@ namespace Barman
             ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
             EcranNouvelleCommande EcranNouvelCommand = new EcranNouvelleCommande();
             ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0, EcranNouvelCommand);
+        }
+
+        private void btnAccueil_Click(object sender, RoutedEventArgs e)
+        {
+            EcranAccueil EA = new EcranAccueil();
+            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
+            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EA);
         }
     }
 }

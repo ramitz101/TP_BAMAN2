@@ -66,7 +66,7 @@
             </StackPanel>
         </Button>
         
-        <Button FontSize="21" HorizontalAlignment="Left" Background="White" Margin="10,259,0,0" VerticalAlignment="Top" Width="163" Height="70" Grid.ColumnSpan="2">
+        <Button Name="btnAccueil" Click="btnAccueil_Click" FontSize="21" HorizontalAlignment="Left" Background="White" Margin="10,259,0,0" VerticalAlignment="Top" Width="163" Height="70" Grid.ColumnSpan="2">
             <StackPanel Width="140" Orientation="Horizontal">
                 <Image Source="images/Flechearriere.png" Width="40" Height="40"  />
                 <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Accueil"/></TextBlock>
