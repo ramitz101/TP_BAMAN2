@@ -24,5 +24,22 @@ namespace Barman
         {
             InitializeComponent();
         }
+
+        private void btnAccueil_Click(object sender, RoutedEventArgs e)
+        {
+            EcranAccueil EA = new EcranAccueil();
+            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
+            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EA);
+        }
+
+        private void btnImprimer_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnConfirmer_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
