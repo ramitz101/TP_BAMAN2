@@ -25,10 +25,6 @@ namespace Barman
             InitializeComponent();
         }
 
-        private void tbcOnglet_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-            
-        }
+      
     }
 }

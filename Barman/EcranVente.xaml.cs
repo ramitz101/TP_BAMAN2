@@ -23,8 +23,7 @@ namespace Barman
         public EcranVente()
         {
             InitializeComponent();
-            tbcOnglet.SelectedItem = tbiVente;
-            tbiVente.IsSelected = true;
+
         }
 
         private void btnAjouter_Click(object sender, RoutedEventArgs e)
@@ -86,31 +85,6 @@ namespace Barman
             }
         }
 
-        private void tbcOnglet_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-            if (tbcOnglet.SelectedItem == tbiInventaire)
-            {
-                ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
-                EcranInventaire EI = new EcranInventaire();
-                ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EI);
-
-            }
-            else if (tbcOnglet.SelectedItem == tbiCommande)
-            {
-
-
-                ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
-                EcranCommande EC = new EcranCommande();
-                ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EC);
-
-            }
-            else if(!tbiVente.IsSelected && tbcOnglet.SelectedItem == tbiVente)
-            {
-                ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
-                EcranVente EV = new EcranVente();
-                ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EV);
-            }
-        }
+       
     }
 }

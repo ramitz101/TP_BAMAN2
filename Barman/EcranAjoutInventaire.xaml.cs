@@ -23,31 +23,10 @@ namespace Barman
         public EcranAjoutInventaire()
         {
             InitializeComponent();
-            tbcOnglet.SelectedItem = tbiInventaire;
-            tbiInventaire.IsSelected = true;
+           
         }
 
-        private void tbcOnglet_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-
-            if (!tbiInventaire.IsSelected && tbcOnglet.SelectedItem == tbiInventaire)
-            {
-                ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
-                EcranInventaire EI = new EcranInventaire();
-                ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EI);
-
-            }
-            if (tbcOnglet.SelectedItem == tbiCommande)
-            {
-
-
-                ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
-                EcranCommande EC = new EcranCommande();
-                ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EC);
-            }
-
-        }
+      
 
         private void btnReduireQ_Click(object sender, RoutedEventArgs e)
         {

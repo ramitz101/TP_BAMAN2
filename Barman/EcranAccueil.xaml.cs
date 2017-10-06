@@ -31,44 +31,37 @@ namespace Barman
         private void btnInventaire_Click(object sender, RoutedEventArgs e)
         {
             ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
-
-            EcranInventaire Ecraninventaire = new EcranInventaire();
-            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(Ecraninventaire);
+            EcranOnglets EO = new EcranOnglets(0);
+            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EO);
 
 
         }
-
-// fdfsdfsdf
         private void btnEmploye_Click(object sender, RoutedEventArgs e)
         {
             ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
-
-            EcranEmploye EcranEmploye = new EcranEmploye();
-            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EcranEmploye);
+            EcranOnglets EO = new EcranOnglets(1);
+            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EO);
         }
 
         private void btnVente_Click(object sender, RoutedEventArgs e)
         {
             ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
-
-            EcranVente EcranVente = new EcranVente();
-            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EcranVente);
+            EcranOnglets EO = new EcranOnglets(2);
+            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EO);
         }
 
         private void btnCommande_Click(object sender, RoutedEventArgs e)
         {
             ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
-
-            EcranCommande EcranCommand = new EcranCommande();
-            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EcranCommand);
+            EcranOnglets EO = new EcranOnglets(3);          
+            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EO);
         }
 
         private void btnFormulaireBouteille_Click(object sender, RoutedEventArgs e)
         {
             ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
-
-            EcranFormulaireBouteille EcranFormulaire = new EcranFormulaireBouteille();
-            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EcranFormulaire);
+            EcranOnglets EO = new EcranOnglets(4);
+            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EO);
         }
     }
 }

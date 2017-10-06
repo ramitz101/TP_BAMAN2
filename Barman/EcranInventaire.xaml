@@ -11,6 +11,7 @@
             <ColumnDefinition Width="147*"/>
             <ColumnDefinition Width="370*"/>
         </Grid.ColumnDefinitions>
+        <!--
         <TabControl Name="tbcOnglet"  SelectionChanged="tbcOnglet_SelectionChanged" HorizontalAlignment="Left" Height="342" VerticalAlignment="Top" Width="600" Grid.ColumnSpan="2" BorderBrush="Gainsboro">
             <TabControl.Resources>
                 <Style TargetType="TabItem">
@@ -39,10 +40,11 @@
             </TabControl.Resources>
             <TabItem Name="tbiInventaire"  Header="INVENTAIRE"   />
             <TabItem Name="tbiEmploye"  Header="EMPLOYÉS"  />
-            <TabItem Header="VENTES"/>
+            <TabItem Name="tbiVente" Header="VENTES"/>
             <TabItem Name="tbiCommande"   Header="COMMANDES"/>
-            <TabItem Header="FORMULAIRE BOUTEILLE"/>
+            <TabItem Name="tbiFormulaireB" Header="FORMULAIRE BOUTEILLE"/>
         </TabControl>
+        -->
         <DataGrid HorizontalAlignment="Left" Height="299" VerticalAlignment="Top" Width="381" Margin="31,33,0,0" Grid.Column="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nom" Width="2*" Binding="{Binding Nom}" />

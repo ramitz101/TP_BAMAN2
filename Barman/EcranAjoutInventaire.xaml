@@ -7,6 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="350" d:DesignWidth="550">
     <Grid>
+        <!--
         <TabControl Name="tbcOnglet" SelectionChanged="tbcOnglet_SelectionChanged"  HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="600" BorderBrush="Gainsboro">
             <TabControl.Resources>
                 <Style TargetType="TabItem">
@@ -37,8 +38,8 @@
             <TabItem Name="tbiEmploye"  Header="EMPLOYÉS"  />
             <TabItem Name="tbiVente" Header="VENTES"/>
             <TabItem Name="tbiCommande"   Header="COMMANDES"/>
-            <TabItem Header="FORMULAIRE BOUTEILLE"/>
-        </TabControl>
+            <TabItem Name="tbiFormulaireB" Header="FORMULAIRE BOUTEILLE"/>
+        </TabControl> -->
         <Label Content="Recevoir commande" FontWeight="Bold" FontSize="15" HorizontalAlignment="Left" Margin="0,30,0,0" VerticalAlignment="Top" Width="160"/>
         <Label Content="Emplacement" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top"/>
         <Label Content="Marque" HorizontalAlignment="Left" Margin="176,60,0,0" VerticalAlignment="Top"/>

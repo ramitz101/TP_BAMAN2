@@ -7,6 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
+        <!--
         <TabControl Name="tbOnglet" Grid.Row="0" HorizontalAlignment="Left" Height="319" VerticalAlignment="Top" Width="517" BorderBrush="Gainsboro">
             <TabControl.Resources>
                 <Style TargetType="TabItem">
@@ -38,7 +39,7 @@
             <TabItem Name="tbiVentes" Header="VENTES" />
             <TabItem Name="tbiCommandes" Header="COMMANDES" />
             <TabItem Name="tbiFormulaireBouteille" Header="FORMULAIRE BOUTEILLE" />
-        </TabControl>
+        </TabControl> -->
         <Label Content="Emplacement" HorizontalAlignment="Left" Margin="17,32,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.494,0.552" Width="93"/>
         <ComboBox Name="cbEmplacement" HorizontalAlignment="Left" Margin="17,58,0,0" VerticalAlignment="Top" Width="120" />
         <CheckBox Content="Vente pour client" HorizontalAlignment="Left" Margin="314,58,0,0" VerticalAlignment="Top" Width="117" />

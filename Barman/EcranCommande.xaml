@@ -11,6 +11,7 @@
             <ColumnDefinition Width="147*"/>
             <ColumnDefinition Width="370*"/>
         </Grid.ColumnDefinitions>
+       <!--
         <TabControl Name="tbcOnglet" SelectionChanged="tbcOnglet_SelectionChanged" HorizontalAlignment="Left" Height="342" VerticalAlignment="Top" Width="600" Grid.ColumnSpan="2" BorderBrush="Gainsboro">
             <TabControl.Resources>
                 <Style TargetType="TabItem">
@@ -39,10 +40,10 @@
             </TabControl.Resources>
             <TabItem Name="tbiInventaire" Header="INVENTAIRE"   />
             <TabItem Name="tbiEmploye" Header="EMPLOYÉS"  />
-            <TabItem Header="VENTES"/>
+            <TabItem Name="tbiVente" Header="VENTES"/>
             <TabItem Name="tbiCommande"  Header="COMMANDES"/>
-            <TabItem Header="FORMULAIRE BOUTEILLE"/>
-        </TabControl>
+            <TabItem Name="tbiFormulaireB" Header="FORMULAIRE BOUTEILLE"/>
+        </TabControl> -->
         <DataGrid HorizontalAlignment="Left" Height="299" VerticalAlignment="Top" Width="381" Margin="31,33,0,0" Grid.Column="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Date" Width="2*" Binding="{Binding DateCommande}" />
@@ -52,9 +53,9 @@
             </DataGrid.Columns>
 
         </DataGrid>
-        <Button HorizontalAlignment="Left" Margin="10,33,0,0" Background="White" VerticalAlignment="Top"  Width="163" Height="71" Grid.ColumnSpan="2">
+        <Button Name="btnNouvelleCommande" Click="btnNouvelleCommande_Click"  HorizontalAlignment="Left" Margin="10,33,0,0" Background="White" VerticalAlignment="Top"  Width="163" Height="71" Grid.ColumnSpan="2">
             <StackPanel Width="140" Orientation="Horizontal">
-                <Image Source="images/Gerer.png" Width="40" Height="40" />
+                <Image Source="images/add.png" Width="40" Height="40" />
                 <TextBlock HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="21"><Run Text="Nouvelle"/></TextBlock>
             </StackPanel>
         </Button>
