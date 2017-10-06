@@ -8,12 +8,12 @@ namespace Barman
 {
     public class TypeAlcool
     {
-        public virtual int? IdType { get; set; }
+        public virtual int? IdTypeAlcool { get; set; }
         public virtual string Nom { get; set; }
 
         public TypeAlcool()
         {
-            IdType = null;
+            IdTypeAlcool = null;
             Nom = String.Empty;
         }
     }
