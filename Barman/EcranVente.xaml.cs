@@ -34,22 +34,23 @@ namespace Barman
         private void btnAnnuler_Click(object sender, RoutedEventArgs e)
         {
             EcranAccueil EA = new EcranAccueil();
-            dtgPrincipale.Children.Clear();
-            dtgPrincipale.Children.Add(EA);
+            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
+            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EA);
         }
 
         private void Consulter_Click(object sender, RoutedEventArgs e)
         {
-            EcranConsulterVente ECV = new EcranConsulterVente();
-            dtgPrincipale.Children.Clear();
-            dtgPrincipale.Children.Add(ECV);
+            //EcranConsulterVente ECV = new EcranConsulterVente();
+            //((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
+            //((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(ECV);
+           
         }
 
         private void btnGerer_Click(object sender, RoutedEventArgs e)
         {
-            EcranGererVente EGV = new EcranGererVente();
-            dtgPrincipale.Children.Clear();
-            dtgPrincipale.Children.Add(EGV);
+            //EcranGererVente EGV = new EcranGererVente();
+            //dtgPrincipale.Children.Clear();
+            //dtgPrincipale.Children.Add(EGV);
         }
 
         private void btnAugmenteQ_Click(object sender, RoutedEventArgs e)

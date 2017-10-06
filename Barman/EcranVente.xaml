@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Barman"
              mc:Ignorable="d" 
              d:DesignHeight="350" d:DesignWidth="550">
-    <Grid Name="dtgPrincipale">
+    <Grid>
         <!--
         <TabControl Name="tbcOnglet" SelectionChanged="tbcOnglet_SelectionChanged"  HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="600" BorderBrush="Gainsboro">
             <TabControl.Resources>
