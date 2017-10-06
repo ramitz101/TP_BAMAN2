@@ -72,10 +72,19 @@
     <Compile Include="EmplacementMap.cs" />
     <Compile Include="Employe.cs" />
     <Compile Include="EmployeMap.cs" />
+    <Compile Include="HibernateBouteilleService.cs" />
+    <Compile Include="HibernateMarqueService.cs" />
+    <Compile Include="HibernateRoleService.cs" />
+    <Compile Include="HibernateTypeAlcoolService.cs" />
+    <Compile Include="HivernateVenteService.cs" />
+    <Compile Include="MarqueMap.cs" />
     <Compile Include="NHibernateConnexion.cs" />
     <Compile Include="Role.cs" />
+    <Compile Include="RoleMap.cs" />
     <Compile Include="TypeAlcool.cs" />
+    <Compile Include="TypeAlcoolMap.cs" />
     <Compile Include="Vente.cs" />
+    <Compile Include="VenteMap.cs" />
     <Page Include="EcranAccueil.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
