@@ -25,5 +25,40 @@ namespace Barman
             UnEmploye = new Employe();
             ListBouteille = new List<Bouteille>();
         }
+        public Commande(DateTime dateCommande,int pIdEmploye)
+        {
+            DateCommande = dateCommande;
+            IdEmploye = pIdEmploye;
+        }
+        public Commande(DateTime dateCommande, int pIdEmploye, int pIdCommande)
+        {
+            DateCommande = dateCommande;
+            IdEmploye = pIdEmploye;
+            IdCommande = pIdCommande;
+        }
+
+
+        // Pour utiliser NHibernate, il faut surcharger Equals et GetHashCode.
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            Commande m = obj as Commande;
+
+            if (m == null)
+            {
+                return false;
+            }
+
+            return this.IdCommande == m.IdCommande;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

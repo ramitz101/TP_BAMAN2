@@ -35,5 +35,50 @@ namespace Barman
             SonRole = new Role();
             ListVente = new List<Vente>();
         }
+
+        public Employe(string nom,string prenom,string telephone,string nas,DateTime dateEmbauche,string codeEmploye,int pIdRole)
+        {
+            Nom = nom;
+            Prenom = prenom;
+            Telephone = telephone;
+            NAS = nas;
+            DateEmbauche = dateEmbauche;
+            CodeEmploye = codeEmploye;
+            IdRole = pIdRole;
+        }
+        public Employe(string nom, string prenom, string telephone, string nas, DateTime dateEmbauche, string codeEmploye, int pIdRole,int pIdEmploye)
+        {
+            Nom = nom;
+            Prenom = prenom;
+            Telephone = telephone;
+            NAS = nas;
+            DateEmbauche = dateEmbauche;
+            CodeEmploye = codeEmploye;
+            IdRole = pIdRole;
+            IdEmploye = pIdEmploye;
+        }
+
+        // Pour utiliser NHibernate, il faut surcharger Equals et GetHashCode.
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            Employe m = obj as Employe;
+
+            if (m == null)
+            {
+                return false;
+            }
+
+            return this.IdEmploye == m.IdEmploye;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

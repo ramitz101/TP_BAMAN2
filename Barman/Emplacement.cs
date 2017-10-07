@@ -16,5 +16,37 @@ namespace Barman
             IdEmplacement = null;
             Nom = String.Empty;
         }
+        public Emplacement(string nom)
+        {
+            Nom = nom;
+        }
+        public Emplacement(string nom,int pIdEmplacement)
+        {
+            Nom = nom;
+            IdEmplacement = pIdEmplacement;
+        }
+        // Pour utiliser NHibernate, il faut surcharger Equals et GetHashCode.
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            Emplacement m = obj as Emplacement;
+
+            if (m == null)
+            {
+                return false;
+            }
+
+            return this.IdEmplacement == m.IdEmplacement;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
     }
 }

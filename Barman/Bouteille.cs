@@ -40,12 +40,51 @@ namespace Barman
 
         }
 
-        public Bouteille(Marque saMarque, int volumeInitial, string codeSAQ)
+        public Bouteille(string numero,int volumeInit,int volumeRestant,string etat,float prixB,int pIdEmplacement,int pIdMarque,int pIdCommande)
         {
-            SaMarque = saMarque;
-            VolumeInitial = volumeInitial;
-            //codeSAQ = codeSAQ;
+            Numero = numero;
+            VolumeInitial = volumeInit;
+            VolumeRestant = volumeRestant;
+            Etat = etat;
+            PrixBouteille = prixB;
+            IdEmplacement = pIdEmplacement;
+            IdMarque = pIdMarque;
+            IdCommande = pIdCommande;
+        }
+        public Bouteille(string numero, int volumeInit, int volumeRestant, string etat, float prixB, int pIdEmplacement, int pIdMarque, int pIdCommande,int pIdBouteille)
+        {
+            Numero = numero;
+            VolumeInitial = volumeInit;
+            VolumeRestant = volumeRestant;
+            Etat = etat;
+            PrixBouteille = prixB;
+            IdEmplacement = pIdEmplacement;
+            IdMarque = pIdMarque;
+            IdCommande = pIdCommande;
+            IdBouteille = pIdBouteille;
         }
 
+        // Pour utiliser NHibernate, il faut surcharger Equals et GetHashCode.
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            Bouteille m = obj as Bouteille;
+
+            if (m == null)
+            {
+                return false;
+            }
+
+            return this.IdBouteille == m.IdBouteille;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

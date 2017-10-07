@@ -77,12 +77,12 @@ namespace Barman
 
         private void btnConfirmer_Click(object sender, RoutedEventArgs e)
         {
-            lstBouteilles.Add(new Bouteille((Marque)cboMarque.SelectedItem, int.Parse(txtVolume.Text), txtCodeSAQ.Text));
+            //lstBouteilles.Add(new Bouteille((Marque)cboMarque.SelectedItem, int.Parse(txtVolume.Text), txtCodeSAQ.Text));
 
             
-            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
-            EcranOnglets EO = new EcranOnglets(0);
-            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EO);
+            //((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
+            //EcranOnglets EO = new EcranOnglets(0);
+            //((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EO);
         }
     }
 }

@@ -21,5 +21,41 @@ namespace Barman
             Nom = String.Empty;
             SonTypeAlcool = new TypeAlcool();
         }
+
+        public Marque(string nom,int pIdTypeAlcool)
+        {
+            Nom = nom;
+            IdTypeAlcool = pIdTypeAlcool;
+
+        }
+        public Marque(string nom, int pIdTypeAlcool,int pIdMarque)
+        {
+            Nom = nom;
+            IdTypeAlcool = pIdTypeAlcool;
+            IdMarque = pIdMarque;
+        }
+
+        // Pour utiliser NHibernate, il faut surcharger Equals et GetHashCode.
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            Marque m = obj as Marque;
+
+            if (m == null)
+            {
+                return false;
+            }
+
+            return this.IdMarque == m.IdMarque;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

@@ -27,5 +27,27 @@ namespace Barman
             Nom = nom;
             IdTypeAlcool = pIdTypeAlcool;
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            TypeAlcool m = obj as TypeAlcool;
+
+            if (m == null)
+            {
+                return false;
+            }
+
+            return this.IdTypeAlcool == m.IdTypeAlcool;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

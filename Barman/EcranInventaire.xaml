@@ -13,13 +13,13 @@
         </Grid.ColumnDefinitions>
         
         
-        <DataGrid HorizontalAlignment="Left" Height="299" VerticalAlignment="Top" Width="381" Margin="31,33,0,0" Grid.Column="1">
+        <DataGrid Name="dtgInventaire" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="299" VerticalAlignment="Top" Width="381" Margin="31,33,0,0" Grid.Column="1">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Nom" Width="2*" Binding="{Binding Nom}" />
-                <DataGridTextColumn Header="Volume" Width="2*" Binding="{Binding Volume}"/>
+                <DataGridTextColumn Header="Nom" Width="2*" Binding="{Binding SaMarque.Nom}" />
+                <DataGridTextColumn Header="Volume" Width="2*" Binding="{Binding VolumeInitial}"/>
                 <DataGridTextColumn Header="Type d'alcool" Width="2*" Binding="{Binding Type}"/>
                 <DataGridTextColumn Header="V.Restant" Width="1*" Binding="{Binding VolumeRestant}"/>
-                <DataGridTextColumn Header="Emplacement" Width="3*" Binding="{Binding Emplacement}"/>
+                <DataGridTextColumn Header="Emplacement" Width="3*" Binding="{Binding SonEmplacement.Nom}"/>
             </DataGrid.Columns>
 
         </DataGrid>

@@ -32,5 +32,45 @@ namespace Barman
 
             UnEmploye = new Employe();
         }
+
+        public Vente(float prixOnce,DateTime dateVente,int? volume,int pIdBouteille,int pIdEmploye)
+        {
+            PrixOnce = prixOnce;
+            DateVente = dateVente;
+            Volume = volume;
+            IdBouteille = pIdBouteille;
+            IdEmploye = pIdEmploye;
+        }
+        public Vente(float prixOnce, DateTime dateVente, int? volume, int pIdBouteille, int pIdEmploye,int pIdVente)
+        {
+            PrixOnce = prixOnce;
+            DateVente = dateVente;
+            Volume = volume;
+            IdBouteille = pIdBouteille;
+            IdEmploye = pIdEmploye;
+            IdVente = pIdVente;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            Vente m = obj as Vente;
+
+            if (m == null)
+            {
+                return false;
+            }
+
+            return this.IdVente == m.IdVente;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

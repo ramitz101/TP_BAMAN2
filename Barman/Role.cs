@@ -27,5 +27,27 @@ namespace Barman
             Code = code;
             IdRole = pIdRole;
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+           Role m = obj as Role;
+
+            if (m == null)
+            {
+                return false;
+            }
+
+            return this.IdRole == m.IdRole;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

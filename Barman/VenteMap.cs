@@ -59,12 +59,13 @@ namespace Barman
            .Generated.Never()
            .CustomSqlType("INTEGER");
 
-           // Map(x => x.IdEmploye)
-           //.Column("idEmploye")
-           //.CustomType<int?>()
-           //.Access.Property()
-           //.Generated.Never()
-           //.CustomSqlType("INTEGER");
+            // Autre class
+            References(x => x.UnEmploye)
+                .Class<Employe>()
+                .Access.Property()
+                .LazyLoad(Laziness.False)
+                .Cascade.None()
+                .Columns("idEmploye");
 
 
         }

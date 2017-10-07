@@ -21,11 +21,11 @@ namespace Barman
     /// </summary>
     public partial class EcranInventaire : UserControl
     {
-        private static ObservableCollection<Bouteille> lstBouteilles = new ObservableCollection<Bouteille>();
+        private static ObservableCollection<Bouteille> lstBouteilles = new ObservableCollection<Bouteille>(ChargerListBouteille());
         public EcranInventaire()
         {
             InitializeComponent();
-       
+            dtgInventaire.ItemsSource = lstBouteilles;
         }
 
      
@@ -52,7 +52,11 @@ namespace Barman
 
         
         // fonction charger tous les bouteille de l'inventaire (chargerListeBouteille) elle retourne la liste de la BD
-
+        private static List<Bouteille> ChargerListBouteille()
+        {
+            List<Bouteille> listB = new List<Bouteille>(HibernateBouteilleService.RetrieveAll());
+            return listB;
+        }
 
     }
 }
