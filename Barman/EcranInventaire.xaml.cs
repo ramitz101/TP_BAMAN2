@@ -22,6 +22,7 @@ namespace Barman
     public partial class EcranInventaire : UserControl
     {
         private static ObservableCollection<Bouteille> lstBouteilles = new ObservableCollection<Bouteille>(ChargerListBouteille());
+        
         public EcranInventaire()
         {
             InitializeComponent();
@@ -38,8 +39,14 @@ namespace Barman
 
         private void btnGerer_Click(object sender, RoutedEventArgs e)
         {
-            FenetreModifierBouteille popup = new FenetreModifierBouteille();
-            popup.ShowDialog();
+            if (UneBouteilleSelectionne())
+            {
+                FenetreModifierBouteille popup = new FenetreModifierBouteille(lstBouteilles, dtgInventaire.SelectedItem as Bouteille, this);
+                popup.ShowDialog();
+
+                dtgInventaire.Items.Refresh();
+
+            }
 
         }
 
@@ -56,6 +63,25 @@ namespace Barman
         {
             List<Bouteille> listB = new List<Bouteille>(HibernateBouteilleService.RetrieveAll());
             return listB;
+        }
+
+        
+
+        private bool UneBouteilleSelectionne()
+        {
+            if (dtgInventaire.SelectedItems.Count == 1)
+                return true;
+            // si le user a sélectionné plus d'une inscription 
+            else if (dtgInventaire.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Vous avez trops de bouteilles selectionnées");
+                return false;
+            }
+            else
+            {
+                MessageBox.Show("Vous avez aucune bouteille de selectionnée");
+                return false;
+            }
         }
 
     }

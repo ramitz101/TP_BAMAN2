@@ -14,10 +14,10 @@
         <Label Name="lblMarque" HorizontalAlignment="Left" Margin="33,63,0,0" VerticalAlignment="Top" Height="31" Width="100"/>
         <Label Name="lblFormatBouteille" HorizontalAlignment="Left" Margin="148,63,0,0" VerticalAlignment="Top" Height="31" Width="100"/>
         <Label Content="Volume restant" FontSize="18" HorizontalAlignment="Left" Margin="260,29,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.835,0.526"/>
-        <TextBox HorizontalAlignment="Left" Height="31" Margin="260,63,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="75" />
-        <ComboBox HorizontalAlignment="Left" Margin="421,63,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Annuler" HorizontalAlignment="Left" Margin="80,120,0,0" VerticalAlignment="Top" Width="120" Height="40" Click="btnAnnuler_Click"/>
-        <Button Content="Confirmer" HorizontalAlignment="Left" Margin="361,120,0,0" VerticalAlignment="Top" Width="120" Height="40" Click="btnConfirmer_Click"/>
+        <TextBox Name="txtVolumeRestant" HorizontalAlignment="Left" Height="31" Margin="260,63,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="75" />
+        <ComboBox Name="cboEmplacement" ItemsSource="{Binding Emplacement.Nom}"  HorizontalAlignment="Left" Margin="421,63,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button Name="btnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="80,120,0,0" VerticalAlignment="Top" Width="120" Height="40" Click="btnAnnuler_Click"/>
+        <Button Name="btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="361,120,0,0" VerticalAlignment="Top" Width="120" Height="40" Click="btnConfirmer_Click"/>
 
     </Grid>
 </Window>

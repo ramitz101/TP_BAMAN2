@@ -11,12 +11,12 @@
             <ColumnDefinition Width="147*"/>
             <ColumnDefinition Width="370*"/>
         </Grid.ColumnDefinitions>
-       
-        <DataGrid HorizontalAlignment="Left" Height="299" VerticalAlignment="Top" Width="381" Margin="31,33,0,0" Grid.Column="1">
+
+        <DataGrid Name="dtgCommande" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="299" VerticalAlignment="Top" Width="381" Margin="31,33,0,0" Grid.Column="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Date" Width="2*" Binding="{Binding DateCommande}" />
                 <DataGridTextColumn Header="Quantite" Width="2*" Binding="{Binding Quantite}"/>
-                <DataGridTextColumn Header="Responsable" Width="2*" Binding="{Binding Responsable}"/>
+                <DataGridTextColumn Header="Responsable" Width="2*" Binding="{Binding UnEmploye.Prenom}"/>
             
             </DataGrid.Columns>
 

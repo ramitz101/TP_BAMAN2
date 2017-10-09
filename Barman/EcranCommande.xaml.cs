@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,11 +21,19 @@ namespace Barman
     /// </summary>
     public partial class EcranCommande : UserControl
     {
+        private static ObservableCollection<Commande> lstCommandes = new ObservableCollection<Commande>(ChargerListCommande());
+
+        private static List<Commande> ChargerListCommande()
+        {
+            List<Commande> listC = new List<Commande>(HibernateCommandeService.RetrieveAll());
+            return listC;
+        }
+
         public EcranCommande()
         {
             InitializeComponent();
-        
-
+            
+            dtgCommande.ItemsSource = lstCommandes;
         }
 
         private void btnNouvelleCommande_Click(object sender, RoutedEventArgs e)

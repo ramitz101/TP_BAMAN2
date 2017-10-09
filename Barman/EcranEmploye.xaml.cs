@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,9 +24,14 @@ namespace Barman
         // dfasdfasdf
     public partial class EcranEmploye : UserControl
     {
+
+        private static ObservableCollection<Employe> lstEmployes = new ObservableCollection<Employe>(ChargerListEmploye());
+
         public EcranEmploye()
         {
             InitializeComponent();
+            dtgEmploye.ItemsSource = lstEmployes;
+
         }
 
         private void btnGerer_Click(object sender, RoutedEventArgs e)
@@ -45,6 +51,12 @@ namespace Barman
             EcranAccueil EA = new EcranAccueil();
             ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
             ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EA);
+        }
+
+        private static List<Employe> ChargerListEmploye()
+        {
+            List<Employe> listE = new List<Employe>(HibernateEmployeService.RetrieveAll());
+            return listE;
         }
     }
 }

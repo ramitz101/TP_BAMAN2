@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,11 +20,38 @@ namespace Barman
     /// </summary>
     public partial class FenetreModifierBouteille : Window
     {
-        public FenetreModifierBouteille()
+        private Bouteille bouteilleModifier;
+        private static ObservableCollection<Emplacement> lstEmplacements = new ObservableCollection<Emplacement>(ChargerListEmplacement());
+        public FenetreModifierBouteille(ObservableCollection<Bouteille> lstBouteille, Bouteille bouteille, EcranInventaire ecranInventaire)
         {
             InitializeComponent();
             this.Owner = App.Current.MainWindow;
+
+            if (bouteille != null)
+            {
+                bouteilleModifier = bouteille;
+                lblMarque.Content = bouteille.SaMarque.Nom;
+                lblFormatBouteille.Content = bouteille.VolumeInitial.ToString();
+                txtVolumeRestant.Text = bouteille.VolumeRestant.ToString();
+                cboEmplacement.ItemsSource = lstEmplacements;
+                cboEmplacement.DisplayMemberPath = "Nom";
+                cboEmplacement.SelectedValuePath = "IdEmplacement";
+                cboEmplacement.SelectedValue = bouteille.SonEmplacement.IdEmplacement;
+                
+
+            }
+
+
         }
+
+        private static List<Emplacement> ChargerListEmplacement()
+        {
+            List<Emplacement> listE = new List<Emplacement>(HibernateEmplacementService.RetrieveAll());
+            return listE;
+        }
+
+
+
         private void btnAnnuler_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

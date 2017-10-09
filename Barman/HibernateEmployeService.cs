@@ -8,51 +8,52 @@ using System.Threading.Tasks;
 
 namespace Barman
 {
-    public static class HibernateMarqueService
+    class HibernateEmployeService
     {
         private static ISession session = NHibernateConnexion.OpenSession();
 
-        public static List<Marque> RetrieveAll()
+        public static List<Employe> RetrieveAll()
         {
-            return session.Query<Marque>().ToList();
+            return session.Query<Employe>().ToList();
         }
 
-        public static List<Marque> Retrieve(int pIdMarque)
+        public static List<Employe> Retrieve(int pIdEmploye)
         {
-            var marques = session.Query<Marque>().AsQueryable();
+            var employes = session.Query<Employe>().AsQueryable();
 
-            var result = from m in marques
-                         where m.IdMarque == pIdMarque
+            var result = from m in employes
+                         where m.IdEmploye == pIdEmploye
                          select m;
 
             return result.ToList();
         }
 
-        public static void Create(Marque marque)
+        public static void Create(Employe employe)
         {
             using (var transaction = session.BeginTransaction())
             {
-                session.Save(marque);
+                session.Save(employe);
                 transaction.Commit();
             }
         }
 
-        public static void Update(Marque marque)
+        public static void Update(Employe employe)
         {
             using (var transaction = session.BeginTransaction())
             {
-                session.Update(marque);
+                session.Update(employe);
                 transaction.Commit();
             }
         }
 
-        public static void Delete(Marque marque)
+        public static void Delete(Employe employe)
         {
             using (var transaction = session.BeginTransaction())
             {
-                session.Delete(marque);
+                session.Delete(employe);
                 transaction.Commit();
             }
         }
+
     }
 }

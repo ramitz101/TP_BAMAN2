@@ -74,10 +74,13 @@
     <Compile Include="Employe.cs" />
     <Compile Include="EmployeMap.cs" />
     <Compile Include="HibernateBouteilleService.cs" />
+    <Compile Include="HibernateCommandeService.cs" />
+    <Compile Include="HibernateEmplacementService.cs" />
+    <Compile Include="HibernateEmployeService.cs" />
     <Compile Include="HibernateMarqueService.cs" />
     <Compile Include="HibernateRoleService.cs" />
     <Compile Include="HibernateTypeAlcoolService.cs" />
-    <Compile Include="HivernateVenteService.cs" />
+    <Compile Include="HibernateVenteService.cs" />
     <Compile Include="MarqueMap.cs" />
     <Compile Include="NHibernateConnexion.cs" />
     <Compile Include="Role.cs" />

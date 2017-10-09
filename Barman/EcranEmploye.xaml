@@ -7,13 +7,16 @@
              mc:Ignorable="d" 
              d:DesignHeight="335.791" d:DesignWidth="529.887">
     <Grid>
-        <DataGrid HorizontalAlignment="Left" Height="296" VerticalAlignment="Top" Width="346" Margin="178,33,0,0" >
+        <DataGrid Name="dtgEmploye" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="296" VerticalAlignment="Top" Width="346" Margin="178,33,0,0" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nom" Binding="{Binding Nom}" />
                 <DataGridTextColumn Header="Prénom" Binding="{Binding Prenom}" />
                 <DataGridTextColumn Header="Téléphone" Binding="{Binding Telephone}" />
                 <DataGridTextColumn Header="Date d'embauche" Binding="{Binding DateEmbauche}" />
-                <DataGridTextColumn Header="Code" Binding="{Binding Code}" />
+                <DataGridTextColumn Header="NAS" Binding="{Binding NAS}" />
+                <DataGridTextColumn Header="Role" Binding="{Binding SonRole.Code}" />
+                <DataGridTextColumn Header="Ventes" Binding="{Binding ListeVente}" />
+                <DataGridTextColumn Header="Code" Binding="{Binding CodeEmploye}" />
             </DataGrid.Columns>
         </DataGrid>
         <Button HorizontalAlignment="Left" Margin="10,33,0,0" Background="White" VerticalAlignment="Top"  Width="163" Height="71" Grid.ColumnSpan="2" Click="btnGerer_Click" >

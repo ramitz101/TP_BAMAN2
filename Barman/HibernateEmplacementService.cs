@@ -8,51 +8,50 @@ using System.Threading.Tasks;
 
 namespace Barman
 {
-    public static class HibernateTypeAlcoolService
+    public static class HibernateEmplacementService
     {
         private static ISession session = NHibernateConnexion.OpenSession();
 
-
-        public static List<TypeAlcool> RetrieveAll()
+        public static List<Emplacement> RetrieveAll()
         {
-            return session.Query<TypeAlcool>().ToList();
+            return session.Query<Emplacement>().ToList();
         }
 
-        public static List<TypeAlcool> retrieveTypeAlcool(int pIdTypeAlcool)
+        public static List<Emplacement> retrieveEmplacement(int pIdEmplacement)
         {
-            var typeAlcooles = session.Query<TypeAlcool>().AsQueryable();
+            var emplacements = session.Query<Emplacement>().AsQueryable();
 
-            var resultat = from m in typeAlcooles
-                           where m.IdTypeAlcool == pIdTypeAlcool
+            var resultat = from m in emplacements
+                           where m.IdEmplacement == pIdEmplacement
                            select m;
             return resultat.ToList();
 
         }
 
-        public static void Create(TypeAlcool typeAlcool)
+        public static void Create(Emplacement emplacement)
         {
             using (var transaction = session.BeginTransaction())
             {
-                session.Save(typeAlcool);
+                session.Save(emplacement);
                 transaction.Commit();
             }
         }
 
 
-        public static void Update(TypeAlcool typeAlcool)
+        public static void Update(Emplacement emplacement)
         {
             using (var transaction = session.BeginTransaction())
             {
-                session.Update(typeAlcool);
+                session.Update(emplacement);
                 transaction.Commit();
             }
         }
 
-        public static void Delete(TypeAlcool typeAlcool)
+        public static void Delete(Emplacement emplacement)
         {
             using (var transaction = session.BeginTransaction())
             {
-                session.Delete(typeAlcool);
+                session.Delete(emplacement);
                 transaction.Commit();
             }
         }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Barman
 {
-    public class HivernateVenteService
+    public class HibernateVenteService
     {
         private static ISession session = NHibernateConnexion.OpenSession();
 
@@ -19,9 +19,9 @@ namespace Barman
 
         public static List<Vente> Retrieve(int pIdVente)
         {
-            var maisons = session.Query<Vente>().AsQueryable();
+            var ventes = session.Query<Vente>().AsQueryable();
 
-            var result = from m in maisons
+            var result = from m in ventes
                          where m.IdVente == pIdVente
                          select m;
 

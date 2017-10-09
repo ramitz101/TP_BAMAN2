@@ -16,6 +16,7 @@ namespace Barman
         public virtual Employe UnEmploye { get; set; }
 
         public virtual IList<Bouteille> ListBouteille { get; set; }
+        //public int Quantite { get; set; }
 
         public Commande()
         {
