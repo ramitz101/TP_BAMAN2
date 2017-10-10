@@ -79,7 +79,7 @@ namespace Barman
             }
             else
             {
-                MessageBox.Show("Vous avez aucune bouteille de selectionnée");
+                MessageBox.Show("Vous devez selectionner une bouteille");
                 return false;
             }
         }

@@ -59,6 +59,10 @@ namespace Barman
 
         private void btnConfirmer_Click(object sender, RoutedEventArgs e)
         {
+            bouteilleModifier.VolumeRestant = int.Parse(txtVolumeRestant.Text);
+            bouteilleModifier.SonEmplacement.IdEmplacement = cboEmplacement.SelectedIndex;
+            HibernateBouteilleService.Update(bouteilleModifier);
+
             this.Close();
         }
     }

@@ -22,7 +22,7 @@ namespace Barman
             SonTypeAlcool = new TypeAlcool();
         }
 
-        public Marque(string nom,int pIdTypeAlcool)
+        public Marque(string nom, int pIdTypeAlcool)
         {
             Nom = nom;
             IdTypeAlcool = pIdTypeAlcool;

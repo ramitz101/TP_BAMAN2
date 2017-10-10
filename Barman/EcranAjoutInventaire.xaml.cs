@@ -22,15 +22,26 @@ namespace Barman
     public partial class EcranAjoutInventaire : UserControl
     {
 
-        private ObservableCollection<Bouteille> lstBouteilles = new ObservableCollection<Bouteille>();
-        private ObservableCollection<Marque> lstMarques = new ObservableCollection<Marque>();
+        //private ObservableCollection<Bouteille> lstBouteilles = new ObservableCollection<Bouteille>(ChargerListBouteille());
+        private ObservableCollection<Marque> lstMarques = new ObservableCollection<Marque>(ChargerListMarque());
+        private ObservableCollection<TypeAlcool> lstTypeAlcool = new ObservableCollection<TypeAlcool>(ChargerListTypeAlcool());
 
         public EcranAjoutInventaire()
         {
             InitializeComponent();
 
-            
-           
+
+            cboTypeAlcool.ItemsSource = lstTypeAlcool;
+            cboTypeAlcool.DisplayMemberPath = "Nom";
+            cboTypeAlcool.SelectedValuePath = "idTypeAlcool";
+            cboTypeAlcool.SelectedIndex = 0;
+
+            cboMarque.ItemsSource = lstMarques;                       
+            cboMarque.DisplayMemberPath = "Nom";
+            cboMarque.SelectedValuePath = "idMarque";
+            cboMarque.SelectedIndex = 0;
+
+
         }
 
       
@@ -77,12 +88,59 @@ namespace Barman
 
         private void btnConfirmer_Click(object sender, RoutedEventArgs e)
         {
-            //lstBouteilles.Add(new Bouteille((Marque)cboMarque.SelectedItem, int.Parse(txtVolume.Text), txtCodeSAQ.Text));
 
             
-            //((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
-            //EcranOnglets EO = new EcranOnglets(0);
-            //((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EO);
+            //lstBouteilles.Add(new Bouteille(cboMarque.SelectedIndex, int.Parse(txtVolume.Text)));
+
+            
+            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
+            EcranOnglets EO = new EcranOnglets(0);
+            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EO);
+        }
+
+        /*private static List<Bouteille> ChargerListBouteille()
+        {
+            List<Bouteille> listB = new List<Bouteille>(HibernateBouteilleService.RetrieveAll());
+            return listB;
+        }*/
+
+        private static List<Marque> ChargerListMarque()
+        {
+            List<Marque> listM = new List<Marque>(HibernateMarqueService.RetrieveAll());
+            return listM;
+        }
+
+        private static List<TypeAlcool> ChargerListTypeAlcool()
+        {
+            List<TypeAlcool> listTA = new List<TypeAlcool>(HibernateTypeAlcoolService.RetrieveAll());
+            return listTA;
+        }
+
+        private void btnAjouterCommande_Click(object sender, RoutedEventArgs e)
+        {
+            int quantite = int.Parse(txtQuantite.Text);
+
+            for (int i = 0; i < quantite; i++)
+            {
+                HibernateBouteilleService.Create(new Bouteille(cboMarque.SelectedIndex, int.Parse(txtVolume.Text)));            
+            }
+
+            txtVolume.Clear();
+            txtCodeSAQ.Clear();
+            txtQuantite.Text = "1";
+        }
+
+        private void btnAjouterNouvelleM_Click(object sender, RoutedEventArgs e)
+        {
+            HibernateMarqueService.Create(new Marque(txtMarque.Text, cboTypeAlcool.SelectedIndex));
+            txtMarque.Clear();
+        }
+
+        private void btnAjouterNouveauTypeA_Click(object sender, RoutedEventArgs e)
+        {
+            
+            HibernateTypeAlcoolService.Create(new TypeAlcool(txtNouveauType.Text));
+            txtNouveauType.Clear();
         }
     }
 }
