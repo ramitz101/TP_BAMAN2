@@ -22,10 +22,11 @@ namespace Barman
     //TESSSSTTTTTTTTTTT12367
     public partial class EcranAccueil : UserControl
     {
-        
+        static public Employe employe {get;set;} // A la création de la fenetre accueil le role d'un utilisateur est réinitialisé
         public EcranAccueil()
         {
             InitializeComponent();
+            employe = new Employe();
         }
 
         private void btnInventaire_Click(object sender, RoutedEventArgs e)
@@ -45,9 +46,16 @@ namespace Barman
 
         private void btnVente_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
-            EcranOnglets EO = new EcranOnglets(2);
-            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EO);
+            
+            FenetreAuthentification FA = new FenetreAuthentification();
+            FA.ShowDialog();            
+            if (employe.IdEmploye != null)
+            {
+                ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
+                EcranOnglets EO = new EcranOnglets(2);
+                ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EO);
+
+            }
         }
 
         private void btnCommande_Click(object sender, RoutedEventArgs e)

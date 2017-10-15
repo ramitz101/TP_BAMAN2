@@ -70,10 +70,19 @@ namespace Barman
             }
             else if (tbcOnglet.SelectedItem == tbiVente)
             {
-                if (OngletCreer)
-                    ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
-                EcranVente EV = new EcranVente();
-                ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0,EV);
+                if(EcranAccueil.employe.IdEmploye == null)
+                {
+                    FenetreAuthentification FA = new FenetreAuthentification();
+                    FA.ShowDialog();
+                }
+                if (EcranAccueil.employe.IdEmploye != null)
+                {
+                    if (OngletCreer)
+                        ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
+                    EcranVente EV = new EcranVente(EcranAccueil.employe);
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0, EV);
+
+                }
             }
             else if (tbcOnglet.SelectedItem == tbiFormulaireB)
             {

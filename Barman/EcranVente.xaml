@@ -5,30 +5,47 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Barman"
              mc:Ignorable="d" 
-             d:DesignHeight="350" Width="490.09">
+             d:DesignHeight="400" Width="600">
     <Grid>
-        
-        <Label Content="Emplacement" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top"/>
-        <Label Content="Marque" HorizontalAlignment="Left" Margin="178,30,0,0" VerticalAlignment="Top"/>
-        <Label Content="Employé" HorizontalAlignment="Left" Margin="348,30,0,0" VerticalAlignment="Top"/>
-        <ComboBox Name="cboEmplacement" HorizontalAlignment="Left" Margin="10,56,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox Name="cboMarque" HorizontalAlignment="Left" Margin="178,56,0,0" VerticalAlignment="Top" Width="120"/>
-        <Label Name="lblEmploye" Content="" HorizontalAlignment="Left" Margin="348,56,0,0" VerticalAlignment="Top" Width="137"/>
-        <Label Content="Quantité" HorizontalAlignment="Left" Margin="10,112,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="txtQuantite" HorizontalAlignment="Left" Height="23" Margin="10,143,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="29"/>
-        <Button Name="btnAugmenteQ" Click="btnAugmenteQ_Click" HorizontalAlignment="Left" Margin="39,140,0,0" VerticalAlignment="Top" Width="13" Height="15">
+
+        <Label Content="Emplacement" HorizontalAlignment="Left" Margin="403,30,0,0" VerticalAlignment="Top"/>
+        <Label Content="Marque" HorizontalAlignment="Left" Margin="403,83,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.621,-0.295"/>
+        <Label Content="Employé" HorizontalAlignment="Left" Margin="227,30,0,0" VerticalAlignment="Top"/>
+        <ComboBox Name="cboEmplacement" HorizontalAlignment="Left" Margin="403,56,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox Name="cboMarque" HorizontalAlignment="Left" Margin="403,114,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Name="lblEmploye" Content="" FontWeight="Bold" HorizontalAlignment="Left" Margin="227,56,0,0" VerticalAlignment="Top" Width="137"/>
+        <Label Content="Quantité" HorizontalAlignment="Left" Margin="406,157,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="txtQuantite" HorizontalAlignment="Left" Height="23" Margin="410,191,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="29"/>
+        <Button Name="btnAugmenteQ" Click="btnAugmenteQ_Click" HorizontalAlignment="Left" Margin="439,188,0,0" VerticalAlignment="Top" Width="13" Height="15">
             <Image Source="images/add.png"></Image>
         </Button>
-        <Button Name="btnReduireQ" Click="btnReduireQ_Click"  HorizontalAlignment="Left" Margin="39,153,0,0" VerticalAlignment="Top" Width="13" Height="15">
+        <Button Name="btnReduireQ" Click="btnReduireQ_Click"  HorizontalAlignment="Left" Margin="439,201,0,0" VerticalAlignment="Top" Width="13" Height="15">
             <Image Source="images/negative.png" ></Image>
         </Button>
-        <Label Content="oz" HorizontalAlignment="Left" Margin="52,143,0,0" VerticalAlignment="Top"/>
-        <Button Name="btnAjouter" Click="btnAjouter_Click" Content="Ajouter" HorizontalAlignment="Left" Margin="178,135,0,0" VerticalAlignment="Top" Width="120" Height="45"/>
-        <Button Name="btnAccueil" Click="btnAccueil_Click" Content="Accueil" HorizontalAlignment="Left" Margin="23,295,0,0" VerticalAlignment="Top" Width="107" Height="45"/>
-        <Button Name="Consulter" Click="Consulter_Click" Content="Consulter" HorizontalAlignment="Left" Margin="191,295,0,0" VerticalAlignment="Top" Width="107" RenderTransformOrigin="-0.21,0.197" Height="45"/>
-        <Button Name="btnGerer" Click="btnGerer_Click" Content="Gérer" HorizontalAlignment="Left" Margin="361,295,0,0" VerticalAlignment="Top" Width="107" Height="45"/>
+        <Label Content="oz" HorizontalAlignment="Left" Margin="452,191,0,0" VerticalAlignment="Top"/>
+        <Button Name="btnAjouter" Click="btnAjouter_Click" Content="Ajouter" HorizontalAlignment="Left" Margin="403,243,0,0" VerticalAlignment="Top" Width="120" Height="45"/>
+        <Button Name="btnGerer" Click="btnGerer_Click" Width="163" Height="71" Background="White" Margin="10,37,427,292">
+            <StackPanel  Orientation="Horizontal">
+                <Image Source="images/Gerer.png" Width="40" Height="40" />
+                <TextBlock HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="21"><Run Text="Gérer"/></TextBlock>
+            </StackPanel>
+        </Button>
+        <!--="Accueil" HorizontalAlignment="Left" Margin="10,180,0,0" VerticalAlignment="Top" Width="107" Height="45"/>
+        <Button Name="Consulter" Click="Consulter_Click" Content="Consulter" HorizontalAlignment="Left" Margin="10,134,0,0" VerticalAlignment="Top" Width="107" RenderTransformOrigin="-0.21,0.197" Height="45"/>
+        -->
+        <Button FontSize="21" HorizontalAlignment="Left" Background="White"  VerticalAlignment="Top" Width="163" Height="70" Click="Consulter_Click" Margin="10,114,0,0">
+            <StackPanel Width="140" Orientation="Horizontal">
+                <Image Source="images/employe.png" Width="40" Height="40"  />
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Consulter"/></TextBlock>
+            </StackPanel>
+        </Button>
 
-
+        <Button FontSize="21" HorizontalAlignment="Left" Background="White" Margin="10,259,0,0" VerticalAlignment="Top" Width="163" Height="70" Click="btnAccueil_Click">
+            <StackPanel Width="140" Orientation="Horizontal">
+                <Image Source="images/Flechearriere.png" Width="40" Height="40"  />
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Accueil"/></TextBlock>
+            </StackPanel>
+        </Button>
 
 
 

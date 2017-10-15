@@ -19,10 +19,12 @@ namespace Barman
     /// </summary>
     public partial class FenetreAuthentification : Window
     {
+        
         public FenetreAuthentification()
         {
             InitializeComponent();
             this.Owner = App.Current.MainWindow;
+           
         }
 
         private void btnAnnuler_Click(object sender, RoutedEventArgs e)
@@ -32,7 +34,41 @@ namespace Barman
 
         private void btnConfirmer_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Employe em = new Employe();
+            em = Authentification();
+
+            if (em.IdEmploye != null)
+            {
+                EcranAccueil.employe = em;
+                this.Close();
+
+            }
         }
+
+        private Employe Authentification()
+        {
+            try
+            {
+                List<Employe> listEmploye = new List<Employe>(HibernateEmployeService.RetrieveAll());
+        
+                foreach(var i in listEmploye)
+                {
+                    if(i.CodeEmploye == txtCode.Text)
+                    {
+                        listEmploye = new List<Employe>(HibernateEmployeService.Retrieve((int)i.IdEmploye));
+                        return listEmploye.ElementAt(0);
+                    }
+                }
+
+            }
+            catch(Exception e)
+            {
+                lblErreur.Content = "Erreur, le code n'existe pas";
+                return new Employe();
+            }
+            lblErreur.Content = "Erreur, le code n'existe pas";
+            return new Employe();
+        }
+
     }
 }

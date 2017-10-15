@@ -20,9 +20,12 @@ namespace Barman
     /// </summary>
     public partial class EcranVente : UserControl
     {
-        public EcranVente()
+        public EcranVente(Employe employe)
         {
             InitializeComponent();
+            StringBuilder s = new StringBuilder();
+            s.Append(employe.Prenom + " " + employe.Nom);
+            lblEmploye.Content = s.ToString();
 
         }
 

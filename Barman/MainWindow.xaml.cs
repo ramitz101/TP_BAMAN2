@@ -27,6 +27,7 @@ namespace Barman
          EcranAccueil = new EcranAccueil();
          GrdPrincipale.Children.Add(EcranAccueil);
          WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+            
         }
 
     
