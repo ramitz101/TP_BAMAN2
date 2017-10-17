@@ -26,6 +26,8 @@ namespace Barman
         private ObservableCollection<Marque> lstMarques = new ObservableCollection<Marque>(ChargerListMarque());
         private ObservableCollection<TypeAlcool> lstTypeAlcool = new ObservableCollection<TypeAlcool>(ChargerListTypeAlcool());
 
+        
+
         public EcranAjoutInventaire()
         {
             InitializeComponent();
@@ -33,12 +35,12 @@ namespace Barman
 
             cboTypeAlcool.ItemsSource = lstTypeAlcool;
             cboTypeAlcool.DisplayMemberPath = "Nom";
-            cboTypeAlcool.SelectedValuePath = "idTypeAlcool";
+            cboTypeAlcool.SelectedValuePath = "IdTypeAlcool";
             cboTypeAlcool.SelectedIndex = 0;
 
             cboMarque.ItemsSource = lstMarques;                       
             cboMarque.DisplayMemberPath = "Nom";
-            cboMarque.SelectedValuePath = "idMarque";
+            cboMarque.SelectedValuePath = "IdMarque";
             cboMarque.SelectedIndex = 0;
 
 
@@ -126,15 +128,23 @@ namespace Barman
             }
 
             txtVolume.Clear();
-            txtCodeSAQ.Clear();
+         
             txtQuantite.Text = "1";
         }
 
         private void btnAjouterNouvelleM_Click(object sender, RoutedEventArgs e)
         {
-            HibernateMarqueService.Create(new Marque(txtMarque.Text, cboTypeAlcool.SelectedIndex));
+            
+            List<TypeAlcool> lstType = new List<TypeAlcool>(HibernateTypeAlcoolService.RetrieveAll());
+
+            
+
+            HibernateMarqueService.Create(new Marque(txtMarque.Text, int.Parse(cboTypeAlcool.SelectedValue.ToString())));
             txtMarque.Clear();
         }
+
+        
+        
 
         private void btnAjouterNouveauTypeA_Click(object sender, RoutedEventArgs e)
         {

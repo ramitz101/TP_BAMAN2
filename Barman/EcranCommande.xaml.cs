@@ -21,6 +21,8 @@ namespace Barman
     /// </summary>
     public partial class EcranCommande : UserControl
     {
+        
+        
         private static ObservableCollection<Commande> lstCommandes = new ObservableCollection<Commande>(ChargerListCommande());
 
         private static List<Commande> ChargerListCommande()
@@ -49,5 +51,7 @@ namespace Barman
             ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
             ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EA);
         }
+
+        
     }
 }

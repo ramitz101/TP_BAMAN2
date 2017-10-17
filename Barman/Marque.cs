@@ -26,6 +26,7 @@ namespace Barman
         {
             Nom = nom;
             IdTypeAlcool = pIdTypeAlcool;
+            
 
         }
         public Marque(string nom, int pIdTypeAlcool,int pIdMarque)

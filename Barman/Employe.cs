@@ -8,6 +8,7 @@ namespace Barman
 {
     public class Employe
     {
+       
         public virtual int? IdEmploye { get; set; }
         public virtual int? IdRole { get; set; }
         public virtual string Nom { get; set; }

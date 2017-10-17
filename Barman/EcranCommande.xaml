@@ -17,7 +17,8 @@
                 <DataGridTextColumn Header="Date" Width="2*" Binding="{Binding DateCommande}" />
                 <DataGridTextColumn Header="Quantite" Width="2*" Binding="{Binding Quantite}"/>
                 <DataGridTextColumn Header="Responsable" Width="2*" Binding="{Binding UnEmploye.Prenom}"/>
-            
+                
+
             </DataGrid.Columns>
 
         </DataGrid>

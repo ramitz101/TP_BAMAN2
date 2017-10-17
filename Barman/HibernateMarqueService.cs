@@ -32,6 +32,7 @@ namespace Barman
         {
             using (var transaction = session.BeginTransaction())
             {
+               
                 session.Save(marque);
                 transaction.Commit();
             }

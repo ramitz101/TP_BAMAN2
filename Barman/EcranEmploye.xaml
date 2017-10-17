@@ -15,7 +15,6 @@
                 <DataGridTextColumn Header="Date d'embauche" Binding="{Binding DateEmbauche}" />
                 <DataGridTextColumn Header="NAS" Binding="{Binding NAS}" />
                 <DataGridTextColumn Header="Role" Binding="{Binding SonRole.Code}" />
-                <DataGridTextColumn Header="Ventes" Binding="{Binding ListeVente}" />
                 <DataGridTextColumn Header="Code" Binding="{Binding CodeEmploye}" />
             </DataGrid.Columns>
         </DataGrid>
