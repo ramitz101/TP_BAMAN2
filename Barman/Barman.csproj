@@ -73,6 +73,9 @@
     <Compile Include="EmplacementMap.cs" />
     <Compile Include="Employe.cs" />
     <Compile Include="EmployeMap.cs" />
+    <Compile Include="FenetreErreur.xaml.cs">
+      <DependentUpon>FenetreErreur.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HibernateBouteilleService.cs" />
     <Compile Include="HibernateCommandeService.cs" />
     <Compile Include="HibernateEmplacementService.cs" />
@@ -138,6 +141,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FenetreAuthentification.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FenetreErreur.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -255,6 +262,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\negative.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\windowWarning.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

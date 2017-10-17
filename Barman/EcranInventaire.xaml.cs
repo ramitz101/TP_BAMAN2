@@ -41,8 +41,28 @@ namespace Barman
         {
             if (UneBouteilleSelectionne())
             {
-                FenetreModifierBouteille popup = new FenetreModifierBouteille(lstBouteilles, dtgInventaire.SelectedItem as Bouteille, this);
-                popup.ShowDialog();
+                if (EcranAccueil.employe.IdRole == 1)
+                {
+                    FenetreModifierBouteille popup = new FenetreModifierBouteille(lstBouteilles, dtgInventaire.SelectedItem as Bouteille, this);
+                    popup.ShowDialog();
+                }
+                else if(EcranAccueil.employe.IdRole == null)
+                {
+                    FenetreAuthentification FN = new FenetreAuthentification();
+                    FN.ShowDialog();
+                    if(EcranAccueil.employe.IdRole == 1)
+                    {
+                        FenetreModifierBouteille popup = new FenetreModifierBouteille(lstBouteilles, dtgInventaire.SelectedItem as Bouteille, this);
+                        popup.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Désoler,cette fonctionalité nécéssite un administrateur", "Accès refuser", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                    }
+                }
+                else
+                    MessageBox.Show("Désoler,cette fonctionalité nécéssite un administrateur", "Accès refuser", MessageBoxButton.OK, MessageBoxImage.Warning);
 
                 dtgInventaire.Items.Refresh();
 
