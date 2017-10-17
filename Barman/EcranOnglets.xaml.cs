@@ -63,10 +63,23 @@ namespace Barman
             }
             else if (tbcOnglet.SelectedItem == tbiEmploye)
             {
-                if (OngletCreer)
-                    ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
-                EcranEmploye EE = new EcranEmploye();
-                ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0,EE);
+                if (EcranAccueil.employe.IdEmploye == null)
+                {
+                    FenetreAuthentification FA = new FenetreAuthentification();
+                    FA.ShowDialog();
+                }
+                else if (EcranAccueil.employe.IdRole == 1)
+                {
+                    if (OngletCreer)
+                        ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
+                    EcranEmploye EE = new EcranEmploye();
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0, EE);
+
+                }
+                else
+                {
+                    MessageBox.Show("Désoler,cette fonctionalité nécéssite un administrateur", "Accès refuser", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
             }
             else if (tbcOnglet.SelectedItem == tbiVente)
             {
@@ -79,7 +92,7 @@ namespace Barman
                 {
                     if (OngletCreer)
                         ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
-                    EcranVente EV = new EcranVente(EcranAccueil.employe);
+                    EcranVente EV = new EcranVente();
                     ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0, EV);
 
                 }

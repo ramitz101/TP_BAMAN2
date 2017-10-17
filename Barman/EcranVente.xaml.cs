@@ -20,12 +20,21 @@ namespace Barman
     /// </summary>
     public partial class EcranVente : UserControl
     {
-        public EcranVente(Employe employe)
+        
+        public EcranVente()
         {
             InitializeComponent();
+
+            // Affichage de l'employé qui a ouvert la fenêtre
+            if (EcranAccueil.employe.IdRole == 1)
+                lblTypeEmploye.Content = "Administrateur";
+            else if(EcranAccueil.employe.IdRole == 2)
+                lblTypeEmploye.Content = "Employé";
             StringBuilder s = new StringBuilder();
-            s.Append(employe.Prenom + " " + employe.Nom);
+            s.Append(EcranAccueil.employe.Prenom + " " + EcranAccueil.employe.Nom);
             lblEmploye.Content = s.ToString();
+
+    
 
         }
 
@@ -51,10 +60,26 @@ namespace Barman
 
         private void btnGerer_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
-            EcranGererVente EAI = new EcranGererVente();
-            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0, EAI);
-        }
+            if (EcranAccueil.employe.IdRole == 1)
+            {
+                ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
+                EcranGererVente EAI = new EcranGererVente();
+                ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0, EAI);
+            }
+            else
+            {
+                FenetreErreur FE = new FenetreErreur();
+                FE.ShowDialog();
+                if(EcranAccueil.employe.IdRole == 1)
+                {
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
+                    EcranGererVente EAI = new EcranGererVente();
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0, EAI);
+                }
+
+            }
+    
+         }
 
         private void btnAugmenteQ_Click(object sender, RoutedEventArgs e)
         {

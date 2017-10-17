@@ -1,0 +1,19 @@
+﻿<Window x:Class="Barman.FenetreErreur"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Barman"
+        mc:Ignorable="d"
+        Title="Accès refuser" Height="160.405" Width="435.26" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Désoler,cette fonctionnalité nécessite un administrateur." HorizontalAlignment="Left" Margin="60,27,0,0" VerticalAlignment="Top"/>
+        <Button Name="btnOK" Content="OK" Click="btnOK_Click" HorizontalAlignment="Left" Margin="332,88,0,0" VerticalAlignment="Top" Width="78" Height="27"/>
+        <Button Name="btnConnection" Click="btnConnection_Click" Content="Connection" HorizontalAlignment="Left" Margin="231,88,0,0" VerticalAlignment="Top" Width="78" Height="27"/>
+        <Image Source="images/windowWarning.png" HorizontalAlignment="Left" Height="26" Margin="10,27,0,0" VerticalAlignment="Top" Width="32"/>
+
+    </Grid>
+</Window>

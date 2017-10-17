@@ -20,9 +20,11 @@ namespace Barman
     /// </summary>
     public partial class EcranConsulterVente : UserControl
     {
+       
         public EcranConsulterVente()
         {
             InitializeComponent();
+            
         }
 
         private void btnRetour_Click(object sender, RoutedEventArgs e)
