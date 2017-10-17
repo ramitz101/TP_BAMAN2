@@ -27,8 +27,18 @@ namespace Barman
 
             return result.ToList();
         }
+      public static List<Bouteille> Retrieve(string pNomMarque)
+      {
+         var bouteilles = session.Query<Bouteille>().AsQueryable();
 
-        public static void Create(Bouteille bouteille)
+         var result = from m in bouteilles
+                      where m.SaMarque.Nom.StartsWith(pNomMarque)
+                      select m;
+
+         return result.ToList();
+      }
+
+      public static void Create(Bouteille bouteille)
         {
             using (var transaction = session.BeginTransaction())
             {

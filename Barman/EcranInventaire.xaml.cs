@@ -84,5 +84,37 @@ namespace Barman
             }
         }
 
-    }
+      private void txtRecherche_GotFocus(object sender, RoutedEventArgs e)
+      {
+         txtRecherche.Text = "";
+         List<Bouteille> lstBouteille = HibernateBouteilleService.RetrieveAll();
+         dtgInventaire.ItemsSource = lstBouteille;
+      }
+
+      private void txtRecherche_LostFocus(object sender, RoutedEventArgs e)
+      {
+         txtRecherche.Text = "Rechercher";
+      }
+
+  
+    
+
+      private void txtRecherche_KeyUp_1(object sender, KeyEventArgs e)
+      {
+         List<Bouteille> lstBouteille = new List<Bouteille>();
+         if (txtRecherche.Text != "" && txtRecherche.Text != "Recherche")
+         {
+            lstBouteille = HibernateBouteilleService.Retrieve(txtRecherche.Text);
+            if (lstBouteille.Count != 0)
+               dtgInventaire.ItemsSource = lstBouteille;
+         }
+         else
+         {
+            lstBouteille = HibernateBouteilleService.RetrieveAll();
+            dtgInventaire.ItemsSource = lstBouteille;
+         }
+      }
+
+      
+   }
 }

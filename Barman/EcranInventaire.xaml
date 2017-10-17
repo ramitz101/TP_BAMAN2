@@ -5,15 +5,16 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Barman"
              mc:Ignorable="d" 
-             d:DesignHeight="400" d:DesignWidth="600">
+             d:DesignHeight="500" d:DesignWidth="600">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="147*"/>
             <ColumnDefinition Width="370*"/>
         </Grid.ColumnDefinitions>
-        
-        
-        <DataGrid Name="dtgInventaire" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="299" VerticalAlignment="Top" Width="381" Margin="31,33,0,0" Grid.Column="1">
+
+        <TextBox Name="txtRecherche"  KeyUp="txtRecherche_KeyUp_1" Height="20" Grid.Column="1" VerticalAlignment="Top" Text="Rechercher" LostFocus="txtRecherche_LostFocus" GotFocus="txtRecherche_GotFocus" Margin="30,50,18,0"></TextBox>
+
+        <DataGrid Name="dtgInventaire" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="350" VerticalAlignment="Top" Width="381" Margin="31,75,0,0" Grid.Column="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nom" Width="2*" Binding="{Binding SaMarque.Nom}" />
                 <DataGridTextColumn Header="Volume" Width="2*" Binding="{Binding VolumeInitial}"/>
