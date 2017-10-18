@@ -28,7 +28,17 @@ namespace Barman
             return result.ToList();
         }
 
-       
+      public static List<Marque>RetrieveByType(TypeAlcool pType)
+      {
+         var marques = session.Query<Marque>().AsQueryable();
+
+         var result = from m in marques
+                      where m.SonTypeAlcool.Nom == pType.Nom
+                      select m;
+
+         return result.ToList();
+      }
+
 
         public static void Create(Marque marque)
         {
