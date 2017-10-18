@@ -20,6 +20,8 @@ namespace Barman
 
         public virtual Employe UnEmploye { get; set; }
 
+        public virtual Bouteille laBouteille { get; set; }
+
 
         public Vente()
         {
@@ -31,6 +33,7 @@ namespace Barman
             Volume = null;
 
             UnEmploye = new Employe();
+            laBouteille = new Bouteille();
         }
 
         public Vente(float prixOnce,DateTime dateVente,int? volume,int pIdBouteille,int pIdEmploye)
@@ -49,6 +52,17 @@ namespace Barman
             IdBouteille = pIdBouteille;
             IdEmploye = pIdEmploye;
             IdVente = pIdVente;
+        }
+
+        public Vente(float prixOnce, DateTime dateVente, int? volume, int pIdBouteille, int pIdEmploye,Employe employe,Bouteille bouteille)
+        {
+            PrixOnce = prixOnce;
+            DateVente = dateVente;
+            Volume = volume;
+            IdBouteille = pIdBouteille;
+            IdEmploye = pIdEmploye;
+            UnEmploye = employe;
+            laBouteille = bouteille;
         }
 
         public override bool Equals(object obj)

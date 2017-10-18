@@ -28,6 +28,18 @@ namespace Barman
             return result.ToList();
         }
 
+        //Retrouver toutes les ventes faites par un seul employé
+        public static List<Vente> RetrieveVenteEmploye(int pIdEmploye,DateTime pdate)
+        {
+            var ventes = session.Query<Vente>().AsQueryable();
+
+            var result = from m in ventes
+                         where m.IdEmploye == pIdEmploye && m.DateVente.Date == pdate.Date
+                         select m;
+
+            return result.ToList();
+        }
+
         public static void Create(Vente vente)
         {
             using (var transaction = session.BeginTransaction())

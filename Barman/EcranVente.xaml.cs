@@ -22,6 +22,8 @@ namespace Barman
     /// </summary>
     public partial class EcranVente : UserControl
     {
+   
+        private Bouteille LaBouteilleVendu;
         private List<Bouteille> lstBouteille = new List<Bouteille>();
         private ObservableCollection<Emplacement> lstEmplacement = new ObservableCollection<Emplacement>(ChargerListEmplacement());
         public EcranVente()
@@ -68,7 +70,9 @@ namespace Barman
 
         private void btnAjouter_Click(object sender, RoutedEventArgs e)
         {
-            // A FAIRE !! AJOUTER EN BD
+
+            Vente v = new Vente(float.Parse(lblPrixVente.Content.ToString()), DateTime.Now, int.Parse(txtQuantite.Text), (int)LaBouteilleVendu.IdBouteille, (int)EcranAccueil.employe.IdEmploye, EcranAccueil.employe,LaBouteilleVendu);           
+            HibernateVenteService.Create(v);
             
         }
 
@@ -124,6 +128,7 @@ namespace Barman
                 quantite = 1;
                 txtQuantite.Text = quantite.ToString();
             }
+            AjusterPrix();
         }
 
         private void btnReduireQ_Click(object sender, RoutedEventArgs e)
@@ -141,11 +146,57 @@ namespace Barman
                 quantite = 1;
                 txtQuantite.Text = quantite.ToString();
             }
+            AjusterPrix();
         }
 
         private void cboEmplacement_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             cboMarque.ItemsSource = ChargerListBouteille();
+        }
+
+        private void cboMarque_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            List<Bouteille> lstBouteille = new List<Bouteille>(HibernateBouteilleService.RetrieveAll());
+            
+            foreach(var i in lstBouteille)
+            {
+                if(i.SaMarque.IdMarque == (int?)cboMarque.SelectedValue)
+                {
+                    LaBouteilleVendu = i;
+                    break;
+                }
+            }
+
+            AjusterPrix();
+            
+        }
+
+        private void AjusterPrix()
+        {
+            if (LaBouteilleVendu != null)
+            {
+                
+                if (LaBouteilleVendu.PrixBouteille <= 40)
+                {
+                    lblPrixVente.Content = (6 * int.Parse(txtQuantite.Text)).ToString();
+                }
+                else if (LaBouteilleVendu.PrixBouteille <= 50)
+                {
+                    lblPrixVente.Content = (7 * int.Parse(txtQuantite.Text)).ToString();
+                }
+                else if (LaBouteilleVendu.PrixBouteille <= 60)
+                {
+                    lblPrixVente.Content = (8 * int.Parse(txtQuantite.Text)).ToString();
+                }
+                else if (LaBouteilleVendu.PrixBouteille <= 70)
+                {
+                    lblPrixVente.Content = (9 * int.Parse(txtQuantite.Text)).ToString();
+                }
+                else
+                {
+                    lblPrixVente.Content = (10 * int.Parse(txtQuantite.Text)).ToString();
+                }
+            }
         }
     }
 }

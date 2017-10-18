@@ -21,10 +21,12 @@ namespace Barman
     /// </summary>
     public partial class EcranConsulterVente : UserControl
     {
-        private ObservableCollection<Vente> lstVente = new ObservableCollection<Vente>(); 
+        private ObservableCollection<Vente> lstVente;
+       
         public EcranConsulterVente()
         {
             InitializeComponent();
+           
             
         }
 
@@ -35,8 +37,16 @@ namespace Barman
             ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EO);
         }
 
-        private void btnImprimer_Click(object sender, RoutedEventArgs e)
+       
+
+        private void cldVente_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
+            DateTime? d = cldVente.SelectedDate;
+            List<Vente> LalistPourCollection = new List<Vente>();
+
+            LalistPourCollection = HibernateVenteService.RetrieveVenteEmploye((int)EcranAccueil.employe.IdEmploye, (DateTime)d);
+            lstVente = new ObservableCollection<Vente>(LalistPourCollection);
+            dtgVenteEmploye.ItemsSource = lstVente;
 
         }
     }

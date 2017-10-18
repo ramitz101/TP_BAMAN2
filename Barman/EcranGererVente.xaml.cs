@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +21,18 @@ namespace Barman
     /// </summary>
     public partial class EcranGererVente : UserControl
     {
+        private ObservableCollection<Employe> lstEmploye = new ObservableCollection<Employe>(ChargerListEmploye());
+        private ObservableCollection<Vente> lstVente;
+
         public EcranGererVente()
         {
             InitializeComponent();
+
+            cboEmploye.ItemsSource = lstEmploye;
+            cboEmploye.DisplayMemberPath = "Nom";
+            cboEmploye.SelectedValuePath = "IdEmploye";
+            cboEmploye.SelectedIndex = 0;
+            
         }
 
         private void btnRetour_Click(object sender, RoutedEventArgs e)
@@ -37,9 +47,40 @@ namespace Barman
 
         }
 
+        private static List<Employe> ChargerListEmploye()
+        {
+            List<Employe> listE = new List<Employe>(HibernateEmployeService.RetrieveAll());
+            return listE;
+        }
         private void btnSupprimer_Click(object sender, RoutedEventArgs e)
         {
             // attente du binding
+        }
+
+        private void cboEmploye_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DateTime? d = cldVente.SelectedDate;
+            List<Vente> LalistPourCollection = new List<Vente>();
+
+            if(d == null)
+                d = DateTime.Today;
+
+            LalistPourCollection = HibernateVenteService.RetrieveVenteEmploye((int)cboEmploye.SelectedValue, (DateTime)d);
+            lstVente = new ObservableCollection<Vente>(LalistPourCollection);
+            dtgVenteEmploye.ItemsSource = lstVente;
+
+
+        }
+
+        private void cldVente_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DateTime? d = cldVente.SelectedDate;
+            List<Vente> LalistPourCollection = new List<Vente>();
+
+            LalistPourCollection = HibernateVenteService.RetrieveVenteEmploye((int)cboEmploye.SelectedValue, (DateTime)d);
+            lstVente = new ObservableCollection<Vente>(LalistPourCollection);
+            dtgVenteEmploye.ItemsSource = lstVente;
+
         }
     }
 }
