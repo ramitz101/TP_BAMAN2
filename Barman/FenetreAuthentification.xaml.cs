@@ -24,6 +24,7 @@ namespace Barman
         {
             InitializeComponent();
             this.Owner = App.Current.MainWindow;
+            txtCode.Focus();
            
         }
 
@@ -70,5 +71,12 @@ namespace Barman
             return new Employe();
         }
 
+        private void txtCode_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter)
+            {
+                btnConfirmer_Click(this, new RoutedEventArgs());
+            }
+        }
     }
 }

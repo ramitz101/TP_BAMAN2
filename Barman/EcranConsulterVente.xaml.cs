@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +21,7 @@ namespace Barman
     /// </summary>
     public partial class EcranConsulterVente : UserControl
     {
-       
+        private ObservableCollection<Vente> lstVente = new ObservableCollection<Vente>(); 
         public EcranConsulterVente()
         {
             InitializeComponent();

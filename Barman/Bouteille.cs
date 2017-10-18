@@ -14,7 +14,7 @@ namespace Barman
         public virtual int? VolumeInitial { get; set; }
         public virtual float? PrixBouteille { get; set; }
         public virtual string Etat { get; set; }
-        //public virtual string CodeSAQ { get; set; }
+
 
         public virtual int? IdEmplacement { get; set; }
         public virtual int? IdMarque { get; set; }
@@ -65,12 +65,15 @@ namespace Barman
             IdBouteille = pIdBouteille;
         }
 
-        public Bouteille(int pIdMarque, int volumeInit)
+        public Bouteille(int pIdMarque, int volumeInit, string pNumero, float pPrix)
         {
             IdMarque = pIdMarque;
             VolumeInitial = volumeInit;
             VolumeRestant = volumeInit;
-            SonEmplacement = new Emplacement("Entrepôt");
+            Numero = pNumero;
+            PrixBouteille = pPrix;
+            Etat = "Pleine";
+            SonEmplacement = new Emplacement("Réserve");
         }
 
         // Pour utiliser NHibernate, il faut surcharger Equals et GetHashCode.
