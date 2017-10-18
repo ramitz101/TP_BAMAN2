@@ -46,11 +46,11 @@ namespace Barman
             cboEmplacement.SelectedValuePath = "IdEmplacement";
             cboEmplacement.SelectedIndex = 0;
 
-            lstBouteille = ChargerListBouteille();
+            //lstBouteille = ChargerListBouteille();
             cboMarque.ItemsSource = lstBouteille;
             cboMarque.DisplayMemberPath = "SaMarque.Nom";
             cboMarque.SelectedValuePath = "IdBouteille";
-            cboMarque.SelectedIndex = 0;
+            cboMarque.SelectedIndex = 1;
         }
 
         private List<Bouteille> ChargerListBouteille()
@@ -145,9 +145,7 @@ namespace Barman
 
         private void cboEmplacement_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (cboEmplacement.SelectedValue == null)
-                cboEmplacement.SelectedIndex = 0;
-            cboEmplacement.ItemsSource = ChargerListBouteille();
+            cboMarque.ItemsSource = ChargerListBouteille();
         }
     }
 }
