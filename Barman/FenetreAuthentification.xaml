@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Barman"
         mc:Ignorable="d"
-        Title="FenetreAuthentification" Height="191.892" Width="275.676"
+        Title="Authentification" Height="191.892" Width="275.676"
         WindowStartupLocation="CenterOwner">
     <Grid>
         <Button Name="btnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="30,108,0,0" VerticalAlignment="Top" Width="93" Height="30" Click="btnAnnuler_Click"/>

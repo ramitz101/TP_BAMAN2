@@ -24,7 +24,7 @@
         </Button>
         <Label Content="oz" HorizontalAlignment="Left" Margin="452,191,0,0" VerticalAlignment="Top"/>
         <Button Name="btnAjouter" Click="btnAjouter_Click" Content="Ajouter" HorizontalAlignment="Left" Margin="403,243,0,0" VerticalAlignment="Top" Width="120" Height="45"/>
-        <Button Name="btnGerer" Click="btnGerer_Click" Width="163" Height="71" Background="White" Margin="10,37,427,292">
+        <Button Name="btnGerer" Click="btnGerer_Click" Width="163" Height="71" Background="White" Margin="10,33,427,296">
             <StackPanel  Orientation="Horizontal">
                 <Image Source="images/Gerer.png" Width="40" Height="40" />
                 <TextBlock HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="21"><Run Text="Gérer"/></TextBlock>
@@ -34,14 +34,14 @@
         <Button Name="Consulter" Click="Consulter_Click" Content="Consulter" HorizontalAlignment="Left" Margin="10,134,0,0" VerticalAlignment="Top" Width="107" RenderTransformOrigin="-0.21,0.197" Height="45"/>
         -->
         <Button FontSize="21" HorizontalAlignment="Left" Background="White"  VerticalAlignment="Top" Width="163" Height="70" Click="Consulter_Click" Margin="10,114,0,0">
-            <StackPanel Width="140" Orientation="Horizontal">
+            <StackPanel  Orientation="Horizontal">
                 <Image Source="images/employe.png" Width="40" Height="40"  />
                 <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Consulter"/></TextBlock>
             </StackPanel>
         </Button>
 
         <Button FontSize="21" HorizontalAlignment="Left" Background="White" Margin="10,259,0,0" VerticalAlignment="Top" Width="163" Height="70" Click="btnAccueil_Click">
-            <StackPanel Width="140" Orientation="Horizontal">
+            <StackPanel  Orientation="Horizontal" Width="121">
                 <Image Source="images/Flechearriere.png" Width="40" Height="40"  />
                 <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Accueil"/></TextBlock>
             </StackPanel>

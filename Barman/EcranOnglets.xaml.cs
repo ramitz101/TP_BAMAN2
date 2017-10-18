@@ -68,7 +68,14 @@ namespace Barman
                     FenetreAuthentification FA = new FenetreAuthentification();
                     FA.ShowDialog();
                 }
-                else if (EcranAccueil.employe.IdRole == 1)
+
+                if (EcranAccueil.employe.IdRole != 1 && EcranAccueil.employe.IdRole != null) // obliger de rajouter null sinon si on fait annuler, il popup l'erreur
+                {
+                    FenetreErreur FE = new FenetreErreur();
+                    FE.ShowDialog();
+                }
+
+                if (EcranAccueil.employe.IdRole == 1)
                 {
                     if (OngletCreer)
                         ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
@@ -76,10 +83,7 @@ namespace Barman
                     ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0, EE);
 
                 }
-                else
-                {
-                    MessageBox.Show("Désoler,cette fonctionalité nécéssite un administrateur", "Accès refuser", MessageBoxButton.OK, MessageBoxImage.Warning);
-                }
+                
             }
             else if (tbcOnglet.SelectedItem == tbiVente)
             {

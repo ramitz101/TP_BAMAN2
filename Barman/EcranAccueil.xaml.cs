@@ -41,14 +41,14 @@ namespace Barman
         {
             FenetreAuthentification FA = new FenetreAuthentification();
             FA.ShowDialog();
-            
+
             if (employe.IdRole == 1)
             {
                 ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
                 EcranOnglets EO = new EcranOnglets(1);
                 ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EO);
             }
-            else
+            else if (employe.IdRole != null)
             {
                 FenetreErreur FE = new FenetreErreur();
                 FE.ShowDialog();

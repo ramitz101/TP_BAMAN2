@@ -40,9 +40,22 @@ namespace Barman
 
         private void btnNouvelleCommande_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
-            EcranNouvelleCommande EcranNouvelCommand = new EcranNouvelleCommande();
-            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0, EcranNouvelCommand);
+            if (EcranAccueil.employe.IdRole == null)
+            {
+                FenetreAuthentification FN = new FenetreAuthentification();
+                FN.ShowDialog();
+            }
+            if (EcranAccueil.employe.IdRole != 1 && EcranAccueil.employe.IdRole != null)
+            {
+                FenetreErreur FE = new FenetreErreur();
+                FE.ShowDialog();
+            }
+            if (EcranAccueil.employe.IdRole == 1)
+            {
+                ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
+                EcranNouvelleCommande EcranNouvelCommand = new EcranNouvelleCommande();
+                ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0, EcranNouvelCommand);
+            }
         }
 
         private void btnAccueil_Click(object sender, RoutedEventArgs e)

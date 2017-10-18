@@ -32,38 +32,46 @@ namespace Barman
      
         private void btnAjout_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
-            EcranAjoutInventaire EAI = new EcranAjoutInventaire();
-            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0,EAI);
+            if (EcranAccueil.employe.IdRole == null)
+            {
+                FenetreAuthentification FN = new FenetreAuthentification();
+                FN.ShowDialog();
+            }
+            if (EcranAccueil.employe.IdRole != 1 && EcranAccueil.employe.IdRole != null)
+            {
+                FenetreErreur FE = new FenetreErreur();
+                FE.ShowDialog();
+            }
+            if (EcranAccueil.employe.IdRole == 1)
+            {
+                ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
+                EcranAjoutInventaire EAI = new EcranAjoutInventaire();
+                ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0, EAI);
+            }
         }
 
         private void btnGerer_Click(object sender, RoutedEventArgs e)
         {
             if (UneBouteilleSelectionne())
             {
+
+                if (EcranAccueil.employe.IdRole == null)
+                {
+                    FenetreAuthentification FN = new FenetreAuthentification();
+                    FN.ShowDialog();
+                }
+                if(EcranAccueil.employe.IdRole != 1 && EcranAccueil.employe.IdRole != null)
+                {
+                    FenetreErreur FE = new FenetreErreur();
+                    FE.ShowDialog();
+                }
                 if (EcranAccueil.employe.IdRole == 1)
                 {
                     FenetreModifierBouteille popup = new FenetreModifierBouteille(lstBouteilles, dtgInventaire.SelectedItem as Bouteille, this);
                     popup.ShowDialog();
                 }
-                else if(EcranAccueil.employe.IdRole == null)
-                {
-                    FenetreAuthentification FN = new FenetreAuthentification();
-                    FN.ShowDialog();
-                    if(EcranAccueil.employe.IdRole == 1)
-                    {
-                        FenetreModifierBouteille popup = new FenetreModifierBouteille(lstBouteilles, dtgInventaire.SelectedItem as Bouteille, this);
-                        popup.ShowDialog();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Désoler,cette fonctionalité nécéssite un administrateur", "Accès refuser", MessageBoxButton.OK, MessageBoxImage.Warning);
-
-                    }
-                }
-                else
-                    MessageBox.Show("Désoler,cette fonctionalité nécéssite un administrateur", "Accès refuser", MessageBoxButton.OK, MessageBoxImage.Warning);
-
+                
+               
                 dtgInventaire.Items.Refresh();
 
             }
