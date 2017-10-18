@@ -32,7 +32,27 @@ namespace Barman
 
         private void btnConfirmer_Click(object sender, RoutedEventArgs e)
         {
+            
+            HibernateEmployeService.Create(new Employe(txtNom.Text, txtPrenom.Text, txtTelephone.Text, txtNAS.Text, calendarDate.SelectedDate.Value, RoleChoisi()));
             this.Close();
+        }
+
+        private int RoleChoisi()
+        {
+
+            if (rdbAdministrateur.IsChecked == true)
+            {
+                List<Role> lstRole = new List<Role>(HibernateRoleService.Retrieve("Admin"));
+                return (int)lstRole[0].IdRole;
+            }
+            else
+            {
+                List<Role> lstRole = new List<Role>(HibernateRoleService.Retrieve("Utils"));
+                return (int)lstRole[0].IdRole;
+            }
+                
+
+           
         }
     }
 }

@@ -73,12 +73,12 @@ namespace Barman
              .CustomSqlType("INTEGER");
 
             // Autre class
-            References(x => x.SonRole)
-                .Class<Role>()
-                .Access.Property()
-                .LazyLoad(Laziness.False)
-                .Cascade.None()
-                .Columns("idRole");
+            //References(x => x.SonRole)
+            //    .Class<Role>()
+            //    .Access.Property()
+            //    .LazyLoad(Laziness.False)
+            //    .Cascade.None()
+            //    .Columns("idRole");
 
 
             HasMany<Vente>(x => x.ListVente)

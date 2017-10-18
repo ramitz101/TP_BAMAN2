@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,10 +20,30 @@ namespace Barman
     /// </summary>
     public partial class FenetreModifierEmploye : Window
     {
-        public FenetreModifierEmploye()
+
+        private Employe EmployeModifier;
+        public FenetreModifierEmploye(ObservableCollection<Employe> lstEmploye, Employe employe, EcranEmploye ecranEmploye)
         {
             InitializeComponent();
             this.Owner = App.Current.MainWindow;
+            if (employe != null)
+            {
+                EmployeModifier = employe;
+                txtNom.Text = employe.Nom;
+                txtPrenom.Text = employe.Prenom;
+                txtTelephone.Text = employe.Telephone;
+                txtNAS.Text = employe.NAS;
+                lblDateEmbauche.Content = employe.DateEmbauche;
+                if (employe.IdRole == 1)
+                    rdbAdministrateur.IsChecked = true;
+                else
+                    rdbUtilisateur.IsChecked = true;
+
+
+
+            }
+
+
         }
         private void btnAnnuler_Click(object sender, RoutedEventArgs e)
         {
@@ -31,6 +52,13 @@ namespace Barman
 
         private void btnConfirmer_Click(object sender, RoutedEventArgs e)
         {
+            EmployeModifier.Nom = txtNom.Text;
+            EmployeModifier.Prenom = txtPrenom.Text;
+            EmployeModifier.Telephone = txtTelephone.Text;
+            EmployeModifier.NAS = txtNAS.Text;
+
+            HibernateEmployeService.Update(EmployeModifier);
+
             this.Close();
         }
 

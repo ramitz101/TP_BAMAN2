@@ -37,17 +37,52 @@ namespace Barman
             ListVente = new List<Vente>();
         }
 
-        public Employe(string nom,string prenom,string telephone,string nas,DateTime dateEmbauche,string codeEmploye,int pIdRole)
+        public Employe(string nom, string prenom, string telephone, string nas, DateTime dateEmbauche, int pIdRole )
         {
             Nom = nom;
             Prenom = prenom;
             Telephone = telephone;
             NAS = nas;
             DateEmbauche = dateEmbauche;
-            CodeEmploye = codeEmploye;
+            CodeEmploye = genererCodeEmploye();
             IdRole = pIdRole;
         }
-        public Employe(string nom, string prenom, string telephone, string nas, DateTime dateEmbauche, string codeEmploye, int pIdRole,int pIdEmploye)
+
+        private string genererCodeEmploye()
+        {
+            List<string> lstCodesEmploye = new List<string>(HibernateEmployeService.RetrieveAllCodeEmploye());
+            bool resultat = false;
+            int codeGenere;
+            Random rnd = new Random();
+
+
+            do
+            {
+                codeGenere = rnd.Next(100000, 999999);
+                resultat = ValideCode(codeGenere, lstCodesEmploye);
+            } while (resultat);
+            return codeGenere.ToString();
+        }
+
+        private bool ValideCode(int codeGenere, List<string> lstCodesEmploye)
+        {
+            bool codeValide = false;
+            foreach (var code in lstCodesEmploye)
+            {
+                if(code.Length>0)
+                {
+                    if (codeGenere == int.Parse(code))
+                        codeValide = true;
+                    else
+                        codeValide = false;
+                }
+            }
+
+
+            return codeValide;
+        }
+
+        public Employe(string nom, string prenom, string telephone, string nas, DateTime dateEmbauche, string codeEmploye, int pIdRole, int pIdEmploye)
         {
             Nom = nom;
             Prenom = prenom;

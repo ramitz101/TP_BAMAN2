@@ -30,8 +30,8 @@ namespace Barman
             if (bouteille != null)
             {
                 bouteilleModifier = bouteille;
-                lblMarque.Content = bouteille.SaMarque.Nom;
-                lblFormatBouteille.Content = bouteille.VolumeInitial.ToString();
+                txtMarque.Content = bouteille.SaMarque.Nom;
+                txtFormatBouteille.Content = bouteille.VolumeInitial.ToString();
                 txtVolumeRestant.Text = bouteille.VolumeRestant.ToString();
                 cboEmplacement.ItemsSource = lstEmplacements;
                 cboEmplacement.DisplayMemberPath = "Nom";

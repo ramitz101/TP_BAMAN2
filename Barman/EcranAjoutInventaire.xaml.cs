@@ -125,7 +125,7 @@ namespace Barman
 
             for (int i = 0; i < quantite; i++)
             {
-                HibernateBouteilleService.Create(new Bouteille(cboMarque.SelectedIndex, int.Parse(txtVolume.Text), txtNumero.Text, float.Parse(txtPrix.Text, CultureInfo.InvariantCulture.NumberFormat)));            
+                HibernateBouteilleService.Create(new Bouteille(int.Parse(cboMarque.SelectedValuePath), int.Parse(txtVolume.Text), txtNumero.Text, float.Parse(txtPrix.Text, CultureInfo.InvariantCulture.NumberFormat)));            
             }
 
             txtVolume.Clear();

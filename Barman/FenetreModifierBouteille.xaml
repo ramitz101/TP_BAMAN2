@@ -11,8 +11,8 @@
         <Label Content="nom" FontSize="18" HorizontalAlignment="Left" Margin="33,29,0,0" VerticalAlignment="Top"/>
         <Label Content="Format" FontSize="18" HorizontalAlignment="Left" Margin="148,29,0,0" VerticalAlignment="Top"/>
         <Label Content="Emplacement" FontSize="18" HorizontalAlignment="Left" Margin="421,29,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.572,0.524"/>
-        <Label Name="lblMarque" HorizontalAlignment="Left" Margin="33,63,0,0" VerticalAlignment="Top" Height="31" Width="100"/>
-        <Label Name="lblFormatBouteille" HorizontalAlignment="Left" Margin="148,63,0,0" VerticalAlignment="Top" Height="31" Width="100"/>
+        <Label Name="txtMarque" HorizontalAlignment="Left" Margin="33,63,0,0" VerticalAlignment="Top" Height="31" Width="100"/>
+        <Label Name="txtFormatBouteille" HorizontalAlignment="Left" Margin="148,63,0,0" VerticalAlignment="Top" Height="31" Width="100"/>
         <Label Content="Volume restant" FontSize="18" HorizontalAlignment="Left" Margin="260,29,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.835,0.526"/>
         <TextBox Name="txtVolumeRestant" HorizontalAlignment="Left" Height="31" Margin="260,63,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="75" />
         <ComboBox Name="cboEmplacement" ItemsSource="{Binding Emplacement.Nom}"  HorizontalAlignment="Left" Margin="421,63,0,0" VerticalAlignment="Top" Width="120"/>

@@ -28,6 +28,16 @@ namespace Barman
             return result.ToList();
         }
 
+        public static List<string> RetrieveAllCodeEmploye()
+        {
+            var employes = session.Query<Employe>().ToList();
+
+            var result = from m in employes               
+                         select m.CodeEmploye;
+
+            return result.ToList();
+        }
+
         public static void Create(Employe employe)
         {
             using (var transaction = session.BeginTransaction())

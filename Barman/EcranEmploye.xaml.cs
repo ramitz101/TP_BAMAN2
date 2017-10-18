@@ -36,14 +36,20 @@ namespace Barman
 
         private void btnGerer_Click(object sender, RoutedEventArgs e)
         {
-            FenetreModifierEmploye popup = new FenetreModifierEmploye();
-            popup.ShowDialog();
+            if (UnEmployeSelectionne())
+            {
+                FenetreModifierEmploye popup = new FenetreModifierEmploye(lstEmployes, dtgEmploye.SelectedItem as Employe, this);
+                popup.ShowDialog();
+
+            }
+            dtgEmploye.Items.Refresh();
         }
 
         private void btnAjouterEmploye_Click(object sender, RoutedEventArgs e)
         {
             FenetreAjouterEmploye popup = new FenetreAjouterEmploye();
             popup.ShowDialog();
+            dtgEmploye.Items.Refresh();
         }
 
         private void btnAccueil_Click(object sender, RoutedEventArgs e)
@@ -57,6 +63,23 @@ namespace Barman
         {
             List<Employe> listE = new List<Employe>(HibernateEmployeService.RetrieveAll());
             return listE;
+        }
+
+        private bool UnEmployeSelectionne()
+        {
+            if (dtgEmploye.SelectedItems.Count == 1)
+                return true;
+            // si le user a sélectionné plus d'une inscription 
+            else if (dtgEmploye.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Vous avez trops d'employé selectionnées");
+                return false;
+            }
+            else
+            {
+                MessageBox.Show("Vous devez selectionner un employé");
+                return false;
+            }
         }
     }
 }
