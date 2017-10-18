@@ -1,5 +1,7 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,11 +22,12 @@ namespace Barman
     /// </summary>
     public partial class EcranVente : UserControl
     {
-        
+        private List<Bouteille> lstBouteille = new List<Bouteille>();
+        private ObservableCollection<Emplacement> lstEmplacement = new ObservableCollection<Emplacement>(ChargerListEmplacement());
         public EcranVente()
         {
             InitializeComponent();
-
+           
             // Affichage de l'employé qui a ouvert la fenêtre
             if (EcranAccueil.employe.IdRole == 1)
                 lblTypeEmploye.Content = "Administrateur";
@@ -34,13 +37,39 @@ namespace Barman
             s.Append(EcranAccueil.employe.Prenom + " " + EcranAccueil.employe.Nom);
             lblEmploye.Content = s.ToString();
 
-    
+            //ComboBox
+           
+           
 
+            cboEmplacement.ItemsSource = lstEmplacement;
+            cboEmplacement.DisplayMemberPath = "Nom";
+            cboEmplacement.SelectedValuePath = "IdEmplacement";
+            cboEmplacement.SelectedIndex = 0;
+
+            lstBouteille = ChargerListBouteille();
+            cboMarque.ItemsSource = lstBouteille;
+            cboMarque.DisplayMemberPath = "SaMarque.Nom";
+            cboMarque.SelectedValuePath = "IdBouteille";
+            cboMarque.SelectedIndex = 0;
+        }
+
+        private List<Bouteille> ChargerListBouteille()
+        {
+           
+            List<Bouteille> listB = new List<Bouteille>(HibernateBouteilleService.RetrieveBouteilleEmplacement((int)cboEmplacement.SelectedValue));
+            return listB;
+        }
+
+        private static List<Emplacement> ChargerListEmplacement()
+        {
+            List<Emplacement> listE = new List<Emplacement>(HibernateEmplacementService.RetrieveAll());
+            return listE;
         }
 
         private void btnAjouter_Click(object sender, RoutedEventArgs e)
         {
             // A FAIRE !! AJOUTER EN BD
+            
         }
 
         private void btnAccueil_Click(object sender, RoutedEventArgs e)
@@ -114,6 +143,11 @@ namespace Barman
             }
         }
 
-       
+        private void cboEmplacement_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cboEmplacement.SelectedValue == null)
+                cboEmplacement.SelectedIndex = 0;
+            cboEmplacement.ItemsSource = ChargerListBouteille();
+        }
     }
 }

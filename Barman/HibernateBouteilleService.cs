@@ -38,7 +38,20 @@ namespace Barman
          return result.ToList();
       }
 
-      public static void Create(Bouteille bouteille)
+
+        // Retrouver toute les bouteilles qui sont a un emplacement
+        public static List<Bouteille> RetrieveBouteilleEmplacement(int pIdEmplacement)
+        {
+            var bouteilles = session.Query<Bouteille>().AsQueryable();
+
+            var result = from m in bouteilles
+                         where m.IdEmplacement == pIdEmplacement
+                         select m;
+
+            return result.ToList();
+        }
+
+        public static void Create(Bouteille bouteille)
         {
             using (var transaction = session.BeginTransaction())
             {

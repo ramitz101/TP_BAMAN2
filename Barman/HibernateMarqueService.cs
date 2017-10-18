@@ -28,6 +28,8 @@ namespace Barman
             return result.ToList();
         }
 
+       
+
         public static void Create(Marque marque)
         {
             using (var transaction = session.BeginTransaction())
