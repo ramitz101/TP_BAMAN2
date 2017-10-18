@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,10 +21,28 @@ namespace Barman
     /// </summary>
     public partial class EcranFormulaireBouteille : UserControl
     {
-        public EcranFormulaireBouteille()
-        {
-            InitializeComponent();
-        }
+      private List<Bouteille> lstBouteilles = new List<Bouteille>();
+      private List<TypeAlcool> lstType = new List<TypeAlcool>(HibernateTypeAlcoolService.RetrieveAll());
+      private List<Emplacement> lstEmplacements = new List<Emplacement>(HibernateEmplacementService.RetrieveAll());
+      private List<Marque> lstMarques = new List<Marque>();
+      private List<Employe> lstEmployes = new List<Employe>(HibernateEmployeService.RetrieveAll());
+      public EcranFormulaireBouteille()
+      {
+         InitializeComponent();
+         
+
+         cboType.ItemsSource = lstType;
+         cboType.DisplayMemberPath = "Nom";
+
+         
+
+         cboEmplacement.ItemsSource = lstEmplacements;
+         cboEmplacement.DisplayMemberPath = "Nom";
+
+         cboEmployé.ItemsSource = lstEmployes;
+         cboEmployé.DisplayMemberPath = "Nom";
+
+      }
 
         private void btnAccueil_Click(object sender, RoutedEventArgs e)
         {
@@ -39,7 +58,67 @@ namespace Barman
 
         private void btnConfirmer_Click(object sender, RoutedEventArgs e)
         {
-
+            if(FormulaireRempli())
+            {
+               MessageBox.Show("Accepté");
+            }
+            else
+            {
+               MessageBox.Show("Refusé");
+            }
         }
-    }
+
+      private void cboMarqueBouteille_SelectionChanged(object sender, SelectionChangedEventArgs e)
+      {
+         cboÉtiquette.IsEnabled = true;
+         if(cboMarqueBouteille.SelectedItem!=null)
+            lstBouteilles = HibernateBouteilleService.RetrieveByMarque((Marque)cboMarqueBouteille.SelectedItem);
+         cboÉtiquette.ItemsSource = lstBouteilles;
+         cboÉtiquette.DisplayMemberPath = "Numero";
+
+      }
+
+      private void cboType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+      {
+         if(cboMarqueBouteille.IsEnabled==false)
+         cboMarqueBouteille.IsEnabled = true;
+
+         lstMarques = HibernateMarqueService.RetrieveByType((TypeAlcool)cboType.SelectedItem);
+         
+         cboMarqueBouteille.ItemsSource = lstMarques;
+         cboMarqueBouteille.SelectedValuePath = "IdMarque";
+         cboMarqueBouteille.DisplayMemberPath = "Nom";
+
+      }
+
+      private void CheckBox_Checked(object sender, RoutedEventArgs e)
+      {
+         cboEmplacement.SelectedIndex = -1;
+         cboEmplacement.IsEnabled = false;
+
+      }
+
+      private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+      {
+         cboEmplacement.IsEnabled = true;
+      }
+
+      private bool FormulaireRempli()
+      {
+         if (cboType.SelectedItem != null&&cboMarqueBouteille.SelectedItem!=null&&cboEmployé.SelectedItem != null&&cboÉtiquette.SelectedItem != null)
+         {
+            if(chbVendu.IsChecked==true&&cboEmplacement.SelectedItem==null)
+            {
+               return true;
+            }
+            else if(chbVendu.IsChecked==false&&cboEmplacement.SelectedItem!=null)
+            {
+               return true;
+            }
+         }
+         return false;
+          
+
+      }
+   }
 }

@@ -67,6 +67,13 @@ namespace Barman
                 .Cascade.None()
                 .Columns("idEmploye");
 
+            References(x => x.laBouteille)
+                .Class<Bouteille>()
+                .Access.Property()
+                .LazyLoad(Laziness.False)
+                .Cascade.None()
+                .Columns("idBouteille");
+
 
         }
     }
