@@ -39,12 +39,12 @@ namespace Barman
              .CustomSqlType("INTEGER");
 
             // Autre class
-            References(x => x.SonTypeAlcool)
-                .Class<TypeAlcool>()
-                .Access.Property()
-                .LazyLoad(Laziness.False)
-                .Cascade.None()
-                .Columns("idTypeAlcool");
+            //References(x => x.SonTypeAlcool)
+            //    .Class<TypeAlcool>()
+            //    .Access.Property()
+            //    .LazyLoad(Laziness.False)
+            //    .Cascade.None()
+            //    .Columns("idTypeAlcool");
         }
     }
 }
