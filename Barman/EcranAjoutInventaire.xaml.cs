@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -124,7 +125,7 @@ namespace Barman
 
             for (int i = 0; i < quantite; i++)
             {
-                HibernateBouteilleService.Create(new Bouteille(cboMarque.SelectedIndex, int.Parse(txtVolume.Text)));            
+                HibernateBouteilleService.Create(new Bouteille(cboMarque.SelectedIndex, int.Parse(txtVolume.Text), txtNumero.Text, float.Parse(txtPrix.Text, CultureInfo.InvariantCulture.NumberFormat)));            
             }
 
             txtVolume.Clear();
