@@ -27,7 +27,7 @@ namespace Barman
         public EcranGererVente()
         {
             InitializeComponent();
-
+            cldVente.SelectedDate = DateTime.Now;
             cboEmploye.ItemsSource = lstEmploye;
             cboEmploye.DisplayMemberPath = "Nom";
             cboEmploye.SelectedValuePath = "IdEmploye";
@@ -54,7 +54,7 @@ namespace Barman
         }
         private void btnSupprimer_Click(object sender, RoutedEventArgs e)
         {
-            // attente du binding
+            
         }
 
         private void cboEmploye_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -67,6 +67,11 @@ namespace Barman
 
             LalistPourCollection = HibernateVenteService.RetrieveVenteEmploye((int)cboEmploye.SelectedValue, (DateTime)d);
             lstVente = new ObservableCollection<Vente>(LalistPourCollection);
+            foreach (var i in lstVente)
+            {
+                i.laBouteille = HibernateBouteilleService.Retrieve((int)i.IdBouteille)[0];
+                i.laBouteille.SaMarque = HibernateMarqueService.Retrieve((int)i.laBouteille.IdMarque)[0];
+            }
             dtgVenteEmploye.ItemsSource = lstVente;
 
 
@@ -76,9 +81,16 @@ namespace Barman
         {
             DateTime? d = cldVente.SelectedDate;
             List<Vente> LalistPourCollection = new List<Vente>();
-
-            LalistPourCollection = HibernateVenteService.RetrieveVenteEmploye((int)cboEmploye.SelectedValue, (DateTime)d);
-            lstVente = new ObservableCollection<Vente>(LalistPourCollection);
+            if (cboEmploye.SelectedValue != null)
+            {
+                LalistPourCollection = HibernateVenteService.RetrieveVenteEmploye((int)cboEmploye.SelectedValue, (DateTime)d);
+                lstVente = new ObservableCollection<Vente>(LalistPourCollection);
+                foreach (var i in lstVente)
+                {
+                    i.laBouteille = HibernateBouteilleService.Retrieve((int)i.IdBouteille)[0];
+                    i.laBouteille.SaMarque = HibernateMarqueService.Retrieve((int)i.laBouteille.IdMarque)[0];
+                }
+            }
             dtgVenteEmploye.ItemsSource = lstVente;
 
         }

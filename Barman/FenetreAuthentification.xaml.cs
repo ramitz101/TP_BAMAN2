@@ -40,6 +40,7 @@ namespace Barman
 
             if (em.IdEmploye != null)
             {
+                em.SonRole = HibernateRoleService.Retrieve((int)em.IdRole)[0];
                 EcranAccueil.employe = em;
                 this.Close();
 

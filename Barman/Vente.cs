@@ -54,16 +54,7 @@ namespace Barman
             IdVente = pIdVente;
         }
 
-        public Vente(float prixOnce, DateTime dateVente, int? volume, int pIdBouteille, int pIdEmploye,Employe employe,Bouteille bouteille)
-        {
-            PrixOnce = prixOnce;
-            DateVente = dateVente;
-            Volume = volume;
-            IdBouteille = pIdBouteille;
-            IdEmploye = pIdEmploye;
-            UnEmploye = employe;
-            laBouteille = bouteille;
-        }
+        
 
         public override bool Equals(object obj)
         {

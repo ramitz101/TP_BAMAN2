@@ -26,7 +26,7 @@ namespace Barman
         public EcranConsulterVente()
         {
             InitializeComponent();
-           
+            cldVente.SelectedDate = DateTime.Now;
             
         }
 
@@ -46,6 +46,11 @@ namespace Barman
 
             LalistPourCollection = HibernateVenteService.RetrieveVenteEmploye((int)EcranAccueil.employe.IdEmploye, (DateTime)d);
             lstVente = new ObservableCollection<Vente>(LalistPourCollection);
+            foreach(var i in lstVente)
+            {
+                i.laBouteille = HibernateBouteilleService.Retrieve((int)i.IdBouteille)[0];
+                i.laBouteille.SaMarque = HibernateMarqueService.Retrieve((int)i.laBouteille.IdMarque)[0];
+            }
             dtgVenteEmploye.ItemsSource = lstVente;
 
         }

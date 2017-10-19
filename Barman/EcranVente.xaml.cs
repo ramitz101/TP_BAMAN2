@@ -40,25 +40,25 @@ namespace Barman
             lblEmploye.Content = s.ToString();
 
             //ComboBox
-           
-           
-
             cboEmplacement.ItemsSource = lstEmplacement;
             cboEmplacement.DisplayMemberPath = "Nom";
             cboEmplacement.SelectedValuePath = "IdEmplacement";
             cboEmplacement.SelectedIndex = 0;
 
-            //lstBouteille = ChargerListBouteille();
-            cboMarque.ItemsSource = lstBouteille;
+          
             cboMarque.DisplayMemberPath = "SaMarque.Nom";
             cboMarque.SelectedValuePath = "IdBouteille";
-            cboMarque.SelectedIndex = 1;
+            
         }
 
         private List<Bouteille> ChargerListBouteille()
         {
-           
+            
             List<Bouteille> listB = new List<Bouteille>(HibernateBouteilleService.RetrieveBouteilleEmplacement((int)cboEmplacement.SelectedValue));
+            foreach(var i in listB)
+            {
+                i.SaMarque = HibernateMarqueService.Retrieve((int)i.IdMarque)[0];               
+            }
             return listB;
         }
 
@@ -70,10 +70,18 @@ namespace Barman
 
         private void btnAjouter_Click(object sender, RoutedEventArgs e)
         {
-
-            Vente v = new Vente(float.Parse(lblPrixVente.Content.ToString()), DateTime.Now, int.Parse(txtQuantite.Text), (int)LaBouteilleVendu.IdBouteille, (int)EcranAccueil.employe.IdEmploye, EcranAccueil.employe,LaBouteilleVendu);           
-            HibernateVenteService.Create(v);
-            
+            try
+            {
+                Vente v = new Vente(float.Parse(lblPrixVente.Content.ToString()), DateTime.Now, int.Parse(txtQuantite.Text), (int)LaBouteilleVendu.IdBouteille, (int)EcranAccueil.employe.IdEmploye);
+                HibernateVenteService.Create(v);
+                lblComfirmationAjout.Foreground = Brushes.Green;
+                lblComfirmationAjout.Content = "Ajout réussi";
+            }
+            catch(Exception z)
+            {
+                lblComfirmationAjout.Foreground = Brushes.Red;
+                lblComfirmationAjout.Content = "Une erreur est survénu";
+            }
         }
 
         private void btnAccueil_Click(object sender, RoutedEventArgs e)
@@ -93,7 +101,7 @@ namespace Barman
 
         private void btnGerer_Click(object sender, RoutedEventArgs e)
         {
-            if (EcranAccueil.employe.IdRole == 1)
+            if (EcranAccueil.employe.SonRole.Code == "Admin")
             {
                 ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
                 EcranGererVente EAI = new EcranGererVente();
@@ -103,7 +111,7 @@ namespace Barman
             {
                 FenetreErreur FE = new FenetreErreur();
                 FE.ShowDialog();
-                if(EcranAccueil.employe.IdRole == 1)
+                if(EcranAccueil.employe.SonRole.Code == "Admin")
                 {
                     ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
                     EcranGererVente EAI = new EcranGererVente();
@@ -160,7 +168,7 @@ namespace Barman
             
             foreach(var i in lstBouteille)
             {
-                if(i.SaMarque.IdMarque == (int?)cboMarque.SelectedValue)
+                if(i.IdBouteille == (int?)cboMarque.SelectedValue)
                 {
                     LaBouteilleVendu = i;
                     break;

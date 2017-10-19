@@ -60,19 +60,19 @@ namespace Barman
            .CustomSqlType("INTEGER");
 
             // Autre class
-            References(x => x.UnEmploye)
-                .Class<Employe>()
-                .Access.Property()
-                .LazyLoad(Laziness.False)
-                .Cascade.None()
-                .Columns("idEmploye");
+            //References(x => x.UnEmploye)
+            //    .Class<Employe>()
+            //    .Access.Property()
+            //    .LazyLoad(Laziness.False)
+            //    .Cascade.None()
+            //    .Columns("idEmploye");
 
-            References(x => x.laBouteille)
-                .Class<Bouteille>()
-                .Access.Property()
-                .LazyLoad(Laziness.False)
-                .Cascade.None()
-                .Columns("idBouteille");
+            //References(x => x.laBouteille)
+            //    .Class<Bouteille>()
+            //    .Access.Property()
+            //    .LazyLoad(Laziness.False)
+            //    .Cascade.None()
+            //    .Columns("idBouteille");
 
 
         }
