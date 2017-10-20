@@ -125,6 +125,12 @@ namespace Barman
       {
          txtRecherche.Text = "";
          List<Bouteille> lstBouteille = HibernateBouteilleService.RetrieveAll();
+         foreach (Bouteille b in lstBouteille)
+         {
+            b.SaMarque = HibernateMarqueService.Retrieve((int)b.IdMarque)[0];
+            b.SaMarque.SonTypeAlcool = HibernateTypeAlcoolService.retrieveTypeAlcool((int)b.SaMarque.IdTypeAlcool)[0];
+            b.SonEmplacement = HibernateEmplacementService.retrieveEmplacement((int)b.IdEmplacement)[0];
+         }
          dtgInventaire.ItemsSource = lstBouteille;
       }
 
@@ -139,15 +145,33 @@ namespace Barman
       private void txtRecherche_KeyUp_1(object sender, KeyEventArgs e)
       {
          List<Bouteille> lstBouteille = new List<Bouteille>();
+         List<Marque> lstMarque = new List<Marque>();
          if (txtRecherche.Text != "" && txtRecherche.Text != "Recherche")
          {
-            lstBouteille = HibernateBouteilleService.Retrieve(txtRecherche.Text);
+            lstMarque = HibernateMarqueService.Retrieve(txtRecherche.Text);
+            foreach (Marque m in lstMarque)
+            {
+               lstBouteille.AddRange(HibernateBouteilleService.RetrieveByMarqueId((int)m.IdMarque));
+            }
+            
+
             if (lstBouteille.Count != 0)
                dtgInventaire.ItemsSource = lstBouteille;
+            else
+            {
+               dtgInventaire.ItemsSource = null;
+            }
          }
          else
          {
             lstBouteille = HibernateBouteilleService.RetrieveAll();
+            foreach (Bouteille b in lstBouteille)
+            {
+               b.SaMarque = HibernateMarqueService.Retrieve((int)b.IdMarque)[0];
+               b.SaMarque.SonTypeAlcool = HibernateTypeAlcoolService.retrieveTypeAlcool((int)b.SaMarque.IdTypeAlcool)[0];
+               b.SonEmplacement = HibernateEmplacementService.retrieveEmplacement((int)b.IdEmplacement)[0];
+            }
+
             dtgInventaire.ItemsSource = lstBouteille;
          }
       }
