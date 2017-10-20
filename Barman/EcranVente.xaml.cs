@@ -85,7 +85,7 @@ namespace Barman
                 }
                 else
                 {
-                    Vente v = new Vente(float.Parse(lblPrixVente.Content.ToString()), DateTime.Now, int.Parse(txtQuantite.Text), (int)LaBouteilleVendu.IdBouteille, (int)EcranAccueil.employe.IdEmploye);
+                    Vente v = new Vente((float.Parse(lblPrixVente.Content.ToString())/ int.Parse(txtQuantite.Text)), DateTime.Now, int.Parse(txtQuantite.Text), (int)LaBouteilleVendu.IdBouteille, (int)EcranAccueil.employe.IdEmploye);
                     HibernateVenteService.Create(v);
                     lblComfirmationAjout.Foreground = Brushes.Green;
                     lblComfirmationAjout.Content = "Ajout réussi";
@@ -104,6 +104,7 @@ namespace Barman
                     HibernateBouteilleService.Update(LaBouteilleVendu);
 
                 }            
+
             }
             catch(Exception z)
             {
@@ -212,29 +213,32 @@ namespace Barman
 
         private void AjusterPrix()
         {
+            
             if (LaBouteilleVendu != null)
             {
                 
                 if (LaBouteilleVendu.PrixBouteille <= 40)
                 {
-                    lblPrixVente.Content = (6 * int.Parse(txtQuantite.Text)).ToString();
+                    lblPrixVente.Content = (6 * int.Parse(txtQuantite.Text)).ToString("0.00" + " $");                
                 }
                 else if (LaBouteilleVendu.PrixBouteille <= 50)
                 {
-                    lblPrixVente.Content = (7 * int.Parse(txtQuantite.Text)).ToString();
+                    lblPrixVente.Content = (7 * int.Parse(txtQuantite.Text)).ToString("0.00"+ " $");
                 }
                 else if (LaBouteilleVendu.PrixBouteille <= 60)
                 {
-                    lblPrixVente.Content = (8 * int.Parse(txtQuantite.Text)).ToString();
+                    lblPrixVente.Content = (8 * int.Parse(txtQuantite.Text)).ToString("0.00" + " $");
                 }
                 else if (LaBouteilleVendu.PrixBouteille <= 70)
                 {
-                    lblPrixVente.Content = (9 * int.Parse(txtQuantite.Text)).ToString();
+                    lblPrixVente.Content = (9 * int.Parse(txtQuantite.Text)).ToString("0.00" + " $");
                 }
                 else
                 {
-                    lblPrixVente.Content = (10 * int.Parse(txtQuantite.Text)).ToString();
+                    lblPrixVente.Content = (10 * int.Parse(txtQuantite.Text)).ToString("0.00" + " $");
                 }
+
+               
             }
         }
     }

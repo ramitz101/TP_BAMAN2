@@ -32,7 +32,7 @@ namespace Barman
             cboEmploye.DisplayMemberPath = "Nom";
             cboEmploye.SelectedValuePath = "IdEmploye";
             cboEmploye.SelectedIndex = 0;
-
+            
             dtgVenteEmploye.SelectedValuePath = "Vente";
             
         }
@@ -65,9 +65,8 @@ namespace Barman
                     var result = MessageBox.Show("Êtes vous sur de vouloir supprimer ","Avertissement", MessageBoxButton.YesNo, MessageBoxImage.Warning);
                     if (result == MessageBoxResult.Yes)
                     {
-                        HibernateVenteService.Delete(v);
-                        dtgVenteEmploye.Items.Refresh();
-                        
+                        HibernateVenteService.Delete(v);                      
+                        RefreshList();
                     }
 
                 }
@@ -80,28 +79,27 @@ namespace Barman
 
         private void cboEmploye_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            DateTime? d = cldVente.SelectedDate;
-            List<Vente> LalistPourCollection = new List<Vente>();
-
-            if(d == null)
-                d = DateTime.Today;
-
-            LalistPourCollection = HibernateVenteService.RetrieveVenteEmploye((int)cboEmploye.SelectedValue, (DateTime)d);
-            lstVente = new ObservableCollection<Vente>(LalistPourCollection);
-            foreach (var i in lstVente)
-            {
-                i.laBouteille = HibernateBouteilleService.Retrieve((int)i.IdBouteille)[0];
-                i.laBouteille.SaMarque = HibernateMarqueService.Retrieve((int)i.laBouteille.IdMarque)[0];
-            }
-            dtgVenteEmploye.ItemsSource = lstVente;
+            RefreshList();
 
 
         }
 
         private void cldVente_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
+            RefreshList();
+
+        }
+
+
+        private void RefreshList()
+        {
             DateTime? d = cldVente.SelectedDate;
             List<Vente> LalistPourCollection = new List<Vente>();
+
+
+            if (d == null)
+                d = DateTime.Today;
+
             if (cboEmploye.SelectedValue != null)
             {
                 LalistPourCollection = HibernateVenteService.RetrieveVenteEmploye((int)cboEmploye.SelectedValue, (DateTime)d);
@@ -113,7 +111,6 @@ namespace Barman
                 }
             }
             dtgVenteEmploye.ItemsSource = lstVente;
-
         }
     }
 }

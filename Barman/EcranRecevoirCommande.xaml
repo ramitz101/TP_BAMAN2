@@ -4,9 +4,24 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Barman"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             mc:Ignorable="d" Height="382.748" Width="566.997">
     <Grid>
-            
+
+
+
+        <Label Content="Commande" FontWeight="Bold" Margin="10,30,0,314" RenderTransformOrigin="0.54,0.61"  HorizontalAlignment="Left" Width="74"></Label>
+        <DataGrid Name="dtgCommande" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="243" Margin="10,61,0,0" VerticalAlignment="Top" Width="535" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Marque" Width="2*" Binding="{Binding SaMarque.Nom}"/>
+                <DataGridTextColumn Header="Format(oz)" Width="1*" Binding="{Binding VolumeInitial}"/>
+                <DataGridTextColumn  Header="Quantité" Width="1.3*" Binding="{Binding Quantite}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Name="btnConfirmer" Content="Confirmer" Height="51" Margin="448,317,22,10"  Width="96" Click="btnConfirmer_Click"></Button>
+        <Button Name="btnSupprimer" Content="Supprimer" Click="btnSupprimer_Click" Margin="222,317,235,10" Height="51"  Width="96"></Button>
+        <Button Name="btnAnnuler" Content="Annuler" Height="51"  Width="96" Margin="20,317,450,10"  Click="btnAnnuler_Click"></Button>
+
+
     </Grid>
 </UserControl>

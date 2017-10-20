@@ -58,7 +58,20 @@ namespace Barman
          return result.ToList();
       }
 
-      public static List<Bouteille> RetrieveByUnique(int pIdMarque, int pIdEmplacement, string pNumero)
+        // Retrouver toute les bouteilles avec le même idCommande
+        public static List<Bouteille> RetrieveByIdCommande(int pIdCommande)
+        {
+            var bouteilles = session.Query<Bouteille>().AsQueryable();
+
+            var result = from m in bouteilles
+                         where m.IdCommande == pIdCommande
+                         select m;
+
+            return result.ToList();
+        }
+
+
+        public static List<Bouteille> RetrieveByUnique(int pIdMarque, int pIdEmplacement, string pNumero)
       {
          var bouteilles = session.Query<Bouteille>().AsQueryable();
 

@@ -67,21 +67,29 @@ namespace Barman
 
         private void btnRecevoirCommande_Click(object sender, RoutedEventArgs e)
         {
-            if (EcranAccueil.employe.IdRole == null)
+            if (dtgCommande.SelectedItems.Count == 1)
             {
-                FenetreAuthentification FN = new FenetreAuthentification();
-                FN.ShowDialog();
+                if (EcranAccueil.employe.IdRole == null)
+                {
+                    FenetreAuthentification FN = new FenetreAuthentification();
+                    FN.ShowDialog();
+                }
+                if (EcranAccueil.employe.SonRole.Code == "Utils" && EcranAccueil.employe.IdRole != null)
+                {
+                    FenetreErreur FE = new FenetreErreur();
+                    FE.ShowDialog();
+                    // ALLO
+                }
+                if (EcranAccueil.employe.SonRole.Code == "Admin")
+                {
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
+                    EcranRecevoirCommande EcranRecevoirCommande = new EcranRecevoirCommande((Commande)dtgCommande.SelectedItem);
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0, EcranRecevoirCommande);
+                }
             }
-            if (EcranAccueil.employe.SonRole.Code == "Utils" && EcranAccueil.employe.IdRole != null)
+            else
             {
-                FenetreErreur FE = new FenetreErreur();
-                FE.ShowDialog();
-            }
-            if (EcranAccueil.employe.SonRole.Code == "Admin")
-            {
-                ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
-                EcranRecevoirCommande EcranRecevoirCommande = new EcranRecevoirCommande();
-                ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0, EcranRecevoirCommande);
+                MessageBox.Show("Vous devez selectionner une commande");
             }
         }
     }
