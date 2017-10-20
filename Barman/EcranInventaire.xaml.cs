@@ -128,7 +128,7 @@ namespace Barman
          foreach (Bouteille b in lstBouteille)
          {
             b.SaMarque = HibernateMarqueService.Retrieve((int)b.IdMarque)[0];
-            b.SaMarque.SonTypeAlcool = HibernateTypeAlcoolService.retrieveTypeAlcool((int)b.SaMarque.IdTypeAlcool)[0];
+            b.SaMarque.SonTypeAlcool = HibernateTypeAlcoolService.RetrieveTypeAlcool((int)b.SaMarque.IdTypeAlcool)[0];
             b.SonEmplacement = HibernateEmplacementService.retrieveEmplacement((int)b.IdEmplacement)[0];
          }
          dtgInventaire.ItemsSource = lstBouteille;
@@ -168,7 +168,7 @@ namespace Barman
             foreach (Bouteille b in lstBouteille)
             {
                b.SaMarque = HibernateMarqueService.Retrieve((int)b.IdMarque)[0];
-               b.SaMarque.SonTypeAlcool = HibernateTypeAlcoolService.retrieveTypeAlcool((int)b.SaMarque.IdTypeAlcool)[0];
+               b.SaMarque.SonTypeAlcool = HibernateTypeAlcoolService.RetrieveTypeAlcool((int)b.SaMarque.IdTypeAlcool)[0];
                b.SonEmplacement = HibernateEmplacementService.retrieveEmplacement((int)b.IdEmplacement)[0];
             }
 
