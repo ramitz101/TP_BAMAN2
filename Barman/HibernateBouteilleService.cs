@@ -26,7 +26,7 @@ namespace Barman
                       select m;
 
             return result.ToList();
-      }
+         }
         public static List<Bouteille> Retrieve(int pIdBouteille)
         {
             var bouteilles = session.Query<Bouteille>().AsQueryable();
@@ -37,12 +37,33 @@ namespace Barman
 
             return result.ToList();
         }
+      public static List<Bouteille> RetrieveByMarqueId(int pIdMarque)
+      {
+         var bouteilles = session.Query<Bouteille>().AsQueryable();
+
+         var result = from m in bouteilles
+                      where m.IdMarque == pIdMarque
+                      select m;
+
+         return result.ToList();
+      }
       public static List<Bouteille> Retrieve(string pNomMarque)
       {
          var bouteilles = session.Query<Bouteille>().AsQueryable();
 
          var result = from m in bouteilles
                       where m.SaMarque.Nom.StartsWith(pNomMarque)
+                      select m;
+
+         return result.ToList();
+      }
+
+      public static List<Bouteille> RetrieveByUnique(int pIdMarque, int pIdEmplacement, string pNumero)
+      {
+         var bouteilles = session.Query<Bouteille>().AsQueryable();
+
+         var result = from m in bouteilles
+                      where m.IdMarque==pIdMarque&&m.IdEmplacement==pIdEmplacement&& m.Numero==pNumero
                       select m;
 
          return result.ToList();

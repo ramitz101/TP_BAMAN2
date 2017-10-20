@@ -60,7 +60,20 @@ namespace Barman
         {
             if(FormulaireRempli())
             {
-               MessageBox.Show("Accepté");
+               
+               Bouteille bouteilleAChanger = HibernateBouteilleService.RetrieveByUnique((int)HibernateMarqueService.Retrieve(cboMarqueBouteille.Text)[0].IdMarque, (int)HibernateEmplacementService.retrieveEmplacementByNom("Réserve")[0].IdEmplacement, cboÉtiquette.Text)[0];
+               if(chbVendu.IsChecked==false)
+                  bouteilleAChanger.IdEmplacement = (int)HibernateEmplacementService.retrieveEmplacementByNom(cboEmplacement.Text)[0].IdEmplacement;
+               else
+                  bouteilleAChanger.IdEmplacement=(int)HibernateEmplacementService.retrieveEmplacementByNom("Aucun")[0].IdEmplacement;
+
+               HibernateBouteilleService.Update(bouteilleAChanger);
+               
+               MessageBox.Show("Modification éffectuée avec succès!", "Avertissement", MessageBoxButton.OK, MessageBoxImage.Information);
+
+               ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
+               ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0, new EcranFormulaireBouteille());
+
             }
             else
             {
@@ -82,7 +95,7 @@ namespace Barman
       {
          if(cboMarqueBouteille.IsEnabled==false)
          cboMarqueBouteille.IsEnabled = true;
-
+        
          lstMarques = HibernateMarqueService.RetrieveByType((TypeAlcool)cboType.SelectedItem);
          
          cboMarqueBouteille.ItemsSource = lstMarques;
