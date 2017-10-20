@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +21,15 @@ namespace Barman
     /// </summary>
     public partial class EcranRecevoirCommande : UserControl
     {
-        public EcranRecevoirCommande()
+        private ObservableCollection<Bouteille> listBouteilleCommand = new ObservableCollection<Bouteille>(ChargerBouteilleCommande());
+        static private int IdCommande { get; set; }
+        public EcranRecevoirCommande(Commande c)
         {
             InitializeComponent();
+            dtgCommande.ItemsSource = listBouteilleCommand;
+            IdCommande = (int)c.IdCommande;
+
+            
         }
 
         private void btnAnnuler_Click(object sender, RoutedEventArgs e)
@@ -38,6 +45,22 @@ namespace Barman
             EcranOnglets EO = new EcranOnglets(3);
             ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EO);
         }
+
+        static List<Bouteille> ChargerBouteilleCommande()
+        {
+            List<Bouteille> listB = new List<Bouteille>();
+
+            listB = HibernateBouteilleService.RetrieveByIdCommande(IdCommande);
+            foreach(var i in listB)
+            {
+                i.SaMarque = HibernateMarqueService.Retrieve((int)i.IdMarque)[0];               
+            }
+            return listB;
+
+            
+               
+        }
+
 
         private void btnSupprimer_Click(object sender, RoutedEventArgs e)
         {

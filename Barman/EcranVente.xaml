@@ -47,7 +47,8 @@
             </StackPanel>
         </Button>
         <Label Content="Prix" HorizontalAlignment="Left" Margin="504,157,0,0" VerticalAlignment="Top" Width="40"/>
-        <Label Name="lblPrixVente" Content="" HorizontalAlignment="Left" Margin="504,185,0,0" VerticalAlignment="Top" Width="54"/>
+        <Label Name="lblPrixVente" Content=""  HorizontalAlignment="Left" Margin="504,188,0,0" VerticalAlignment="Top" Width="86" Height="32">
+           </Label>
         <Label x:Name="lblComfirmationAjout" Content="" Foreground="Green" HorizontalAlignment="Left" Margin="403,303,0,0" VerticalAlignment="Top" Width="177"/>
 
 
