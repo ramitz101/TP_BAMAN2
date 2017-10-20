@@ -94,7 +94,7 @@ namespace Barman
          foreach (Bouteille b in listB)
          {
             b.SaMarque = HibernateMarqueService.Retrieve((int)b.IdMarque)[0];
-            b.SaMarque.SonTypeAlcool = HibernateTypeAlcoolService.retrieveTypeAlcool((int)b.SaMarque.IdTypeAlcool)[0];
+            b.SaMarque.SonTypeAlcool = HibernateTypeAlcoolService.RetrieveTypeAlcool((int)b.SaMarque.IdTypeAlcool)[0];
             b.SonEmplacement = HibernateEmplacementService.retrieveEmplacement((int)b.IdEmplacement)[0];
 
          }

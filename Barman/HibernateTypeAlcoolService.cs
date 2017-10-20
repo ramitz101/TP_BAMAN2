@@ -18,13 +18,22 @@ namespace Barman
             return session.Query<TypeAlcool>().ToList();
         }
 
-        public static List<TypeAlcool> retrieveTypeAlcool(int pIdTypeAlcool)
+        public static List<TypeAlcool> RetrieveTypeAlcool(int pIdTypeAlcool)
         {
             var typeAlcooles = session.Query<TypeAlcool>().AsQueryable();
 
             var resultat = from m in typeAlcooles
                            where m.IdTypeAlcool == pIdTypeAlcool
                            select m;
+            return resultat.ToList();
+
+        }
+        public static List<string> RetrieveAllTypeAlcool()
+        {
+            var typeAlcooles = session.Query<TypeAlcool>().AsQueryable();
+
+            var resultat = from m in typeAlcooles                           
+                           select m.Nom;
             return resultat.ToList();
 
         }
