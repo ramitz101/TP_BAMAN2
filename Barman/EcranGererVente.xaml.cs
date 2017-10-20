@@ -32,6 +32,8 @@ namespace Barman
             cboEmploye.DisplayMemberPath = "Nom";
             cboEmploye.SelectedValuePath = "IdEmploye";
             cboEmploye.SelectedIndex = 0;
+
+            dtgVenteEmploye.SelectedValuePath = "Vente";
             
         }
 
@@ -54,7 +56,26 @@ namespace Barman
         }
         private void btnSupprimer_Click(object sender, RoutedEventArgs e)
         {
-            
+            if (dtgVenteEmploye.SelectedItems.Count == 1)
+            {
+                try
+                {
+                    Vente v = new Vente();
+                    v = (Vente)dtgVenteEmploye.SelectedItem;
+                    var result = MessageBox.Show("Êtes vous sur de vouloir supprimer ","Avertissement", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        HibernateVenteService.Delete(v);
+                        dtgVenteEmploye.Items.Refresh();
+                        
+                    }
+
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Une erreur est survenu", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
         }
 
         private void cboEmploye_SelectionChanged(object sender, SelectionChangedEventArgs e)
