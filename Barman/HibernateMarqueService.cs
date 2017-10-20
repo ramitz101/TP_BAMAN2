@@ -33,7 +33,7 @@ namespace Barman
          var marques = session.Query<Marque>().AsQueryable();
 
          var result = from m in marques
-                      where m.SonTypeAlcool.Nom == pType.Nom
+                      where m.IdTypeAlcool == pType.IdTypeAlcool
                       select m;
 
          return result.ToList();

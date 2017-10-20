@@ -91,6 +91,14 @@ namespace Barman
         private static List<Bouteille> ChargerListBouteille()
         {
             List<Bouteille> listB = new List<Bouteille>(HibernateBouteilleService.RetrieveAll());
+         foreach (Bouteille b in listB)
+         {
+            b.SaMarque = HibernateMarqueService.Retrieve((int)b.IdMarque)[0];
+            b.SaMarque.SonTypeAlcool = HibernateTypeAlcoolService.retrieveTypeAlcool((int)b.SaMarque.IdTypeAlcool)[0];
+            b.SonEmplacement = HibernateEmplacementService.retrieveEmplacement((int)b.IdEmplacement)[0];
+
+         }
+
             return listB;
         }
 

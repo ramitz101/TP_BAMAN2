@@ -21,8 +21,8 @@ namespace Barman
         {
             var bouteilles = session.Query<Bouteille>().AsQueryable();
 
-            var result = from m in bouteilles
-                      where m.SaMarque.Nom == pMarque.Nom && m.SonEmplacement.Nom=="Réserve"
+         var result = from m in bouteilles
+                      where m.IdMarque == pMarque.IdMarque && m.IdEmplacement == (int)HibernateEmplacementService.retrieveEmplacementByNom("Réserve")[0].IdEmplacement
                       select m;
 
             return result.ToList();
