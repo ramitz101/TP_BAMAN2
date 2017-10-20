@@ -27,8 +27,18 @@ namespace Barman
             return resultat.ToList();
 
         }
+      public static List<Emplacement> retrieveEmplacementByNom(string pNomEmplacement)
+      {
+         var emplacements = session.Query<Emplacement>().AsQueryable();
 
-        public static void Create(Emplacement emplacement)
+         var resultat = from m in emplacements
+                        where m.Nom == pNomEmplacement
+                        select m;
+         return resultat.ToList();
+
+      }
+
+      public static void Create(Emplacement emplacement)
         {
             using (var transaction = session.BeginTransaction())
             {

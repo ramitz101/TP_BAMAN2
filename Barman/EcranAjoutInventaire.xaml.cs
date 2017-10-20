@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -101,11 +102,7 @@ namespace Barman
             ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EO);
         }
 
-        /*private static List<Bouteille> ChargerListBouteille()
-        {
-            List<Bouteille> listB = new List<Bouteille>(HibernateBouteilleService.RetrieveAll());
-            return listB;
-        }*/
+        
 
         private static List<Marque> ChargerListMarque()
         {
@@ -135,23 +132,77 @@ namespace Barman
 
         private void btnAjouterNouvelleM_Click(object sender, RoutedEventArgs e)
         {
+            if (ValideMarqueAlcool())
+            {           
+                HibernateMarqueService.Create(new Marque(txtMarque.Text, int.Parse(cboTypeAlcool.SelectedValue.ToString())));
+                txtMarque.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Le nom de la marque d'alcool n'est pas valide");
+            }
             
-            List<TypeAlcool> lstType = new List<TypeAlcool>(HibernateTypeAlcoolService.RetrieveAll());
-
-            
-
-            HibernateMarqueService.Create(new Marque(txtMarque.Text, int.Parse(cboTypeAlcool.SelectedValue.ToString())));
-            txtMarque.Clear();
         }
 
-        
-        
+        private bool ValideMarqueAlcool()
+        {
+            bool estValide = true;
+            List<string> lstNomMarque = new List<string>(HibernateMarqueService.RetrieveAllNomMarque());
+
+            if (txtMarque.Text.Length < 100)
+            {
+                foreach (var nom in lstNomMarque)
+                {
+                    if (nom == txtMarque.Text)
+                    {
+                        estValide = false;
+                    }
+                }
+            }
+            else
+            {
+                estValide = false;
+            }
+
+            return estValide;
+        }
 
         private void btnAjouterNouveauTypeA_Click(object sender, RoutedEventArgs e)
         {
+            if (ValidetypeAlcool())
+            {
+                HibernateTypeAlcoolService.Create(new TypeAlcool(txtNouveauType.Text));
+                txtNouveauType.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Le type d'alcool entré n'est pas valide");
+            }
             
-            HibernateTypeAlcoolService.Create(new TypeAlcool(txtNouveauType.Text));
-            txtNouveauType.Clear();
+        }
+
+        private bool ValidetypeAlcool()
+        {
+            bool estValide = true;
+            Regex r = new Regex("^[a-zA-Z]*$");            
+            List<string> lstTypeAlcool = new List<string>(HibernateTypeAlcoolService.RetrieveAllTypeAlcool());
+
+            if (txtNouveauType.Text.Length < 50 && r.IsMatch(txtNouveauType.Text))
+            {
+                foreach (var nom in lstTypeAlcool)
+                {
+                    if (nom == txtNouveauType.Text)
+                    {
+                        estValide = false;
+                    }
+
+                }
+            }
+            else
+            {
+                estValide = false;
+            }
+            return estValide;
         }
     }
 }
