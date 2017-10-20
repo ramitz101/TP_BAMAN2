@@ -23,6 +23,7 @@ namespace Barman
         {
             InitializeComponent();
             this.Owner = App.Current.MainWindow;
+            calendarDate.SelectedDate = DateTime.Now;
         }
 
         private void btnAnnuler_Click(object sender, RoutedEventArgs e)
@@ -31,8 +32,9 @@ namespace Barman
         }
 
         private void btnConfirmer_Click(object sender, RoutedEventArgs e)
-        {
-            
+        {           
+
+
             HibernateEmployeService.Create(new Employe(txtNom.Text, txtPrenom.Text, txtTelephone.Text, txtNAS.Text, calendarDate.SelectedDate.Value, RoleChoisi()));
             this.Close();
         }

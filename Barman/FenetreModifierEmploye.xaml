@@ -22,7 +22,7 @@
         <RadioButton Name="rdbUtilisateur" Content="Utilisateur" HorizontalAlignment="Left" Margin="368,121,0,0" VerticalAlignment="Top"/>
         <Button Name="btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="342,195,0,0" VerticalAlignment="Top" Width="90" Height="26" Click="btnConfirmer_Click"/>
         <Button Name="btnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="23,195,0,0" VerticalAlignment="Top" Width="90" Height="26" Click="btnAnnuler_Click" />
-        <Label Name="lblDateEmbauche" Content="27-03-15" HorizontalAlignment="Left" Margin="182,33,0,0" VerticalAlignment="Top"/>
+        <Calendar Name="CalendarModifierEmploye" HorizontalAlignment="Left" Margin="140,28,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

@@ -31,6 +31,7 @@ namespace Barman
         {
             InitializeComponent();
             dtgEmploye.ItemsSource = lstEmployes;
+            
 
         }
 
@@ -42,14 +43,18 @@ namespace Barman
                 popup.ShowDialog();
 
             }
-            dtgEmploye.Items.Refresh();
+
+            dtgEmploye.ItemsSource = new ObservableCollection<Employe>(ChargerListEmploye());
+            //dtgEmploye.Items.Refresh();
         }
 
         private void btnAjouterEmploye_Click(object sender, RoutedEventArgs e)
         {
             FenetreAjouterEmploye popup = new FenetreAjouterEmploye();
             popup.ShowDialog();
-            dtgEmploye.Items.Refresh();
+
+            dtgEmploye.ItemsSource = new ObservableCollection<Employe>(ChargerListEmploye());
+            //dtgEmploye.Items.Refresh();
         }
 
         private void btnAccueil_Click(object sender, RoutedEventArgs e)
@@ -62,6 +67,10 @@ namespace Barman
         private static List<Employe> ChargerListEmploye()
         {
             List<Employe> listE = new List<Employe>(HibernateEmployeService.RetrieveAll());
+            foreach(var i in listE)
+            {
+                i.SonRole = HibernateRoleService.Retrieve((int)i.IdRole)[0];
+            }
             return listE;
         }
 

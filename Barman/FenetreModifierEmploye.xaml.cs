@@ -28,12 +28,16 @@ namespace Barman
             this.Owner = App.Current.MainWindow;
             if (employe != null)
             {
+
+
                 EmployeModifier = employe;
                 txtNom.Text = employe.Nom;
                 txtPrenom.Text = employe.Prenom;
                 txtTelephone.Text = employe.Telephone;
                 txtNAS.Text = employe.NAS;
-                lblDateEmbauche.Content = employe.DateEmbauche;
+                CalendarModifierEmploye.SelectedDate = employe.DateEmbauche;
+                CalendarModifierEmploye.DisplayDate = employe.DateEmbauche;
+                // à améliorer
                 if (employe.IdRole == 1)
                     rdbAdministrateur.IsChecked = true;
                 else
@@ -56,12 +60,31 @@ namespace Barman
             EmployeModifier.Prenom = txtPrenom.Text;
             EmployeModifier.Telephone = txtTelephone.Text;
             EmployeModifier.NAS = txtNAS.Text;
+            EmployeModifier.IdRole = RoleChoisi();
 
             HibernateEmployeService.Update(EmployeModifier);
 
             this.Close();
         }
 
-        
+        private int RoleChoisi()
+        {
+
+            if (rdbAdministrateur.IsChecked == true)
+            {
+                List<Role> lstRole = new List<Role>(HibernateRoleService.Retrieve("Admin"));
+                return (int)lstRole[0].IdRole;
+            }
+            else
+            {
+                List<Role> lstRole = new List<Role>(HibernateRoleService.Retrieve("Utils"));
+                return (int)lstRole[0].IdRole;
+            }
+
+
+
+        }
+
+
     }
 }

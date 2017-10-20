@@ -62,7 +62,7 @@ namespace Barman
             if (ValideChamp())
             {
                 bouteilleModifier.VolumeRestant = int.Parse(txtVolumeRestant.Text);
-                bouteilleModifier.SonEmplacement.IdEmplacement = (int)cboEmplacement.SelectedValue;
+                bouteilleModifier.IdEmplacement = (int)cboEmplacement.SelectedValue;
                 HibernateBouteilleService.Update(bouteilleModifier);
                 this.Close();
 

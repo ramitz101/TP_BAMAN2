@@ -48,7 +48,8 @@ namespace Barman
                 EcranAjoutInventaire EAI = new EcranAjoutInventaire();
                 ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0, EAI);
             }
-            dtgInventaire.Items.Refresh();
+
+            dtgInventaire.ItemsSource = new ObservableCollection<Bouteille>(ChargerListBouteille());
         }
 
         private void btnGerer_Click(object sender, RoutedEventArgs e)
@@ -71,9 +72,9 @@ namespace Barman
                     FenetreModifierBouteille popup = new FenetreModifierBouteille(lstBouteilles, dtgInventaire.SelectedItem as Bouteille, this);
                     popup.ShowDialog();
                 }
-                
-               
-                dtgInventaire.Items.Refresh();
+
+                dtgInventaire.ItemsSource = new ObservableCollection<Bouteille>(ChargerListBouteille());
+                //dtgInventaire.Items.Refresh();
 
             }
 

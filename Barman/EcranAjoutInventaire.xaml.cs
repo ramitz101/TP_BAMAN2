@@ -64,6 +64,7 @@ namespace Barman
             {
                 quantite = 1;
                 txtQuantite.Text = quantite.ToString();
+                MessageBox.Show(ex.ToString());
             }
         }
 
@@ -136,6 +137,8 @@ namespace Barman
             {           
                 HibernateMarqueService.Create(new Marque(txtMarque.Text, int.Parse(cboTypeAlcool.SelectedValue.ToString())));
                 txtMarque.Clear();
+
+                cboMarque.ItemsSource = new ObservableCollection<Marque>(ChargerListMarque());
             }
             else
             {
@@ -172,6 +175,8 @@ namespace Barman
             {
                 HibernateTypeAlcoolService.Create(new TypeAlcool(txtNouveauType.Text));
                 txtNouveauType.Clear();
+
+                cboTypeAlcool.ItemsSource = new ObservableCollection<TypeAlcool>(ChargerListTypeAlcool());
             }
             else
             {
