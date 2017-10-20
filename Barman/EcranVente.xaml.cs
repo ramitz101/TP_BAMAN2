@@ -2,9 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -72,10 +72,38 @@ namespace Barman
         {
             try
             {
-                Vente v = new Vente(float.Parse(lblPrixVente.Content.ToString()), DateTime.Now, int.Parse(txtQuantite.Text), (int)LaBouteilleVendu.IdBouteille, (int)EcranAccueil.employe.IdEmploye);
-                HibernateVenteService.Create(v);
-                lblComfirmationAjout.Foreground = Brushes.Green;
-                lblComfirmationAjout.Content = "Ajout réussi";
+                if (LaBouteilleVendu.VolumeRestant < int.Parse(txtQuantite.Text))
+                {
+                    lblComfirmationAjout.Foreground = Brushes.Red;
+                    lblComfirmationAjout.Content = "Erreur, quantité restante insuffisante";
+
+                }
+                else if( LaBouteilleVendu.IdEmplacement == 9)
+                {
+                    lblComfirmationAjout.Foreground = Brushes.Red;
+                    lblComfirmationAjout.Content = "Erreur, cette bouteille n'existe plus";
+                }
+                else
+                {
+                    Vente v = new Vente(float.Parse(lblPrixVente.Content.ToString()), DateTime.Now, int.Parse(txtQuantite.Text), (int)LaBouteilleVendu.IdBouteille, (int)EcranAccueil.employe.IdEmploye);
+                    HibernateVenteService.Create(v);
+                    lblComfirmationAjout.Foreground = Brushes.Green;
+                    lblComfirmationAjout.Content = "Ajout réussi";
+
+                    if (LaBouteilleVendu.Etat == "Pleine")
+                        LaBouteilleVendu.Etat = "Entamée";
+
+                    LaBouteilleVendu.VolumeRestant -= v.Volume;
+
+                    if (LaBouteilleVendu.VolumeRestant == 0)
+                    {
+                        LaBouteilleVendu.Etat = "Vide";
+                        LaBouteilleVendu.IdEmplacement = 9;
+
+                    }
+                    HibernateBouteilleService.Update(LaBouteilleVendu);
+
+                }            
             }
             catch(Exception z)
             {
@@ -83,6 +111,8 @@ namespace Barman
                 lblComfirmationAjout.Content = "Une erreur est survénu";
             }
         }
+
+       
 
         private void btnAccueil_Click(object sender, RoutedEventArgs e)
         {
@@ -160,6 +190,7 @@ namespace Barman
         private void cboEmplacement_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             cboMarque.ItemsSource = ChargerListBouteille();
+            LaBouteilleVendu = null;
         }
 
         private void cboMarque_SelectionChanged(object sender, SelectionChangedEventArgs e)
