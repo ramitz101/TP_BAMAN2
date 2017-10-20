@@ -17,7 +17,7 @@
                 <DataGridTextColumn Header="Date" Width="2*" Binding="{Binding DateCommande}" />
                 <DataGridTextColumn Header="Quantite" Width="2*" Binding="{Binding Quantite}"/>
                 <DataGridTextColumn Header="Responsable" Width="2*" Binding="{Binding UnEmploye.Prenom}"/>
-                
+
 
             </DataGrid.Columns>
 
@@ -34,7 +34,14 @@
                 <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Imprimer"/></TextBlock>
             </StackPanel>
         </Button>
-        
+
+        <Button Name="btnRecevoirCommande" Click="btnRecevoirCommande_Click"  HorizontalAlignment="Left" Margin="10,184,0,0" Background="White" VerticalAlignment="Top"  Width="163" Height="71" Grid.ColumnSpan="2">
+            <StackPanel Width="140" Orientation="Horizontal">
+                <Image Source="images/commande.png" Width="40" Height="40" />
+                <TextBlock HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="21"><Run Text="Recevoir"/></TextBlock>
+            </StackPanel>
+        </Button>
+
         <Button Name="btnAccueil" Click="btnAccueil_Click" FontSize="21" HorizontalAlignment="Left" Background="White" Margin="10,259,0,0" VerticalAlignment="Top" Width="163" Height="70" Grid.ColumnSpan="2">
             <StackPanel Width="140" Orientation="Horizontal">
                 <Image Source="images/Flechearriere.png" Width="40" Height="40"  />

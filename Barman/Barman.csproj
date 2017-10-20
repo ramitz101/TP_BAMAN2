@@ -70,6 +70,9 @@
     <Compile Include="BouteilleMap.cs" />
     <Compile Include="Commande.cs" />
     <Compile Include="CommandeMap.cs" />
+    <Compile Include="EcranRecevoirCommande.xaml.cs">
+      <DependentUpon>EcranRecevoirCommande.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EmplacementMap.cs" />
     <Compile Include="Employe.cs" />
     <Compile Include="EmployeMap.cs" />
@@ -129,6 +132,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="EcranOnglets.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EcranRecevoirCommande.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -45,12 +45,12 @@ namespace Barman
                 FenetreAuthentification FN = new FenetreAuthentification();
                 FN.ShowDialog();
             }
-            if (EcranAccueil.employe.IdRole != 1 && EcranAccueil.employe.IdRole != null)
+            if (EcranAccueil.employe.SonRole.Code == "Utils" && EcranAccueil.employe.IdRole != null)
             {
                 FenetreErreur FE = new FenetreErreur();
                 FE.ShowDialog();
             }
-            if (EcranAccueil.employe.IdRole == 1)
+            if (EcranAccueil.employe.SonRole.Code == "Admin")
             {
                 ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
                 EcranNouvelleCommande EcranNouvelCommand = new EcranNouvelleCommande();
@@ -65,6 +65,24 @@ namespace Barman
             ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EA);
         }
 
-        
+        private void btnRecevoirCommande_Click(object sender, RoutedEventArgs e)
+        {
+            if (EcranAccueil.employe.IdRole == null)
+            {
+                FenetreAuthentification FN = new FenetreAuthentification();
+                FN.ShowDialog();
+            }
+            if (EcranAccueil.employe.SonRole.Code == "Utils" && EcranAccueil.employe.IdRole != null)
+            {
+                FenetreErreur FE = new FenetreErreur();
+                FE.ShowDialog();
+            }
+            if (EcranAccueil.employe.SonRole.Code == "Admin")
+            {
+                ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
+                EcranRecevoirCommande EcranRecevoirCommande = new EcranRecevoirCommande();
+                ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0, EcranRecevoirCommande);
+            }
+        }
     }
 }
