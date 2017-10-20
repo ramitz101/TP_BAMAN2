@@ -24,7 +24,9 @@ namespace Barman
         {
             InitializeComponent();
             this.Owner = App.Current.MainWindow;
-            txtCode.Focus();
+            pwdBox.Focus();
+            
+            
            
         }
 
@@ -55,7 +57,7 @@ namespace Barman
         
                 foreach(var i in listEmploye)
                 {
-                    if(i.CodeEmploye == txtCode.Text)
+                    if(i.CodeEmploye == pwdBox.Password.ToString()  )
                     {
                         listEmploye = new List<Employe>(HibernateEmployeService.Retrieve((int)i.IdEmploye));
                         return listEmploye.ElementAt(0);
