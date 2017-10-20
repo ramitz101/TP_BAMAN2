@@ -146,23 +146,22 @@ namespace Barman
 
         private bool ValideMarqueAlcool()
         {
-            bool estValide = true;
+            bool estValide = false;
             List<string> lstNomMarque = new List<string>(HibernateMarqueService.RetrieveAllNomMarque());
 
             if (txtMarque.Text.Length < 100)
             {
                 foreach (var nom in lstNomMarque)
                 {
-                    if (nom == txtMarque.Text)
+                    if (nom != txtMarque.Text)
                     {
-                        estValide = false;
+                        estValide = true;
                     }
+                    else
+                        estValide = false;
                 }
             }
-            else
-            {
-                estValide = false;
-            }
+            
 
             return estValide;
         }
@@ -183,7 +182,7 @@ namespace Barman
 
         private bool ValidetypeAlcool()
         {
-            bool estValide = true;
+            bool estValide = false;
             Regex r = new Regex("^[a-zA-Z]*$");            
             List<string> lstTypeAlcool = new List<string>(HibernateTypeAlcoolService.RetrieveAllTypeAlcool());
 
@@ -191,17 +190,15 @@ namespace Barman
             {
                 foreach (var nom in lstTypeAlcool)
                 {
-                    if (nom == txtNouveauType.Text)
+                    if (nom != txtNouveauType.Text)
                     {
-                        estValide = false;
+                        estValide = true;
                     }
-
+                    else
+                        estValide = false;
                 }
             }
-            else
-            {
-                estValide = false;
-            }
+                  
             return estValide;
         }
     }

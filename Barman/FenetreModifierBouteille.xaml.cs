@@ -59,11 +59,34 @@ namespace Barman
 
         private void btnConfirmer_Click(object sender, RoutedEventArgs e)
         {
-            bouteilleModifier.VolumeRestant = int.Parse(txtVolumeRestant.Text);
-            bouteilleModifier.SonEmplacement.IdEmplacement = (int)cboEmplacement.SelectedValue;
-            HibernateBouteilleService.Update(bouteilleModifier);
+            if (ValideChamp())
+            {
+                bouteilleModifier.VolumeRestant = int.Parse(txtVolumeRestant.Text);
+                bouteilleModifier.SonEmplacement.IdEmplacement = (int)cboEmplacement.SelectedValue;
+                HibernateBouteilleService.Update(bouteilleModifier);
+                this.Close();
 
-            this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Erreur dans la validation des champs modifier");
+            }
+
+        }
+
+        private bool ValideChamp()
+        {
+            bool estValide = false;
+            int n;
+            if (int.TryParse(txtVolumeRestant.Text, out n))
+            {
+                if (n < int.Parse(txtFormatBouteille.Content.ToString()))
+                {
+                    estValide = true;
+                }
+            }
+            
+            return estValide;
         }
     }
 }
