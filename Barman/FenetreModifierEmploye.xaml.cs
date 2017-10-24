@@ -56,15 +56,20 @@ namespace Barman
 
         private void btnConfirmer_Click(object sender, RoutedEventArgs e)
         {
-            EmployeModifier.Nom = txtNom.Text;
-            EmployeModifier.Prenom = txtPrenom.Text;
-            EmployeModifier.Telephone = txtTelephone.Text;
-            EmployeModifier.NAS = txtNAS.Text;
-            EmployeModifier.IdRole = RoleChoisi();
+            if (ValidationChamps())
+            {
+                EmployeModifier.Nom = txtNom.Text;
+                EmployeModifier.Prenom = txtPrenom.Text;
+                EmployeModifier.Telephone = txtTelephone.Text;
+                EmployeModifier.NAS = txtNAS.Text;
+                EmployeModifier.IdRole = RoleChoisi();
 
-            HibernateEmployeService.Update(EmployeModifier);
+                HibernateEmployeService.Update(EmployeModifier);
 
-            this.Close();
+                this.Close();
+
+            }else
+                MessageBox.Show("Une erreur est survenu lors de la modification d'un employe. Vérifier le contenu des champs et réessayé.");
         }
 
         private int RoleChoisi()
@@ -83,6 +88,22 @@ namespace Barman
 
 
 
+        }
+
+        private bool ValidationChamps()
+        {
+            if (txtNom.Text != "" && txtPrenom.Text != "" && UnRdbEstChoisi() && Employe.ValiderNAS(txtNAS.Text) && Employe.ValiderNumeroTelephone(txtTelephone.Text))
+                return true;
+            else
+                return false;
+        }
+
+        public bool UnRdbEstChoisi()
+        {
+            if (rdbAdministrateur.IsChecked == true || rdbUtilisateur.IsChecked == true)
+                return true;
+            else
+                return false;
         }
 
 

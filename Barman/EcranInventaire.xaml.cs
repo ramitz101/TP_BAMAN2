@@ -26,8 +26,11 @@ namespace Barman
         public EcranInventaire()
         {
             InitializeComponent();
+            lstBouteilles = new ObservableCollection<Bouteille>(ChargerListBouteille());
             dtgInventaire.ItemsSource = lstBouteilles;
             dtgInventaire.Items.Refresh();
+
+            dtgInventaire.IsReadOnly = true;
         }
 
      
@@ -177,7 +180,9 @@ namespace Barman
             dtgInventaire.ItemsSource = lstBouteille;
          }
       }
-
-      
+      private void btnImprimer_Click(object sender, RoutedEventArgs e)
+      {
+         MessageBox.Show("Bravo, vous avez imprimer avec succès!");
+      }
    }
 }

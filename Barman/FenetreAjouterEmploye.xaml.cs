@@ -24,6 +24,7 @@ namespace Barman
             InitializeComponent();
             this.Owner = App.Current.MainWindow;
             calendarDate.SelectedDate = DateTime.Now;
+            rdbUtilisateur.IsChecked = true;
         }
 
         private void btnAnnuler_Click(object sender, RoutedEventArgs e)
@@ -32,11 +33,34 @@ namespace Barman
         }
 
         private void btnConfirmer_Click(object sender, RoutedEventArgs e)
-        {           
+        {
+            if (ValidationChamps())
+            {
+                HibernateEmployeService.Create(new Employe(txtNom.Text, txtPrenom.Text, txtTelephone.Text, txtNAS.Text, calendarDate.SelectedDate.Value, RoleChoisi()));
+                this.Close();
 
+            }
+            else
+            {
+                MessageBox.Show("Une erreur est survenu lors de la saisie des champs");
+            }
 
-            HibernateEmployeService.Create(new Employe(txtNom.Text, txtPrenom.Text, txtTelephone.Text, txtNAS.Text, calendarDate.SelectedDate.Value, RoleChoisi()));
-            this.Close();
+        }
+
+        private bool ValidationChamps()
+        {
+            if (txtNom.Text != "" && txtPrenom.Text != "" && UnRdbEstChoisi() && Employe.ValiderNAS(txtNAS.Text) && Employe.ValiderNumeroTelephone(txtTelephone.Text))            
+                return true;            
+            else
+                return false;            
+        }
+
+        public bool UnRdbEstChoisi()
+        {
+            if (rdbAdministrateur.IsChecked == true || rdbUtilisateur.IsChecked == true)
+                return true;
+            else
+                return false;
         }
 
         private int RoleChoisi()
