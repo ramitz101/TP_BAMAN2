@@ -21,19 +21,22 @@ namespace Barman
     /// </summary>
     public partial class EcranRecevoirCommande : UserControl
     {
-        private ObservableCollection<Bouteille> listBouteilleCommand = new ObservableCollection<Bouteille>(ChargerBouteilleCommande());
-        static private int IdCommande { get; set; }
+        private ObservableCollection<Bouteille> listBouteilleCommand;
+        
         public EcranRecevoirCommande(Commande c)
         {
             InitializeComponent();
+
+            listBouteilleCommand = new ObservableCollection<Bouteille>(ChargerBouteilleCommande((int)c.IdCommande));
             dtgCommande.ItemsSource = listBouteilleCommand;
-            IdCommande = (int)c.IdCommande;
+            
 
             
         }
 
         private void btnAnnuler_Click(object sender, RoutedEventArgs e)
         {
+            
             ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
             EcranOnglets EO = new EcranOnglets(3);
             ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EO);
@@ -46,7 +49,7 @@ namespace Barman
             ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EO);
         }
 
-        static List<Bouteille> ChargerBouteilleCommande()
+        static List<Bouteille> ChargerBouteilleCommande(int IdCommande)
         {
             List<Bouteille> listB = new List<Bouteille>();
 
@@ -64,7 +67,19 @@ namespace Barman
 
         private void btnSupprimer_Click(object sender, RoutedEventArgs e)
         {
+            if(dtgCommande.SelectedCells.Count >= 1)
+            {
+                for(int i =0; i < dtgCommande.SelectedCells.Count;i++)
+                {
+                    listBouteilleCommand.ElementAt(dtgCommande.SelectedIndex + i);
+                }
 
+
+            }
+            else
+            {
+                MessageBox.Show("Vous devez sélectionner une bouteille pour supprimer", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
     }
 }
