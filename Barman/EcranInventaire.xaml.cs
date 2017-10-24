@@ -27,6 +27,7 @@ namespace Barman
         {
             InitializeComponent();
             dtgInventaire.ItemsSource = lstBouteilles;
+            dtgInventaire.Items.Refresh();
         }
 
      
