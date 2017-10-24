@@ -40,49 +40,16 @@ namespace Barman
             cboTypeAlcool.SelectedValuePath = "IdTypeAlcool";
             cboTypeAlcool.SelectedIndex = 0;
 
-            cboMarque.ItemsSource = lstMarques;                       
-            cboMarque.DisplayMemberPath = "Nom";
-            cboMarque.SelectedValuePath = "IdMarque";
-            cboMarque.SelectedIndex = 0;
+            
 
 
         }
 
       
 
-        private void btnReduireQ_Click(object sender, RoutedEventArgs e)
-        {
-            int quantite;
-            try
-            {
-                quantite = Int32.Parse(txtQuantite.Text);
-                if (quantite > 1)
-                    quantite--;
-                txtQuantite.Text = quantite.ToString();
-            }
-            catch (Exception ex)
-            {
-                quantite = 1;
-                txtQuantite.Text = quantite.ToString();
-                MessageBox.Show(ex.ToString());
-            }
-        }
+        
 
-        private void btnAugmenterQ_Click(object sender, RoutedEventArgs e)
-        {
-            int quantite;
-            try
-            {
-                quantite = Int32.Parse(txtQuantite.Text);
-                quantite++;
-                txtQuantite.Text = quantite.ToString();
-            }
-            catch (Exception ex)
-            {
-                quantite = 1;
-                txtQuantite.Text = quantite.ToString();
-            }
-        }
+        
 
         private void btnAnnuler_Click(object sender, RoutedEventArgs e)
         {
@@ -117,19 +84,7 @@ namespace Barman
             return listTA;
         }
 
-        private void btnAjouterCommande_Click(object sender, RoutedEventArgs e)
-        {
-            int quantite = int.Parse(txtQuantite.Text);
-
-            for (int i = 0; i < quantite; i++)
-            {
-                HibernateBouteilleService.Create(new Bouteille(int.Parse(cboMarque.SelectedValuePath), int.Parse(txtVolume.Text), txtNumero.Text, float.Parse(txtPrix.Text, CultureInfo.InvariantCulture.NumberFormat)));            
-            }
-
-            txtVolume.Clear();
-         
-            txtQuantite.Text = "1";
-        }
+      
 
         private void btnAjouterNouvelleM_Click(object sender, RoutedEventArgs e)
         {
@@ -137,8 +92,6 @@ namespace Barman
             {           
                 HibernateMarqueService.Create(new Marque(txtMarque.Text, int.Parse(cboTypeAlcool.SelectedValue.ToString())));
                 txtMarque.Clear();
-
-                cboMarque.ItemsSource = new ObservableCollection<Marque>(ChargerListMarque());
             }
             else
             {
@@ -152,7 +105,7 @@ namespace Barman
             bool estValide = false;
             List<string> lstNomMarque = new List<string>(HibernateMarqueService.RetrieveAllNomMarque());
 
-            if (txtMarque.Text.Length < 100)
+            if (txtMarque.Text.Length < 100 && txtMarque.Text.Length > 0)
             {
                 foreach (var nom in lstNomMarque)
                 {
@@ -191,7 +144,7 @@ namespace Barman
             Regex r = new Regex("^[a-zA-Z]*$");            
             List<string> lstTypeAlcool = new List<string>(HibernateTypeAlcoolService.RetrieveAllTypeAlcool());
 
-            if (txtNouveauType.Text.Length < 50 && r.IsMatch(txtNouveauType.Text))
+            if (txtNouveauType.Text.Length < 50 && txtNouveauType.Text.Length > 0 && r.IsMatch(txtNouveauType.Text))
             {
                 foreach (var nom in lstTypeAlcool)
                 {

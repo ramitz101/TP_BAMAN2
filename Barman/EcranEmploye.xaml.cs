@@ -31,6 +31,7 @@ namespace Barman
         {
             InitializeComponent();
             dtgEmploye.ItemsSource = lstEmployes;
+            dtgEmploye.IsReadOnly = true;
             
 
         }

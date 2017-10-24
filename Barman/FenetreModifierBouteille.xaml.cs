@@ -80,7 +80,7 @@ namespace Barman
             int n;
             if (int.TryParse(txtVolumeRestant.Text, out n))
             {
-                if (n < int.Parse(txtFormatBouteille.Content.ToString()))
+                if (n < int.Parse(txtFormatBouteille.Content.ToString()) && n>0)
                 {
                     estValide = true;
                 }
