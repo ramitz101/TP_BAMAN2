@@ -34,6 +34,7 @@ namespace Barman
         public EcranCommande()
         {
             InitializeComponent();
+            dtgCommande.CanUserAddRows = false;
             
             dtgCommande.ItemsSource = lstCommandes;
         }

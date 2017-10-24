@@ -22,7 +22,7 @@ namespace Barman
     /// </summary>
     public partial class EcranVente : UserControl
     {
-   
+        private int prix {get;set; }
         private Bouteille LaBouteilleVendu;
         private List<Bouteille> lstBouteille = new List<Bouteille>();
         private ObservableCollection<Emplacement> lstEmplacement = new ObservableCollection<Emplacement>(ChargerListEmplacement());
@@ -85,7 +85,8 @@ namespace Barman
                 }
                 else
                 {
-                    Vente v = new Vente((float.Parse(lblPrixVente.Content.ToString())/ int.Parse(txtQuantite.Text)), DateTime.Now, int.Parse(txtQuantite.Text), (int)LaBouteilleVendu.IdBouteille, (int)EcranAccueil.employe.IdEmploye);
+                    
+                    Vente v = new Vente((prix/ int.Parse(txtQuantite.Text)), DateTime.Now, int.Parse(txtQuantite.Text), (int)LaBouteilleVendu.IdBouteille, (int)EcranAccueil.employe.IdEmploye);
                     HibernateVenteService.Create(v);
                     lblComfirmationAjout.Foreground = Brushes.Green;
                     lblComfirmationAjout.Content = "Ajout réussi";
@@ -108,6 +109,7 @@ namespace Barman
             }
             catch(Exception z)
             {
+                MessageBox.Show(z.ToString());
                 lblComfirmationAjout.Foreground = Brushes.Red;
                 lblComfirmationAjout.Content = "Une erreur est survénu";
             }
@@ -216,25 +218,30 @@ namespace Barman
             
             if (LaBouteilleVendu != null)
             {
-                
+                // FAIRE UN FOR 
                 if (LaBouteilleVendu.PrixBouteille <= 40)
                 {
+                    prix = 6 * int.Parse(txtQuantite.Text);
                     lblPrixVente.Content = (6 * int.Parse(txtQuantite.Text)).ToString("0.00" + " $");                
                 }
                 else if (LaBouteilleVendu.PrixBouteille <= 50)
                 {
+                    prix = 7 * int.Parse(txtQuantite.Text);
                     lblPrixVente.Content = (7 * int.Parse(txtQuantite.Text)).ToString("0.00"+ " $");
                 }
                 else if (LaBouteilleVendu.PrixBouteille <= 60)
                 {
+                    prix = 8 * int.Parse(txtQuantite.Text);
                     lblPrixVente.Content = (8 * int.Parse(txtQuantite.Text)).ToString("0.00" + " $");
                 }
                 else if (LaBouteilleVendu.PrixBouteille <= 70)
                 {
+                    prix = 9 * int.Parse(txtQuantite.Text);
                     lblPrixVente.Content = (9 * int.Parse(txtQuantite.Text)).ToString("0.00" + " $");
                 }
                 else
                 {
+                    prix = 10 * int.Parse(txtQuantite.Text);
                     lblPrixVente.Content = (10 * int.Parse(txtQuantite.Text)).ToString("0.00" + " $");
                 }
 

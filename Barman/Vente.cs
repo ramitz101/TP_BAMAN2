@@ -36,7 +36,7 @@ namespace Barman
             laBouteille = new Bouteille();
         }
 
-        public Vente(float prixOnce,DateTime dateVente,int? volume,int pIdBouteille,int pIdEmploye)
+        public Vente(float prixOnce,DateTime dateVente,int volume,int pIdBouteille,int pIdEmploye)
         {
             PrixOnce = prixOnce;
             DateVente = dateVente;

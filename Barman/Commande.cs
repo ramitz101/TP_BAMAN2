@@ -15,6 +15,8 @@ namespace Barman
 
         public virtual Employe UnEmploye { get; set; }
 
+        public virtual string Etat { get; set; }
+
         public virtual IList<Bouteille> ListBouteille { get; set; }
         //public int Quantite { get; set; }
 
@@ -22,6 +24,7 @@ namespace Barman
         {
             IdCommande = null;
             IdEmploye = null;
+            Etat = string.Empty;
             DateCommande = DateTime.MinValue;
             UnEmploye = new Employe();
             ListBouteille = new List<Bouteille>();
@@ -31,13 +34,22 @@ namespace Barman
             DateCommande = dateCommande;
             IdEmploye = pIdEmploye;
         }
-        public Commande(DateTime dateCommande, int pIdEmploye, int pIdCommande)
+        public Commande(DateTime dateCommande, int pIdEmploye, int pIdCommande,string etat)
         {
             DateCommande = dateCommande;
             IdEmploye = pIdEmploye;
             IdCommande = pIdCommande;
+            Etat = etat;
         }
 
+        public Commande(Commande c)
+        {
+            IdCommande = c.IdCommande;
+            IdEmploye = c.IdEmploye;
+            DateCommande = c.DateCommande;
+            UnEmploye = c.UnEmploye;
+            ListBouteille = c.ListBouteille;
+        }
 
         // Pour utiliser NHibernate, il faut surcharger Equals et GetHashCode.
         public override bool Equals(object obj)

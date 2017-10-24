@@ -10,10 +10,11 @@
 
 
         <Label Content="Commande" FontWeight="Bold" Margin="10,30,0,314" RenderTransformOrigin="0.54,0.61"  HorizontalAlignment="Left" Width="74"></Label>
-        <DataGrid Name="dtgCommande" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="243" Margin="10,61,0,0" VerticalAlignment="Top" Width="535" >
+        <DataGrid Name="dtgCommande" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="243" Margin="10,61,0,0" VerticalAlignment="Top" Width="535" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Marque" Width="2*" Binding="{Binding SaMarque.Nom}"/>
                 <DataGridTextColumn Header="Format(oz)" Width="1*" Binding="{Binding VolumeInitial}"/>
+                <DataGridTextColumn Header="Quantité" Width="1*" Binding="{Binding  }"/>
             </DataGrid.Columns>
         </DataGrid>
 

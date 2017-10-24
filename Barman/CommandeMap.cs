@@ -30,6 +30,13 @@ namespace Barman
              .Generated.Never()
              .CustomSqlType("datetime");
 
+            Map(x => x.Etat)
+          .Column("Etat")
+          .CustomType<string>()
+          .Access.Property()
+          .Generated.Never()
+          .CustomSqlType("VARCHAR");
+
             // Foreign key
             Map(x => x.IdEmploye)
              .Column("idEmploye")

@@ -27,6 +27,7 @@ namespace Barman
         public EcranGererVente()
         {
             InitializeComponent();
+            dtgVenteEmploye.CanUserAddRows = false;
             cldVente.SelectedDate = DateTime.Now;
             cboEmploye.ItemsSource = lstEmploye;
             cboEmploye.DisplayMemberPath = "Nom";

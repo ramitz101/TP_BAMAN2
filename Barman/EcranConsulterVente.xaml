@@ -9,7 +9,7 @@
     <Grid>
        
         <Calendar Name="cldVente" SelectedDatesChanged="cldVente_SelectedDatesChanged" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top"/>
-        <DataGrid Name="dtgVenteEmploye" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="310" Margin="194,30,0,0" VerticalAlignment="Top" Width="346">
+        <DataGrid Name="dtgVenteEmploye" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="310" Margin="194,30,0,0" VerticalAlignment="Top" Width="346">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Bouteille" Width="1.3*" Binding="{Binding laBouteille.SaMarque.Nom}" />
                 <DataGridTextColumn Header="Date vente" Width="1.6*" Binding="{Binding DateVente}"/>

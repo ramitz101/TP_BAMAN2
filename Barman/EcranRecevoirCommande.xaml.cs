@@ -22,13 +22,23 @@ namespace Barman
     public partial class EcranRecevoirCommande : UserControl
     {
         private ObservableCollection<Bouteille> listBouteilleCommand;
-        
+        private Commande commande { get; set; }
         public EcranRecevoirCommande(Commande c)
         {
             InitializeComponent();
+            dtgCommande.CanUserAddRows = false;
+            commande = c;
+            
 
             listBouteilleCommand = new ObservableCollection<Bouteille>(ChargerBouteilleCommande((int)c.IdCommande));
-            dtgCommande.ItemsSource = listBouteilleCommand;
+           dtgCommande.ItemsSource = listBouteilleCommand;
+
+           
+            if(c.Etat == "Reçu")
+            {
+                btnConfirmer.IsEnabled = false;
+                btnSupprimer.IsEnabled = false;
+            }
             
 
             
@@ -51,17 +61,14 @@ namespace Barman
 
         static List<Bouteille> ChargerBouteilleCommande(int IdCommande)
         {
-            List<Bouteille> listB = new List<Bouteille>();
-
+            List<Bouteille> listB = new List<Bouteille>();         
             listB = HibernateBouteilleService.RetrieveByIdCommande(IdCommande);
             foreach(var i in listB)
             {
-                i.SaMarque = HibernateMarqueService.Retrieve((int)i.IdMarque)[0];               
+                
+                i.SaMarque = HibernateMarqueService.Retrieve((int)i.IdMarque)[0];                               
             }
-            return listB;
-
-            
-               
+            return listB;   
         }
 
 
@@ -69,17 +76,21 @@ namespace Barman
         {
             if(dtgCommande.SelectedCells.Count >= 1)
             {
-                for(int i =0; i < dtgCommande.SelectedCells.Count;i++)
+                for(int i =0; i < dtgCommande.SelectedItems.Count;i++)
                 {
-                    listBouteilleCommand.ElementAt(dtgCommande.SelectedIndex + i);
-                }
-
-
+                    if(dtgCommande.SelectedItems[i] != null)
+                        HibernateBouteilleService.Delete((Bouteille)dtgCommande.SelectedItems[i]);
+                }   
             }
             else
             {
                 MessageBox.Show("Vous devez sélectionner une bouteille pour supprimer", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
             }
+        }
+
+        private int test()
+        {
+            return -1;
         }
     }
 }
