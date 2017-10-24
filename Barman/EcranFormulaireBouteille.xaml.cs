@@ -23,7 +23,7 @@ namespace Barman
     {
       private List<Bouteille> lstBouteilles = new List<Bouteille>();
       private List<TypeAlcool> lstType = new List<TypeAlcool>(HibernateTypeAlcoolService.RetrieveAll());
-      private List<Emplacement> lstEmplacements = new List<Emplacement>(HibernateEmplacementService.RetrieveAll());
+      private List<Emplacement> lstEmplacements = new List<Emplacement>(HibernateEmplacementService.RetrieveAllForFormulaire());
       private List<Marque> lstMarques = new List<Marque>();
       private List<Employe> lstEmployes = new List<Employe>(HibernateEmployeService.RetrieveAll());
       public EcranFormulaireBouteille()

@@ -17,7 +17,17 @@ namespace Barman
             return session.Query<Emplacement>().ToList();
         }
 
-        public static List<Emplacement> retrieveEmplacement(int pIdEmplacement)
+      public static List<Emplacement> RetrieveAllForFormulaire()
+      {
+         var emplacements = session.Query<Emplacement>().AsQueryable();
+
+         var resultat = from m in emplacements
+                        where m.Nom != "Réserve" && m.Nom!="Aucun"
+                        select m;
+         return resultat.ToList();
+      }
+
+      public static List<Emplacement> retrieveEmplacement(int pIdEmplacement)
         {
             var emplacements = session.Query<Emplacement>().AsQueryable();
 
