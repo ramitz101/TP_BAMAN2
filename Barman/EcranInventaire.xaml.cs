@@ -222,8 +222,7 @@ namespace Barman
 
          doc.Close();
 
-         MessageBox.Show("Fichier créer avec succès.");
-
+         Process.Start("D:/Barman_v2/TP_BAMAN2/Barman/bin/Debug/test1.pdf");
 
 
       }
