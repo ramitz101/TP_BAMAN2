@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +15,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 
 namespace Barman
 {
@@ -193,10 +197,127 @@ namespace Barman
       }
       private void btnImprimer_Click(object sender, RoutedEventArgs e)
       {
-         MessageBox.Show("Bravo, vous avez imprimer avec succès!");
+                           //Crée le fichier
+         FileStream fs = new System.IO.FileStream("Test1.pdf", FileMode.Create, FileAccess.Write, FileShare.None);
+         Document doc = new Document();
+         PdfWriter writer = PdfWriter.GetInstance(doc, fs);
+         doc.Open();
+                
+         //Entête
+         iTextSharp.text.Paragraph titre = new iTextSharp.text.Paragraph("Inventaire");
+         titre.Alignment = Element.ALIGN_CENTER;
+         titre.Font.SetStyle(Font.BOLD);
+         titre.Font.Size = 20;
+         doc.Add(titre);
+         titre = new iTextSharp.text.Paragraph(" ");
+         doc.Add(titre);
+
+         //Création du tableau
+         PdfPTable table = new PdfPTable(6); //Le paramètre indique le nombre de colonne. S'il manque de cellules pour la dernière rangée, il ne mettra simplement pas la rangée
+         table = CreerTabFichier(table);
+         doc.Add(table);
+
+
+
+
+         doc.Close();
+
+         MessageBox.Show("Fichier créer avec succès.");
+
+
+
       }
 
-        private void btnSuppression_Click(object sender, RoutedEventArgs e)
+      private PdfPTable CreerTabFichier(PdfPTable table)
+      {
+
+         
+         PdfPCell cell = new PdfPCell();
+         Phrase text = new Phrase();
+         cell.HorizontalAlignment = Element.ALIGN_CENTER;
+         cell.VerticalAlignment = Element.ALIGN_CENTER;
+
+         text =new Phrase("Marque");
+         cell = new PdfPCell(text);
+         cell.Phrase.Font.SetStyle(Font.BOLD);
+         table.AddCell(cell);
+
+         text = new Phrase("Type");
+         cell = new PdfPCell(text);
+         cell.Phrase.Font.SetStyle(Font.BOLD);
+         table.AddCell(cell);
+
+         text = new Phrase("Volume ini.");
+         cell = new PdfPCell(text);
+         cell.Phrase.Font.SetStyle(Font.BOLD);
+         table.AddCell(cell);
+
+         text = new Phrase("Vol restant");
+         cell = new PdfPCell(text);
+         cell.Phrase.Font.SetStyle(Font.BOLD);
+         table.AddCell(cell);
+
+         text = new Phrase("Numéro");
+         cell = new PdfPCell(text);
+         cell.Phrase.Font.SetStyle(Font.BOLD);
+         table.AddCell(cell);
+
+         text = new Phrase("Emplac.");
+         cell = new PdfPCell(text);
+         cell.Phrase.Font.SetStyle(Font.BOLD);
+         table.AddCell(cell);
+
+         cell.HorizontalAlignment = Element.ALIGN_LEFT;
+         cell.VerticalAlignment = Element.ALIGN_LEFT;
+
+         text.Font = FontFactory.GetFont(FontFactory.HELVETICA, 12);
+
+         foreach (Bouteille b in lstBouteilles)
+         {
+            
+
+            if(b.SaMarque.Nom.Length>=10)
+            {
+               string nom = b.SaMarque.Nom.Substring(0, 9);
+               nom += ".";
+               text = new Phrase(nom);
+               cell = new PdfPCell(text);
+            }
+            else
+            {
+               text = new Phrase(b.SaMarque.Nom);
+               cell = new PdfPCell(text);
+               
+            }
+            table.AddCell(cell);
+
+
+            text = new Phrase(b.SaMarque.SonTypeAlcool.Nom);
+            cell = new PdfPCell(text);
+            table.AddCell(cell);
+
+            text = new Phrase(b.VolumeInitial.ToString());
+            cell = new PdfPCell(text);
+            table.AddCell(cell);
+
+            text = new Phrase(b.VolumeRestant.ToString());
+            cell = new PdfPCell(text);
+            table.AddCell(cell);
+
+            text = new Phrase(b.Numero.ToString());
+            cell = new PdfPCell(text);
+            table.AddCell(cell);
+
+            text = new Phrase(b.SonEmplacement.Nom);
+            cell = new PdfPCell(text);
+            table.AddCell(cell);
+
+         }
+         return table;
+         
+      }
+
+      private void btnSuppression_Click(object sender, RoutedEventArgs e)
         {
 
             if (AuMoinsUneBouteilleSelectionne())
@@ -217,5 +338,12 @@ namespace Barman
                 
             }
         }
+        
+        private PdfPTable CreerEnteteFichier(PdfPTable table)
+        {
+         
+
+         return table;
+      }
     }
 }
