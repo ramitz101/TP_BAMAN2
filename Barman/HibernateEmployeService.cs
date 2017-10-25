@@ -28,6 +28,79 @@ namespace Barman
             return result.ToList();
         }
 
+        public static List<Employe> RetrieveNom(string pNom)
+        {
+            var employes = session.Query<Employe>().AsQueryable();
+
+            var result = from m in employes
+                         where m.Nom.StartsWith(pNom)
+                         select m;
+
+            return result.ToList();
+        }
+        public static List<Employe> RetrievePrenom(string pPrenom)
+        {
+            var employes = session.Query<Employe>().AsQueryable();
+
+            var result = from m in employes
+                         where m.Prenom.StartsWith(pPrenom)
+                         select m;
+
+            return result.ToList();
+        }
+        public static List<Employe> RetrieveNAS(string pNAS)
+        {
+            var employes = session.Query<Employe>().AsQueryable();
+
+            var result = from m in employes
+                         where m.NAS.StartsWith(pNAS)
+                         select m;
+
+            return result.ToList();
+        }
+        public static List<Employe> RetrieveTelephone(string pTelephone)
+        {
+            var employes = session.Query<Employe>().AsQueryable();
+
+            var result = from m in employes
+                         where m.Telephone.StartsWith(pTelephone)
+                         select m;
+
+            return result.ToList();
+        }
+        public static List<Employe> RetrieveDateEmbauche(string pDateEmbauche)
+        {
+            var employes = session.Query<Employe>().AsQueryable();
+
+            var result = from m in employes
+                         where m.DateEmbauche.ToString().Contains(pDateEmbauche)
+                         select m;
+
+            return result.ToList();
+        }
+        public static List<Employe> RetrieveCode(string pCode)
+        {
+            var employes = session.Query<Employe>().AsQueryable();
+
+            var result = from m in employes
+                         where m.CodeEmploye.StartsWith(pCode)
+                         select m;
+
+            return result.ToList();
+        }
+        public static List<Employe> RetrieveRole(int pIdRole)
+        {
+            var employes = session.Query<Employe>().AsQueryable();
+
+            var result = from m in employes
+                         where m.IdRole == pIdRole
+                         select m;
+
+            return result.ToList();
+        }
+
+
+
         public static List<string> RetrieveAllCodeEmploye()
         {
             var employes = session.Query<Employe>().ToList();

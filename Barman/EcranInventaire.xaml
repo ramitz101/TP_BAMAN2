@@ -20,6 +20,7 @@
                 <DataGridTextColumn Header="V.Restant" Width="1*" Binding="{Binding VolumeRestant}"/>
                 <DataGridTextColumn Header="Numéro" Width="2*" Binding="{Binding Numero}"/>
                 <DataGridTextColumn Header="Type d'alcool" Width="2*" Binding="{Binding SaMarque.SonTypeAlcool.Nom}"/>
+                <DataGridTextColumn Header="État" Width="2*" Binding="{Binding Etat}"/>
                 <DataGridTextColumn Header="Emplacement" Width="3*" Binding="{Binding SonEmplacement.Nom}"/>
 
             </DataGrid.Columns>

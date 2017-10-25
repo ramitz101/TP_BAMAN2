@@ -7,7 +7,14 @@
              mc:Ignorable="d" 
              d:DesignHeight="430" d:DesignWidth="600">
     <Grid>
-        <DataGrid Name="dtgEmploye" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="345" VerticalAlignment="Top" Width="393" Margin="178,33,0,0" >
+        <TextBox Name="txtRecherche"  KeyUp="txtRecherche_KeyUp_1" Height="22" VerticalAlignment="Top" Text="Rechercher" LostFocus="txtRecherche_LostFocus" GotFocus="txtRecherche_GotFocus" Margin="197,52,19,0"/>
+        
+        <DataGrid Name="dtgEmploye" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="299" VerticalAlignment="Top" Width="384" Margin="197,79,0,0" >
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <EventSetter Event="Click" Handler="columnHeader_Click" />
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nom" Binding="{Binding Nom}" />
                 <DataGridTextColumn Header="Prénom" Binding="{Binding Prenom}" />

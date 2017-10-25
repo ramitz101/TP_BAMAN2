@@ -17,12 +17,15 @@
         <Label Content="NAS" HorizontalAlignment="Left" Margin="330,2,0,0" VerticalAlignment="Top"/>
         <Label Content="Prénom" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top"/>
         <Label Content="Téléphone" HorizontalAlignment="Left" Margin="10,121,0,0" VerticalAlignment="Top"/>
-        <Label Content="Rôle" HorizontalAlignment="Left" Margin="330,98,0,0" VerticalAlignment="Top"/>
-        <RadioButton Name="rdbAdministrateur" Content="Administrateur" HorizontalAlignment="Left" Margin="368,93,0,0" VerticalAlignment="Top"/>
-        <RadioButton Name="rdbUtilisateur" Content="Utilisateur" HorizontalAlignment="Left" Margin="368,121,0,0" VerticalAlignment="Top"/>
+        <Label Content="Rôle" HorizontalAlignment="Left" Margin="330,82,0,0" VerticalAlignment="Top"/>
+        <RadioButton Name="rdbAdministrateur" Content="Administrateur" HorizontalAlignment="Left" Margin="368,77,0,0" VerticalAlignment="Top"/>
+        <RadioButton Name="rdbUtilisateur" Content="Utilisateur" HorizontalAlignment="Left" Margin="368,105,0,0" VerticalAlignment="Top"/>
         <Button Name="btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="342,195,0,0" VerticalAlignment="Top" Width="90" Height="26" Click="btnConfirmer_Click"/>
         <Button Name="btnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="23,195,0,0" VerticalAlignment="Top" Width="90" Height="26" Click="btnAnnuler_Click" />
         <Calendar Name="CalendarModifierEmploye" HorizontalAlignment="Left" Margin="140,28,0,0" VerticalAlignment="Top"/>
+        <Button Name="btnGenererNouveauCode" Content="+" HorizontalAlignment="Left" Margin="330,152,0,0" VerticalAlignment="Top" Width="23" Height="23" Click="btnGenererNouveauCode_Click"/>
+        <TextBox Name="txtCode" IsReadOnly="true" HorizontalAlignment="Left" Height="23" Margin="358,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="97" />
+        <Label Content="Nouveau code" HorizontalAlignment="Left" Margin="330,126,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

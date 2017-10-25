@@ -37,9 +37,20 @@ namespace Barman
 
             return result.ToList();
         }
+        public static List<Role> RetrieveRole(string pNomRole)
+        {
+            var roles = session.Query<Role>().AsQueryable();
+
+            var result = from m in roles
+                         where m.Code.StartsWith(pNomRole)
+                         select m;
+
+            return result.ToList();
 
 
-        public static void Create(Role role)
+        }
+
+            public static void Create(Role role)
         {
             using (var transaction = session.BeginTransaction())
             {

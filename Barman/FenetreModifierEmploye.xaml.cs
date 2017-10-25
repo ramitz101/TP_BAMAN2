@@ -42,6 +42,7 @@ namespace Barman
                     rdbAdministrateur.IsChecked = true;
                 else
                     rdbUtilisateur.IsChecked = true;
+                txtCode.Text = employe.CodeEmploye;
 
 
 
@@ -63,6 +64,7 @@ namespace Barman
                 EmployeModifier.Telephone = txtTelephone.Text;
                 EmployeModifier.NAS = txtNAS.Text;
                 EmployeModifier.IdRole = RoleChoisi();
+                EmployeModifier.CodeEmploye = txtCode.Text;
 
                 HibernateEmployeService.Update(EmployeModifier);
 
@@ -106,6 +108,10 @@ namespace Barman
                 return false;
         }
 
-
+        private void btnGenererNouveauCode_Click(object sender, RoutedEventArgs e)
+        {
+            txtCode.Text = Generer.genererCode(Employe.GetCodeEmployeDejaExistant());
+            //txtCode.Text = Employe.genererCodeEmploye();
+        }
     }
 }

@@ -115,6 +115,7 @@
     <Compile Include="FenetreErreur.xaml.cs">
       <DependentUpon>FenetreErreur.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Generer.cs" />
     <Compile Include="HibernateBouteilleService.cs" />
     <Compile Include="HibernateCommandeService.cs" />
     <Compile Include="HibernateEmplacementService.cs" />

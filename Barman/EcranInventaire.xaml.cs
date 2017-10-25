@@ -22,7 +22,7 @@ namespace Barman
     public partial class EcranInventaire : UserControl
     {
         private static ObservableCollection<Bouteille> lstBouteilles = new ObservableCollection<Bouteille>(ChargerListBouteille());
-        
+
         public EcranInventaire()
         {
             InitializeComponent();
@@ -33,7 +33,7 @@ namespace Barman
             dtgInventaire.IsReadOnly = true;
         }
 
-     
+
         private void btnAjout_Click(object sender, RoutedEventArgs e)
         {
             if (EcranAccueil.employe.IdRole == null)
@@ -66,7 +66,7 @@ namespace Barman
                     FenetreAuthentification FN = new FenetreAuthentification();
                     FN.ShowDialog();
                 }
-                if(EcranAccueil.employe.IdRole != 1 && EcranAccueil.employe.IdRole != null)
+                if (EcranAccueil.employe.IdRole != 1 && EcranAccueil.employe.IdRole != null)
                 {
                     FenetreErreur FE = new FenetreErreur();
                     FE.ShowDialog();
@@ -91,23 +91,23 @@ namespace Barman
             ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EA);
         }
 
-        
+
         // fonction charger tous les bouteille de l'inventaire (chargerListeBouteille) elle retourne la liste de la BD
         private static List<Bouteille> ChargerListBouteille()
         {
             List<Bouteille> listB = new List<Bouteille>(HibernateBouteilleService.RetrieveAll());
-         foreach (Bouteille b in listB)
-         {
-            b.SaMarque = HibernateMarqueService.Retrieve((int)b.IdMarque)[0];
-            b.SaMarque.SonTypeAlcool = HibernateTypeAlcoolService.RetrieveTypeAlcool((int)b.SaMarque.IdTypeAlcool)[0];
-            b.SonEmplacement = HibernateEmplacementService.retrieveEmplacement((int)b.IdEmplacement)[0];
+            foreach (Bouteille b in listB)
+            {
+                b.SaMarque = HibernateMarqueService.Retrieve((int)b.IdMarque)[0];
+                b.SaMarque.SonTypeAlcool = HibernateTypeAlcoolService.RetrieveTypeAlcool((int)b.SaMarque.IdTypeAlcool)[0];
+                b.SonEmplacement = HibernateEmplacementService.retrieveEmplacement((int)b.IdEmplacement)[0];
 
-         }
+            }
 
             return listB;
         }
 
-        
+
 
         private bool UneBouteilleSelectionne()
         {
@@ -138,70 +138,70 @@ namespace Barman
         }
 
         private void txtRecherche_GotFocus(object sender, RoutedEventArgs e)
-      {
-         txtRecherche.Text = "";
-         List<Bouteille> lstBouteille = HibernateBouteilleService.RetrieveAll();
-         foreach (Bouteille b in lstBouteille)
-         {
-            b.SaMarque = HibernateMarqueService.Retrieve((int)b.IdMarque)[0];
-            b.SaMarque.SonTypeAlcool = HibernateTypeAlcoolService.RetrieveTypeAlcool((int)b.SaMarque.IdTypeAlcool)[0];
-            b.SonEmplacement = HibernateEmplacementService.retrieveEmplacement((int)b.IdEmplacement)[0];
-         }
-         dtgInventaire.ItemsSource = lstBouteille;
-      }
-
-      private void txtRecherche_LostFocus(object sender, RoutedEventArgs e)
-      {
-         txtRecherche.Text = "Rechercher";
-      }
-
-  
-    
-
-      private void txtRecherche_KeyUp_1(object sender, KeyEventArgs e)
-      {
-         List<Bouteille> lstBouteille = new List<Bouteille>();
-         List<Marque> lstMarque = new List<Marque>();
-         if (txtRecherche.Text != "" && txtRecherche.Text != "Recherche")
-         {
-            lstMarque = HibernateMarqueService.Retrieve(txtRecherche.Text);
-            foreach (Marque m in lstMarque)
+        {
+            txtRecherche.Text = "";
+            List<Bouteille> lstBouteille = HibernateBouteilleService.RetrieveAll();
+            /*foreach (Bouteille b in lstBouteille)
             {
-               lstBouteille.AddRange(HibernateBouteilleService.RetrieveByMarqueId((int)m.IdMarque));
-            }
-            
+                b.SaMarque = HibernateMarqueService.Retrieve((int)b.IdMarque)[0];
+                b.SaMarque.SonTypeAlcool = HibernateTypeAlcoolService.RetrieveTypeAlcool((int)b.SaMarque.IdTypeAlcool)[0];
+                b.SonEmplacement = HibernateEmplacementService.retrieveEmplacement((int)b.IdEmplacement)[0];
+            }*/
+            dtgInventaire.ItemsSource = lstBouteille;
+        }
 
-            if (lstBouteille.Count != 0)
-               dtgInventaire.ItemsSource = lstBouteille;
+        private void txtRecherche_LostFocus(object sender, RoutedEventArgs e)
+        {
+            txtRecherche.Text = "Rechercher";
+        }
+
+
+
+
+        private void txtRecherche_KeyUp_1(object sender, KeyEventArgs e)
+        {
+            List<Bouteille> lstBouteille = new List<Bouteille>();
+            List<Marque> lstMarque = new List<Marque>();
+            if (txtRecherche.Text != "" && txtRecherche.Text != "Recherche")
+            {
+                lstMarque = HibernateMarqueService.Retrieve(txtRecherche.Text);
+                foreach (Marque m in lstMarque)
+                {
+                    lstBouteille.AddRange(HibernateBouteilleService.RetrieveByMarqueId((int)m.IdMarque));
+                }
+
+
+                if (lstBouteille.Count != 0)
+                    dtgInventaire.ItemsSource = lstBouteille;
+                else
+                {
+                    dtgInventaire.ItemsSource = null;
+                }
+            }
             else
             {
-               dtgInventaire.ItemsSource = null;
-            }
-         }
-         else
-         {
-            lstBouteille = HibernateBouteilleService.RetrieveAll();
-            foreach (Bouteille b in lstBouteille)
-            {
-               b.SaMarque = HibernateMarqueService.Retrieve((int)b.IdMarque)[0];
-               b.SaMarque.SonTypeAlcool = HibernateTypeAlcoolService.RetrieveTypeAlcool((int)b.SaMarque.IdTypeAlcool)[0];
-               b.SonEmplacement = HibernateEmplacementService.retrieveEmplacement((int)b.IdEmplacement)[0];
-            }
+                lstBouteille = HibernateBouteilleService.RetrieveAll();
+                /*foreach (Bouteille b in lstBouteille)
+                {
+                    b.SaMarque = HibernateMarqueService.Retrieve((int)b.IdMarque)[0];
+                    b.SaMarque.SonTypeAlcool = HibernateTypeAlcoolService.RetrieveTypeAlcool((int)b.SaMarque.IdTypeAlcool)[0];
+                    b.SonEmplacement = HibernateEmplacementService.retrieveEmplacement((int)b.IdEmplacement)[0];
+                }*/
 
-            dtgInventaire.ItemsSource = lstBouteille;
-         }
-      }
-      private void btnImprimer_Click(object sender, RoutedEventArgs e)
-      {
-         MessageBox.Show("Bravo, vous avez imprimer avec succès!");
-      }
+                dtgInventaire.ItemsSource = lstBouteille;
+            }
+        }
+        private void btnImprimer_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Bravo, vous avez imprimer avec succès!");
+        }
 
         private void btnSuppression_Click(object sender, RoutedEventArgs e)
         {
 
             if (AuMoinsUneBouteilleSelectionne())
             {
-                
+
                 MessageBoxResult resultat = MessageBox.Show("Êtes vous sûr de vouloire supprimer la sélection de bouteilles?", "Question", MessageBoxButton.YesNo);
 
                 if (resultat == MessageBoxResult.Yes)
@@ -210,11 +210,12 @@ namespace Barman
 
                     foreach (var bouteille in lstBouteille)
                     {
-                        HibernateBouteilleService.Delete(bouteille);
+                        bouteille.Etat = "Supprimée";
+                        
                     }
                     dtgInventaire.ItemsSource = new ObservableCollection<Bouteille>(ChargerListBouteille());
                 }
-                
+
             }
         }
     }

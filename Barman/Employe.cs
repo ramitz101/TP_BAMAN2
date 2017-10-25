@@ -47,43 +47,49 @@ namespace Barman
             Telephone = telephone;
             NAS = nas;
             DateEmbauche = dateEmbauche;
-            CodeEmploye = genererCodeEmploye();
+            CodeEmploye = Generer.genererCode(Employe.GetCodeEmployeDejaExistant());
+            //CodeEmploye = genererCodeEmploye();
             IdRole = pIdRole;
         }
 
-        private string genererCodeEmploye()
+        public static List<string> GetCodeEmployeDejaExistant()
         {
-            List<string> lstCodesEmploye = new List<string>(HibernateEmployeService.RetrieveAllCodeEmploye());
-            bool resultat = false;
-            int codeGenere;
-            Random rnd = new Random();
-
-
-            do
-            {
-                codeGenere = rnd.Next(100000, 999999);
-                resultat = ValideCode(codeGenere, lstCodesEmploye);
-            } while (resultat);
-            return codeGenere.ToString();
+            return new List<string>(HibernateEmployeService.RetrieveAllCodeEmploye());
         }
 
-        private bool ValideCode(int codeGenere, List<string> lstCodesEmploye)
-        {
-            bool codeValide = false;
-            foreach (var code in lstCodesEmploye)
-            {
-                if(code.Length>0)
-                {
-                    if (codeGenere == int.Parse(code))
-                        codeValide = true;
-                    else
-                        codeValide = false;
-                }
-            }
+        //public static string genererCodeEmploye()
+        //{
+        //    List<string> lstCodesEmploye = new List<string>(HibernateEmployeService.RetrieveAllCodeEmploye());
+        //    bool resultat = false;
+        //    int codeGenere;
+        //    Random rnd = new Random();
 
 
-            return codeValide;
-        }
+        //    do
+        //    {
+        //        codeGenere = rnd.Next(100000, 999999);
+        //        resultat = ValideCode(codeGenere, lstCodesEmploye);
+        //    } while (resultat);
+        //    return codeGenere.ToString();
+        //}
+
+        //private static bool ValideCode(int codeGenere, List<string> lstCodesEmploye)
+        //{
+        //    bool codeValide = false;
+        //    foreach (var code in lstCodesEmploye)
+        //    {
+        //        if (code.Length > 0)
+        //        {
+        //            if (codeGenere == int.Parse(code))
+        //                codeValide = true;
+        //            else
+        //                codeValide = false;
+        //        }
+        //    }
+
+
+        //    return codeValide;
+        //}
 
         public Employe(string nom, string prenom, string telephone, string nas, DateTime dateEmbauche, string codeEmploye, int pIdRole, int pIdEmploye)
         {
