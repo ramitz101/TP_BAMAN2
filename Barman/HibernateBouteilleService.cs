@@ -71,6 +71,19 @@ namespace Barman
         }
 
 
+        //Retrouver une bouteille par son idmarque et son volumeInitial
+        public static List<Bouteille> RetrieveByMarqueEtVolInitial(int pIdMarque,int v)
+        {
+            var bouteilles = session.Query<Bouteille>().AsQueryable();
+
+            var result = from m in bouteilles
+                         where m.IdMarque == pIdMarque && m.VolumeInitial == v 
+                         select m;
+
+            return result.ToList();
+        }
+
+
         public static List<Bouteille> RetrieveByUnique(int pIdMarque, int pIdEmplacement, string pNumero)
       {
          var bouteilles = session.Query<Bouteille>().AsQueryable();
@@ -82,6 +95,8 @@ namespace Barman
          return result.ToList();
       }
 
+
+       
 
         // Retrouver toute les bouteilles qui sont a un emplacement
         public static List<Bouteille> RetrieveBouteilleEmplacement(int pIdEmplacement)
