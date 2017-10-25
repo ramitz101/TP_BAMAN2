@@ -113,7 +113,7 @@ namespace Barman
         {
             if (dtgInventaire.SelectedItems.Count == 1)
                 return true;
-            // si le user a sélectionné plus d'une inscription 
+            // si le user a sélectionné plus d'une bouteille
             else if (dtgInventaire.SelectedItems.Count > 1)
             {
                 MessageBox.Show("Vous avez trops de bouteilles selectionnées");
@@ -126,7 +126,18 @@ namespace Barman
             }
         }
 
-      private void txtRecherche_GotFocus(object sender, RoutedEventArgs e)
+        private bool AuMoinsUneBouteilleSelectionne()
+        {
+            if (dtgInventaire.SelectedItems.Count > 0)
+                return true;
+            else
+            {
+                MessageBox.Show("Vous devez selectionner une bouteille");
+                return false;
+            }
+        }
+
+        private void txtRecherche_GotFocus(object sender, RoutedEventArgs e)
       {
          txtRecherche.Text = "";
          List<Bouteille> lstBouteille = HibernateBouteilleService.RetrieveAll();
@@ -184,5 +195,27 @@ namespace Barman
       {
          MessageBox.Show("Bravo, vous avez imprimer avec succès!");
       }
-   }
+
+        private void btnSuppression_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (AuMoinsUneBouteilleSelectionne())
+            {
+                
+                MessageBoxResult resultat = MessageBox.Show("Êtes vous sûr de vouloire supprimer la sélection de bouteilles?", "Question", MessageBoxButton.YesNo);
+
+                if (resultat == MessageBoxResult.Yes)
+                {
+                    List<Bouteille> lstBouteille = dtgInventaire.SelectedItems.Cast<Bouteille>().ToList();
+
+                    foreach (var bouteille in lstBouteille)
+                    {
+                        HibernateBouteilleService.Delete(bouteille);
+                    }
+                    dtgInventaire.ItemsSource = new ObservableCollection<Bouteille>(ChargerListBouteille());
+                }
+                
+            }
+        }
+    }
 }

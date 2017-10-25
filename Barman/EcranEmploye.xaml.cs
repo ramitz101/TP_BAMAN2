@@ -91,5 +91,37 @@ namespace Barman
                 return false;
             }
         }
+
+        private void btnSuppression_Click(object sender, RoutedEventArgs e)
+        {
+            if (AuMoinsUnEmployeSelectionne())
+            {
+
+                MessageBoxResult resultat = MessageBox.Show("Êtes vous sûr de vouloire supprimer la sélection d'employés?", "Question", MessageBoxButton.YesNo);
+
+                if (resultat == MessageBoxResult.Yes)
+                {
+                    List<Employe> lstEmploye = dtgEmploye.SelectedItems.Cast<Employe>().ToList();
+
+                    foreach (var employe in lstEmploye)
+                    {
+                        HibernateEmployeService.Delete(employe);
+                    }
+                    dtgEmploye.ItemsSource = new ObservableCollection<Employe>(ChargerListEmploye());
+                }
+
+            }
+        }
+
+        private bool AuMoinsUnEmployeSelectionne()
+        {
+            if (dtgEmploye.SelectedItems.Count > 0)
+                return true;
+            else
+            {
+                MessageBox.Show("Vous devez selectionner un employe");
+                return false;
+            }
+        }
     }
 }

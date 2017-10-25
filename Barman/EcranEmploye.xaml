@@ -43,7 +43,7 @@
                 <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Accueil"/></TextBlock>
             </StackPanel>
         </Button>
-        <Button FontSize="21" HorizontalAlignment="Left" Background="White" Margin="10,243,0,0" VerticalAlignment="Top" Width="163" Height="65" Click="btnAccueil_Click">
+        <Button Name="btnSuppression" FontSize="21" HorizontalAlignment="Left" Background="White" Margin="10,243,0,0" VerticalAlignment="Top" Width="163" Height="65" Click="btnSuppression_Click">
             <StackPanel Width="150" Orientation="Horizontal">
                 <Image Source="images/poubelle.png" Width="35" Height="35"  />
                 <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Suppression"/></TextBlock>
