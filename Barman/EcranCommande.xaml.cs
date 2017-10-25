@@ -79,7 +79,7 @@ namespace Barman
                 {
                     FenetreErreur FE = new FenetreErreur();
                     FE.ShowDialog();
-                    // ALLO
+                    
                 }
                 if (EcranAccueil.employe.SonRole.Code == "Admin")
                 {
