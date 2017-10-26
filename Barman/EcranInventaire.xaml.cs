@@ -195,163 +195,173 @@ namespace Barman
                 dtgInventaire.ItemsSource = lstBouteille;
             }
         }
+        //private void btnImprimer_Click(object sender, RoutedEventArgs e)
+        //{
+        //    MessageBox.Show("Bravo, vous avez imprimer avec succès!");
+        //}
+
+        //.ItemsSource = lstBouteille;
+
+
         private void btnImprimer_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Bravo, vous avez imprimer avec succès!");
+            //Crée le fichier
+            FileStream fs = new System.IO.FileStream("Test1.pdf", FileMode.Create, FileAccess.Write, FileShare.None);
+            Document doc = new Document();
+            PdfWriter writer = PdfWriter.GetInstance(doc, fs);
+            doc.Open();
+
+            //Entête
+            iTextSharp.text.Paragraph titre = new iTextSharp.text.Paragraph("Inventaire");
+            titre.Alignment = Element.ALIGN_CENTER;
+            titre.Font.SetStyle(Font.BOLD);
+            titre.Font.Size = 20;
+            doc.Add(titre);
+            titre = new iTextSharp.text.Paragraph(" ");
+            doc.Add(titre);
+
+            //Création du tableau
+            PdfPTable table = new PdfPTable(6); //Le paramètre indique le nombre de colonne. S'il manque de cellules pour la dernière rangée, il ne mettra simplement pas la rangée
+            table = CreerTabFichier(table);
+            doc.Add(table);
+
+
+
+
+            doc.Close();
+
+            Process.Start("D:/Barman_v2/TP_BAMAN2/Barman/bin/Debug/test1.pdf");
+
+
         }
 
-            dtgInventaire.ItemsSource = lstBouteille;
-         }
-      }
-      private void btnImprimer_Click(object sender, RoutedEventArgs e)
-      {
-                           //Crée le fichier
-         FileStream fs = new System.IO.FileStream("Test1.pdf", FileMode.Create, FileAccess.Write, FileShare.None);
-         Document doc = new Document();
-         PdfWriter writer = PdfWriter.GetInstance(doc, fs);
-         doc.Open();
-                
-         //Entête
-         iTextSharp.text.Paragraph titre = new iTextSharp.text.Paragraph("Inventaire");
-         titre.Alignment = Element.ALIGN_CENTER;
-         titre.Font.SetStyle(Font.BOLD);
-         titre.Font.Size = 20;
-         doc.Add(titre);
-         titre = new iTextSharp.text.Paragraph(" ");
-         doc.Add(titre);
-
-         //Création du tableau
-         PdfPTable table = new PdfPTable(6); //Le paramètre indique le nombre de colonne. S'il manque de cellules pour la dernière rangée, il ne mettra simplement pas la rangée
-         table = CreerTabFichier(table);
-         doc.Add(table);
-
-
-
-
-         doc.Close();
-
-         Process.Start("D:/Barman_v2/TP_BAMAN2/Barman/bin/Debug/test1.pdf");
-
-
-      }
-
-      private PdfPTable CreerTabFichier(PdfPTable table)
-      {
-
-         
-         PdfPCell cell = new PdfPCell();
-         Phrase text = new Phrase();
-         cell.HorizontalAlignment = Element.ALIGN_CENTER;
-         cell.VerticalAlignment = Element.ALIGN_CENTER;
-
-         text =new Phrase("Marque");
-         cell = new PdfPCell(text);
-         cell.Phrase.Font.SetStyle(Font.BOLD);
-         table.AddCell(cell);
-
-         text = new Phrase("Type");
-         cell = new PdfPCell(text);
-         cell.Phrase.Font.SetStyle(Font.BOLD);
-         table.AddCell(cell);
-
-         text = new Phrase("Volume ini.");
-         cell = new PdfPCell(text);
-         cell.Phrase.Font.SetStyle(Font.BOLD);
-         table.AddCell(cell);
-
-         text = new Phrase("Vol restant");
-         cell = new PdfPCell(text);
-         cell.Phrase.Font.SetStyle(Font.BOLD);
-         table.AddCell(cell);
-
-         text = new Phrase("Numéro");
-         cell = new PdfPCell(text);
-         cell.Phrase.Font.SetStyle(Font.BOLD);
-         table.AddCell(cell);
-
-         text = new Phrase("Emplac.");
-         cell = new PdfPCell(text);
-         cell.Phrase.Font.SetStyle(Font.BOLD);
-         table.AddCell(cell);
-
-         cell.HorizontalAlignment = Element.ALIGN_LEFT;
-         cell.VerticalAlignment = Element.ALIGN_LEFT;
-
-         text.Font = FontFactory.GetFont(FontFactory.HELVETICA, 12);
-
-         foreach (Bouteille b in lstBouteilles)
-         {
-            
-
-            if(b.SaMarque.Nom.Length>=10)
-            {
-               string nom = b.SaMarque.Nom.Substring(0, 9);
-               nom += ".";
-               text = new Phrase(nom);
-               cell = new PdfPCell(text);
-            }
-            else
-            {
-               text = new Phrase(b.SaMarque.Nom);
-               cell = new PdfPCell(text);
-               
-            }
-            table.AddCell(cell);
-
-
-            text = new Phrase(b.SaMarque.SonTypeAlcool.Nom);
-            cell = new PdfPCell(text);
-            table.AddCell(cell);
-
-            text = new Phrase(b.VolumeInitial.ToString());
-            cell = new PdfPCell(text);
-            table.AddCell(cell);
-
-            text = new Phrase(b.VolumeRestant.ToString());
-            cell = new PdfPCell(text);
-            table.AddCell(cell);
-
-            text = new Phrase(b.Numero.ToString());
-            cell = new PdfPCell(text);
-            table.AddCell(cell);
-
-            text = new Phrase(b.SonEmplacement.Nom);
-            cell = new PdfPCell(text);
-            table.AddCell(cell);
-
-         }
-         return table;
-         
-      }
-
-      private void btnSuppression_Click(object sender, RoutedEventArgs e)
+        private PdfPTable CreerTabFichier(PdfPTable table)
         {
 
-            if (AuMoinsUneBouteilleSelectionne())
+
+            PdfPCell cell = new PdfPCell();
+            Phrase text = new Phrase();
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.VerticalAlignment = Element.ALIGN_CENTER;
+
+            text = new Phrase("Marque");
+            cell = new PdfPCell(text);
+            cell.Phrase.Font.SetStyle(Font.BOLD);
+            table.AddCell(cell);
+
+            text = new Phrase("Type");
+            cell = new PdfPCell(text);
+            cell.Phrase.Font.SetStyle(Font.BOLD);
+            table.AddCell(cell);
+
+            text = new Phrase("Volume ini.");
+            cell = new PdfPCell(text);
+            cell.Phrase.Font.SetStyle(Font.BOLD);
+            table.AddCell(cell);
+
+            text = new Phrase("Vol restant");
+            cell = new PdfPCell(text);
+            cell.Phrase.Font.SetStyle(Font.BOLD);
+            table.AddCell(cell);
+
+            text = new Phrase("Numéro");
+            cell = new PdfPCell(text);
+            cell.Phrase.Font.SetStyle(Font.BOLD);
+            table.AddCell(cell);
+
+            text = new Phrase("Emplac.");
+            cell = new PdfPCell(text);
+            cell.Phrase.Font.SetStyle(Font.BOLD);
+            table.AddCell(cell);
+
+            cell.HorizontalAlignment = Element.ALIGN_LEFT;
+            cell.VerticalAlignment = Element.ALIGN_LEFT;
+
+            text.Font = FontFactory.GetFont(FontFactory.HELVETICA, 12);
+
+            foreach (Bouteille b in lstBouteilles)
             {
 
-                MessageBoxResult resultat = MessageBox.Show("Êtes vous sûr de vouloire supprimer la sélection de bouteilles?", "Question", MessageBoxButton.YesNo);
 
-                if (resultat == MessageBoxResult.Yes)
+                if (b.SaMarque.Nom.Length >= 10)
                 {
-                    List<Bouteille> lstBouteille = dtgInventaire.SelectedItems.Cast<Bouteille>().ToList();
-
-                    foreach (var bouteille in lstBouteille)
-                    {
-                        bouteille.Etat = "Supprimée";
-                        
-                    }
-                    dtgInventaire.ItemsSource = new ObservableCollection<Bouteille>(ChargerListBouteille());
+                    string nom = b.SaMarque.Nom.Substring(0, 9);
+                    nom += ".";
+                    text = new Phrase(nom);
+                    cell = new PdfPCell(text);
                 }
+                else
+                {
+                    text = new Phrase(b.SaMarque.Nom);
+                    cell = new PdfPCell(text);
+
+                }
+                table.AddCell(cell);
+
+
+                text = new Phrase(b.SaMarque.SonTypeAlcool.Nom);
+                cell = new PdfPCell(text);
+                table.AddCell(cell);
+
+                text = new Phrase(b.VolumeInitial.ToString());
+                cell = new PdfPCell(text);
+                table.AddCell(cell);
+
+                text = new Phrase(b.VolumeRestant.ToString());
+                cell = new PdfPCell(text);
+                table.AddCell(cell);
+
+                text = new Phrase(b.Numero.ToString());
+                cell = new PdfPCell(text);
+                table.AddCell(cell);
+
+                text = new Phrase(b.SonEmplacement.Nom);
+                cell = new PdfPCell(text);
+                table.AddCell(cell);
 
             }
+            return table;
+
         }
-        
+
+        private void btnSuppression_Click(object sender, RoutedEventArgs e)
+        {
+            if (EcranAccueil.employe.IdRole == null)
+            {
+                FenetreAuthentification FN = new FenetreAuthentification();
+                FN.ShowDialog();
+            }
+            if (EcranAccueil.employe.IdRole != 1 && EcranAccueil.employe.IdRole != null)
+            {
+                FenetreErreur FE = new FenetreErreur();
+                FE.ShowDialog();
+            }
+            if (EcranAccueil.employe.IdRole == 1)
+            {                
+                if (AuMoinsUneBouteilleSelectionne())
+                {
+                    MessageBoxResult resultat = MessageBox.Show("Êtes vous sûr de vouloire supprimer la sélection de bouteilles?", "Question", MessageBoxButton.YesNo);
+
+                    if (resultat == MessageBoxResult.Yes)
+                    {
+                        List<Bouteille> lstBouteille = dtgInventaire.SelectedItems.Cast<Bouteille>().ToList();
+
+                        foreach (var bouteille in lstBouteille)
+                        {
+                            bouteille.Etat = "Supprimée";
+
+                        }
+                        dtgInventaire.ItemsSource = new ObservableCollection<Bouteille>(ChargerListBouteille());
+                    }
+                }
+            }
+        }
+
         private PdfPTable CreerEnteteFichier(PdfPTable table)
         {
-         
 
-         return table;
-      }
+
+            return table;
+        }
     }
 }

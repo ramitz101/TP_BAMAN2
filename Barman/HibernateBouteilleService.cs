@@ -14,7 +14,13 @@ namespace Barman
 
         public static List<Bouteille> RetrieveAll()
         {
-            return session.Query<Bouteille>().ToList();
+            var bouteilles = session.Query<Bouteille>().ToList();
+
+            var result = from b in bouteilles
+                         where b.Etat != "Supprimée"
+                         select b;
+
+            return result.ToList();
         }
 
         public static List<Bouteille> RetrieveByMarque(Marque pMarque)
