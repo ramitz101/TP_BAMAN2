@@ -25,6 +25,8 @@ namespace Barman
         private List<Bouteille> lstBouteilles = new List<Bouteille>();
         private List<TypeAlcool> lstType = new List<TypeAlcool>(HibernateTypeAlcoolService.RetrieveAll());
         private List<Marque> lstMarques = new List<Marque>();
+        private List<Bouteille> lstNouvelleBouteille = new List<Bouteille>();
+        private Commande CommandeCours;
         public EcranNouvelleCommande()
         {
             InitializeComponent();
@@ -34,31 +36,45 @@ namespace Barman
             cboMarqueBouteille.DisplayMemberPath = "Nom";
             cboMarqueBouteille.SelectedValuePath = "IdMarque";
 
-            cboFormat.Items.Add("26");
-            cboFormat.Items.Add("40");
-            cboFormat.IsEnabled = false;
+       
 
             cboType.ItemsSource = lstType;
             cboType.DisplayMemberPath = "Nom";
 
             cboMarqueBouteille.IsEnabled = false;
 
-
+            CommandeCours = new Commande(DateTime.Now, (int)EcranAccueil.employe.IdEmploye, null, "Envoyé");
+            HibernateCommandeService.Create(CommandeCours);
 
         }
 
         private void btnAnnuler_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
-            EcranOnglets EO = new EcranOnglets(3);
-            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EO);
+            HibernateCommandeService.Delete(CommandeCours);
+            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
+            EcranCommande EC = new EcranCommande();
+            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0, EC);
         }
 
         private void btnConfirmer_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
-            EcranOnglets EO = new EcranOnglets(3);
-            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EO);
+            try
+            {
+                foreach (var i in lstNouvelleBouteille)
+                {
+                    HibernateBouteilleService.Create(i);
+                }
+                MessageBox.Show("La commande a bien été envoyé", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
+                EcranCommande EC = new EcranCommande();
+                ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0, EC);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Une erreur c'est produite ", "Attention", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+           
         }
 
         static private List<Marque> ChargerListMarque()
@@ -82,7 +98,8 @@ namespace Barman
            
             if (cboMarqueBouteille.SelectedItem != null)
                 lstBouteilles = HibernateBouteilleService.RetrieveByMarque((Marque)cboMarqueBouteille.SelectedItem);
-            cboFormat.IsEnabled = true;
+            if(txtFormat.Text != "")
+                RefreshLabelPrix();
 
         }
 
@@ -99,25 +116,89 @@ namespace Barman
 
         }
 
-        private void cboFormat_SelectionChanged(object sender, SelectionChangedEventArgs e)
+       
+
+        private void txtFormat_KeyDown(object sender, KeyEventArgs e)
         {
+            RefreshLabelPrix();
+            
+        }
+
+        private void RefreshLabelPrix()
+        {
+            lblPrix.Content = "";
             List<Bouteille> listB = new List<Bouteille>();
-            listB = HibernateBouteilleService.RetrieveByMarqueEtVolInitial((int)int.Parse(cboMarqueBouteille.SelectedValue.ToString()), int.Parse(cboFormat.SelectedValue.ToString()));
             Random r = new Random();
-            r.Next(20, 70);
+            int prix = r.Next(20, 70);
+            try
+            {
+                listB = HibernateBouteilleService.RetrieveByMarqueEtVolInitial((int)int.Parse(cboMarqueBouteille.SelectedValue.ToString()), int.Parse(txtFormat.Text));
+            }
+            catch (Exception ex) { }
+
             if (listB.Count > 0)
             {
                 if (listB.ElementAt(0).PrixBouteille != null)
                 {
                     lblPrix.Content = listB.ElementAt(0).PrixBouteille.ToString();
                 }
-                
+
             }
             else
             {
 
-                lblPrix.Content = r.ToString();
+                lblPrix.Content = prix.ToString();
             }
+        }
+
+        private void btnAugmenteQ_Click(object sender, RoutedEventArgs e)
+        {
+            int quantite;
+            try
+            {
+                quantite = Int32.Parse(txtQuantite.Text);
+                quantite++;
+                txtQuantite.Text = quantite.ToString();
+            }
+            catch (Exception ex)
+            {
+                quantite = 1;
+                txtQuantite.Text = quantite.ToString();
+            }
+                
+        }
+
+        private void btnReduireQ_Click(object sender, RoutedEventArgs e)
+        {
+            int quantite;
+            try
+            {
+                quantite = Int32.Parse(txtQuantite.Text);
+                if (quantite > 1)
+                    quantite--;
+                txtQuantite.Text = quantite.ToString();
+            }
+            catch (Exception ex)
+            {
+                quantite = 1;
+                txtQuantite.Text = quantite.ToString();
+            }
+        }
+
+        private void btnAjouter_Click(object sender, RoutedEventArgs e)
+        {
+
+            for(int i =0; i < int.Parse(txtQuantite.Text);i++)
+            {
+                Bouteille b = new Bouteille(Generer.GenererCodeBouteille(), int.Parse(txtFormat.Text), int.Parse(txtFormat.Text), "Pleine", float.Parse(lblPrix.Content.ToString()),
+                                            9, int.Parse(cboMarqueBouteille.SelectedValue.ToString()), (int)CommandeCours.IdCommande);
+                b.SaMarque = HibernateMarqueService.Retrieve((int)b.IdMarque)[0];
+                b.SaMarque.SonTypeAlcool = HibernateTypeAlcoolService.RetrieveTypeAlcool((int)b.SaMarque.IdTypeAlcool)[0];
+                lstNouvelleBouteille.Add(b);
+            }
+
+            dtgNouvelleCommande.ItemsSource = lstNouvelleBouteille;
+            dtgNouvelleCommande.Items.Refresh();
         }
     }
 }

@@ -47,20 +47,20 @@ namespace Barman
 
 
             // Autre class
-            References(x => x.UnEmploye)
-                .Class<Employe>()
-                .Access.Property()
-                .LazyLoad(Laziness.False)
-                .Cascade.None()
-                .Columns("idEmploye");
+            //References(x => x.UnEmploye)
+            //    .Class<Employe>()
+            //    .Access.Property()
+            //    .LazyLoad(Laziness.False)
+            //    .Cascade.None()
+            //    .Columns("idEmploye");
 
-            HasMany<Bouteille>(x => x.ListBouteille)
-            .Not.LazyLoad()
-            .Access.Property()
-            .Cascade.All()
-            .KeyColumns.Add("idCommande", map => map.Name("idCommande")
-                                                .SqlType("INTEGER")
-                                                .Nullable());
+            //HasMany<Bouteille>(x => x.ListBouteille)
+            //.Not.LazyLoad()
+            //.Access.Property()
+            //.Cascade.All()
+            //.KeyColumns.Add("idCommande", map => map.Name("idCommande")
+            //                                    .SqlType("INTEGER")
+            //                                    .Nullable());
 
         }
     }

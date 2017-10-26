@@ -34,7 +34,7 @@ namespace Barman
             DateCommande = dateCommande;
             IdEmploye = pIdEmploye;
         }
-        public Commande(DateTime dateCommande, int pIdEmploye, int pIdCommande,string etat)
+        public Commande(DateTime dateCommande, int pIdEmploye, int? pIdCommande,string etat)
         {
             DateCommande = dateCommande;
             IdEmploye = pIdEmploye;

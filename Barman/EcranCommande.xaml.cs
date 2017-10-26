@@ -28,6 +28,10 @@ namespace Barman
         private static List<Commande> ChargerListCommande()
         {
             List<Commande> listC = new List<Commande>(HibernateCommandeService.RetrieveAll());
+            foreach(var i in listC)
+            {
+                i.ListBouteille = HibernateBouteilleService.RetrieveByIdCommande((int)i.IdCommande);
+            }
             return listC;
         }
 
