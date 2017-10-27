@@ -1,6 +1,11 @@
-﻿using System;
+﻿using iTextSharp.text;
+using iTextSharp.text.pdf;
+using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -154,7 +159,7 @@ namespace Barman
                         break;
                     case "Date d'embauche":
                         lstEmploye = HibernateEmployeService.RetrieveDateEmbauche(txtRecherche.Text);
-                        
+
                         if (lstEmploye.Count != 0)
                             dtgEmploye.ItemsSource = lstEmploye;
                         else
@@ -197,8 +202,8 @@ namespace Barman
 
                         if (lstEmploye.Count != 0)
                             dtgEmploye.ItemsSource = lstEmploye;
-                        else                        
-                            dtgEmploye.ItemsSource = null;                        
+                        else
+                            dtgEmploye.ItemsSource = null;
                         break;
                 }
             }
@@ -230,6 +235,45 @@ namespace Barman
         private void columnHeader_Click(object sender, RoutedEventArgs e)
         {
             ContenuHeader = ((DataGridColumnHeader)sender).Content.ToString();
+        }
+
+        private void btnImprimerEmploye_Click(object sender, RoutedEventArgs e)
+        {
+            lstEmployes = new ObservableCollection<Employe>(ChargerListEmploye());
+
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+
+            saveFileDialog1.Filter = "Pdf Files|*.pdf";
+
+            if (saveFileDialog1.ShowDialog() == true)
+            {
+                //Crée le fichier
+
+                Document doc = new Document();
+                FileStream fs = new System.IO.FileStream(saveFileDialog1.FileName, FileMode.Create, FileAccess.Write, FileShare.None);
+                PdfWriter writer = PdfWriter.GetInstance(doc, fs);
+                doc.Open();
+
+                //Entête
+                iTextSharp.text.Paragraph titre = new iTextSharp.text.Paragraph("Employé");
+                titre.Alignment = Element.ALIGN_CENTER;
+                titre.Font.SetStyle(Font.BOLD);
+                titre.Font.Size = 20;
+                doc.Add(titre);
+                titre = new iTextSharp.text.Paragraph(" ");
+                doc.Add(titre);
+
+                //Création du tableau
+                PdfPTable table = new PdfPTable(7); //Le paramètre indique le nombre de colonne. S'il manque de cellules pour la dernière rangée, il ne mettra simplement pas la rangée
+                table = CreationDesTables.CreerTableEmploye(table, lstEmployes);
+                doc.Add(table);
+
+                
+                string fullPath = System.IO.Path.GetFullPath(saveFileDialog1.FileName);
+                doc.Close();
+                Process.Start(fullPath);
+
+            }
         }
     }
 }

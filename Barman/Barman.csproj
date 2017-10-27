@@ -106,6 +106,7 @@
     <Compile Include="BouteilleMap.cs" />
     <Compile Include="Commande.cs" />
     <Compile Include="CommandeMap.cs" />
+    <Compile Include="CreationDesTables.cs" />
     <Compile Include="EcranRecevoirCommande.xaml.cs">
       <DependentUpon>EcranRecevoirCommande.xaml</DependentUpon>
     </Compile>
