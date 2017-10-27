@@ -13,7 +13,7 @@
 
         <TextBox Name="txtRecherche"  KeyUp="txtRecherche_KeyUp_1" Height="20" Grid.Column="1" VerticalAlignment="Top" Text="Rechercher" LostFocus="txtRecherche_LostFocus" GotFocus="txtRecherche_GotFocus" Margin="30,50,18,0"></TextBox>
 
-        <DataGrid Name="dtgInventaire" AutoGenerateColumns="False" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="381" Margin="31,75,0,0" Grid.Column="1" Height="303">
+        <DataGrid Name="dtgInventaire" AutoGenerateColumns="False" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="380" Margin="31,75,0,0" Grid.Column="1" Height="328">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nom" Width="2*" Binding="{Binding SaMarque.Nom}" />
                 <DataGridTextColumn Header="Volume" Width="1*" Binding="{Binding VolumeInitial}"/>
