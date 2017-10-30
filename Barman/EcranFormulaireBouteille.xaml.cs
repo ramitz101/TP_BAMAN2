@@ -62,11 +62,15 @@ namespace Barman
             {
                
                Bouteille bouteilleAChanger = HibernateBouteilleService.RetrieveByUnique((int)HibernateMarqueService.Retrieve(cboMarqueBouteille.Text)[0].IdMarque, (int)HibernateEmplacementService.retrieveEmplacementByNom("Réserve")[0].IdEmplacement, cboÉtiquette.Text)[0];
-               if(chbVendu.IsChecked==false)
-                  bouteilleAChanger.IdEmplacement = (int)HibernateEmplacementService.retrieveEmplacementByNom(cboEmplacement.Text)[0].IdEmplacement;
-               else
-                  bouteilleAChanger.IdEmplacement=(int)HibernateEmplacementService.retrieveEmplacementByNom("Aucun")[0].IdEmplacement;
-
+                if (chbVendu.IsChecked == false)
+                {
+                    bouteilleAChanger.IdEmplacement = (int)HibernateEmplacementService.retrieveEmplacementByNom(cboEmplacement.Text)[0].IdEmplacement;
+                }
+                else
+                {
+                    bouteilleAChanger.IdEmplacement = (int)HibernateEmplacementService.retrieveEmplacementByNom("Aucun")[0].IdEmplacement;
+                    bouteilleAChanger.Etat = "Vendue";
+                }
                HibernateBouteilleService.Update(bouteilleAChanger);
                
                MessageBox.Show("Modification éffectuée avec succès!", "Avertissement", MessageBoxButton.OK, MessageBoxImage.Information);
