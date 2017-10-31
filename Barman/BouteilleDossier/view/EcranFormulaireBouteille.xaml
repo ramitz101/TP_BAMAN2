@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="Barman.BouteilleDossier.view.EcranFormulaireBouteille"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Barman"
+             mc:Ignorable="d" 
+             d:DesignHeight="295.946" d:DesignWidth="460.811">
+    <Grid>
+
+        <Label Content="Emplacement" HorizontalAlignment="Left" Margin="311,170,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.494,0.552" Width="93"/>
+        <ComboBox Name="cboEmplacement" HorizontalAlignment="Left" Margin="311,201,0,0" VerticalAlignment="Top" Width="120" />
+
+        <Label Content="Type" HorizontalAlignment="Left" Margin="17,20,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.494,0.552" Width="93"/>
+        <ComboBox Name="cboType" SelectionChanged="cboType_SelectionChanged" HorizontalAlignment="Left" Margin="17,51,0,0" VerticalAlignment="Top" Width="120" />
+
+        <CheckBox Name="chbVendu" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" Content="Vente pour client" HorizontalAlignment="Left" Margin="314,58,0,0" VerticalAlignment="Top" Width="117" />
+
+        <Label Content="Marque"  HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.471,0.563" Margin="17,96,0,0"/>
+        <ComboBox Name="cboMarqueBouteille" IsEnabled="False" SelectionChanged="cboMarqueBouteille_SelectionChanged" HorizontalAlignment="Left" Margin="17,127,0,0" VerticalAlignment="Top" Width="120"/>
+        
+        <Label Content="Employé" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.471,0.563" Margin="17,170,0,0"/>
+        <ComboBox Name="cboEmployé" HorizontalAlignment="Left" Margin="17,201,0,0" VerticalAlignment="Top" Width="120"/>
+        
+        <Label Content="Étiquette" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.471,0.563" Margin="314,96,0,0"/>
+        <ComboBox x:Name="cboÉtiquette" IsEnabled="False" HorizontalAlignment="Left" Margin="314,127,0,0" VerticalAlignment="Top" Width="120"/>
+        
+        <Button Name="btnAccueil" Content="Accueil" HorizontalAlignment="Left" Margin="77,257,0,0" VerticalAlignment="Top" Width="75" Click="btnAccueil_Click"/>
+        <Button Name="btnImprimer" Content="Imprimer" HorizontalAlignment="Left" Margin="197,257,0,0" VerticalAlignment="Top" Width="75" Click="btnImprimer_Click"/>
+        <Button Name="btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="314,257,0,0" VerticalAlignment="Top" Width="75" Click="btnConfirmer_Click"/>
+    </Grid>
+</UserControl>

@@ -1,0 +1,28 @@
+﻿<Window x:Class="Barman.EmployeDossier.view.FenetreAjouterEmploye"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Barman"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterOwner"
+        Title="FenetreAjouterEmploye" Height="273.64" Width="576.151">
+    <Grid>
+        <TextBox Name="txtNom" HorizontalAlignment="Left" Height="23" Margin="10,33,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="txtPrenom" HorizontalAlignment="Left" Height="23" Margin="10,93,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="txtTelephone" HorizontalAlignment="Left" Height="23" Margin="10,152,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="txtNAS" HorizontalAlignment="Left" Height="23" Margin="410,33,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <Label Content="Nom" HorizontalAlignment="Left" Margin="10,2,0,0" VerticalAlignment="Top"/>
+        <Label Content="Date d'embauche" HorizontalAlignment="Left" Margin="182,2,0,0" VerticalAlignment="Top"/>
+        <Label Content="NAS" HorizontalAlignment="Left" Margin="410,2,0,0" VerticalAlignment="Top"/>
+        <Label Content="Prénom" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top"/>
+        <Label Content="Téléphone" HorizontalAlignment="Left" Margin="10,121,0,0" VerticalAlignment="Top"/>
+        <Label Content="Rôle" HorizontalAlignment="Left" Margin="410,98,0,0" VerticalAlignment="Top"/>
+        <Calendar Name="calendarDate" HorizontalAlignment="Left" Margin="182,33,0,0" VerticalAlignment="Top"/>
+        <RadioButton Name="rdbAdministrateur" Content="Administrateur" HorizontalAlignment="Left" Margin="448,93,0,0" VerticalAlignment="Top"/>
+        <RadioButton Name="rdbUtilisateur" Content="Utilisateur" HorizontalAlignment="Left" Margin="448,121,0,0" VerticalAlignment="Top"/>
+        <Button Name="btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="422,195,0,0" VerticalAlignment="Top" Width="90" Height="26" Click="btnConfirmer_Click" />
+        <Button Name="btnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="23,195,0,0" VerticalAlignment="Top" Width="90" Height="26" Click="btnAnnuler_Click" />
+
+    </Grid>
+</Window>

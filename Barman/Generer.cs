@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using Barman.BouteilleDossier;
+using Barman.BouteilleDossier.Hibernate;
 
 namespace Barman
 {

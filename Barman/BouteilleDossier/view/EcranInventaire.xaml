@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="Barman.BouteilleDossier.view.EcranInventaire"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Barman"
+             mc:Ignorable="d" d:DesignWidth="600" Height="413">
+    <Grid HorizontalAlignment="Left">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="350"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="185"/>
+            <ColumnDefinition Width="400"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBox Name="txtRecherche"  KeyUp="txtRecherche_KeyUp_1" Height="20" Grid.Column="1" VerticalAlignment="Top" Text="Rechercher" LostFocus="txtRecherche_LostFocus" GotFocus="txtRecherche_GotFocus" Margin="0,17,0,0" Grid.Row="2" ></TextBox>
+
+        <DataGrid Name="dtgInventaire" AutoGenerateColumns="False" HorizontalAlignment="Left"  VerticalAlignment="Top"  Margin="0,42,0,0" Grid.Column="1" Grid.Row="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nom" Width="2*" Binding="{Binding SaMarque.Nom}" />
+                <DataGridTextColumn Header="Volume" Width="1*" Binding="{Binding VolumeInitial}"/>
+                <DataGridTextColumn Header="V.Restant" Width="1*" Binding="{Binding VolumeRestant}"/>
+                <DataGridTextColumn Header="Numéro" Width="2*" Binding="{Binding Numero}"/>
+                <DataGridTextColumn Header="Type d'alcool" Width="2*" Binding="{Binding SaMarque.SonTypeAlcool.Nom}"/>
+                <DataGridTextColumn Header="État" Width="2*" Binding="{Binding Etat}"/>
+                <DataGridTextColumn Header="Emplacement" Width="3*" Binding="{Binding SonEmplacement.Nom}"/>
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+        <ToggleButton Name="btnGerer" HorizontalAlignment="Left" Margin="10,0,0,0" Background="White" VerticalAlignment="Top"  Width="163" Height="65" Click="btnGerer_Click" Grid.Row="2">
+            <StackPanel Width="140" Orientation="Horizontal">
+                <Image Source="../../images/Gerer.png" Width="40" Height="40" />
+                <TextBlock HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="21"><Run Text="Gérer"/></TextBlock>
+            </StackPanel>
+        </ToggleButton>
+        <Button Name="btnImprimer" FontSize="21" HorizontalAlignment="Left" Background="White" Margin="10,70,0,0" VerticalAlignment="Top" Click="btnImprimer_Click" Width="163" Height="70" Grid.Row="2">
+            <StackPanel Width="140" Orientation="Horizontal">
+                <Image Source="../../images/Imprimante.png" Width="40" Height="40"  />
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Imprimer"/></TextBlock>
+            </StackPanel>
+        </Button>
+        <Button Name="btnAjout"  FontSize="21" HorizontalAlignment="Left" Click="btnAjout_Click"  Background="White" Margin="10,145,0,0" VerticalAlignment="Top" Width="163" Height="65" Grid.Row="2">
+            <StackPanel Width="140" Orientation="Horizontal">
+                <Image Source="../../images/add.png" Width="40" Height="40"  />
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Ajouter"/></TextBlock>
+            </StackPanel>
+        </Button>
+        <Button FontSize="21" HorizontalAlignment="Left" Background="White" Margin="10,285,0,0" VerticalAlignment="Top" Width="163" Height="65" Click="btnAccueil_Click" Grid.Row="2">
+            <StackPanel Width="140" Orientation="Horizontal">
+                <Image Source="../../images/Flechearriere.png" Width="40" Height="40"  />
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Accueil"/></TextBlock>
+            </StackPanel>
+        </Button>
+        <Button Name="btnSuppression" FontSize="21" HorizontalAlignment="Left" Background="White" Margin="10,215,0,0" VerticalAlignment="Top" Width="163" Height="65" Click="btnSuppression_Click" Grid.Row="2" >
+            <StackPanel Width="155" Orientation="Horizontal">
+                <Image Source="../../images/poubelle.png" Width="35" Height="35"  />
+                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Suppression"/></TextBlock>
+            </StackPanel>
+        </Button>
+    </Grid>
+</UserControl>

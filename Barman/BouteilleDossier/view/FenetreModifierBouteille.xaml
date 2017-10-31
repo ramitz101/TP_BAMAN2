@@ -1,0 +1,23 @@
+﻿<Window x:Class="Barman.BouteilleDossier.view.FenetreModifierBouteille"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Barman"
+        mc:Ignorable="d"
+        Title="FenetreModifierBouteille" Height="254.472" Width="612.195"
+        WindowStartupLocation="CenterOwner">
+    <Grid>
+        <Label Content="nom" FontSize="18" HorizontalAlignment="Left" Margin="33,29,0,0" VerticalAlignment="Top"/>
+        <Label Content="Format" FontSize="18" HorizontalAlignment="Left" Margin="148,29,0,0" VerticalAlignment="Top"/>
+        <Label Content="Emplacement" FontSize="18" HorizontalAlignment="Left" Margin="421,29,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.572,0.524"/>
+        <Label Name="txtMarque" HorizontalAlignment="Left" Margin="33,63,0,0" VerticalAlignment="Top" Height="31" Width="100"/>
+        <Label Name="txtFormatBouteille" HorizontalAlignment="Left" Margin="148,63,0,0" VerticalAlignment="Top" Height="31" Width="100"/>
+        <Label Content="Volume restant" FontSize="18" HorizontalAlignment="Left" Margin="260,29,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.835,0.526"/>
+        <TextBox Name="txtVolumeRestant" HorizontalAlignment="Left" Height="31" Margin="260,63,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="75" />
+        <ComboBox Name="cboEmplacement" ItemsSource="{Binding Emplacement.Nom}"  HorizontalAlignment="Left" Margin="421,63,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button Name="btnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="80,120,0,0" VerticalAlignment="Top" Width="120" Height="40" Click="btnAnnuler_Click"/>
+        <Button Name="btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="361,120,0,0" VerticalAlignment="Top" Width="120" Height="40" Click="btnConfirmer_Click"/>
+
+    </Grid>
+</Window>

@@ -103,101 +103,101 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="BouteilleMap.cs" />
-    <Compile Include="Commande.cs" />
-    <Compile Include="CommandeMap.cs" />
+    <Compile Include="BouteilleDossier\Hibernate\BouteilleMap.cs" />
+    <Compile Include="CommandeDossier\Commande.cs" />
+    <Compile Include="CommandeDossier\Hibernate\CommandeMap.cs" />
     <Compile Include="CreationDesTables.cs" />
-    <Compile Include="EcranRecevoirCommande.xaml.cs">
+    <Compile Include="CommandeDossier\view\EcranRecevoirCommande.xaml.cs">
       <DependentUpon>EcranRecevoirCommande.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EmplacementMap.cs" />
-    <Compile Include="Employe.cs" />
-    <Compile Include="EmployeMap.cs" />
-    <Compile Include="FenetreErreur.xaml.cs">
+    <Compile Include="EmplacementDossier\Hibernate\EmplacementMap.cs" />
+    <Compile Include="EmployeDossier\Employe.cs" />
+    <Compile Include="EmployeDossier\Hibernate\EmployeMap.cs" />
+    <Compile Include="ViewAutreDossier\FenetreErreur.xaml.cs">
       <DependentUpon>FenetreErreur.xaml</DependentUpon>
     </Compile>
     <Compile Include="Generer.cs" />
-    <Compile Include="HibernateBouteilleService.cs" />
-    <Compile Include="HibernateCommandeService.cs" />
-    <Compile Include="HibernateEmplacementService.cs" />
-    <Compile Include="HibernateEmployeService.cs" />
-    <Compile Include="HibernateMarqueService.cs" />
-    <Compile Include="HibernateRoleService.cs" />
-    <Compile Include="HibernateTypeAlcoolService.cs" />
-    <Compile Include="HibernateVenteService.cs" />
-    <Compile Include="MarqueMap.cs" />
+    <Compile Include="BouteilleDossier\Hibernate\HibernateBouteilleService.cs" />
+    <Compile Include="CommandeDossier\Hibernate\HibernateCommandeService.cs" />
+    <Compile Include="EmplacementDossier\Hibernate\HibernateEmplacementService.cs" />
+    <Compile Include="EmployeDossier\Hibernate\HibernateEmployeService.cs" />
+    <Compile Include="MarqueDossier\Hibernate\HibernateMarqueService.cs" />
+    <Compile Include="RoleDossier\Hibernate\HibernateRoleService.cs" />
+    <Compile Include="TypeDossier\Hibernate\HibernateTypeAlcoolService.cs" />
+    <Compile Include="VenteDossier\Hibernate\HibernateVenteService.cs" />
+    <Compile Include="MarqueDossier\Hibernate\MarqueMap.cs" />
     <Compile Include="NHibernateConnexion.cs" />
-    <Compile Include="Role.cs" />
-    <Compile Include="RoleMap.cs" />
-    <Compile Include="TypeAlcool.cs" />
-    <Compile Include="TypeAlcoolMap.cs" />
-    <Compile Include="Vente.cs" />
-    <Compile Include="VenteMap.cs" />
-    <Page Include="EcranAccueil.xaml">
+    <Compile Include="RoleDossier\Role.cs" />
+    <Compile Include="RoleDossier\Hibernate\RoleMap.cs" />
+    <Compile Include="TypeDossier\TypeAlcool.cs" />
+    <Compile Include="TypeDossier\Hibernate\TypeAlcoolMap.cs" />
+    <Compile Include="VenteDossier\Vente.cs" />
+    <Compile Include="VenteDossier\Hibernate\VenteMap.cs" />
+    <Page Include="ViewAutreDossier\EcranAccueil.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EcranAjoutInventaire.xaml">
+    <Page Include="ViewAutreDossier\EcranAjoutInventaire.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EcranCommande.xaml">
+    <Page Include="CommandeDossier\view\EcranCommande.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EcranConsulterVente.xaml">
+    <Page Include="VenteDossier\view\EcranConsulterVente.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EcranEmploye.xaml">
+    <Page Include="EmployeDossier\view\EcranEmploye.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EcranFormulaireBouteille.xaml">
+    <Page Include="BouteilleDossier\view\EcranFormulaireBouteille.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EcranGererVente.xaml">
+    <Page Include="VenteDossier\view\EcranGererVente.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EcranInventaire.xaml">
+    <Page Include="BouteilleDossier\view\EcranInventaire.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EcranNouvelleCommande.xaml">
+    <Page Include="CommandeDossier\view\EcranNouvelleCommande.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="EcranOnglets.xaml">
+    <Page Include="ViewAutreDossier\EcranOnglets.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EcranRecevoirCommande.xaml">
+    <Page Include="CommandeDossier\view\EcranRecevoirCommande.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EcranVente.xaml">
+    <Page Include="VenteDossier\view\EcranVente.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="FenetreAjouterEmploye.xaml">
+    <Page Include="EmployeDossier\view\FenetreAjouterEmploye.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FenetreAuthentification.xaml">
+    <Page Include="ViewAutreDossier\FenetreAuthentification.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FenetreErreur.xaml">
+    <Page Include="ViewAutreDossier\FenetreErreur.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FenetreModifierBouteille.xaml">
+    <Page Include="BouteilleDossier\view\FenetreModifierBouteille.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FenetreModifierEmploye.xaml">
+    <Page Include="EmployeDossier\view\FenetreModifierEmploye.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -209,51 +209,51 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Bouteille.cs" />
-    <Compile Include="EcranAccueil.xaml.cs">
+    <Compile Include="BouteilleDossier\Bouteille.cs" />
+    <Compile Include="ViewAutreDossier\EcranAccueil.xaml.cs">
       <DependentUpon>EcranAccueil.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EcranAjoutInventaire.xaml.cs">
+    <Compile Include="ViewAutreDossier\EcranAjoutInventaire.xaml.cs">
       <DependentUpon>EcranAjoutInventaire.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EcranCommande.xaml.cs">
+    <Compile Include="CommandeDossier\view\EcranCommande.xaml.cs">
       <DependentUpon>EcranCommande.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EcranConsulterVente.xaml.cs">
+    <Compile Include="VenteDossier\view\EcranConsulterVente.xaml.cs">
       <DependentUpon>EcranConsulterVente.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EcranEmploye.xaml.cs">
+    <Compile Include="EmployeDossier\view\EcranEmploye.xaml.cs">
       <DependentUpon>EcranEmploye.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EcranFormulaireBouteille.xaml.cs">
+    <Compile Include="BouteilleDossier\view\EcranFormulaireBouteille.xaml.cs">
       <DependentUpon>EcranFormulaireBouteille.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EcranGererVente.xaml.cs">
+    <Compile Include="VenteDossier\view\EcranGererVente.xaml.cs">
       <DependentUpon>EcranGererVente.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EcranInventaire.xaml.cs">
+    <Compile Include="BouteilleDossier\view\EcranInventaire.xaml.cs">
       <DependentUpon>EcranInventaire.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EcranNouvelleCommande.xaml.cs">
+    <Compile Include="CommandeDossier\view\EcranNouvelleCommande.xaml.cs">
       <DependentUpon>EcranNouvelleCommande.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EcranOnglets.xaml.cs">
+    <Compile Include="ViewAutreDossier\EcranOnglets.xaml.cs">
       <DependentUpon>EcranOnglets.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EcranVente.xaml.cs">
+    <Compile Include="VenteDossier\view\EcranVente.xaml.cs">
       <DependentUpon>EcranVente.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Emplacement.cs" />
-    <Compile Include="FenetreAjouterEmploye.xaml.cs">
+    <Compile Include="EmplacementDossier\Emplacement.cs" />
+    <Compile Include="EmployeDossier\view\FenetreAjouterEmploye.xaml.cs">
       <DependentUpon>FenetreAjouterEmploye.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FenetreAuthentification.xaml.cs">
+    <Compile Include="ViewAutreDossier\FenetreAuthentification.xaml.cs">
       <DependentUpon>FenetreAuthentification.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FenetreModifierBouteille.xaml.cs">
+    <Compile Include="BouteilleDossier\view\FenetreModifierBouteille.xaml.cs">
       <DependentUpon>FenetreModifierBouteille.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FenetreModifierEmploye.xaml.cs">
+    <Compile Include="EmployeDossier\view\FenetreModifierEmploye.xaml.cs">
       <DependentUpon>FenetreModifierEmploye.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
@@ -262,7 +262,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Marque.cs" />
+    <Compile Include="MarqueDossier\Marque.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -325,6 +325,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\poubelle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="EmplacementDossier\view\" />
+    <Folder Include="MarqueDossier\view\" />
+    <Folder Include="RoleDossier\view\" />
+    <Folder Include="TypeDossier\view\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

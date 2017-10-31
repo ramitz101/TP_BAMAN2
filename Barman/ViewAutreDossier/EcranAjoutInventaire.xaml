@@ -1,0 +1,28 @@
+﻿<UserControl x:Class="Barman.ViewAutreDossier.EcranAjoutInventaire"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Barman"
+             mc:Ignorable="d" 
+             d:DesignHeight="350" d:DesignWidth="550">
+
+    <Grid>
+        <Label Content="Ajouter Marque d'alcool" FontWeight="Bold" FontSize="15" HorizontalAlignment="Left" Margin="6,55,0,0" VerticalAlignment="Top"/>
+        <Label Content="nom" HorizontalAlignment="Left" Margin="20,85,0,0" VerticalAlignment="Top"/>
+        <Label Content="Type d'alcool" HorizontalAlignment="Left" Margin="238,84,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="txtMarque" HorizontalAlignment="Left" Height="23" Margin="20,110,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <ComboBox Name="cboTypeAlcool" HorizontalAlignment="Left" Margin="238,110,0,0" VerticalAlignment="Top" Width="110"/>
+        <Button Name="btnAjouterNouvelleM" Content="Ajouter" HorizontalAlignment="Left" Margin="461,110,0,0" VerticalAlignment="Top" Width="85" Height="24" Click="btnAjouterNouvelleM_Click"/>
+        <Label Content="Ajouter type d'alcool" FontWeight="Bold" FontSize="15" HorizontalAlignment="Left" Margin="6,155,0,0" VerticalAlignment="Top"/>
+        <Label Content="Nouveau type d'alcool" HorizontalAlignment="Left" Margin="20,190,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="txtNouveauType" HorizontalAlignment="Left" Height="23" Margin="20,216,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button Name="btnAjouterNouveauTypeA" Content="Ajouter" HorizontalAlignment="Left" Margin="461,216,0,0" VerticalAlignment="Top" Width="85" Height="24" Click="btnAjouterNouveauTypeA_Click"/>
+        <Button Name="btnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="58,287,0,0" VerticalAlignment="Top" Width="136" Height="49" Click="btnAnnuler_Click"/>
+        <Button Name="btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="288,287,0,0" VerticalAlignment="Top" Width="136" Height="49" Click="btnConfirmer_Click"/>
+
+
+
+
+    </Grid>
+</UserControl>
