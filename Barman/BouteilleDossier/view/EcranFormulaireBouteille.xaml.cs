@@ -104,7 +104,22 @@ namespace Barman.BouteilleDossier.view
          cboÉtiquette.ItemsSource = lstBouteilles;
          cboÉtiquette.DisplayMemberPath = "Numero";
 
-      }
+        if(cboÉtiquette.Items.Count==0 && cboMarqueBouteille.SelectedItem!=null)
+            {
+                MessageBox.Show("Il n'y a plus de bouteille de la marque sélectionnée dans la réserve.", "Manque de bouteille", MessageBoxButton.OK, MessageBoxImage.Warning);
+                cboÉtiquette.IsEnabled = false;
+            }
+
+            if (FormulaireRempli())
+            {
+                btnConfirmer.IsEnabled = true;
+            }
+            else
+            {
+                btnConfirmer.IsEnabled = false;
+            }
+
+        }
 
       private void cboType_SelectionChanged(object sender, SelectionChangedEventArgs e)
       {
@@ -117,6 +132,15 @@ namespace Barman.BouteilleDossier.view
          cboMarqueBouteille.SelectedValuePath = "IdMarque";
          cboMarqueBouteille.DisplayMemberPath = "Nom";
 
+            if (FormulaireRempli())
+            {
+                btnConfirmer.IsEnabled = true;
+            }
+            else
+            {
+                btnConfirmer.IsEnabled = false;
+            }
+
       }
 
       private void CheckBox_Checked(object sender, RoutedEventArgs e)
@@ -124,7 +148,16 @@ namespace Barman.BouteilleDossier.view
          cboEmplacement.SelectedIndex = -1;
          cboEmplacement.IsEnabled = false;
 
-      }
+            if (FormulaireRempli())
+            {
+                btnConfirmer.IsEnabled = true;
+            }
+            else
+            {
+                btnConfirmer.IsEnabled = false;
+            }
+
+        }
 
       private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
       {
@@ -148,5 +181,41 @@ namespace Barman.BouteilleDossier.view
           
 
       }
-   }
+
+        private void cboÉtiquette_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (FormulaireRempli())
+            {
+                btnConfirmer.IsEnabled = true;
+            }
+            else
+            {
+                btnConfirmer.IsEnabled = false;
+            }
+        }
+
+        private void cboEmplacement_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (FormulaireRempli())
+            {
+                btnConfirmer.IsEnabled = true;
+            }
+            else
+            {
+                btnConfirmer.IsEnabled = false;
+            }
+        }
+
+        private void cboEmployé_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (FormulaireRempli())
+            {
+                btnConfirmer.IsEnabled = true;
+            }
+            else
+            {
+                btnConfirmer.IsEnabled = false;
+            }
+        }
+    }
 }
