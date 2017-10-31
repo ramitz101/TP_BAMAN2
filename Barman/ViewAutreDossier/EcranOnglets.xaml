@@ -41,7 +41,7 @@
             <TabItem Name="tbiEmploye" Header="EMPLOYÉS"  />
             <TabItem Name="tbiVente" Header="VENTES"/>
             <TabItem Name="tbiCommande"  Header="COMMANDES"/>
-            <TabItem Name="tbiFormulaireB" Header="FORMULAIRE BOUTEILLE"/>
+            <TabItem Name="tbiFormulaireB" Header="SORTIR BOUTEILLE"/>
         </TabControl>
     </Grid>
 </UserControl>

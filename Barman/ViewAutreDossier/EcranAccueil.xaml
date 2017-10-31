@@ -40,7 +40,7 @@
             <Button Name="btnFormulaireBouteille" Click="btnFormulaireBouteille_Click" Width="200" Height="50" Margin="15">
                 <StackPanel Orientation="Horizontal"  Width="155" Height="36">
                     <Image Source="../images/formulaire.png" />
-                    <TextBlock Text="FORMULAIRE" FontSize="20" ></TextBlock>
+                    <TextBlock Text="SORTIR BTLE" FontSize="20" ></TextBlock>
                 </StackPanel>
             </Button>
         </StackPanel>
