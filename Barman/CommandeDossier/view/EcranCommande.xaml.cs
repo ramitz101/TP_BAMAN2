@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Barman.BouteilleDossier.Hibernate;
 using Barman.CommandeDossier.Hibernate;
+using Barman.EmployeDossier.Hibernate;
 using Barman.ViewAutreDossier;
 using Barman.BouteilleDossier;
 
@@ -25,9 +26,9 @@ namespace Barman.CommandeDossier.view
     /// </summary>
     public partial class EcranCommande : UserControl
     {
-        
-        
-        private static ObservableCollection<Commande> lstCommandes = new ObservableCollection<Commande>(ChargerListCommande());
+
+
+        private static ObservableCollection<Commande> lstCommandes;
 
         private static List<Commande> ChargerListCommande()
         {
@@ -35,6 +36,7 @@ namespace Barman.CommandeDossier.view
             foreach(var i in listC)
             {
                 i.ListBouteille = HibernateBouteilleService.RetrieveByIdCommande((int)i.IdCommande);
+                i.UnEmploye = HibernateEmployeService.Retrieve((int)i.IdEmploye)[0];
             }
             return listC;
         }
@@ -42,6 +44,7 @@ namespace Barman.CommandeDossier.view
         public EcranCommande()
         {
             InitializeComponent();
+            lstCommandes = new ObservableCollection<Commande>(ChargerListCommande());
             dtgCommande.CanUserAddRows = false;
             
             dtgCommande.ItemsSource = lstCommandes;
