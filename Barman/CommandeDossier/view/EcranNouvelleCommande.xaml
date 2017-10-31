@@ -34,6 +34,7 @@
         <Label Content="Marque" Margin="10,73,0,281" HorizontalAlignment="Left" Width="94" />
         <ComboBox x:Name="cboMarqueBouteille" SelectionChanged="cboMarqueBouteille_SelectionChanged"  Margin="10,95,0,254"  HorizontalAlignment="Left" Width="94" Height="23"/>
         <TextBox x:Name="txtFormat" KeyDown="txtFormat_KeyDown" HorizontalAlignment="Left" Height="23" Margin="131,63,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="49"/>
+        <Button Name="btnSupprimer" Click="btnSupprimer_Click" Content="Supprimer" HorizontalAlignment="Left" Height="51"  Width="96" Margin="223,319,0,10" />
 
 
 

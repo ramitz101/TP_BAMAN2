@@ -44,7 +44,8 @@ namespace Barman.CommandeDossier.view
             cboMarqueBouteille.DisplayMemberPath = "Nom";
             cboMarqueBouteille.SelectedValuePath = "IdMarque";
 
-       
+            btnConfirmer.IsEnabled = false;
+            btnSupprimer.IsEnabled = false;
 
             cboType.ItemsSource = lstType;
             cboType.DisplayMemberPath = "Nom";
@@ -127,9 +128,8 @@ namespace Barman.CommandeDossier.view
        
 
         private void txtFormat_KeyDown(object sender, KeyEventArgs e)
-        {
-            RefreshLabelPrix();
-            
+        {          
+            RefreshLabelPrix();          
         }
 
         private void RefreshLabelPrix()
@@ -195,18 +195,59 @@ namespace Barman.CommandeDossier.view
 
         private void btnAjouter_Click(object sender, RoutedEventArgs e)
         {
-
-            for(int i =0; i < int.Parse(txtQuantite.Text);i++)
+            btnSupprimer.IsEnabled = true;
+            btnConfirmer.IsEnabled = true;
+            try
             {
-                Bouteille b = new Bouteille(Generer.GenererCodeBouteille(), int.Parse(txtFormat.Text), int.Parse(txtFormat.Text), "Pleine", float.Parse(lblPrix.Content.ToString()),
-                                            9, int.Parse(cboMarqueBouteille.SelectedValue.ToString()), (int)CommandeCours.IdCommande);
-                b.SaMarque = HibernateMarqueService.Retrieve((int)b.IdMarque)[0];
-                b.SaMarque.SonTypeAlcool = HibernateTypeAlcoolService.RetrieveTypeAlcool((int)b.SaMarque.IdTypeAlcool)[0];
-                lstNouvelleBouteille.Add(b);
+                for (int i = 0; i < int.Parse(txtQuantite.Text); i++)
+                {
+                    Bouteille b = new Bouteille(Generer.GenererCodeBouteille(), int.Parse(txtFormat.Text), int.Parse(txtFormat.Text), "Pleine", float.Parse(lblPrix.Content.ToString()),
+                                                9, int.Parse(cboMarqueBouteille.SelectedValue.ToString()), (int)CommandeCours.IdCommande);
+                    b.SaMarque = HibernateMarqueService.Retrieve((int)b.IdMarque)[0];
+                    b.SaMarque.SonTypeAlcool = HibernateTypeAlcoolService.RetrieveTypeAlcool((int)b.SaMarque.IdTypeAlcool)[0];
+                    lstNouvelleBouteille.Add(b);
+                }
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Une erreur est survenu lors de l'ajout", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             dtgNouvelleCommande.ItemsSource = lstNouvelleBouteille;
             dtgNouvelleCommande.Items.Refresh();
+        }
+
+        private void btnSupprimer_Click(object sender, RoutedEventArgs e)
+        {
+            if (dtgNouvelleCommande.SelectedItems.Count == 1)
+            {
+
+                Bouteille b = new Bouteille();
+                b = (Bouteille)dtgNouvelleCommande.SelectedItem;
+                var result = MessageBox.Show(("Êtes-vous sur de vouloir supprimer " + b.SaMarque.Nom), "Avertissement", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes)
+                {
+                    HibernateBouteilleService.Delete((Bouteille)b);
+                    lstNouvelleBouteille.Remove(lstNouvelleBouteille.Find(x => x.IdBouteille == b.IdBouteille));
+                    dtgNouvelleCommande.ItemsSource = lstNouvelleBouteille;
+                    dtgNouvelleCommande.Items.Refresh();
+                    if (lstNouvelleBouteille.Count > 0)
+                    {
+                        btnConfirmer.IsEnabled = true;
+                        btnSupprimer.IsEnabled = true;
+                    }
+                    else
+                    {
+                        btnConfirmer.IsEnabled = false;
+                        btnSupprimer.IsEnabled = false;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vous devez sélectionner une bouteille pour supprimer", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
     }
 }
