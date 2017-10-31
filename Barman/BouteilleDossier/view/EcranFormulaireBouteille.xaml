@@ -7,26 +7,54 @@
              mc:Ignorable="d" 
              d:DesignHeight="295.946" d:DesignWidth="460.811">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
 
-        <Label Content="Emplacement" HorizontalAlignment="Left" Margin="311,170,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.494,0.552" Width="93"/>
-        <ComboBox Name="cboEmplacement" HorizontalAlignment="Left" Margin="311,201,0,0" VerticalAlignment="Top" Width="120" />
-
-        <Label Content="Type" HorizontalAlignment="Left" Margin="17,20,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.494,0.552" Width="93"/>
-        <ComboBox Name="cboType" SelectionChanged="cboType_SelectionChanged" HorizontalAlignment="Left" Margin="17,51,0,0" VerticalAlignment="Top" Width="120" />
-
-        <CheckBox Name="chbVendu" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" Content="Vente pour client" HorizontalAlignment="Left" Margin="314,58,0,0" VerticalAlignment="Top" Width="117" />
-
-        <Label Content="Marque"  HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.471,0.563" Margin="17,96,0,0"/>
-        <ComboBox Name="cboMarqueBouteille" IsEnabled="False" SelectionChanged="cboMarqueBouteille_SelectionChanged" HorizontalAlignment="Left" Margin="17,127,0,0" VerticalAlignment="Top" Width="120"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
         
-        <Label Content="Employé" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.471,0.563" Margin="17,170,0,0"/>
-        <ComboBox Name="cboEmployé" HorizontalAlignment="Left" Margin="17,201,0,0" VerticalAlignment="Top" Width="120"/>
+        <StackPanel Grid.Column="2" Grid.Row="3">
+            <Label Content="Emplacement" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="93"/>
+            <ComboBox Name="cboEmplacement" HorizontalAlignment="Left"   VerticalAlignment="Bottom" Width="120" />
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Grid.Row="1">
+            <Label Content="Type" HorizontalAlignment="Left"  VerticalAlignment="Top" />
+            <ComboBox Name="cboType"   SelectionChanged="cboType_SelectionChanged" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Width="120" />
+        </StackPanel>
+
+        <StackPanel Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left">
+            <Label Content="Vendu pour client"  />
+            <CheckBox  Name="chbVendu"  Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" HorizontalAlignment="Center"    />
+        </StackPanel>
         
-        <Label Content="Étiquette" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.471,0.563" Margin="314,96,0,0"/>
-        <ComboBox x:Name="cboÉtiquette" IsEnabled="False" HorizontalAlignment="Left" Margin="314,127,0,0" VerticalAlignment="Top" Width="120"/>
-        
-        <Button Name="btnAccueil" Content="Accueil" HorizontalAlignment="Left" Margin="77,257,0,0" VerticalAlignment="Top" Width="75" Click="btnAccueil_Click"/>
-        <Button Name="btnImprimer" Content="Imprimer" HorizontalAlignment="Left" Margin="197,257,0,0" VerticalAlignment="Top" Width="75" Click="btnImprimer_Click"/>
-        <Button Name="btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="314,257,0,0" VerticalAlignment="Top" Width="75" Click="btnConfirmer_Click"/>
+        <StackPanel Grid.Column="1" Grid.Row="2">
+            <Label Content="Marque"   HorizontalAlignment="Left" VerticalAlignment="Top" />
+            <ComboBox Name="cboMarqueBouteille" IsEnabled="False" SelectionChanged="cboMarqueBouteille_SelectionChanged" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Width="120"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="2" Grid.Row="2">
+            <Label Content="Employé"  HorizontalAlignment="Left" VerticalAlignment="Top" />
+            <ComboBox Name="cboEmployé" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="120"/>
+        </StackPanel>
+
+        <StackPanel  Grid.Column="1" Grid.Row="3">
+            <Label Content="Étiquette" HorizontalAlignment="Left" VerticalAlignment="Top" />
+            <ComboBox x:Name="cboÉtiquette" SelectionChanged="cboÉtiquette_SelectionChanged" IsEnabled="False" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="120"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="4" HorizontalAlignment="Center">
+            <Button Name="btnAccueil" Margin="0,0,50,0" Content="Accueil" HorizontalAlignment="Left"   VerticalAlignment="Center" Width="75" Click="btnAccueil_Click"/>
+            <Button Name="btnImprimer" Margin="0,0,50,0" Content="Imprimer" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="75" Click="btnImprimer_Click"/>
+            <Button Name="btnConfirmer" IsEnabled="False" Content="Confirmer" HorizontalAlignment="Right" VerticalAlignment="Center" Width="75" Click="btnConfirmer_Click"/>
+        </StackPanel>
     </Grid>
 </UserControl>

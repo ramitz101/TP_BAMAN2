@@ -104,6 +104,12 @@ namespace Barman.BouteilleDossier.view
          cboÉtiquette.ItemsSource = lstBouteilles;
          cboÉtiquette.DisplayMemberPath = "Numero";
 
+        if(cboÉtiquette.Items.Count==0 && cboMarqueBouteille.SelectedItem!=null)
+            {
+                MessageBox.Show("Il n'y a plus de bouteille de la marque sélectionnée dans la réserve.", "Manque de bouteille", MessageBoxButton.OK, MessageBoxImage.Warning);
+                cboÉtiquette.IsEnabled = false;
+            }
+
       }
 
       private void cboType_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -148,5 +154,10 @@ namespace Barman.BouteilleDossier.view
           
 
       }
-   }
+
+        private void cboÉtiquette_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            btnConfirmer.IsEnabled = true;
+        }
+    }
 }
