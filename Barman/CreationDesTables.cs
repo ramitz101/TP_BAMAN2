@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Barman.EmployeDossier;
 using Barman.BouteilleDossier;
+using Barman.CommandeDossier;
+using Barman.VenteDossier;
 
 namespace Barman
 {
@@ -100,6 +102,145 @@ namespace Barman
             }
             return table;
 
+        }
+
+        public static PdfPTable CreerTableVente(PdfPTable table, ObservableCollection<Vente> lstVente)
+        {
+            PdfPCell cell = new PdfPCell();
+            Phrase text = new Phrase();
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.VerticalAlignment = Element.ALIGN_CENTER;
+
+
+
+            text = new Phrase("Bouteille");
+            cell = new PdfPCell(text);
+            cell.Phrase.Font.SetStyle(Font.BOLD);
+            table.AddCell(cell);
+
+            text = new Phrase("Date.");
+            cell = new PdfPCell(text);
+            cell.Phrase.Font.SetStyle(Font.BOLD);
+            table.AddCell(cell);
+
+            text = new Phrase("Quantité");
+            cell = new PdfPCell(text);
+            cell.Phrase.Font.SetStyle(Font.BOLD);
+            table.AddCell(cell);
+
+            text = new Phrase("Prix de once");
+            cell = new PdfPCell(text);
+            cell.Phrase.Font.SetStyle(Font.BOLD);
+            table.AddCell(cell);
+
+
+            cell.HorizontalAlignment = Element.ALIGN_LEFT;
+            cell.VerticalAlignment = Element.ALIGN_LEFT;
+
+            text.Font = FontFactory.GetFont(FontFactory.HELVETICA, 12);
+
+            foreach (Vente b in lstVente)
+            {
+                text = new Phrase(b.laBouteille.SaMarque.Nom);
+                cell = new PdfPCell(text);
+                table.AddCell(cell);
+
+                text = new Phrase(b.DateVente.ToString());
+                cell = new PdfPCell(text);
+                table.AddCell(cell);
+
+               
+
+                text = new Phrase(b.Volume.ToString());
+                cell = new PdfPCell(text);
+                table.AddCell(cell);
+                
+                text = new Phrase(b.PrixOnce.ToString());
+                cell = new PdfPCell(text);
+                table.AddCell(cell);
+
+
+
+            }
+            return table;
+        }
+
+
+        public static PdfPTable CreerTableCommande(PdfPTable table, ObservableCollection<Commande> lstCommande)
+        {
+            PdfPCell cell = new PdfPCell();
+            Phrase text = new Phrase();
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.VerticalAlignment = Element.ALIGN_CENTER;
+
+     
+
+            text = new Phrase("Date");
+            cell = new PdfPCell(text);
+            cell.Phrase.Font.SetStyle(Font.BOLD);
+            table.AddCell(cell);
+
+            text = new Phrase("Responsable.");
+            cell = new PdfPCell(text);
+            cell.Phrase.Font.SetStyle(Font.BOLD);
+            table.AddCell(cell);
+
+            text = new Phrase("Quantité");
+            cell = new PdfPCell(text);
+            cell.Phrase.Font.SetStyle(Font.BOLD);
+            table.AddCell(cell);
+
+            text = new Phrase("État");
+            cell = new PdfPCell(text);
+            cell.Phrase.Font.SetStyle(Font.BOLD);
+            table.AddCell(cell);
+
+
+            cell.HorizontalAlignment = Element.ALIGN_LEFT;
+            cell.VerticalAlignment = Element.ALIGN_LEFT;
+
+            text.Font = FontFactory.GetFont(FontFactory.HELVETICA, 12);
+
+            foreach(Commande b in lstCommande)
+            {
+
+
+                //if (b.DateCommande.ToString().Length >= 10)
+                //{
+                //    string nom = b.DateCommande.ToString().Substring(0, 9);
+                //    nom += ".";
+                //    text = new Phrase(nom);
+                //    cell = new PdfPCell(text);
+                //}
+                //else
+                //{
+                //    text = new Phrase(b.DateCommande.ToString());
+                //    cell = new PdfPCell(text);
+
+                //}
+                //table.AddCell(cell);
+
+
+                text = new Phrase(b.DateCommande.ToString());
+                cell = new PdfPCell(text);
+                table.AddCell(cell);
+
+                text = new Phrase(b.UnEmploye.Prenom.ToString() +" " +b.UnEmploye.Nom.ToString());
+                cell = new PdfPCell(text);
+                table.AddCell(cell);
+
+                text = new Phrase(b.ListBouteille.Count.ToString());
+                cell = new PdfPCell(text);
+                table.AddCell(cell);
+
+                text = new Phrase(b.Etat.ToString());
+                cell = new PdfPCell(text);
+                table.AddCell(cell);
+
+                
+
+            }
+            return table;
         }
 
         public static PdfPTable CreerTableEmploye(PdfPTable table, ObservableCollection<Employe> lstEmploye)
