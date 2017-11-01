@@ -25,6 +25,7 @@ namespace Barman.BouteilleDossier.Hibernate
             return result.ToList();
         }
 
+
         public static List<Bouteille> RetrieveByMarque(Marque pMarque)
         {
             var bouteilles = session.Query<Bouteille>().AsQueryable();
@@ -35,6 +36,20 @@ namespace Barman.BouteilleDossier.Hibernate
 
             return result.ToList();
          }
+        public static List<Bouteille> RetrieveByEtat(string s)
+        {
+            var bouteilles = session.Query<Bouteille>().AsQueryable();
+
+            var result = from m in bouteilles
+                         where m.Etat.StartsWith(s) && m.Etat != "Supprimée"
+                         select m;
+
+            return result.ToList();
+        }
+
+       
+
+
         public static List<Bouteille> Retrieve(int pIdBouteille)
         {
             var bouteilles = session.Query<Bouteille>().AsQueryable();
@@ -50,17 +65,27 @@ namespace Barman.BouteilleDossier.Hibernate
          var bouteilles = session.Query<Bouteille>().AsQueryable();
 
          var result = from m in bouteilles
-                      where m.IdMarque == pIdMarque
+                      where m.IdMarque == pIdMarque && m.Etat != "Supprimée"
                       select m;
 
          return result.ToList();
       }
+      public static List<Bouteille>  RetrieveByEmplacementId(int pIdEmplacement)
+        {
+            var bouteilles = session.Query<Bouteille>().AsQueryable();
+
+            var result = from m in bouteilles
+                         where m.IdEmplacement == pIdEmplacement && m.Etat != "Supprimée"
+                         select m;
+
+            return result.ToList();
+        }
       public static List<Bouteille> Retrieve(string pNomMarque)
       {
          var bouteilles = session.Query<Bouteille>().AsQueryable();
 
          var result = from m in bouteilles
-                      where m.SaMarque.Nom.StartsWith(pNomMarque)
+                      where m.SaMarque.Nom.StartsWith(pNomMarque) && m.Etat != "Supprimée"
                       select m;
 
          return result.ToList();

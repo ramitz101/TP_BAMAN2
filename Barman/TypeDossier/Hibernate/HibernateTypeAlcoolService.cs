@@ -18,6 +18,15 @@ namespace Barman.TypeDossier.Hibernate
             return session.Query<TypeAlcool>().ToList();
         }
 
+        public static List<TypeAlcool> Retrieve(string s)
+        {
+            var typeAlcooles = session.Query<TypeAlcool>().AsQueryable();
+
+            var resultat = from m in typeAlcooles
+                           where m.Nom.StartsWith(s)
+                           select m;
+            return resultat.ToList();
+        }
         public static List<TypeAlcool> RetrieveTypeAlcool(int pIdTypeAlcool)
         {
             var typeAlcooles = session.Query<TypeAlcool>().AsQueryable();

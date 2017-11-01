@@ -38,6 +38,7 @@ namespace Barman.MarqueDossier.Hibernate
 
          return result.ToList();
       }
+        
 
         public static List<Marque>RetrieveByType(TypeAlcool pType)
         {

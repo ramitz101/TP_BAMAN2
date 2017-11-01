@@ -17,6 +17,16 @@ namespace Barman.EmplacementDossier.Hibernate
             return session.Query<Emplacement>().ToList();
         }
 
+        public static List<Emplacement> Retrieve(string s)
+        {
+            var emplacement = session.Query<Emplacement>().AsQueryable();
+
+            var result = from m in emplacement
+                         where m.Nom.StartsWith(s)
+                         select m;
+
+            return result.ToList();
+        }
       public static List<Emplacement> RetrieveAllForFormulaire()
       {
          var emplacements = session.Query<Emplacement>().AsQueryable();

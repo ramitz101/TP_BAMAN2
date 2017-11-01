@@ -18,7 +18,12 @@
         <TextBox Name="txtRecherche"  KeyUp="txtRecherche_KeyUp_1" Height="20"  Grid.Column="1" VerticalAlignment="Top" Text="Rechercher" LostFocus="txtRecherche_LostFocus" GotFocus="txtRecherche_GotFocus" Margin="0,17,0,0" Grid.Row="2" ></TextBox>
          
         
-        <DataGrid Name="dtgInventaire" AutoGenerateColumns="False" HorizontalAlignment="Left"  VerticalAlignment="Top"  Margin="0,42,0,0" Grid.Column="1" Grid.Row="2">
+        <DataGrid  Name="dtgInventaire" AutoGenerateColumns="False" HorizontalAlignment="Left"  VerticalAlignment="Top"  Margin="0,42,0,0" Grid.Column="1" Grid.Row="2">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <EventSetter Event="Click" Handler="columnHeader_Click" />
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nom" Width="2*" Binding="{Binding SaMarque.Nom}" />
                 <DataGridTextColumn Header="Volume" Width="1*" Binding="{Binding VolumeInitial}"/>

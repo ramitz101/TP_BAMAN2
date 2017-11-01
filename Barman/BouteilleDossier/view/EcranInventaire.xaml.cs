@@ -24,6 +24,9 @@ using Barman.ViewAutreDossier;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using Microsoft.Win32;
+using System.Windows.Controls.Primitives;
+using Barman.EmplacementDossier;
+using Barman.TypeDossier;
 
 namespace Barman.BouteilleDossier.view
 {
@@ -33,14 +36,14 @@ namespace Barman.BouteilleDossier.view
     public partial class EcranInventaire : UserControl
     {
         private static ObservableCollection<Bouteille> lstBouteilles = new ObservableCollection<Bouteille>(ChargerListBouteille());
-
+        public string ContenuHeader { get; set; }
         public EcranInventaire()
         {
             InitializeComponent();
             lstBouteilles = new ObservableCollection<Bouteille>(ChargerListBouteille());
             dtgInventaire.ItemsSource = lstBouteilles;
             dtgInventaire.Items.Refresh();
-
+            ContenuHeader = "Nom";
             dtgInventaire.IsReadOnly = true;
         }
 
@@ -173,14 +176,43 @@ namespace Barman.BouteilleDossier.view
         {
             List<Bouteille> lstBouteille = new List<Bouteille>();
             List<Marque> lstMarque = new List<Marque>();
+            List<TypeAlcool> lstType = new List<TypeAlcool>();
+            List<Emplacement> lstEmplacement= new List<Emplacement>();
             if (txtRecherche.Text != "" && txtRecherche.Text != "Recherche")
             {
-                lstMarque = HibernateMarqueService.Retrieve(txtRecherche.Text);
-                foreach (Marque m in lstMarque)
+                switch (ContenuHeader)
                 {
-                    lstBouteille.AddRange(HibernateBouteilleService.RetrieveByMarqueId((int)m.IdMarque));
+                    case "Nom":
+                        lstMarque = HibernateMarqueService.Retrieve(txtRecherche.Text);
+                        foreach (Marque m in lstMarque)
+                        {
+                            lstBouteille.AddRange(HibernateBouteilleService.RetrieveByMarqueId((int)m.IdMarque));
+                        }
+                        break;
+                    case "Emplacement":
+                        lstEmplacement = HibernateEmplacementService.Retrieve(txtRecherche.Text);
+                        foreach (Emplacement m in lstEmplacement)
+                        {
+                            lstBouteille.AddRange(HibernateBouteilleService.RetrieveByEmplacementId((int)m.IdEmplacement));
+                        }
+                        break;
+                    case "État":
+                        lstBouteille.AddRange(HibernateBouteilleService.RetrieveByEtat(txtRecherche.Text));
+                        break;
+                    case "Type d'alcool":
+                        lstType = HibernateTypeAlcoolService.Retrieve(txtRecherche.Text);
+                        foreach (TypeAlcool t in lstType)
+                        {
+                            lstMarque.AddRange(HibernateMarqueService.RetrieveByType(t));
+                               
+                        }
+                        foreach (Marque m in lstMarque)
+                        {
+                            lstBouteille.AddRange(HibernateBouteilleService.RetrieveByMarqueId((int)m.IdMarque));
+                        }
+                        break;
                 }
-
+               
 
                 if (lstBouteille.Count != 0)
                     dtgInventaire.ItemsSource = lstBouteille;
@@ -321,6 +353,10 @@ namespace Barman.BouteilleDossier.view
 
 
             return table;
+        }
+        private void columnHeader_Click(object sender, RoutedEventArgs e)
+        {
+            ContenuHeader = ((DataGridColumnHeader)sender).Content.ToString();
         }
     }
 }
