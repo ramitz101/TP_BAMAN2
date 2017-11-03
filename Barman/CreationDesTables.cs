@@ -128,7 +128,7 @@ namespace Barman
             cell.Phrase.Font.SetStyle(Font.BOLD);
             table.AddCell(cell);
 
-            text = new Phrase("Prix de once");
+            text = new Phrase("Prix de l'once");
             cell = new PdfPCell(text);
             cell.Phrase.Font.SetStyle(Font.BOLD);
             table.AddCell(cell);
@@ -154,8 +154,8 @@ namespace Barman
                 text = new Phrase(b.Volume.ToString());
                 cell = new PdfPCell(text);
                 table.AddCell(cell);
-                
-                text = new Phrase(b.PrixOnce.ToString());
+                float p = (float)b.PrixOnce;
+                text = new Phrase(p.ToString("0.00"+"$"));
                 cell = new PdfPCell(text);
                 table.AddCell(cell);
 

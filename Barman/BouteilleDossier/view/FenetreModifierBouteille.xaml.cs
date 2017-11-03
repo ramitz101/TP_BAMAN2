@@ -72,6 +72,24 @@ namespace Barman.BouteilleDossier.view
         {
             if ((int)cboVolumeRestant.SelectedValue == 0)
             {
+                if (bouteilleModifier.VolumeRestant != int.Parse(txtVolumeRestant.Text))
+                {
+                    message += "le volume";
+                    bouteilleModifier.VolumeRestant = int.Parse(txtVolumeRestant.Text);
+                }
+                if (bouteilleModifier.IdEmplacement != (int)cboEmplacement.SelectedValue)
+                {
+                    bouteilleModifier.IdEmplacement = (int)cboEmplacement.SelectedValue;
+                    if(message.EndsWith(" "))
+                        message += "l'emplacement";
+                    else
+                        message += " l'emplacement";
+
+                }
+                message += ".";
+                HibernateBouteilleService.Update(bouteilleModifier);
+                MessageBox.Show(message, "Modification", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.Close();
 
                 MessageBoxResult resultat = MessageBox.Show("La bouteille est vide et sera donc supprimée de l'inventaire. Est-ce bien ce que vous voulez faire?", "Question", MessageBoxButton.YesNo);
 
@@ -91,6 +109,20 @@ namespace Barman.BouteilleDossier.view
                 bouteilleModifier.IdEmplacement = (int)cboEmplacement.SelectedValue;
                 HibernateBouteilleService.Update(bouteilleModifier);
                 this.Close();
+            }
+
+        }
+
+        private bool ValideChamp()
+        {
+            bool estValide = false;
+            int n;
+            if (int.TryParse(txtVolumeRestant.Text, out n))
+            {
+                if (n <= int.Parse(txtFormatBouteille.Content.ToString()) && n>0)
+                {
+                    estValide = true;
+                }
             }
             
         }    

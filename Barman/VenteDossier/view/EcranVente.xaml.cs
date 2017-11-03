@@ -46,11 +46,18 @@ namespace Barman.VenteDossier.view
             s.Append(EcranAccueil.employe.Prenom + " " + EcranAccueil.employe.Nom);
             lblEmploye.Content = s.ToString();
 
-            //ComboBox
+            btnAjouter.IsEnabled = false;
+            cboMarque.IsEnabled = false;
+
+            //ComboBox 
+            lstEmplacement.Remove(lstEmplacement.Where(x => x.Nom == "Aucun").ToList()[0]);
+            lstEmplacement.Remove(lstEmplacement.Where(x => x.Nom == "Réserve").ToList()[0]);
+
+
             cboEmplacement.ItemsSource = lstEmplacement;
             cboEmplacement.DisplayMemberPath = "Nom";
             cboEmplacement.SelectedValuePath = "IdEmplacement";
-            cboEmplacement.SelectedIndex = 0;
+
 
           
             cboMarque.DisplayMemberPath = "SaMarque.Nom";
@@ -96,7 +103,7 @@ namespace Barman.VenteDossier.view
                     Vente v = new Vente((prix/ int.Parse(txtQuantite.Text)), DateTime.Now, int.Parse(txtQuantite.Text), (int)LaBouteilleVendu.IdBouteille, (int)EcranAccueil.employe.IdEmploye);
                     HibernateVenteService.Create(v);
                     lblComfirmationAjout.Foreground = Brushes.Green;
-                    lblComfirmationAjout.Content = "Ajout réussi";
+                    lblComfirmationAjout.Content = "Vente ajoutée";
 
                     if (LaBouteilleVendu.Etat == "Pleine")
                         LaBouteilleVendu.Etat = "Entamée";
@@ -109,6 +116,12 @@ namespace Barman.VenteDossier.view
                         LaBouteilleVendu.IdEmplacement = 9;
 
                     }
+
+                    cboEmplacement.SelectedValue = null;
+                    cboMarque.SelectedValue = null;
+                    lblPrixVente.Content = "";
+                    txtQuantite.Text = "1";
+                    btnAjouter.IsEnabled = false;
                     HibernateBouteilleService.Update(LaBouteilleVendu);
 
                 }            
@@ -116,7 +129,7 @@ namespace Barman.VenteDossier.view
             }
             catch(Exception z)
             {
-                MessageBox.Show(z.ToString());
+                //MessageBox.Show(z.ToString());
                 lblComfirmationAjout.Foreground = Brushes.Red;
                 lblComfirmationAjout.Content = "Une erreur est survénu";
             }
@@ -201,6 +214,8 @@ namespace Barman.VenteDossier.view
         {
             cboMarque.ItemsSource = ChargerListBouteille();
             LaBouteilleVendu = null;
+            cboMarque.IsEnabled = true;
+            btnAjouter.IsEnabled = false;
         }
 
         private void cboMarque_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -215,8 +230,9 @@ namespace Barman.VenteDossier.view
                     break;
                 }
             }
-
             AjusterPrix();
+
+            btnAjouter.IsEnabled = true;
             
         }
 

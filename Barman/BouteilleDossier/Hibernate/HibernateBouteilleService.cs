@@ -14,6 +14,12 @@ namespace Barman.BouteilleDossier.Hibernate
     {
         private static ISession session = NHibernateConnexion.OpenSession();
 
+        
+        /// <summary>
+        /// Mettre sup a true pour avoir les bouteilles supprimer
+        /// </summary>
+        /// <param name="sup"></param>
+        /// <returns></returns>
         public static List<Bouteille> RetrieveAll(bool? sup)
         {
             var bouteilles = session.Query<Bouteille>().ToList();
@@ -34,6 +40,50 @@ namespace Barman.BouteilleDossier.Hibernate
             }
             return result.ToList();
         }
+
+        public static int CountNbEntamee()
+        {
+            var bouteilles = session.Query<Bouteille>().ToList();
+
+            var result = from b in bouteilles
+                         where b.Etat == "Entamée"
+                         select b;
+
+            return result.ToList().Count;
+        }
+        public static int CountNbPleine()
+        {
+            var bouteilles = session.Query<Bouteille>().ToList();
+
+            var result = from b in bouteilles
+                         where b.Etat == "Pleine"
+                         select b;
+
+            return result.ToList().Count;
+        }
+
+        public static int CountNbReserve()
+        {
+            var bouteilles = session.Query<Bouteille>().ToList();
+
+            var result = from b in bouteilles
+                         where b.IdEmplacement==HibernateEmplacementService.Retrieve("Réserve")[0].IdEmplacement
+                         select b;
+
+            return result.ToList().Count;
+        }
+        public static int CountNbSupprimee()
+        {
+            var bouteilles = session.Query<Bouteille>().ToList();
+
+            var result = from b in bouteilles
+                         where b.Etat=="Supprimée"
+                         select b;
+
+            return result.ToList().Count;
+        }
+
+
         public static List<Bouteille> RetrieveAllSupprimer()
         {
             var bouteilles = session.Query<Bouteille>().ToList();
