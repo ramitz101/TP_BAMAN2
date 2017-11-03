@@ -8,21 +8,21 @@
         WindowStartupLocation="CenterOwner"
         Title="FenetreAjouterEmploye" Height="273.64" Width="576.151">
     <Grid>
-        <TextBox Name="txtNom" HorizontalAlignment="Left" Height="23" Margin="10,33,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="txtPrenom" HorizontalAlignment="Left" Height="23" Margin="10,93,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="txtTelephone" HorizontalAlignment="Left" Height="23" Margin="10,152,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="txtNAS" HorizontalAlignment="Left" Height="23" Margin="410,33,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox ToolTip="Le nom du nouvel employé" Name="txtNom" HorizontalAlignment="Left" Height="23" Margin="10,33,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox ToolTip="Le prénom du nouvel employé" Name="txtPrenom" HorizontalAlignment="Left" Height="23" Margin="10,93,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox ToolTip="Le numéro de téléphone pour rejoindre l'employé" Name="txtTelephone" HorizontalAlignment="Left" Height="23" Margin="10,152,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox ToolTip="Le numéro d'assurance social" Name="txtNAS" HorizontalAlignment="Left" Height="23" Margin="410,33,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
         <Label Content="Nom" HorizontalAlignment="Left" Margin="10,2,0,0" VerticalAlignment="Top"/>
         <Label Content="Date d'embauche" HorizontalAlignment="Left" Margin="182,2,0,0" VerticalAlignment="Top"/>
         <Label Content="NAS" HorizontalAlignment="Left" Margin="410,2,0,0" VerticalAlignment="Top"/>
         <Label Content="Prénom" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top"/>
         <Label Content="Téléphone" HorizontalAlignment="Left" Margin="10,121,0,0" VerticalAlignment="Top"/>
-        <Label Content="Rôle" HorizontalAlignment="Left" Margin="410,98,0,0" VerticalAlignment="Top"/>
+        <Label ToolTip="Le niveau d'accès au composent du programme" Content="Rôle" HorizontalAlignment="Left" Margin="410,98,0,0" VerticalAlignment="Top"/>
         <Calendar Name="calendarDate" HorizontalAlignment="Left" Margin="182,33,0,0" VerticalAlignment="Top"/>
         <RadioButton Name="rdbAdministrateur" Content="Administrateur" HorizontalAlignment="Left" Margin="448,93,0,0" VerticalAlignment="Top"/>
         <RadioButton Name="rdbUtilisateur" Content="Utilisateur" HorizontalAlignment="Left" Margin="448,121,0,0" VerticalAlignment="Top"/>
-        <Button Name="btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="422,195,0,0" VerticalAlignment="Top" Width="90" Height="26" Click="btnConfirmer_Click" />
-        <Button Name="btnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="23,195,0,0" VerticalAlignment="Top" Width="90" Height="26" Click="btnAnnuler_Click" />
+        <Button ToolTip="Confirmer l'ajout du nouvel employé" Name="btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="422,195,0,0" VerticalAlignment="Top" Width="90" Height="26" Click="btnConfirmer_Click" />
+        <Button ToolTip="Annuler l'ajout du nouvel employé" Name="btnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="23,195,0,0" VerticalAlignment="Top" Width="90" Height="26" Click="btnAnnuler_Click" />
 
     </Grid>
 </Window>

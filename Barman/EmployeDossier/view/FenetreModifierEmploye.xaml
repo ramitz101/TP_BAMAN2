@@ -8,22 +8,22 @@
         Title="FenetreModifierEmploye" Height="276.151" Width="490.795"
         WindowStartupLocation="CenterOwner">
     <Grid>
-        <TextBox Name="txtNom" HorizontalAlignment="Left" Height="23" Margin="10,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="txtPrenom" HorizontalAlignment="Left" Height="23" Margin="10,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="txtTelephone" HorizontalAlignment="Left" Height="23" Margin="10,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="txtNAS" HorizontalAlignment="Left" Height="23" Margin="330,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox ToolTip="Le nom de l'employé" Name="txtNom" HorizontalAlignment="Left" Height="23" Margin="10,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox ToolTip="Le prénom de l'employé" Name="txtPrenom" HorizontalAlignment="Left" Height="23" Margin="10,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox ToolTip="Le numéro de téléphone pour rejoindre l'employé" Name="txtTelephone" HorizontalAlignment="Left" Height="23" Margin="10,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox ToolTip="Le numéro d'assurance social" Name="txtNAS" HorizontalAlignment="Left" Height="23" Margin="330,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Nom" HorizontalAlignment="Left" Margin="10,2,0,0" VerticalAlignment="Top"/>
         <Label Content="Date d'embauche" HorizontalAlignment="Left" Margin="182,2,0,0" VerticalAlignment="Top"/>
         <Label Content="NAS" HorizontalAlignment="Left" Margin="330,2,0,0" VerticalAlignment="Top"/>
         <Label Content="Prénom" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top"/>
         <Label Content="Téléphone" HorizontalAlignment="Left" Margin="10,121,0,0" VerticalAlignment="Top"/>
-        <Label Content="Rôle" HorizontalAlignment="Left" Margin="330,82,0,0" VerticalAlignment="Top"/>
+        <Label ToolTip="Le niveau d'accès au composent du programme" Content="Rôle" HorizontalAlignment="Left" Margin="330,82,0,0" VerticalAlignment="Top"/>
         <RadioButton Name="rdbAdministrateur" Content="Administrateur" HorizontalAlignment="Left" Margin="368,77,0,0" VerticalAlignment="Top"/>
         <RadioButton Name="rdbUtilisateur" Content="Utilisateur" HorizontalAlignment="Left" Margin="368,105,0,0" VerticalAlignment="Top"/>
-        <Button Name="btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="342,195,0,0" VerticalAlignment="Top" Width="90" Height="26" Click="btnConfirmer_Click"/>
-        <Button Name="btnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="23,195,0,0" VerticalAlignment="Top" Width="90" Height="26" Click="btnAnnuler_Click" />
+        <Button ToolTip="Confirmer la modification de l'employé" Name="btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="342,195,0,0" VerticalAlignment="Top" Width="90" Height="26" Click="btnConfirmer_Click"/>
+        <Button ToolTip="Annuler la modification de l'employé" Name="btnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="23,195,0,0" VerticalAlignment="Top" Width="90" Height="26" Click="btnAnnuler_Click" />
         <Calendar Name="CalendarModifierEmploye" HorizontalAlignment="Left" Margin="140,28,0,0" VerticalAlignment="Top"/>
-        <Button Name="btnGenererNouveauCode" Content="+" HorizontalAlignment="Left" Margin="330,152,0,0" VerticalAlignment="Top" Width="23" Height="23" Click="btnGenererNouveauCode_Click"/>
+        <Button ToolTip="Cliquer sur le + pour générer un nouveau code pour l'employé" Name="btnGenererNouveauCode" Content="+" HorizontalAlignment="Left" Margin="330,152,0,0" VerticalAlignment="Top" Width="23" Height="23" Click="btnGenererNouveauCode_Click"/>
         <TextBox Name="txtCode" IsReadOnly="true" HorizontalAlignment="Left" Height="23" Margin="358,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="97" />
         <Label Content="Nouveau code" HorizontalAlignment="Left" Margin="330,126,0,0" VerticalAlignment="Top"/>
 

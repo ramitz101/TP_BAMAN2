@@ -23,27 +23,27 @@
             </DataGrid.Columns>
 
         </DataGrid>
-        <Button Name="btnNouvelleCommande" Click="btnNouvelleCommande_Click"  HorizontalAlignment="Left" Margin="10,33,0,0" Background="White" VerticalAlignment="Top"  Width="163" Height="71" Grid.ColumnSpan="2">
+        <Button ToolTip="Faire une nouvelle commande d'alcool" Name="btnNouvelleCommande" Click="btnNouvelleCommande_Click"  HorizontalAlignment="Left" Margin="10,33,0,0" Background="White" VerticalAlignment="Top"  Width="163" Height="71" Grid.ColumnSpan="2">
             <StackPanel Width="140" Orientation="Horizontal">
                 <Image Source="../../images/add.png" Width="40" Height="40" />
                 <TextBlock HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="21"><Run Text="Nouvelle"/></TextBlock>
             </StackPanel>
         </Button>
-        <Button Name="btnImprimer" Click="btnImprimer_Click" FontSize="21" HorizontalAlignment="Left" Background="White" Margin="10,109,0,0" VerticalAlignment="Top" Width="163" Height="70" Grid.ColumnSpan="2">
+        <Button ToolTip="Enregistre la liste de commande dans un format PDF" Name="btnImprimer" Click="btnImprimer_Click" FontSize="21" HorizontalAlignment="Left" Background="White" Margin="10,109,0,0" VerticalAlignment="Top" Width="163" Height="70" Grid.ColumnSpan="2">
             <StackPanel Width="140" Orientation="Horizontal">
                 <Image Source="../../images/Imprimante.png" Width="40" Height="40"  />
                 <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Imprimer"/></TextBlock>
             </StackPanel>
         </Button>
 
-        <Button Name="btnRecevoirCommande" Click="btnRecevoirCommande_Click"  HorizontalAlignment="Left" Margin="10,184,0,0" Background="White" VerticalAlignment="Top"  Width="163" Height="71" Grid.ColumnSpan="2">
+        <Button ToolTip="Confirmer ou modifier la réception d'une commande" Name="btnRecevoirCommande" Click="btnRecevoirCommande_Click"  HorizontalAlignment="Left" Margin="10,184,0,0" Background="White" VerticalAlignment="Top"  Width="163" Height="71" Grid.ColumnSpan="2">
             <StackPanel Width="140" Orientation="Horizontal">
                 <Image Source="../../images/commande.png" Width="40" Height="40" />
                 <TextBlock HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="21"><Run Text="Recevoir"/></TextBlock>
             </StackPanel>
         </Button>
 
-        <Button Name="btnAccueil" Click="btnAccueil_Click" FontSize="21" HorizontalAlignment="Left" Background="White" Margin="10,259,0,0" VerticalAlignment="Top" Width="163" Height="70" Grid.ColumnSpan="2">
+        <Button ToolTip="Retourner à l'accueil / se déconnecter"  Name="btnAccueil" Click="btnAccueil_Click" FontSize="21" HorizontalAlignment="Left" Background="White" Margin="10,259,0,0" VerticalAlignment="Top" Width="163" Height="70" Grid.ColumnSpan="2">
             <StackPanel Width="140" Orientation="Horizontal">
                 <Image Source="../../images/Flechearriere.png" Width="40" Height="40"  />
                 <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Accueil"/></TextBlock>

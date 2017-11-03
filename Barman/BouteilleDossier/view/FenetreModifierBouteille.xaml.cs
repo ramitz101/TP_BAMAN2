@@ -35,7 +35,15 @@ namespace Barman.BouteilleDossier.view
                 bouteilleModifier = bouteille;
                 txtMarque.Content = bouteille.SaMarque.Nom;
                 txtFormatBouteille.Content = bouteille.VolumeInitial.ToString();
-                txtVolumeRestant.Text = bouteille.VolumeRestant.ToString();
+                List<int> lstVolumes = new List<int>();
+                for (int i = 0; i <= bouteille.VolumeInitial; i++)
+                {
+                    lstVolumes.Add(i);
+                }
+
+                cboVolumeRestant.ItemsSource = lstVolumes;
+
+                cboVolumeRestant.SelectedValue = bouteille.VolumeRestant;
                 cboEmplacement.ItemsSource = lstEmplacements;
                 cboEmplacement.DisplayMemberPath = "Nom";
                 cboEmplacement.SelectedValuePath = "IdEmplacement";
@@ -62,34 +70,29 @@ namespace Barman.BouteilleDossier.view
 
         private void btnConfirmer_Click(object sender, RoutedEventArgs e)
         {
-            if (ValideChamp())
+            if ((int)cboVolumeRestant.SelectedValue == 0)
             {
-                bouteilleModifier.VolumeRestant = int.Parse(txtVolumeRestant.Text);
-                bouteilleModifier.IdEmplacement = (int)cboEmplacement.SelectedValue;
-                HibernateBouteilleService.Update(bouteilleModifier);
-                this.Close();
 
+                MessageBoxResult resultat = MessageBox.Show("La bouteille est vide et sera donc supprimée de l'inventaire. Est-ce bien ce que vous voulez faire?", "Question", MessageBoxButton.YesNo);
+
+                if (resultat == MessageBoxResult.Yes)
+                {
+
+                    bouteilleModifier.Etat = "Supprimée";
+                    bouteilleModifier.IdEmplacement = HibernateEmplacementService.retrieveEmplacementByNom("Aucun")[0].IdEmplacement;                    
+                    bouteilleModifier.VolumeRestant = 0;                  
+                    HibernateBouteilleService.Update(bouteilleModifier);
+                    this.Close();
+                }
             }
             else
             {
-                MessageBox.Show("Erreur dans la validation des champs modifier");
-            }
-
-        }
-
-        private bool ValideChamp()
-        {
-            bool estValide = false;
-            int n;
-            if (int.TryParse(txtVolumeRestant.Text, out n))
-            {
-                if (n < int.Parse(txtFormatBouteille.Content.ToString()) && n>0)
-                {
-                    estValide = true;
-                }
+                bouteilleModifier.VolumeRestant = (int)cboVolumeRestant.SelectedValue;
+                bouteilleModifier.IdEmplacement = (int)cboEmplacement.SelectedValue;
+                HibernateBouteilleService.Update(bouteilleModifier);
+                this.Close();
             }
             
-            return estValide;
-        }
+        }    
     }
 }

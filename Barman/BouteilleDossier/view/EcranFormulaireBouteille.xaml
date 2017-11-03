@@ -56,8 +56,8 @@
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.ColumnSpan="3"  Grid.Row="4" HorizontalAlignment="Center">
-            <Button Name="btnAccueil" Margin="0,0,175,0" Content="Accueil"    VerticalAlignment="Center" Width="75" Click="btnAccueil_Click"/>
-            <Button Name="btnConfirmer" IsEnabled="False" Content="Confirmer" VerticalAlignment="Center" Width="75" Click="btnConfirmer_Click"/>
+            <Button ToolTip="Retourner à l'accueil / se déconnecter" Name="btnAccueil" Margin="0,0,175,0" Content="Accueil"    VerticalAlignment="Center" Width="75" Click="btnAccueil_Click"/>
+            <Button ToolTip="Confirmer la sortie de la bouteille de la réserve" Name="btnConfirmer" IsEnabled="False" Content="Confirmer" VerticalAlignment="Center" Width="75" Click="btnConfirmer_Click"/>
         </StackPanel>
     </Grid>
 </UserControl>

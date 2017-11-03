@@ -19,9 +19,9 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button Name="btnConfirmer" Content="Confirmer" Height="51" Margin="448,317,22,10"  Width="96" Click="btnConfirmer_Click"></Button>
-        <Button Name="btnSupprimer" Content="Supprimer" Click="btnSupprimer_Click" Margin="222,317,235,10" Height="51"  Width="96"></Button>
-        <Button Name="btnAnnuler" Content="Annuler" Height="51"  Width="96" Margin="20,317,450,10"  Click="btnAnnuler_Click"></Button>
+        <Button ToolTip="Confirmer la réception de la commande sélectionnée" Name="btnConfirmer" Content="Confirmer" Height="51" Margin="448,317,22,10"  Width="96" Click="btnConfirmer_Click"></Button>
+        <Button ToolTip="Supprime de un la quantitée de la bouteille sélectionnée" Name="btnSupprimer" Content="Supprimer" Click="btnSupprimer_Click" Margin="222,317,235,10" Height="51"  Width="96"></Button>
+        <Button ToolTip="Annuler pour retourner à l'écran commande" Name="btnAnnuler" Content="Annuler" Height="51"  Width="96" Margin="20,317,450,10"  Click="btnAnnuler_Click"></Button>
 
 
     </Grid>

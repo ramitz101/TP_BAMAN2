@@ -94,10 +94,9 @@ namespace Barman.BouteilleDossier.view
                 dtgInventaire.ItemsSource = new ObservableCollection<Bouteille>(ChargerListBouteille(false));
                 //dtgInventaire.Items.Refresh();
 
-            }
-
+            }            
         }
-
+        
         private void btnAccueil_Click(object sender, RoutedEventArgs e)
         {
             EcranAccueil EA = new EcranAccueil();
@@ -308,6 +307,7 @@ namespace Barman.BouteilleDossier.view
                         foreach (var bouteille in lstBouteille)
                         {
                             bouteille.Etat = "Supprimée";
+                            bouteille.VolumeRestant = 0;
                             bouteille.IdEmplacement = HibernateEmplacementService.retrieveEmplacementByNom("Aucun")[0].IdEmplacement;
                             HibernateBouteilleService.Update(bouteille);
 

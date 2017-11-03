@@ -37,11 +37,11 @@
                     </Setter>
                 </Style>
             </TabControl.Resources>
-            <TabItem Name="tbiInventaire" Header="INVENTAIRE"   />
-            <TabItem Name="tbiEmploye" Header="EMPLOYÉS"  />
-            <TabItem Name="tbiVente" Header="VENTES"/>
-            <TabItem Name="tbiCommande"  Header="COMMANDES"/>
-            <TabItem Name="tbiFormulaireB" Header="SORTIR BOUTEILLE"/>
+            <TabItem ToolTip="l'inventaire de bouteilles" Name="tbiInventaire" Header="INVENTAIRE"   />
+            <TabItem ToolTip="Les employés du bar" Name="tbiEmploye" Header="EMPLOYÉS"  />
+            <TabItem ToolTip="Faire une vente" Name="tbiVente" Header="VENTES"/>
+            <TabItem ToolTip="Les commandes d'alcool" Name="tbiCommande"  Header="COMMANDES"/>
+            <TabItem ToolTip="Sortir une bouteille de l'inventaire" Name="tbiFormulaireB" Header="SORTIR BOUTEILLE"/>
         </TabControl>
     </Grid>
 </UserControl>
