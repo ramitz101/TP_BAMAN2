@@ -39,25 +39,25 @@
             </DataGrid.Columns>
 
         </DataGrid>
-        <ToggleButton Name="btnGerer" HorizontalAlignment="Left" Margin="10,0,0,0" Background="White" VerticalAlignment="Top"  Width="163" Height="65" Click="btnGerer_Click" Grid.Row="1">
+        <ToggleButton ToolTip="Pour modifier l'information d'une bouteille" Name="btnGerer" HorizontalAlignment="Left" Margin="10,0,0,0" Background="White" VerticalAlignment="Top"  Width="163" Height="65" Click="btnGerer_Click" Grid.Row="2">
             <StackPanel Width="140" Orientation="Horizontal">
                 <Image Source="../../images/Gerer.png" Width="40" Height="40" />
                 <TextBlock HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="21"><Run Text="Gérer"/></TextBlock>
             </StackPanel>
         </ToggleButton>
-        <Button Name="btnImprimer" FontSize="21" HorizontalAlignment="Left" Background="White" Margin="10,70,0,0" VerticalAlignment="Top" Click="btnImprimer_Click" Width="163" Height="70" Grid.Row="1">
+        <Button ToolTip="Enregistre la liste de bouteilles en fomrat PDF" Name="btnImprimer" FontSize="21" HorizontalAlignment="Left" Background="White" Margin="10,70,0,0" VerticalAlignment="Top" Click="btnImprimer_Click" Width="163" Height="70" Grid.Row="2">
             <StackPanel Width="140" Orientation="Horizontal">
                 <Image Source="../../images/Imprimante.png" Width="40" Height="40"  />
                 <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Imprimer"/></TextBlock>
             </StackPanel>
         </Button>
-        <Button Name="btnAjout"  FontSize="21" HorizontalAlignment="Left" Click="btnAjout_Click"  Background="White" Margin="10,145,0,0" VerticalAlignment="Top" Width="163" Height="65" Grid.Row="1">
+        <Button Name="btnAjout" ToolTip="Ajouter une marque de bouteille ou un type d'alcool"  FontSize="21" HorizontalAlignment="Left" Click="btnAjout_Click"  Background="White" Margin="10,145,0,0" VerticalAlignment="Top" Width="163" Height="65" Grid.Row="2">
             <StackPanel Width="140" Orientation="Horizontal">
                 <Image Source="../../images/add.png" Width="40" Height="40"  />
                 <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Ajouter"/></TextBlock>
             </StackPanel>
         </Button>
-        <Button FontSize="21" HorizontalAlignment="Left" Background="White" Margin="10,285,0,0" VerticalAlignment="Top" Width="163" Height="65" Click="btnAccueil_Click" Grid.Row="1" Grid.RowSpan="2">
+        <Button ToolTip="Retourner à l'accueil / se déconnecter" FontSize="21" HorizontalAlignment="Left" Background="White" Margin="10,285,0,0" VerticalAlignment="Top" Width="163" Height="65" Click="btnAccueil_Click" Grid.Row="2">
             <StackPanel Width="140" Orientation="Horizontal">
                 <Image Source="../../images/Flechearriere.png" Width="40" Height="40"  />
                 <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Accueil"/></TextBlock>
