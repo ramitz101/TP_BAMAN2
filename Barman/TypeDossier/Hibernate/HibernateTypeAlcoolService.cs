@@ -12,7 +12,15 @@ namespace Barman.TypeDossier.Hibernate
     {
         private static ISession session = NHibernateConnexion.OpenSession();
 
+        public static List<TypeAlcool> RetrieveTypeAlcoolById(int? idType)
+        {
+            var typeAlcooles = session.Query<TypeAlcool>().AsQueryable();
 
+            var resultat = from m in typeAlcooles
+                           where m.IdTypeAlcool == idType
+                           select m;
+            return resultat.ToList();
+        }
         public static List<TypeAlcool> RetrieveAll()
         {
             return session.Query<TypeAlcool>().ToList();

@@ -48,7 +48,7 @@ namespace Barman
             string code;
             bool unique = true;
             List<Bouteille> listB = new List<Bouteille>();
-            listB = HibernateBouteilleService.RetrieveAll();
+            listB = HibernateBouteilleService.RetrieveAll(false);
 
             do
             {
