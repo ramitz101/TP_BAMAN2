@@ -205,7 +205,7 @@ namespace Barman.VenteDossier.view
 
         private void cboMarque_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            List<Bouteille> lstBouteille = new List<Bouteille>(HibernateBouteilleService.RetrieveAll());
+            List<Bouteille> lstBouteille = new List<Bouteille>(HibernateBouteilleService.RetrieveAll(false));
             
             foreach(var i in lstBouteille)
             {

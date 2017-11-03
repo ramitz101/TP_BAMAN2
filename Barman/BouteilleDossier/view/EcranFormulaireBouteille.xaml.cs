@@ -33,14 +33,31 @@ namespace Barman.BouteilleDossier.view
     public partial class EcranFormulaireBouteille : UserControl
     {
       private List<Bouteille> lstBouteilles = new List<Bouteille>();
-      private List<TypeAlcool> lstType = new List<TypeAlcool>(HibernateTypeAlcoolService.RetrieveAll());
+      private List<TypeAlcool> lstType = new List<TypeAlcool>();
       private List<Emplacement> lstEmplacements = new List<Emplacement>(HibernateEmplacementService.RetrieveAllForFormulaire());
       private List<Marque> lstMarques = new List<Marque>();
       private List<Employe> lstEmployes = new List<Employe>(HibernateEmployeService.RetrieveAll());
+      private List<int?> lstIdMarquesEnReserve = new List<int?>();
+      private List<int?> lstIdTypeEnReserve = new List<int?>();
+
       public EcranFormulaireBouteille()
       {
          InitializeComponent();
-         
+
+           lstIdMarquesEnReserve = new List<int?>(HibernateBouteilleService.RetrieveIdMarqueEnReserve());
+           lstIdTypeEnReserve = new List<int?>();
+     
+            foreach (int? i in lstIdMarquesEnReserve)
+            {
+                lstIdTypeEnReserve.AddRange(HibernateMarqueService.RetrieveIdTypeEnReserve(i));
+            }
+            foreach (int? i in lstIdTypeEnReserve)
+            {
+                List<TypeAlcool> leType = HibernateTypeAlcoolService.RetrieveTypeAlcoolById(i);
+                if (lstType.Contains(leType[0])==false)
+                    lstType.Add(leType[0]);
+            }
+            
 
          cboType.ItemsSource = lstType;
          cboType.DisplayMemberPath = "Nom";
@@ -124,9 +141,23 @@ namespace Barman.BouteilleDossier.view
       private void cboType_SelectionChanged(object sender, SelectionChangedEventArgs e)
       {
          if(cboMarqueBouteille.IsEnabled==false)
-         cboMarqueBouteille.IsEnabled = true;
-        
-         lstMarques = HibernateMarqueService.RetrieveByType((TypeAlcool)cboType.SelectedItem);
+            cboMarqueBouteille.IsEnabled = true;
+
+         lstMarques = new List<Marque>();
+
+         List<Marque> lstMarqueDuType;
+
+         lstIdMarquesEnReserve = HibernateBouteilleService.RetrieveIdMarqueEnReserve();
+         lstMarqueDuType = HibernateMarqueService.RetrieveByType((TypeAlcool)cboType.SelectedItem);
+
+            foreach (Marque m in lstMarqueDuType)
+            {
+                if(lstIdMarquesEnReserve.Contains(m.IdMarque)&& !lstMarques.Contains(m))
+                {
+                    lstMarques.Add(m);
+                }
+            }
+
          
          cboMarqueBouteille.ItemsSource = lstMarques;
          cboMarqueBouteille.SelectedValuePath = "IdMarque";

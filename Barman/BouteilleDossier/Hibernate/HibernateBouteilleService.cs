@@ -14,18 +14,46 @@ namespace Barman.BouteilleDossier.Hibernate
     {
         private static ISession session = NHibernateConnexion.OpenSession();
 
-        public static List<Bouteille> RetrieveAll()
+        public static List<Bouteille> RetrieveAll(bool? sup)
         {
             var bouteilles = session.Query<Bouteille>().ToList();
 
             var result = from b in bouteilles
+                         select b;
+            if (sup == false)
+            {
+                result = from b in bouteilles
                          where b.Etat != "Supprimée"
+                         select b;
+            }
+            else
+            {
+                result = from b in bouteilles
+                         where b.Etat == "Supprimée"
+                         select b;
+            }
+            return result.ToList();
+        }
+        public static List<Bouteille> RetrieveAllSupprimer()
+        {
+            var bouteilles = session.Query<Bouteille>().ToList();
+
+            var result = from b in bouteilles
+                         where b.Etat == "Supprimée"
                          select b;
 
             return result.ToList();
         }
 
+        public static List<int?> RetrieveIdMarqueEnReserve()
+        {
+            var bouteilles = session.Query<Bouteille>().AsQueryable();
 
+            var result = from m in bouteilles
+                         where m.IdEmplacement == (int)HibernateEmplacementService.retrieveEmplacementByNom("Réserve")[0].IdEmplacement && m.Etat != "Supprimée"
+                         select m.IdMarque;
+            return result.ToList();
+        }
         public static List<Bouteille> RetrieveByMarque(Marque pMarque)
         {
             var bouteilles = session.Query<Bouteille>().AsQueryable();
@@ -36,14 +64,24 @@ namespace Barman.BouteilleDossier.Hibernate
 
             return result.ToList();
          }
-        public static List<Bouteille> RetrieveByEtat(string s)
+        public static List<Bouteille> RetrieveByEtat(string s, bool? sup)
         {
             var bouteilles = session.Query<Bouteille>().AsQueryable();
-
             var result = from m in bouteilles
-                         where m.Etat.StartsWith(s) && m.Etat != "Supprimée"
                          select m;
 
+            if (sup == false)
+            {
+                 result = from m in bouteilles
+                             where m.Etat.StartsWith(s) && m.Etat != "Supprimée"
+                             select m;
+            }
+            else
+            {
+                result = from m in bouteilles
+                         where m.Etat.StartsWith(s) && m.Etat == "Supprimée"
+                         select m;
+            }
             return result.ToList();
         }
 
@@ -60,24 +98,47 @@ namespace Barman.BouteilleDossier.Hibernate
 
             return result.ToList();
         }
-      public static List<Bouteille> RetrieveByMarqueId(int pIdMarque)
+      public static List<Bouteille> RetrieveByMarqueId(int pIdMarque, bool? sup)
       {
+            
          var bouteilles = session.Query<Bouteille>().AsQueryable();
-
-         var result = from m in bouteilles
-                      where m.IdMarque == pIdMarque && m.Etat != "Supprimée"
-                      select m;
+            var result = from m in bouteilles
+                         select m;
+            if (sup==false)
+            {
+                 result = from m in bouteilles
+                             where m.IdMarque == pIdMarque && m.Etat != "Supprimée"
+                             select m;
+            }
+            else
+            {
+                 result = from m in bouteilles
+                             where m.IdMarque == pIdMarque && m.Etat == "Supprimée"
+                             select m;
+            }
+         
 
          return result.ToList();
       }
-      public static List<Bouteille>  RetrieveByEmplacementId(int pIdEmplacement)
+      public static List<Bouteille>  RetrieveByEmplacementId(int pIdEmplacement,bool? sup)
         {
             var bouteilles = session.Query<Bouteille>().AsQueryable();
-
             var result = from m in bouteilles
+                         select m;
+            if(sup==false)
+            {
+                result = from m in bouteilles
                          where m.IdEmplacement == pIdEmplacement && m.Etat != "Supprimée"
                          select m;
-
+            }
+            else
+            {
+                result = from m in bouteilles
+                         where m.IdEmplacement == pIdEmplacement && m.Etat == "Supprimée"
+                         select m;
+            }
+             
+            
             return result.ToList();
         }
       public static List<Bouteille> Retrieve(string pNomMarque)

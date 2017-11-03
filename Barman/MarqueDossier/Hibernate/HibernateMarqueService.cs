@@ -28,6 +28,28 @@ namespace Barman.MarqueDossier.Hibernate
 
             return result.ToList();
         }
+
+        public static List<Marque> Retrieve(int? pIdMarque)
+        {
+            var marques = session.Query<Marque>().AsQueryable();
+
+            var result = from m in marques
+                         where m.IdMarque == pIdMarque
+                         select m;
+
+            return result.ToList();
+        }
+
+        public static List<int?> RetrieveIdTypeEnReserve(int? idMarqueARechercher)
+        {
+            var marques = session.Query<Marque>().AsQueryable();
+
+            var result = from m in marques
+                         where m.IdMarque==idMarqueARechercher
+                         select m.IdTypeAlcool;
+
+            return result.ToList();
+        }
       public static List<Marque> Retrieve(string pNom)
       {
          var marques = session.Query<Marque>().AsQueryable();
