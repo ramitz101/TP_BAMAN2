@@ -31,11 +31,49 @@ namespace Barman.VenteDossier.view
     public partial class EcranConsulterVente : UserControl
     {
         private ObservableCollection<Vente> lstVente;
-       
+        private List<DateTime> lstworkDate;
+
+
         public EcranConsulterVente()
         {
             InitializeComponent();
             cldVente.SelectedDate = DateTime.Now;
+
+            List<Vente> lstAllVente = new List<Vente>();
+            lstAllVente = HibernateVenteService.RetrieveAllVenteEmploye((int)EcranAccueil.employe.IdEmploye);
+            lstworkDate = new List<DateTime>();
+            foreach(var i in lstAllVente)
+            {
+                lstworkDate.Add(i.DateVente);
+
+            }
+
+
+            for (int i = 1; i < 13; i++)
+            {
+                foreach (var day in Enumerable.Range(1, DateTime.DaysInMonth(cldVente.SelectedDate.Value.Year, i)))
+                {
+                    bool trouve = false;
+                    foreach (var j in lstworkDate)
+                    {
+                        if (j.Day == day && j.Month == i)
+                            trouve = true;
+                    }
+
+                    if (!trouve)
+                    {
+                        try
+                        {
+                            cldVente.BlackoutDates.Add(new CalendarDateRange(new DateTime(cldVente.SelectedDate.Value.Year, i, day)));
+                        }
+                        catch(Exception ex) { }
+                    }
+                }
+
+
+            }
+            
+           
             
         }
 
@@ -50,6 +88,28 @@ namespace Barman.VenteDossier.view
 
         private void cldVente_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (lstworkDate != null)
+            {
+                foreach (var day in Enumerable.Range(1, DateTime.DaysInMonth(cldVente.SelectedDate.Value.Year, cldVente.SelectedDate.Value.Month)))
+                {
+                    bool trouve = false;
+                    foreach (var i in lstworkDate)
+                    {
+                        if (i.Day == day)
+                            trouve = true;
+                    }
+
+                    if (!trouve)
+                    {
+                        DateTime b = new DateTime(cldVente.SelectedDate.Value.Year, cldVente.SelectedDate.Value.Month, day);
+                        cldVente.BlackoutDates.Add(new CalendarDateRange(b));
+                    }
+                }
+
+            }
+
+
+
             DateTime? d = cldVente.SelectedDate;
             List<Vente> LalistPourCollection = new List<Vente>();
 

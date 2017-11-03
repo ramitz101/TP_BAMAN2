@@ -14,6 +14,12 @@ namespace Barman.BouteilleDossier.Hibernate
     {
         private static ISession session = NHibernateConnexion.OpenSession();
 
+        
+        /// <summary>
+        /// Mettre sup a true pour avoir les bouteilles supprimer
+        /// </summary>
+        /// <param name="sup"></param>
+        /// <returns></returns>
         public static List<Bouteille> RetrieveAll(bool? sup)
         {
             var bouteilles = session.Query<Bouteille>().ToList();

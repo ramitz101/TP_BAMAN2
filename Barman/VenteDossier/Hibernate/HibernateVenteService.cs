@@ -28,13 +28,25 @@ namespace Barman.VenteDossier.Hibernate
             return result.ToList();
         }
 
-        //Retrouver toutes les ventes faites par un seul employé
+        //Retrouver toutes les ventes faites par un seul employé pour une date
         public static List<Vente> RetrieveVenteEmploye(int pIdEmploye,DateTime pdate)
         {
             var ventes = session.Query<Vente>().AsQueryable();
 
             var result = from m in ventes
                          where m.IdEmploye == pIdEmploye && m.DateVente.Date == pdate.Date
+                         select m;
+
+            return result.ToList();
+        }
+
+        //Retrouver toutes les ventes faites par un seul employé
+        public static List<Vente> RetrieveAllVenteEmploye(int pIdEmploye)
+        {
+            var ventes = session.Query<Vente>().AsQueryable();
+
+            var result = from m in ventes
+                         where m.IdEmploye == pIdEmploye
                          select m;
 
             return result.ToList();
