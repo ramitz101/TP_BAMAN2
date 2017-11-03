@@ -4,8 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Barman"
-             mc:Ignorable="d" 
-             d:DesignHeight="295.946" d:DesignWidth="460.811">
+             mc:Ignorable="d" Height="295" Width="460">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -20,40 +19,45 @@
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
-        
-        <StackPanel Grid.Column="2" Grid.Row="3">
-            <Label Content="Emplacement" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="93"/>
-            <ComboBox Name="cboEmplacement" SelectionChanged="cboEmplacement_SelectionChanged" HorizontalAlignment="Left"   VerticalAlignment="Bottom" Width="120" />
+
+        <StackPanel Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <Label  FontWeight="Bold" FontSize="20" Foreground="Black"  HorizontalAlignment="Center" VerticalAlignment="Bottom" Content="Sortir une bouteille de la réserve" />
+            <Separator   />
         </StackPanel>
 
-        <StackPanel Grid.Column="1" Grid.Row="1">
-            <Label Content="Type" HorizontalAlignment="Left"  VerticalAlignment="Top" />
-            <ComboBox Name="cboType"   SelectionChanged="cboType_SelectionChanged" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Width="120" />
+        <StackPanel Grid.Column="2" Grid.Row="3" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+            <Label Content="Emplacement"  Width="93"/>
+            <ComboBox Name="cboEmplacement" SelectionChanged="cboEmplacement_SelectionChanged" Width="120" />
         </StackPanel>
 
-        <StackPanel Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left">
+        <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+            <Label Content="Type" HorizontalAlignment="Left"   />
+            <ComboBox Name="cboType"   SelectionChanged="cboType_SelectionChanged"  Width="120" />
+        </StackPanel>
+
+        <StackPanel Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Bottom">
             <Label Content="Vendu pour client"  />
-            <CheckBox  Name="chbVendu"  Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" HorizontalAlignment="Center"    />
-        </StackPanel>
-        
-        <StackPanel Grid.Column="1" Grid.Row="2">
-            <Label Content="Marque"   HorizontalAlignment="Left" VerticalAlignment="Top" />
-            <ComboBox Name="cboMarqueBouteille" IsEnabled="False" SelectionChanged="cboMarqueBouteille_SelectionChanged" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Width="120"/>
+            <CheckBox  Name="chbVendu"  Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"    />
         </StackPanel>
 
-        <StackPanel Grid.Column="2" Grid.Row="2">
-            <Label Content="Employé"  HorizontalAlignment="Left" VerticalAlignment="Top" />
-            <ComboBox Name="cboEmployé" SelectionChanged="cboEmployé_SelectionChanged" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="120"/>
+        <StackPanel Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+            <Label Content="Marque"    />
+            <ComboBox Name="cboMarqueBouteille" IsEnabled="False" SelectionChanged="cboMarqueBouteille_SelectionChanged"  Width="120"/>
         </StackPanel>
 
-        <StackPanel  Grid.Column="1" Grid.Row="3">
-            <Label Content="Étiquette" HorizontalAlignment="Left" VerticalAlignment="Top" />
-            <ComboBox x:Name="cboÉtiquette" SelectionChanged="cboÉtiquette_SelectionChanged" IsEnabled="False" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="120"/>
+        <StackPanel Grid.Column="2" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+            <Label Content="Employé"   />
+            <ComboBox Name="cboEmployé" SelectionChanged="cboEmployé_SelectionChanged"   Width="120"/>
         </StackPanel>
 
-        <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="4" HorizontalAlignment="Center">
-            <Button Name="btnAccueil" Margin="0,0,50,0" Content="Accueil" HorizontalAlignment="Left"   VerticalAlignment="Center" Width="75" Click="btnAccueil_Click"/>
-            <Button Name="btnConfirmer" IsEnabled="False" Content="Confirmer" HorizontalAlignment="Right" VerticalAlignment="Center" Width="75" Click="btnConfirmer_Click"/>
+        <StackPanel  Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+            <Label Content="Étiquette" />
+            <ComboBox x:Name="cboÉtiquette" SelectionChanged="cboÉtiquette_SelectionChanged" IsEnabled="False" Width="120"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.ColumnSpan="3"  Grid.Row="4" HorizontalAlignment="Center">
+            <Button Name="btnAccueil" Margin="0,0,175,0" Content="Accueil"    VerticalAlignment="Center" Width="75" Click="btnAccueil_Click"/>
+            <Button Name="btnConfirmer" IsEnabled="False" Content="Confirmer" VerticalAlignment="Center" Width="75" Click="btnConfirmer_Click"/>
         </StackPanel>
     </Grid>
 </UserControl>

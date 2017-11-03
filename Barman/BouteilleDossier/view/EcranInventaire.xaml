@@ -14,9 +14,10 @@
             <ColumnDefinition Width="185"/>
             <ColumnDefinition Width="400"/>
         </Grid.ColumnDefinitions>
-
-        <TextBox Name="txtRecherche"  KeyUp="txtRecherche_KeyUp_1" Height="20"  Grid.Column="1" VerticalAlignment="Top" Text="Rechercher" LostFocus="txtRecherche_LostFocus" GotFocus="txtRecherche_GotFocus" Margin="0,17,0,0" Grid.Row="2" ></TextBox>
-         
+        <StackPanel VerticalAlignment="Top" Grid.Column="1" Grid.Row="1">
+            <CheckBox Grid.Column="1" Grid.Row="1" Content="Afficher les bouteilles supprimées" Checked="chbAfficherSupprimee_Checked" Unchecked="chbAfficherSupprimee_Unchecked" VerticalAlignment="Bottom" IsChecked="False" Name="chbAfficherSupprimee" />
+            <TextBox Name="txtRecherche"  KeyUp="txtRecherche_KeyUp_1" Height="20"  Grid.Column="1" VerticalAlignment="Top" Text="Rechercher" LostFocus="txtRecherche_LostFocus" GotFocus="txtRecherche_GotFocus"  Grid.Row="2" ></TextBox>
+        </StackPanel>
         
         <DataGrid  Name="dtgInventaire" AutoGenerateColumns="False" HorizontalAlignment="Left"  VerticalAlignment="Top"  Margin="0,42,0,0" Grid.Column="1" Grid.Row="2">
             <DataGrid.ColumnHeaderStyle>
