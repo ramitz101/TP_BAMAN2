@@ -4,11 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Barman"
-             mc:Ignorable="d" d:DesignWidth="600" Height="413">
+             mc:Ignorable="d" Height="429.5" Width="615">
     <Grid HorizontalAlignment="Left">
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="350"/>
+            <RowDefinition Height="46*"/>
+            <RowDefinition Height="321*"/>
+            <RowDefinition Height="46*"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="185"/>
@@ -18,8 +20,8 @@
             <CheckBox Grid.Column="1" Grid.Row="1" Content="Afficher les bouteilles supprimées" Checked="chbAfficherSupprimee_Checked" Unchecked="chbAfficherSupprimee_Unchecked" VerticalAlignment="Bottom" IsChecked="False" Name="chbAfficherSupprimee" />
             <TextBox Name="txtRecherche"  KeyUp="txtRecherche_KeyUp_1" Height="20"  Grid.Column="1" VerticalAlignment="Top" Text="Rechercher" LostFocus="txtRecherche_LostFocus" GotFocus="txtRecherche_GotFocus"  Grid.Row="2" ></TextBox>
         </StackPanel>
-        
-        <DataGrid  Name="dtgInventaire" AutoGenerateColumns="False" HorizontalAlignment="Left"  VerticalAlignment="Top"  Margin="0,42,0,0" Grid.Column="1" Grid.Row="2">
+
+        <DataGrid  Name="dtgInventaire" AutoGenerateColumns="False" HorizontalAlignment="Left"  VerticalAlignment="Top"  Margin="0,42,0,0" Grid.Column="1" Grid.Row="1">
             <DataGrid.ColumnHeaderStyle>
                 <Style TargetType="DataGridColumnHeader">
                     <EventSetter Event="Click" Handler="columnHeader_Click" />
@@ -37,35 +39,45 @@
             </DataGrid.Columns>
 
         </DataGrid>
-        <ToggleButton Name="btnGerer" HorizontalAlignment="Left" Margin="10,0,0,0" Background="White" VerticalAlignment="Top"  Width="163" Height="65" Click="btnGerer_Click" Grid.Row="2">
+        <ToggleButton Name="btnGerer" HorizontalAlignment="Left" Margin="10,0,0,0" Background="White" VerticalAlignment="Top"  Width="163" Height="65" Click="btnGerer_Click" Grid.Row="1">
             <StackPanel Width="140" Orientation="Horizontal">
                 <Image Source="../../images/Gerer.png" Width="40" Height="40" />
                 <TextBlock HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="21"><Run Text="Gérer"/></TextBlock>
             </StackPanel>
         </ToggleButton>
-        <Button Name="btnImprimer" FontSize="21" HorizontalAlignment="Left" Background="White" Margin="10,70,0,0" VerticalAlignment="Top" Click="btnImprimer_Click" Width="163" Height="70" Grid.Row="2">
+        <Button Name="btnImprimer" FontSize="21" HorizontalAlignment="Left" Background="White" Margin="10,70,0,0" VerticalAlignment="Top" Click="btnImprimer_Click" Width="163" Height="70" Grid.Row="1">
             <StackPanel Width="140" Orientation="Horizontal">
                 <Image Source="../../images/Imprimante.png" Width="40" Height="40"  />
                 <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Imprimer"/></TextBlock>
             </StackPanel>
         </Button>
-        <Button Name="btnAjout"  FontSize="21" HorizontalAlignment="Left" Click="btnAjout_Click"  Background="White" Margin="10,145,0,0" VerticalAlignment="Top" Width="163" Height="65" Grid.Row="2">
+        <Button Name="btnAjout"  FontSize="21" HorizontalAlignment="Left" Click="btnAjout_Click"  Background="White" Margin="10,145,0,0" VerticalAlignment="Top" Width="163" Height="65" Grid.Row="1">
             <StackPanel Width="140" Orientation="Horizontal">
                 <Image Source="../../images/add.png" Width="40" Height="40"  />
                 <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Ajouter"/></TextBlock>
             </StackPanel>
         </Button>
-        <Button FontSize="21" HorizontalAlignment="Left" Background="White" Margin="10,285,0,0" VerticalAlignment="Top" Width="163" Height="65" Click="btnAccueil_Click" Grid.Row="2">
+        <Button FontSize="21" HorizontalAlignment="Left" Background="White" Margin="10,285,0,0" VerticalAlignment="Top" Width="163" Height="65" Click="btnAccueil_Click" Grid.Row="1" Grid.RowSpan="2">
             <StackPanel Width="140" Orientation="Horizontal">
                 <Image Source="../../images/Flechearriere.png" Width="40" Height="40"  />
                 <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Accueil"/></TextBlock>
             </StackPanel>
         </Button>
-        <Button Name="btnSuppression" FontSize="21" HorizontalAlignment="Left" Background="White" Margin="10,215,0,0" VerticalAlignment="Top" Width="163" Height="65" Click="btnSuppression_Click" Grid.Row="2" >
+        <Button Name="btnSuppression" FontSize="21" HorizontalAlignment="Left" Background="White" Margin="10,215,0,0" VerticalAlignment="Top" Width="163" Height="65" Click="btnSuppression_Click" Grid.Row="1" >
             <StackPanel Width="155" Orientation="Horizontal">
                 <Image Source="../../images/poubelle.png" Width="35" Height="35"  />
                 <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Suppression"/></TextBlock>
             </StackPanel>
         </Button>
+
+
+        <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="left" Grid.RowSpan="2">
+            <Label Grid.Column="1" Grid.Row="2" Name="lblNbEntamee" Content="Entamées: "/>
+            <Label Grid.Column="1" Grid.Row="2" Name="lblNbPlein" Content="Pleines: "/>
+            <Label Grid.Column="1" Grid.Row="2" Name="lblNbSupprimee" Content="Supprimées: "/>
+            <Label Grid.Column="1" Grid.Row="2" Name="lblNbReserve" Content="En réserve: "/>
+        </StackPanel>
+
+
     </Grid>
 </UserControl>

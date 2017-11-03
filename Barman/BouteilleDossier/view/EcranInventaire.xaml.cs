@@ -45,6 +45,10 @@ namespace Barman.BouteilleDossier.view
             dtgInventaire.Items.Refresh();
             ContenuHeader = "Nom";
             dtgInventaire.IsReadOnly = true;
+            lblNbEntamee.Content += HibernateBouteilleService.CountNbEntamee().ToString();
+            lblNbPlein.Content += HibernateBouteilleService.CountNbPleine().ToString();
+            lblNbReserve.Content += HibernateBouteilleService.CountNbReserve().ToString();
+            lblNbSupprimee.Content += HibernateBouteilleService.CountNbSupprimee().ToString();
         }
 
 
