@@ -42,15 +42,17 @@ namespace Barman.VenteDossier.view
             InitializeComponent();
             dtgVenteEmploye.CanUserAddRows = false;
             cldVente.SelectedDate = DateTime.Now;
+            dtgVenteEmploye.SelectedValuePath = "Vente";
+
+            // Ajout d'un employé fixif tous
+            Employe t = new Employe();
+            t.IdEmploye = -1;
+            t.Nom = "Tous";
+            lstEmploye.Add(t);
             cboEmploye.ItemsSource = lstEmploye;
             cboEmploye.DisplayMemberPath = "Nom";
             cboEmploye.SelectedValuePath = "IdEmploye";
             cboEmploye.SelectedItem = EcranAccueil.employe;
-           
-
-            dtgVenteEmploye.SelectedValuePath = "Vente";
-
-            
         }
 
         private void btnRetour_Click(object sender, RoutedEventArgs e)
@@ -130,10 +132,19 @@ namespace Barman.VenteDossier.view
         private void cboEmploye_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             
-            RefreshList();
+            
+          
+            
             cldVente.BlackoutDates.Clear();
             lstAllVente = new List<Vente>();
-            lstAllVente = HibernateVenteService.RetrieveAllVenteEmploye((int)cboEmploye.SelectedValue);
+            if ((int)cboEmploye.SelectedValue == -1)
+            {
+                lstAllVente = HibernateVenteService.RetrieveAll();
+            }
+            else
+            {
+                lstAllVente = HibernateVenteService.RetrieveAllVenteEmploye((int)cboEmploye.SelectedValue);
+            }
             lstworkDate = new List<DateTime>();
             foreach (var i in lstAllVente)
             {
@@ -166,7 +177,7 @@ namespace Barman.VenteDossier.view
 
                 }
             }
-
+            RefreshList();
         }
 
         private void cldVente_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
@@ -181,21 +192,39 @@ namespace Barman.VenteDossier.view
             DateTime? d = cldVente.SelectedDate;
             List<Vente> LalistPourCollection = new List<Vente>();
 
+           
 
             if (d == null)
                 d = DateTime.Today;
-
             if (cboEmploye.SelectedValue != null)
             {
-                LalistPourCollection = HibernateVenteService.RetrieveVenteEmploye((int)cboEmploye.SelectedValue, (DateTime)d);
+                if ((int)cboEmploye.SelectedValue != -1)
+                {
+                    LalistPourCollection = HibernateVenteService.RetrieveVenteEmploye((int)cboEmploye.SelectedValue, (DateTime)d);
+
+                }
+                else
+                {
+                    foreach (var i in lstEmploye)
+                    {
+                        try
+                        {
+                            foreach (var k in HibernateVenteService.RetrieveVenteEmploye((int)i.IdEmploye, (DateTime)d))
+                            {
+                                LalistPourCollection.Add(k);
+                            }
+                        }
+                        catch (Exception ex) { } // Le try catch ici sert pour l'employe (tous) qui a id -1..Empeche de planter.
+                    }
+                }
                 lstVente = new ObservableCollection<Vente>(LalistPourCollection);
                 foreach (var i in lstVente)
                 {
                     i.laBouteille = HibernateBouteilleService.Retrieve((int)i.IdBouteille)[0];
                     i.laBouteille.SaMarque = HibernateMarqueService.Retrieve((int)i.laBouteille.IdMarque)[0];
                 }
+                dtgVenteEmploye.ItemsSource = lstVente;
             }
-            dtgVenteEmploye.ItemsSource = lstVente;
             Mouse.Capture(null);
         }
 
