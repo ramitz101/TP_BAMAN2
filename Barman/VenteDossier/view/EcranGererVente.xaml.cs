@@ -34,6 +34,8 @@ namespace Barman.VenteDossier.view
     {
         private ObservableCollection<Employe> lstEmploye = new ObservableCollection<Employe>(ChargerListEmploye());
         private ObservableCollection<Vente> lstVente;
+        private List<Vente> lstAllVente;
+        private List<DateTime> lstworkDate;
 
         public EcranGererVente()
         {
@@ -43,9 +45,11 @@ namespace Barman.VenteDossier.view
             cboEmploye.ItemsSource = lstEmploye;
             cboEmploye.DisplayMemberPath = "Nom";
             cboEmploye.SelectedValuePath = "IdEmploye";
-            cboEmploye.SelectedIndex = 0;
-            
+            cboEmploye.SelectedItem = EcranAccueil.employe;
+           
+
             dtgVenteEmploye.SelectedValuePath = "Vente";
+
             
         }
 
@@ -125,8 +129,43 @@ namespace Barman.VenteDossier.view
 
         private void cboEmploye_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            
             RefreshList();
+            cldVente.BlackoutDates.Clear();
+            lstAllVente = new List<Vente>();
+            lstAllVente = HibernateVenteService.RetrieveAllVenteEmploye((int)cboEmploye.SelectedValue);
+            lstworkDate = new List<DateTime>();
+            foreach (var i in lstAllVente)
+            {
+                lstworkDate.Add(i.DateVente);
 
+            }
+            if (lstworkDate != null)
+            {
+                for (int i = 1; i < 13; i++)
+                {
+                    foreach (var day in Enumerable.Range(1, DateTime.DaysInMonth(cldVente.SelectedDate.Value.Year, i)))
+                    {
+                        bool trouve = false;
+                        foreach (var j in lstworkDate)
+                        {
+                            if (j.Day == day && j.Month == i)
+                                trouve = true;
+                        }
+
+                        if (!trouve)
+                        {
+                            try
+                            {
+                                cldVente.BlackoutDates.Add(new CalendarDateRange(new DateTime(cldVente.SelectedDate.Value.Year, i, day)));
+                            }
+                            catch (Exception ex) { }
+                        }
+                    }
+
+
+                }
+            }
 
         }
 
