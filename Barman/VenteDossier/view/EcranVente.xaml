@@ -50,7 +50,7 @@
         <Label Name="lblPrixVente" Content=""  HorizontalAlignment="Left" Margin="504,188,0,0" VerticalAlignment="Top" Width="86" Height="32">
            </Label>
         <Label x:Name="lblComfirmationAjout" Content="" Foreground="Green" HorizontalAlignment="Left" Margin="403,303,0,0" VerticalAlignment="Top" Width="177"/>
-
+        
 
 
     </Grid>

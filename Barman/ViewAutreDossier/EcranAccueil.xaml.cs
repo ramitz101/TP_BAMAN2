@@ -27,6 +27,7 @@ namespace Barman.ViewAutreDossier
         public EcranAccueil()
         {
             InitializeComponent();
+            App.Current.MainWindow.Title = "Barman";
             employe = new Employe();
         }
 
