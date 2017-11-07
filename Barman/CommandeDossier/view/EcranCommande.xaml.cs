@@ -117,6 +117,7 @@ namespace Barman.CommandeDossier.view
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
 
             saveFileDialog1.Filter = "Pdf Files|*.pdf";
+            saveFileDialog1.FileName = "Commandes";
 
             if (saveFileDialog1.ShowDialog() == true)
             {

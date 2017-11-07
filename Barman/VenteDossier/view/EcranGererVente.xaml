@@ -8,7 +8,7 @@
              d:DesignHeight="350" d:DesignWidth="550">
     <Grid>
        
-        <Calendar Name="cldVente" SelectedDatesChanged="cldVente_SelectedDatesChanged" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Height="165"/>
+        <Calendar  Name="cldVente" SelectedDatesChanged="cldVente_SelectedDatesChanged" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Height="165"/>
         <DataGrid Name="dtgVenteEmploye" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="247" Margin="212,30,0,0" VerticalAlignment="Top" Width="320">
             
             <DataGrid.Columns>

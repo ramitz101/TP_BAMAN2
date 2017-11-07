@@ -125,7 +125,7 @@ namespace Barman.VenteDossier.view
                 i.laBouteille.SaMarque = HibernateMarqueService.Retrieve((int)i.laBouteille.IdMarque)[0];
             }
             dtgVenteEmploye.ItemsSource = lstVente;
-
+            Mouse.Capture(null);
 
         }
 
@@ -167,5 +167,7 @@ namespace Barman.VenteDossier.view
 
             }
         }
+
+       
     }
 }
