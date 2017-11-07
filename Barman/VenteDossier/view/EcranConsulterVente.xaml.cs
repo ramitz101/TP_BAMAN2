@@ -102,7 +102,11 @@ namespace Barman.VenteDossier.view
                     if (!trouve)
                     {
                         DateTime b = new DateTime(cldVente.SelectedDate.Value.Year, cldVente.SelectedDate.Value.Month, day);
-                        cldVente.BlackoutDates.Add(new CalendarDateRange(b));
+                        try
+                        {
+                            cldVente.BlackoutDates.Add(new CalendarDateRange(b));
+                        }
+                        catch (Exception ex) { }
                     }
                 }
 
