@@ -45,6 +45,7 @@ namespace Barman.VenteDossier.view
             StringBuilder s = new StringBuilder();
             s.Append(EcranAccueil.employe.Prenom + " " + EcranAccueil.employe.Nom);
             lblEmploye.Content = s.ToString();
+            
 
             btnAjouter.IsEnabled = false;
             cboMarque.IsEnabled = false;

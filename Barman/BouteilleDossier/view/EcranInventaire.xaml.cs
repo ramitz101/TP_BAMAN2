@@ -94,7 +94,9 @@ namespace Barman.BouteilleDossier.view
                 if (EcranAccueil.employe.IdRole == 1)
                 {
                     FenetreModifierBouteille popup = new FenetreModifierBouteille(lstBouteilles, dtgInventaire.SelectedItem as Bouteille, this);
-                    popup.ShowDialog();
+                     popup.ShowDialog();
+                    
+
                     if(popup.DialogResult.HasValue)
                     {
                         MessageBox.Show("REUSSSSSIII HAHAHAHAHAHAHA");

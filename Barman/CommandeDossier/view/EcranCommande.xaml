@@ -49,5 +49,8 @@
                 <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Accueil"/></TextBlock>
             </StackPanel>
         </Button>
+
+        <Label Name="lblMessage" Content="Message modif" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+
     </Grid>
 </UserControl>
