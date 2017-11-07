@@ -39,37 +39,39 @@
             </DataGrid.Columns>
 
         </DataGrid>
-        <ToggleButton ToolTip="Pour modifier l'information d'une bouteille" Name="btnGerer" HorizontalAlignment="Left" Margin="10,0,0,0" Background="White" VerticalAlignment="Top"  Width="163" Height="65" Click="btnGerer_Click" Grid.Row="2">
-            <StackPanel Width="140" Orientation="Horizontal">
-                <Image Source="../../images/Gerer.png" Width="40" Height="40" />
-                <TextBlock HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="21"><Run Text="Gérer"/></TextBlock>
-            </StackPanel>
-        </ToggleButton>
-        <Button ToolTip="Enregistre la liste de bouteilles en fomrat PDF" Name="btnImprimer" FontSize="21" HorizontalAlignment="Left" Background="White" Margin="10,70,0,0" VerticalAlignment="Top" Click="btnImprimer_Click" Width="163" Height="70" Grid.Row="2">
-            <StackPanel Width="140" Orientation="Horizontal">
-                <Image Source="../../images/Imprimante.png" Width="40" Height="40"  />
-                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Imprimer"/></TextBlock>
-            </StackPanel>
-        </Button>
-        <Button Name="btnAjout" ToolTip="Ajouter une marque de bouteille ou un type d'alcool"  FontSize="21" HorizontalAlignment="Left" Click="btnAjout_Click"  Background="White" Margin="10,145,0,0" VerticalAlignment="Top" Width="163" Height="65" Grid.Row="2">
-            <StackPanel Width="140" Orientation="Horizontal">
-                <Image Source="../../images/add.png" Width="40" Height="40"  />
-                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Ajouter"/></TextBlock>
-            </StackPanel>
-        </Button>
-        <Button ToolTip="Retourner à l'accueil / se déconnecter" FontSize="21" HorizontalAlignment="Left" Background="White" Margin="10,285,0,0" VerticalAlignment="Top" Width="163" Height="65" Click="btnAccueil_Click" Grid.Row="2">
-            <StackPanel Width="140" Orientation="Horizontal">
-                <Image Source="../../images/Flechearriere.png" Width="40" Height="40"  />
-                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Accueil"/></TextBlock>
-            </StackPanel>
-        </Button>
-        <Button Name="btnSuppression" ToolTip="Supprime les bouteilles sélectionnées" FontSize="21" HorizontalAlignment="Left" Background="White" Margin="10,215,0,0" VerticalAlignment="Top" Width="163" Height="65" Click="btnSuppression_Click" Grid.Row="2" >
-            <StackPanel Width="155" Orientation="Horizontal">
-                <Image Source="../../images/poubelle.png" Width="35" Height="35"  />
-                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Suppression"/></TextBlock>
-            </StackPanel>
-        </Button>
 
+        <StackPanel Grid.Column="0" Grid.Row="1">
+            <ToggleButton ToolTip="Pour modifier l'information d'une bouteille" Name="btnGerer" HorizontalAlignment="Left" Background="White" VerticalAlignment="Top"  Width="163" Height="65" Click="btnGerer_Click">
+                <StackPanel Width="140" Orientation="Horizontal">
+                    <Image Source="../../images/Gerer.png" Width="40" Height="40" />
+                    <TextBlock HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="21"><Run Text="Gérer"/></TextBlock>
+                </StackPanel>
+            </ToggleButton>
+            <Button ToolTip="Enregistre la liste de bouteilles en fomrat PDF" Name="btnImprimer" FontSize="21" HorizontalAlignment="Left" Background="White" VerticalAlignment="Top" Click="btnImprimer_Click" Width="163" Height="70" >
+                <StackPanel Width="140" Orientation="Horizontal">
+                    <Image Source="../../images/Imprimante.png" Width="40" Height="40"  />
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Imprimer"/></TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Name="btnAjout" ToolTip="Ajouter une marque de bouteille ou un type d'alcool"  FontSize="21" HorizontalAlignment="Left" Click="btnAjout_Click"  Background="White"  VerticalAlignment="Top" Width="163" Height="65" >
+                <StackPanel Width="140" Orientation="Horizontal">
+                    <Image Source="../../images/add.png" Width="40" Height="40"  />
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Ajouter"/></TextBlock>
+                </StackPanel>
+            </Button>
+            <Button ToolTip="Retourner à l'accueil / se déconnecter" FontSize="21" HorizontalAlignment="Left" Background="White"  VerticalAlignment="Top" Width="163" Height="65" Click="btnAccueil_Click" >
+                <StackPanel Width="140" Orientation="Horizontal">
+                    <Image Source="../../images/Flechearriere.png" Width="40" Height="40"  />
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Accueil"/></TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Name="btnSuppression" ToolTip="Supprime les bouteilles sélectionnées" FontSize="21" HorizontalAlignment="Left" Background="White" VerticalAlignment="Top" Width="163" Height="65" Click="btnSuppression_Click" >
+                <StackPanel Width="155" Orientation="Horizontal">
+                    <Image Source="../../images/poubelle.png" Width="35" Height="35"  />
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Suppression"/></TextBlock>
+                </StackPanel>
+            </Button>
+        </StackPanel>
 
         <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="left" Grid.RowSpan="2">
             <Label Grid.Column="1" Grid.Row="2" Name="lblNbEntamee" Content="Entamées: "/>

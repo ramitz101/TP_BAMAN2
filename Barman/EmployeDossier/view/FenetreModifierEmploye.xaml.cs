@@ -116,5 +116,10 @@ namespace Barman.EmployeDossier.view
             txtCode.Text = Generer.genererCode(Employe.GetCodeEmployeDejaExistant());
             //txtCode.Text = Employe.genererCodeEmploye();
         }
+
+        private void CalendarModifierEmploye_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Mouse.Capture(null);
+        }
     }
 }

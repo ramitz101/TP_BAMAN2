@@ -83,5 +83,10 @@ namespace Barman.EmployeDossier.view
 
            
         }
+
+        private void calendarDate_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Mouse.Capture(null);
+        }
     }
 }

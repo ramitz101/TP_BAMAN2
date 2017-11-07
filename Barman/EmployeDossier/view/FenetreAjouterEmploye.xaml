@@ -19,7 +19,7 @@
         <Label Content="Prénom" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top"/>
         <Label Content="Téléphone" HorizontalAlignment="Left" Margin="10,121,0,0" VerticalAlignment="Top"/>
         <Label ToolTip="Le niveau d'accès au composent du programme" Content="Rôle" HorizontalAlignment="Left" Margin="410,98,0,0" VerticalAlignment="Top"/>
-        <Calendar Name="calendarDate" HorizontalAlignment="Left" Margin="182,33,0,0" VerticalAlignment="Top"/>
+        <Calendar  SelectedDatesChanged="calendarDate_SelectedDatesChanged"  Name="calendarDate" HorizontalAlignment="Left" Margin="182,33,0,0" VerticalAlignment="Top"/>
         <RadioButton Name="rdbAdministrateur" Content="Administrateur" HorizontalAlignment="Left" Margin="448,93,0,0" VerticalAlignment="Top"/>
         <RadioButton Name="rdbUtilisateur" Content="Utilisateur" HorizontalAlignment="Left" Margin="448,121,0,0" VerticalAlignment="Top"/>
         <Button ToolTip="Confirmer l'ajout du nouvel employé" Name="btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="422,195,0,0" VerticalAlignment="Top" Width="90" Height="26" Click="btnConfirmer_Click" />
