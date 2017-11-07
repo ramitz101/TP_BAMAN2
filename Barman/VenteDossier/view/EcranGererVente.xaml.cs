@@ -61,7 +61,7 @@ namespace Barman.VenteDossier.view
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
 
             saveFileDialog1.Filter = "Pdf Files|*.pdf";
-
+            saveFileDialog1.FileName = "Ventes";
             if (saveFileDialog1.ShowDialog() == true)
             {
                 //Crée le fichier
@@ -157,6 +157,9 @@ namespace Barman.VenteDossier.view
                 }
             }
             dtgVenteEmploye.ItemsSource = lstVente;
+            Mouse.Capture(null);
         }
+
+       
     }
 }

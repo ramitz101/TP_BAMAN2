@@ -248,7 +248,7 @@ namespace Barman.EmployeDossier.view
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
 
             saveFileDialog1.Filter = "Pdf Files|*.pdf";
-
+            saveFileDialog1.FileName = "Employes";
             if (saveFileDialog1.ShowDialog() == true)
             {
                 //Crée le fichier
