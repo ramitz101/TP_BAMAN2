@@ -45,6 +45,7 @@ namespace Barman.VenteDossier.view
             StringBuilder s = new StringBuilder();
             s.Append(EcranAccueil.employe.Prenom + " " + EcranAccueil.employe.Nom);
             lblEmploye.Content = s.ToString();
+            
 
             btnAjouter.IsEnabled = false;
             cboMarque.IsEnabled = false;
@@ -142,6 +143,8 @@ namespace Barman.VenteDossier.view
             EcranAccueil EA = new EcranAccueil();
             ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
             ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EA);
+
+
         }
 
         private void Consulter_Click(object sender, RoutedEventArgs e)

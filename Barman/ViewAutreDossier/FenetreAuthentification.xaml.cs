@@ -48,7 +48,10 @@ namespace Barman.ViewAutreDossier
                 em.SonRole = HibernateRoleService.Retrieve((int)em.IdRole)[0];
                 EcranAccueil.employe = em;
                 this.Close();
-
+                if(EcranAccueil.employe.SonRole.Code=="Utils")
+                   App.Current.MainWindow.Title ="Barmans - " + EcranAccueil.employe.Prenom + " " + EcranAccueil.employe.Nom+ " - " +"Utilisateur"  ;
+                else
+                    App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.employe.Prenom + " " + EcranAccueil.employe.Nom + " - " + "Administrateur";
             }
         }
 

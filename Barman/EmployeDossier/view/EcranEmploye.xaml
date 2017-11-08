@@ -56,5 +56,6 @@
                 <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Suppression"/></TextBlock>
             </StackPanel>
         </Button>
+        <Label Name="lblMessage" Content="Message modif" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
     </Grid>
 </UserControl>

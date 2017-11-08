@@ -108,9 +108,10 @@ namespace Barman.BouteilleDossier.view
 
                     bouteilleModifier.Etat = "Supprimée";
                     bouteilleModifier.IdEmplacement = HibernateEmplacementService.retrieveEmplacementByNom("Aucun")[0].IdEmplacement;                    
-                    bouteilleModifier.VolumeRestant = 0;                  
+                    bouteilleModifier.VolumeRestant = 0;
                     HibernateBouteilleService.Update(bouteilleModifier);
                     this.Close();
+                    
                 }
             }
             else

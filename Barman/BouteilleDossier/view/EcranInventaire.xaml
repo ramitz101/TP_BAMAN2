@@ -79,6 +79,7 @@
             <Label Grid.Column="1" Grid.Row="2" Name="lblNbSupprimee" Content="Supprimées: "/>
             <Label Grid.Column="1" Grid.Row="2" Name="lblNbReserve" Content="En réserve: "/>
         </StackPanel>
+        <Label Name="lblMessage" Visibility="Visible" Grid.Column="1" Grid.Row="2" Content="LALALA" Margin="0,20,0,0"/>
 
 
     </Grid>
