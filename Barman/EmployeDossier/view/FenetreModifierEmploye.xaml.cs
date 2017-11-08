@@ -97,8 +97,8 @@ namespace Barman.EmployeDossier.view
 
         private bool ValidationChamps()
         {
-            if (txtNom.Text != "" && txtPrenom.Text != "" && UnRdbEstChoisi() && Employe.ValiderNAS(txtNAS.Text) && Employe.ValiderNumeroTelephone(txtTelephone.Text))
-                return true;
+            if (txtNom.Text != "" && txtNom.Text.Length < 100 && txtPrenom.Text != "" && txtPrenom.Text.Length < 100 && UnRdbEstChoisi() && txtNAS.Text.Length == 9 && txtTelephone.Text.Length == 10)
+            return true;
             else
                 return false;
         }
