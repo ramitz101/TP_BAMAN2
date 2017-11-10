@@ -97,10 +97,7 @@ namespace Barman.BouteilleDossier.view
                      popup.ShowDialog();
                     
 
-                    if(popup.DialogResult.HasValue)
-                    {
-                        MessageBox.Show("REUSSSSSIII HAHAHAHAHAHAHA");
-                    }
+                   
                 }
 
                 dtgInventaire.ItemsSource = new ObservableCollection<Bouteille>(ChargerListBouteille(false));
