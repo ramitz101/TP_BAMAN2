@@ -27,7 +27,7 @@
         <StackPanel Margin="0,40,0,0" Grid.Column="2" Grid.Row="0" Orientation="Horizontal">
             <StackPanel Grid.Column="2" Grid.Row="0" Orientation="Vertical">
                 <Label Content="Quantité"    HorizontalAlignment="Left" Width="Auto"/>
-                <TextBox ToolTip="Le nombre de bouteille à commander de la marque choisi" Name="txtQuantite"  IsEnabled="False" Height="20" Text="1"  HorizontalAlignment="Left" Width="39"></TextBox>
+                <TextBox ToolTip="Le nombre de bouteille à commander de la marque choisi" Name="txtQuantite"  IsReadOnly="True" Height="20" Text="1"  HorizontalAlignment="Left" Width="39"></TextBox>
             </StackPanel>
             <StackPanel Grid.Column="2" Grid.Row="0" Orientation="Vertical">
                 <Button ToolTip="Augmenter le nombre de bouteille à commander" Name="btnAugmenteQ" Click="btnAugmenteQ_Click"  Content="+"  HorizontalAlignment="Left" Height="19" Width="19"></Button>
