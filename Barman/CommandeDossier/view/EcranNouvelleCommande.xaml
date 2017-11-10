@@ -7,15 +7,16 @@
              mc:Ignorable="d" 
              d:DesignHeight="380" d:DesignWidth="561">
     <Grid>
+        
 
+        <Label Content="Type" HorizontalAlignment="Left" Margin="10,28,0,0" VerticalAlignment="Top"/>
 
-        <Label Content="Type" Margin="10,19,0,332" HorizontalAlignment="Left" Width="94" />
-        <ComboBox ToolTip="Le type d'alcool" Name="cboType" SelectionChanged="cboType_SelectionChanged"  Height="23" Margin="10,48,0,312"  HorizontalAlignment="Left" Width="94"/>
+        <ComboBox ToolTip="Le type d'alcool" Name="cboType" SelectionChanged="cboType_SelectionChanged"  Height="23" VerticalAlignment="Top" HorizontalAlignment="Left" Width="94" Margin="10,54,0,0"/>
 
         <Label Content="Format"  Margin="131,38,0,316" HorizontalAlignment="Left" Width="49"/>
 
         <Label Content="Quantité"  Margin="326,38,0,316"  HorizontalAlignment="Left" Width="81"/>
-        <TextBox ToolTip="Le nombre de bouteille à commander de la marque choisi" Name="txtQuantite" Margin="334,68,0,292" IsEnabled="False" Height="20" Text="1"  HorizontalAlignment="Left" Width="39"></TextBox>
+        <TextBox ToolTip="Le nombre de bouteille à commander de la marque choisi" Name="txtQuantite" Margin="334,68,0,292" IsReadOnly="true" Height="20" Text="1"  HorizontalAlignment="Left" Width="39"></TextBox>
         <Button ToolTip="Augmenter le nombre de bouteille à commander" Name="btnAugmenteQ" Click="btnAugmenteQ_Click" Margin="377,63,0,298" Content="+"  HorizontalAlignment="Left" Height="19" Width="19"></Button>
         <Button ToolTip="Diminuer le nombre de bouteille à commander" Name="btnReduireQ" Click="btnReduireQ_Click" Margin="377,84,0,277" Content="-"  HorizontalAlignment="Left" Height="19" Width="19"></Button>
 
@@ -31,8 +32,8 @@
         <Button ToolTip="Confirmer la commande de bouteille" Name="btnConfirmer"  Height="51"  Width="96" Content="Confirmer" Margin="444,319,21,10" Click="btnConfirmer_Click"></Button>
         <Label Name="lblPrix" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="223,65,0,0" Width="65"/>
         <Label Content="Prix bouteille"  HorizontalAlignment="Left" Margin="223,38,0,0" VerticalAlignment="Top"/>
-        <Label Content="Marque" Margin="10,73,0,281" HorizontalAlignment="Left" Width="94" />
-        <ComboBox ToolTip="La marque Choisi" x:Name="cboMarqueBouteille" SelectionChanged="cboMarqueBouteille_SelectionChanged"  Margin="10,95,0,254"  HorizontalAlignment="Left" Width="94" Height="23"/>
+        <Label Content="Marque" Margin="10,86,0,266" HorizontalAlignment="Left" Width="94" />
+        <ComboBox ToolTip="La marque Choisi" x:Name="cboMarqueBouteille" SelectionChanged="cboMarqueBouteille_SelectionChanged"   VerticalAlignment="Top"   HorizontalAlignment="Left" Width="94" Height="23" Margin="10,114,0,0"/>
         <TextBox x:Name="txtFormat" KeyDown="txtFormat_KeyDown" HorizontalAlignment="Left" Height="23" Margin="131,63,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="49"/>
         <Button ToolTip="Supprime la bouteille sélectionnée de la commande/ fait moins un à la quantitée" Name="btnSupprimer" Click="btnSupprimer_Click" Content="Supprimer" HorizontalAlignment="Left" Height="51"  Width="96" Margin="223,319,0,10" />
 
