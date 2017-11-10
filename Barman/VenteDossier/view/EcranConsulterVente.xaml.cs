@@ -169,5 +169,26 @@ namespace Barman.VenteDossier.view
         }
 
        
+
+        private void chbToutVente_Click(object sender, RoutedEventArgs e)
+        {
+            if ((bool)chbToutVente.IsChecked)
+            {
+                List<Vente> lstAllVente = new List<Vente>();
+                lstAllVente = HibernateVenteService.RetrieveAllVenteEmploye((int)EcranAccueil.employe.IdEmploye);
+                foreach (var i in lstAllVente)
+                {
+                    i.laBouteille = HibernateBouteilleService.Retrieve((int)i.IdBouteille)[0];
+                    i.laBouteille.SaMarque = HibernateMarqueService.Retrieve((int)i.laBouteille.IdMarque)[0];
+                }
+                dtgVenteEmploye.ItemsSource = lstAllVente;
+            }
+            else
+            {
+                ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
+                EcranConsulterVente ec = new EcranConsulterVente();
+                ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0, ec);
+            }
+        }
     }
 }

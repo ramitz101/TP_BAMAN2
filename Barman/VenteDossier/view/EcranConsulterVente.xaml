@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Barman"
              mc:Ignorable="d" 
-             d:DesignHeight="350" d:DesignWidth="550">
+             d:DesignHeight="380" d:DesignWidth="550">
     <Grid>
        
         <Calendar  Name="cldVente"  SelectedDatesChanged="cldVente_SelectedDatesChanged" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top"/>
@@ -29,6 +29,7 @@
                 <TextBlock Text="Retour" FontSize="21" Height="30"></TextBlock>
             </StackPanel>
           </Button>
+        <CheckBox Name="chbToutVente" Click="chbToutVente_Click" Content="Toutes les ventes" HorizontalAlignment="Left" Margin="203,345,0,0" VerticalAlignment="Top"/>
 
 
     </Grid>
