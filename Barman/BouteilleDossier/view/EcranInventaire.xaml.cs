@@ -27,6 +27,8 @@ using Microsoft.Win32;
 using System.Windows.Controls.Primitives;
 using Barman.EmplacementDossier;
 using Barman.TypeDossier;
+using System.Windows.Threading;
+using System.Threading;
 
 namespace Barman.BouteilleDossier.view
 {
@@ -35,11 +37,15 @@ namespace Barman.BouteilleDossier.view
     /// </summary>
     public partial class EcranInventaire : UserControl
     {
+        DispatcherTimer dispatcherTimer = new DispatcherTimer();
         private static ObservableCollection<Bouteille> lstBouteilles = new ObservableCollection<Bouteille>(ChargerListBouteille(false));
         public string ContenuHeader { get; set; }
         public EcranInventaire()
         {
             InitializeComponent();
+
+            
+
             lstBouteilles = new ObservableCollection<Bouteille>(ChargerListBouteille(false));
             dtgInventaire.ItemsSource = lstBouteilles;
             dtgInventaire.Items.Refresh();
@@ -51,6 +57,16 @@ namespace Barman.BouteilleDossier.view
             lblNbSupprimee.Content += HibernateBouteilleService.CountNbSupprimee().ToString();
         }
 
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            lblMessage.Text = "";
+
+            CommandManager.InvalidateRequerySuggested();
+            if(dispatcherTimer.IsEnabled)
+            {
+                dispatcherTimer.Stop();
+            }
+        }
 
         private void btnAjout_Click(object sender, RoutedEventArgs e)
         {
@@ -94,12 +110,17 @@ namespace Barman.BouteilleDossier.view
                 if (EcranAccueil.employe.IdRole == 1)
                 {
                     FenetreModifierBouteille popup = new FenetreModifierBouteille(lstBouteilles, dtgInventaire.SelectedItem as Bouteille, this);
-                     popup.ShowDialog();
-                    
-
-                    if(popup.DialogResult.HasValue)
+                    popup.ShowDialog();
+                    if(popup.btnConfirmer.IsEnabled)
                     {
-                        MessageBox.Show("REUSSSSSIII HAHAHAHAHAHAHA");
+                        lblMessage.Text = "Bouteille modifié avec succès.";
+                        lblMessage.Foreground = Brushes.Green;
+                        
+                    }
+                    else if(popup.btnAnnuler.IsEnabled)
+                    {
+                        lblMessage.Text = "Modification de bouteille annulée.";
+                        lblMessage.Foreground = Brushes.Red;
                     }
                 }
 
@@ -353,6 +374,14 @@ namespace Barman.BouteilleDossier.view
         {
             lstBouteilles = new ObservableCollection<Bouteille>(ChargerListBouteille(false));
             dtgInventaire.ItemsSource = lstBouteilles;
+        }
+
+        private void lblMessage_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
+            dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 5);
+            dispatcherTimer.Start();
         }
     }
 }
