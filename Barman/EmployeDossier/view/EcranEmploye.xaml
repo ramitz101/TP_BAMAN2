@@ -18,9 +18,9 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nom" Binding="{Binding Nom}" />
                 <DataGridTextColumn Header="Prénom" Binding="{Binding Prenom}" />
-                <DataGridTextColumn Header="Téléphone" Binding="{Binding Telephone}"  />
+                <DataGridTextColumn Header="Téléphone" Binding="{Binding Telephone }"  />
                 <!--https://stackoverflow.com/questions/8085274/format-textbox-for-phone-number-in-wpf-->
-                <DataGridTextColumn Header="Date d'embauche" Binding="{Binding DateEmbauche, StringFormat=dd/MM/yyyy}" />
+                <DataGridTextColumn Header="Date d'embauche" Binding="{Binding DateEmbauche, StringFormat=yyyy/MM/dd}" />
                 <DataGridTextColumn Header="NAS" Binding="{Binding NAS}" />
                 <DataGridTextColumn Header="Role" Binding="{Binding SonRole.Code}" />
                 <DataGridTextColumn Header="Code" Binding="{Binding CodeEmploye}" />

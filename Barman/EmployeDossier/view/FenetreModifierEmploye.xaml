@@ -4,14 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Barman"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="FenetreModifierEmploye" Height="276.151" Width="490.795"
+        Title="FenetreModifierEmploye" Height="381.531" Width="481.814"
         WindowStartupLocation="CenterOwner">
     <Grid>
         <TextBox ToolTip="Le nom de l'employé" Name="txtNom" HorizontalAlignment="Left" Height="23" Margin="10,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox ToolTip="Le prénom de l'employé" Name="txtPrenom" HorizontalAlignment="Left" Height="23" Margin="10,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox ToolTip="Le numéro de téléphone pour rejoindre l'employé" Name="txtTelephone" HorizontalAlignment="Left" Height="23" Margin="10,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox ToolTip="Le numéro d'assurance social" Name="txtNAS" HorizontalAlignment="Left" Height="23" Margin="330,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <xctk:MaskedTextBox  Mask="(000) 000-0000" ToolTip="Le numéro de téléphone pour rejoindre l'employé" Name="txtTelephone" HorizontalAlignment="Left" Height="23" Margin="10,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <xctk:MaskedTextBox Mask="000-000-000"  ToolTip="Le numéro d'assurance social" Name="txtNAS" HorizontalAlignment="Left" Height="23" Margin="330,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Nom" HorizontalAlignment="Left" Margin="10,2,0,0" VerticalAlignment="Top"/>
         <Label Content="Date d'embauche" HorizontalAlignment="Left" Margin="182,2,0,0" VerticalAlignment="Top"/>
         <Label Content="NAS" HorizontalAlignment="Left" Margin="330,2,0,0" VerticalAlignment="Top"/>
@@ -26,6 +27,7 @@
         <Button ToolTip="Cliquer sur le + pour générer un nouveau code pour l'employé" Name="btnGenererNouveauCode" Content="+" HorizontalAlignment="Left" Margin="330,152,0,0" VerticalAlignment="Top" Width="23" Height="23" Click="btnGenererNouveauCode_Click"/>
         <TextBox Name="txtCode" IsReadOnly="true" HorizontalAlignment="Left" Height="23" Margin="358,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="97" />
         <Label Content="Nouveau code" HorizontalAlignment="Left" Margin="330,126,0,0" VerticalAlignment="Top"/>
+        <Label Name="lblInfoMessage" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,233,0,0" Height="108" Width="455"/>
 
     </Grid>
 </Window>

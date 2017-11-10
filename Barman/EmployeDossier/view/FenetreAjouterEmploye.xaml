@@ -9,10 +9,10 @@
         WindowStartupLocation="CenterOwner"
         Title="FenetreAjouterEmploye" Height="382.64" Width="583.151">
     <Grid Margin="0,0,0,0">
-        <TextBox ToolTip="Le nom du nouvel employé" Name="txtNom" HorizontalAlignment="Left" Height="23" Margin="10,33,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox ToolTip="Le prénom du nouvel employé" Name="txtPrenom" HorizontalAlignment="Left" Height="23" Margin="10,93,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <xctk:MaskedTextBox  Mask="(000) 000-0000" ToolTip="Le numéro de téléphone pour rejoindre l'employé" Name="txtTelephone" HorizontalAlignment="Left" Height="23" Margin="10,152,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <xctk:MaskedTextBox Mask="000-000-000" ToolTip="Le numéro d'assurance social" Name="txtNAS" HorizontalAlignment="Left" Height="23" Margin="410,33,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox PreviewTextInput="NumberValidationTextBox" ToolTip="Le nom du nouvel employé" GotFocus="txtNom_GotFocus" LostFocus="txtNom_LostFocus" Name="txtNom" HorizontalAlignment="Left" Height="23" Margin="10,33,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox ToolTip="Le prénom du nouvel employé" GotFocus="txtPrenom_GotFocus" LostFocus="txtPrenom_LostFocus" Name="txtPrenom" HorizontalAlignment="Left" Height="23" Margin="10,93,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <xctk:MaskedTextBox  GotFocus="txtTelephone_GotFocus" LostFocus="txtTelephone_LostFocus" Mask="(000) 000-0000" ToolTip="Le numéro de téléphone pour rejoindre l'employé" Name="txtTelephone" HorizontalAlignment="Left" Height="23" Margin="10,152,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <xctk:MaskedTextBox  LostFocus="txtNAS_LostFocus" GotFocus="txtNAS_GotFocus" Mask="000-000-000" ToolTip="Le numéro d'assurance social" Name="txtNAS" HorizontalAlignment="Left" Height="23" Margin="410,33,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
         <Label Content="Nom" HorizontalAlignment="Left" Margin="10,2,0,0" VerticalAlignment="Top"/>
         <Label Content="Date d'embauche" HorizontalAlignment="Left" Margin="182,2,0,0" VerticalAlignment="Top"/>
         <Label Content="NAS" HorizontalAlignment="Left" Margin="410,2,0,0" VerticalAlignment="Top"/>
