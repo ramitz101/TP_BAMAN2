@@ -29,7 +29,6 @@ namespace Barman.BouteilleDossier.view
         {
             InitializeComponent();
             this.Owner = App.Current.MainWindow;
-
             if (bouteille != null)
             {
                 bouteilleModifier = bouteille;
@@ -65,6 +64,7 @@ namespace Barman.BouteilleDossier.view
 
         private void btnAnnuler_Click(object sender, RoutedEventArgs e)
         {
+            btnConfirmer.IsEnabled = false;
             this.Close();
         }
 

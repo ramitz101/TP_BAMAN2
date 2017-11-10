@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using Barman.EmployeDossier.Hibernate;
 using Barman.RoleDossier;
 using Barman.RoleDossier.Hibernate;
+using System.Text.RegularExpressions;
 
 namespace Barman.EmployeDossier.view
 {
@@ -46,8 +47,7 @@ namespace Barman.EmployeDossier.view
                 else
                     rdbUtilisateur.IsChecked = true;
                 txtCode.Text = employe.CodeEmploye;
-
-
+                
 
             }
 
@@ -62,10 +62,21 @@ namespace Barman.EmployeDossier.view
         {
             if (ValidationChamps())
             {
+                string telephone = txtTelephone.Text;
+                string numro = string.Empty;
+
+
+                
+                for (int i = 0; i < telephone.Length; i++)
+                {
+                    if (Char.IsDigit(telephone[i]))
+                        numro += telephone[i];
+                }
+
                 EmployeModifier.Nom = txtNom.Text;
                 EmployeModifier.Prenom = txtPrenom.Text;
-                EmployeModifier.Telephone = txtTelephone.Text;
-                EmployeModifier.NAS = txtNAS.Text;
+                EmployeModifier.Telephone = Extractdigits(txtTelephone.Text);
+                EmployeModifier.NAS = Extractdigits(txtNAS.Text);
                 EmployeModifier.IdRole = RoleChoisi();
                 EmployeModifier.CodeEmploye = txtCode.Text;
 
@@ -73,8 +84,21 @@ namespace Barman.EmployeDossier.view
 
                 this.Close();
 
-            }else
-                MessageBox.Show("Une erreur est survenu lors de la modification d'un employe. Vérifier le contenu des champs et réessayé.");
+            }
+              
+        }
+
+        private string Extractdigits(string pText)
+        {
+            string text = pText;
+            string textResult = string.Empty;
+
+            for (int i = 0; i < text.Length; i++)
+            {
+                if (Char.IsDigit(text[i]))
+                    textResult += text[i];
+            }
+            return textResult;
         }
 
         private int RoleChoisi()
@@ -97,10 +121,94 @@ namespace Barman.EmployeDossier.view
 
         private bool ValidationChamps()
         {
-            if (txtNom.Text != "" && txtNom.Text.Length < 100 && txtPrenom.Text != "" && txtPrenom.Text.Length < 100 && UnRdbEstChoisi() && txtNAS.Text.Length == 9 && txtTelephone.Text.Length == 10)
-            return true;
-            else
-                return false;
+            Regex r = new Regex("^[a-zA-Z]*$");
+
+            bool estValide = true;
+            StringBuilder sb = new StringBuilder();
+            if (txtNom.Text != "" && txtNom.Text.Length < 100 && r.IsMatch(txtNom.Text) && txtPrenom.Text != "" && txtPrenom.Text.Length < 100 && r.IsMatch(txtPrenom.Text) && UnRdbEstChoisi() && txtNAS.Text.Count(Char.IsDigit) == 9 && txtTelephone.Text.Count(Char.IsDigit) == 10)
+            {
+                estValide = true;
+            }
+            if (txtNom.Text == "")
+            {
+                sb.AppendLine("Vous devez entrer un nom.");
+                txtNom.BorderBrush = System.Windows.Media.Brushes.Red;
+                estValide = false;
+
+            }
+            if (!r.IsMatch(txtNom.Text))
+            {
+                sb.AppendLine("Le nom doit contenir que des lettres");
+                txtNom.BorderBrush = System.Windows.Media.Brushes.Red;
+                estValide = false;
+
+            }
+            if (txtNom.Text.Length > 100)
+            {
+                sb.AppendLine("Le nom entré est trop long.");
+                txtNom.BorderBrush = System.Windows.Media.Brushes.Red;
+                estValide = false;
+            }
+            if (txtPrenom.Text == "")
+            {
+                sb.AppendLine("Vous devez entrer un prénom.");
+                txtPrenom.BorderBrush = System.Windows.Media.Brushes.Red;
+                estValide = false;
+            }
+            if (!r.IsMatch(txtPrenom.Text))
+            {
+                sb.AppendLine("Le prénom doit contenir que des lettres");
+                txtPrenom.BorderBrush = System.Windows.Media.Brushes.Red;
+                estValide = false;
+            }
+            if (txtNom.Text == "")
+            {
+                sb.AppendLine("Vous devez entrer un nom.");
+                txtNom.BorderBrush = System.Windows.Media.Brushes.Red;
+                estValide = false;
+
+            }
+            if (txtPrenom.Text.Length > 100)
+            {
+                sb.AppendLine("Le prénom entré est trop long.");
+                txtPrenom.BorderBrush = System.Windows.Media.Brushes.Red;
+                estValide = false;
+            }
+            if (!UnRdbEstChoisi())
+            {
+                sb.AppendLine("Vous devez sélectionner un niveau d'accès.");
+                //txtN.BorderBrush = System.Windows.Media.Brushes.Red;
+                estValide = false;
+            }
+            if (txtNAS.Text.Count(Char.IsDigit) == 0)
+            {
+                sb.AppendLine("Vous devez entrer un numéro d'assurance social.");
+                txtNAS.BorderBrush = Brushes.Red;
+
+                estValide = false;
+            }
+            if (txtNAS.Text.Count(Char.IsDigit) < 9 && txtNAS.Text.Count(Char.IsDigit) > 0)
+            {
+                sb.AppendLine("Le numéro d'assurance social n'est pas complet.");
+                txtNAS.BorderBrush = new SolidColorBrush(Colors.Red);
+                estValide = false;
+            }
+            if (txtTelephone.Text.Count(Char.IsDigit) == 0)
+            {
+                sb.AppendLine("Vous devez entrer un numéro de téléphone.");
+                txtTelephone.BorderBrush = new SolidColorBrush(Colors.Red);
+                estValide = false;
+            }
+            if (txtTelephone.Text.Count(Char.IsDigit) < 10 && txtTelephone.Text.Count(Char.IsDigit) > 0)
+            {
+                sb.AppendLine("Le numéro de téléphone n'est pas complet.");
+                txtTelephone.BorderBrush = new SolidColorBrush(Colors.Red);
+                estValide = false;
+            }
+            sb.Insert(0, "Les erreurs suivantes se sont produite : ");
+            lblInfoMessage.Content = sb;
+            lblInfoMessage.Foreground = Brushes.Red;
+            return estValide;
         }
 
         public bool UnRdbEstChoisi()

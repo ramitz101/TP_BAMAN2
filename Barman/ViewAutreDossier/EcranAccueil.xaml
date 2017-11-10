@@ -7,41 +7,58 @@
              mc:Ignorable="d" 
              d:DesignHeight="430.623" d:DesignWidth="300">
     <Grid >
-        <StackPanel>
 
-            <Button ToolTip="l'inventaire de bouteilles" Name="btnInventaire" Click="btnInventaire_Click" Width="200" Height="50" Margin="15">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="*"/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+        
+
+
+            <Button ToolTip="l'inventaire de bouteilles" Name="btnInventaire" Click="btnInventaire_Click"  Grid.Column="1" Grid.Row="1" Margin="0,5,0,5" >
                 <StackPanel Orientation="Horizontal"  Width="150" Height="36">
                     <Image Source="../images/inventaire.png" Width="39"/>
                     <TextBlock Text="INVENTAIRE" FontSize="20" ></TextBlock>
                 </StackPanel>
             </Button>
-            <Button ToolTip="Les employés du bar" Name="btnEmploye" Click="btnEmploye_Click" Width="200" Height="50" Margin="15">
+        <Button ToolTip="Les employés du bar" Name="btnEmploye" Click="btnEmploye_Click"  Grid.Column="1" Grid.Row="2"   Height="Auto" Margin="0,5,0,5">
                 <StackPanel Orientation="Horizontal"  Width="150" Height="36">
                     <Image Source="../images/employe.png"/>
                     <TextBlock Text="EMPLOYÉS" FontSize="20" ></TextBlock>
                 </StackPanel>
             </Button>
 
-            <Button ToolTip="Faire une vente" Name="btnVente" Click="btnVente_Click" Width="200" Height="50" Margin="15">
+        <Button ToolTip="Faire une vente" Name="btnVente" Click="btnVente_Click"   Grid.Column="1" Grid.Row="3" Height="Auto" Margin="0,5,0,5">
                 <StackPanel Orientation="Horizontal"  Width="150" Height="36">
                     <Image Source="../images/vente.png" />
                     <TextBlock Text="VENTES" FontSize="20" ></TextBlock>
                 </StackPanel>
             </Button>
-            <Button ToolTip="Les commandes d'alcool" Name="btnCommande" Click="btnCommande_Click" Width="200" Height="50" Margin="15">
+        <Button ToolTip="Les commandes d'alcool" Name="btnCommande" Click="btnCommande_Click"  Grid.Column="1" Grid.Row="4"  Height="Auto" Margin="0,5,0,5">
                 <StackPanel Orientation="Horizontal"  Width="150" Height="36">
                     <Image Source="../images/commande.png" />
                     <TextBlock Text="COMMANDES" FontSize="20" ></TextBlock>
                 </StackPanel>
             </Button>
 
-            <Button ToolTip="Sortir une bouteille de l'inventaire" Name="btnFormulaireBouteille" Click="btnFormulaireBouteille_Click" Width="200" Height="50" Margin="15">
+        <Button ToolTip="Sortir une bouteille de l'inventaire" Name="btnFormulaireBouteille"  Grid.Column="1" Grid.Row="5" Click="btnFormulaireBouteille_Click"  Height="Auto" Margin="0,5,0,5">
                 <StackPanel Orientation="Horizontal"  Width="155" Height="36">
                     <Image Source="../images/formulaire.png" />
                     <TextBlock Text="SORTIR BTLE" FontSize="20" ></TextBlock>
                 </StackPanel>
             </Button>
-        </StackPanel>
 
     </Grid>
 </UserControl>
