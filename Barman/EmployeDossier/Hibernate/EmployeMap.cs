@@ -38,6 +38,13 @@ namespace Barman.EmployeDossier.Hibernate
             .Generated.Never()
             .CustomSqlType("VARCHAR");
 
+            Map(x => x.Etat)
+            .Column("etat")
+            .CustomType<string>()
+            .Access.Property()
+            .Generated.Never()
+            .CustomSqlType("VARCHAR");
+
             Map(x => x.Telephone)
             .Column("telephone")
             .CustomType<string>()

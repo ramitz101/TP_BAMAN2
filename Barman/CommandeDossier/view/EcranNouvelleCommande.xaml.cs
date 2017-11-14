@@ -80,7 +80,7 @@ namespace Barman.CommandeDossier.view
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Une erreur c'est produite ", "Attention", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Une erreur c'est produite " + ex, "Attention", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
            

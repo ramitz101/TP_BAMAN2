@@ -12,9 +12,26 @@ namespace Barman.EmployeDossier.Hibernate
     {
         private static ISession session = NHibernateConnexion.OpenSession();
 
-        public static List<Employe> RetrieveAll()
+        public static List<Employe> RetrieveAll(bool? inactif)
         {
-            return session.Query<Employe>().ToList();
+            var employes = session.Query<Employe>().ToList();
+
+            var result = from e in employes
+                         select e;
+
+            if (inactif == true)
+            {
+                result = from e in employes
+                         where e.Etat == "I"
+                         select e;
+            }
+            else
+            {
+                result = from e in employes
+                         where e.Etat == "A"
+                         select e;
+            }
+            return result.ToList();
         }
 
         public static List<Employe> Retrieve(int pIdEmploye)

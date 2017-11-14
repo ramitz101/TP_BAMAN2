@@ -36,7 +36,7 @@ namespace Barman.BouteilleDossier.view
       private List<TypeAlcool> lstType = new List<TypeAlcool>();
       private List<Emplacement> lstEmplacements = new List<Emplacement>(HibernateEmplacementService.RetrieveAllForFormulaire());
       private List<Marque> lstMarques = new List<Marque>();
-      private List<Employe> lstEmployes = new List<Employe>(HibernateEmployeService.RetrieveAll());
+      private List<Employe> lstEmployes = new List<Employe>(HibernateEmployeService.RetrieveAll(null));
       private List<int?> lstIdMarquesEnReserve = new List<int?>();
       private List<int?> lstIdTypeEnReserve = new List<int?>();
 

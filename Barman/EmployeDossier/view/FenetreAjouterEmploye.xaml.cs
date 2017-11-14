@@ -31,7 +31,7 @@ namespace Barman.EmployeDossier.view
         private String oldValueNAS = String.Empty;
         
 
-        private bool btnConfirmerHasBeemClicked = false;
+        //private bool btnConfirmerHasBeemClicked = false;
 
         public FenetreAjouterEmploye()
         {

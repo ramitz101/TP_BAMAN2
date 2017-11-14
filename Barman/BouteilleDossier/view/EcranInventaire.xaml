@@ -17,7 +17,7 @@
             <ColumnDefinition Width="400"/>
         </Grid.ColumnDefinitions>
         <StackPanel VerticalAlignment="Top" Grid.Column="1" Grid.Row="1">
-            <CheckBox Grid.Column="1" Grid.Row="1" Content="Afficher les bouteilles supprimées" Checked="chbAfficherSupprimee_Checked" Unchecked="chbAfficherSupprimee_Unchecked" VerticalAlignment="Bottom" IsChecked="False" Name="chbAfficherSupprimee" />
+            <CheckBox Grid.Column="1" Grid.Row="1" Content="Afficher les bouteilles supprimées" Checked="chbAfficherSupprimee_Checked" Unchecked="chbAfficherSupprimee_Unchecked" VerticalAlignment="Bottom" IsChecked="False" Name="chbAfficherSupprimee" Margin="0,0,201,0" />
             <TextBox Name="txtRecherche"  KeyUp="txtRecherche_KeyUp_1" Height="20"  Grid.Column="1" VerticalAlignment="Top" Text="Rechercher" LostFocus="txtRecherche_LostFocus" GotFocus="txtRecherche_GotFocus"  Grid.Row="2" ></TextBox>
         </StackPanel>
 

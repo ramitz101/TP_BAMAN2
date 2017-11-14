@@ -59,7 +59,7 @@ namespace Barman.ViewAutreDossier
         {
             try
             {
-                List<Employe> listEmploye = new List<Employe>(HibernateEmployeService.RetrieveAll());
+                List<Employe> listEmploye = new List<Employe>(HibernateEmployeService.RetrieveAll(null));
         
                 foreach(var i in listEmploye)
                 {
@@ -77,6 +77,7 @@ namespace Barman.ViewAutreDossier
                 return new Employe();
             }
             lblErreur.Content = "Erreur, le code n'existe pas";
+            pwdBox.SelectAll();
             return new Employe();
         }
 

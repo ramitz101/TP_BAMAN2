@@ -7,9 +7,15 @@
              mc:Ignorable="d" 
              d:DesignHeight="430" d:DesignWidth="600">
     <Grid>
+        <CheckBox Content="Affiche les employés inactif" Checked="chbAfficherEmployeInactif_Checked" Unchecked="chbAfficherEmployeInactif_Unchecked" VerticalAlignment="Top" IsChecked="False" Name="chbAfficherEmployeInactif" Margin="197,32,237,0" />
         <TextBox Name="txtRecherche"  KeyUp="txtRecherche_KeyUp_1" Height="22" VerticalAlignment="Top" Text="Rechercher" LostFocus="txtRecherche_LostFocus" GotFocus="txtRecherche_GotFocus" Margin="197,52,19,0"/>
         
-        <DataGrid Name="dtgEmploye" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="299" VerticalAlignment="Top" Width="384" Margin="197,79,0,0" >
+        <DataGrid Name="dtgEmploye"  AutoGenerateColumns="False" HorizontalAlignment="Left" Height="299" VerticalAlignment="Top" Width="384" Margin="197,79,0,0" >
+            <DataGrid.Resources>
+                <Style TargetType="DataGridRow">
+                    <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
+                </Style>
+            </DataGrid.Resources>
             <DataGrid.ColumnHeaderStyle>
                 <Style TargetType="DataGridColumnHeader">
                     <EventSetter Event="Click" Handler="columnHeader_Click" />

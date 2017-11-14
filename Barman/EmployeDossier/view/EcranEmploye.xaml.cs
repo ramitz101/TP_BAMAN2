@@ -41,7 +41,7 @@ namespace Barman.EmployeDossier.view
         public EcranEmploye()
         {
             InitializeComponent();
-            lstEmployes = new ObservableCollection<Employe>(ChargerListEmploye());
+            lstEmployes = new ObservableCollection<Employe>(ChargerListEmploye(null));
             dtgEmploye.ItemsSource = lstEmployes;
             dtgEmploye.IsReadOnly = true;
             ContenuHeader = "Nom";
@@ -57,7 +57,7 @@ namespace Barman.EmployeDossier.view
 
             }
 
-            dtgEmploye.ItemsSource = new ObservableCollection<Employe>(ChargerListEmploye());
+            dtgEmploye.ItemsSource = new ObservableCollection<Employe>(ChargerListEmploye(null));
             //dtgEmploye.Items.Refresh();
         }
 
@@ -66,7 +66,7 @@ namespace Barman.EmployeDossier.view
             FenetreAjouterEmploye popup = new FenetreAjouterEmploye();
             popup.ShowDialog();
 
-            dtgEmploye.ItemsSource = new ObservableCollection<Employe>(ChargerListEmploye());
+            dtgEmploye.ItemsSource = new ObservableCollection<Employe>(ChargerListEmploye(null));
             //dtgEmploye.Items.Refresh();
         }
 
@@ -77,9 +77,9 @@ namespace Barman.EmployeDossier.view
             ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EA);
         }
 
-        private static List<Employe> ChargerListEmploye()
+        private static List<Employe> ChargerListEmploye(bool? inactif)
         {
-            List<Employe> listE = new List<Employe>(HibernateEmployeService.RetrieveAll());
+            List<Employe> listE = new List<Employe>(HibernateEmployeService.RetrieveAll(inactif));
             foreach (var i in listE)
             {
                 i.SonRole = HibernateRoleService.Retrieve((int)i.IdRole)[0];
@@ -117,9 +117,10 @@ namespace Barman.EmployeDossier.view
 
                     foreach (var employe in lstEmploye)
                     {
-                        HibernateEmployeService.Delete(employe);
+                        employe.Etat = "I";
+                        HibernateEmployeService.Update(employe);
                     }
-                    dtgEmploye.ItemsSource = new ObservableCollection<Employe>(ChargerListEmploye());
+                    dtgEmploye.ItemsSource = new ObservableCollection<Employe>(ChargerListEmploye(null));
                 }
 
             }
@@ -213,7 +214,7 @@ namespace Barman.EmployeDossier.view
             }
             else
             {
-                lstEmploye = HibernateEmployeService.RetrieveAll();
+                lstEmploye = HibernateEmployeService.RetrieveAll(null);
                 dtgEmploye.ItemsSource = lstEmploye;
             }
         }
@@ -243,7 +244,7 @@ namespace Barman.EmployeDossier.view
 
         private void btnImprimerEmploye_Click(object sender, RoutedEventArgs e)
         {
-            lstEmployes = new ObservableCollection<Employe>(ChargerListEmploye());
+            lstEmployes = new ObservableCollection<Employe>(ChargerListEmploye(null));
 
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
 
@@ -278,6 +279,30 @@ namespace Barman.EmployeDossier.view
                 Process.Start(fullPath);
 
             }
+        }
+
+        private void chbAfficherEmployeInactif_Checked(object sender, RoutedEventArgs e)
+        {
+            lstEmployes = new ObservableCollection<Employe>(ChargerListEmploye(true));
+            dtgEmploye.ItemsSource = lstEmployes;
+
+        }
+
+        private void chbAfficherEmployeInactif_Unchecked(object sender, RoutedEventArgs e)
+        {
+            lstEmployes = new ObservableCollection<Employe>(ChargerListEmploye(false));
+            dtgEmploye.ItemsSource = lstEmployes;
+        }
+
+        private void dtgEmploye_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+        private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            DataGridRow row = sender as DataGridRow;
+
+            
         }
     }
 }

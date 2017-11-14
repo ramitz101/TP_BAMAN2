@@ -103,7 +103,7 @@ namespace Barman.VenteDossier.view
 
         private static List<Employe> ChargerListEmploye()
         {
-            List<Employe> listE = new List<Employe>(HibernateEmployeService.RetrieveAll());
+            List<Employe> listE = new List<Employe>(HibernateEmployeService.RetrieveAll(null));
             return listE;
         }
         private void btnSupprimer_Click(object sender, RoutedEventArgs e)
@@ -124,7 +124,7 @@ namespace Barman.VenteDossier.view
                 }
                 catch(Exception ex)
                 {
-                    MessageBox.Show("Une erreur est survenu", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Une erreur est survenu "+ ex, "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }

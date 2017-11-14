@@ -23,10 +23,11 @@ namespace Barman.EmployeDossier
         public virtual string Telephone { get; set; }
         public virtual DateTime DateEmbauche { get; set; }
         public virtual string NAS { get; set; }
+        public virtual string Etat { get; set; }
 
         public virtual Role SonRole { get; set; }
 
-        public virtual IList<Vente> ListVente { get; set; } 
+        public virtual IList<Vente> ListVente { get; set; }
 
         public Employe()
         {
@@ -39,11 +40,13 @@ namespace Barman.EmployeDossier
             DateEmbauche = DateTime.MinValue;
             NAS = String.Empty;
 
+
+
             SonRole = new Role();
             ListVente = new List<Vente>();
         }
 
-        public Employe(string nom, string prenom, string telephone, string nas, DateTime dateEmbauche, int pIdRole )
+        public Employe(string nom, string prenom, string telephone, string nas, DateTime dateEmbauche, int pIdRole)
         {
             Nom = nom;
             Prenom = prenom;
@@ -60,7 +63,7 @@ namespace Barman.EmployeDossier
             return new List<string>(HibernateEmployeService.RetrieveAllCodeEmploye());
         }
 
-        
+
         public Employe(string nom, string prenom, string telephone, string nas, DateTime dateEmbauche, string codeEmploye, int pIdRole, int pIdEmploye)
         {
             Nom = nom;
@@ -95,63 +98,63 @@ namespace Barman.EmployeDossier
         {
             return base.GetHashCode();
         }
-      public static bool ValiderNumeroTelephone(string telephone)
-      {
-         int i = 0;
-         bool resultat = true;
+        //public static bool ValiderNumeroTelephone(string telephone)
+        //{
+        //    int i = 0;
+        //    bool resultat = true;
 
-         if (telephone.Length == MAX_LENGTH_TELEPHONE)
-         {
-            while (i < MAX_LENGTH_TELEPHONE && resultat == true)
-            {
-               try
-               {
-                  Convert.ToInt32(telephone.Substring(i, 1));
-               }
-               catch (FormatException)
-               {
-                  resultat = false;
-               }
+        //    if (telephone.Length == MAX_LENGTH_TELEPHONE)
+        //    {
+        //        while (i < MAX_LENGTH_TELEPHONE && resultat == true)
+        //        {
+        //            try
+        //            {
+        //                Convert.ToInt32(telephone.Substring(i, 1));
+        //            }
+        //            catch (FormatException)
+        //            {
+        //                resultat = false;
+        //            }
 
-               i++;
-            }
-         }
-         else
-         {
-            resultat = false;
-         }
+        //            i++;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        resultat = false;
+        //    }
 
-         return resultat;
-      }
+        //    return resultat;
+        //}
 
-      public static bool ValiderNAS(string nas)
-      {
-         int i = 0;
-         bool resultat = true;
+        //public static bool ValiderNAS(string nas)
+        //{
+        //    int i = 0;
+        //    bool resultat = true;
 
-         if (nas.Length == MAX_LENGTH_NAS)
-         {
-            while (i < MAX_LENGTH_NAS && resultat == true)
-            {
-               try
-               {
-                  Convert.ToInt32(nas.Substring(i, 1));
-               }
-               catch (FormatException)
-               {
-                  resultat = false;
-               }
+        //    if (nas.Length == MAX_LENGTH_NAS)
+        //    {
+        //        while (i < MAX_LENGTH_NAS && resultat == true)
+        //        {
+        //            try
+        //            {
+        //                Convert.ToInt32(nas.Substring(i, 1));
+        //            }
+        //            catch (FormatException)
+        //            {
+        //                resultat = false;
+        //            }
 
-               i++;
-            }
-         }
-         else
-         {
-            resultat = false;
-         }
+        //            i++;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        resultat = false;
+        //    }
 
-         return resultat;
-      }
+        //    return resultat;
+        //}
 
-   }
+    }
 }
