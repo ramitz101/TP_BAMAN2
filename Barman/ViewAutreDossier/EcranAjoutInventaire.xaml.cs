@@ -60,6 +60,7 @@ namespace Barman.ViewAutreDossier
             ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
             EcranOnglets EO = new EcranOnglets(0);
             ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EO);
+            btnConfirmer.IsEnabled = false;
         }
 
         private void btnConfirmer_Click(object sender, RoutedEventArgs e)
@@ -78,6 +79,7 @@ namespace Barman.ViewAutreDossier
                     ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
                     EcranOnglets EO = new EcranOnglets(0);
                     ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EO);
+                    btnAnnuler.IsEnabled = false;
                 }
             }
             else
@@ -85,6 +87,7 @@ namespace Barman.ViewAutreDossier
                 ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
                 EcranOnglets EO = new EcranOnglets(0);
                 ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EO);
+                btnAnnuler.IsEnabled = false;
             }
 
         }

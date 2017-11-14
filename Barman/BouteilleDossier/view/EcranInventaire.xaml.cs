@@ -43,7 +43,7 @@ namespace Barman.BouteilleDossier.view
         public EcranInventaire()
         {
             InitializeComponent();
-
+            
             
 
             lstBouteilles = new ObservableCollection<Bouteille>(ChargerListBouteille(false));
@@ -62,10 +62,7 @@ namespace Barman.BouteilleDossier.view
             lblMessage.Text = "";
 
             CommandManager.InvalidateRequerySuggested();
-            if(dispatcherTimer.IsEnabled)
-            {
-                dispatcherTimer.Stop();
-            }
+           
         }
 
         private void btnAjout_Click(object sender, RoutedEventArgs e)
@@ -87,6 +84,7 @@ namespace Barman.BouteilleDossier.view
                 ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
                 EcranAjoutInventaire EAI = new EcranAjoutInventaire();
                 ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0, EAI);
+                
             }
 
             dtgInventaire.ItemsSource = new ObservableCollection<Bouteille>(ChargerListBouteille(false));
@@ -115,12 +113,14 @@ namespace Barman.BouteilleDossier.view
                     {
                         lblMessage.Text = "Bouteille modifié avec succès.";
                         lblMessage.Foreground = Brushes.Green;
-                        
+
+
                     }
                     else if(popup.btnAnnuler.IsEnabled)
                     {
                         lblMessage.Text = "Modification de bouteille annulée.";
                         lblMessage.Foreground = Brushes.Red;
+
                     }
                 }
 
@@ -343,9 +343,16 @@ namespace Barman.BouteilleDossier.view
                             bouteille.VolumeRestant = 0;
                             bouteille.IdEmplacement = HibernateEmplacementService.retrieveEmplacementByNom("Aucun")[0].IdEmplacement;
                             HibernateBouteilleService.Update(bouteille);
+                            lblMessage.Text = "Bouteille supprimé avec succès.";
+                            lblMessage.Foreground = Brushes.Green;
 
                         }
                         dtgInventaire.ItemsSource = new ObservableCollection<Bouteille>(ChargerListBouteille(chbAfficherSupprimee.IsChecked));
+                    }
+                    else
+                    {
+                        lblMessage.Text = "Suppression de bouteille annulée.";
+                        lblMessage.Foreground = Brushes.Red;
                     }
                 }
             }
@@ -378,7 +385,6 @@ namespace Barman.BouteilleDossier.view
 
         private void lblMessage_TextChanged(object sender, TextChangedEventArgs e)
         {
-            dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
             dispatcherTimer.Interval = new TimeSpan(0, 0, 5);
             dispatcherTimer.Start();
