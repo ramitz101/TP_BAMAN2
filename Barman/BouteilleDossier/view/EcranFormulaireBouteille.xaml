@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Barman"
-             mc:Ignorable="d" Height="295" Width="460">
+             mc:Ignorable="d" d:DesignHeight="295" d:DesignWidth="460">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -18,14 +18,16 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="*"/>
+
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+        <StackPanel Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" VerticalAlignment="Bottom" HorizontalAlignment="Center">
             <Label  FontWeight="Bold" FontSize="20" Foreground="Black"  HorizontalAlignment="Center" VerticalAlignment="Bottom" Content="Sortir une bouteille de la réserve" />
             <Separator   />
         </StackPanel>
 
-        <StackPanel Grid.Column="2" Grid.Row="3" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+        <StackPanel Grid.Column="2" Grid.Row="3" VerticalAlignment="Bottom" HorizontalAlignment="Right">
             <Label Content="Emplacement"  Width="93"/>
             <ComboBox Name="cboEmplacement" SelectionChanged="cboEmplacement_SelectionChanged" Width="120" />
         </StackPanel>
@@ -35,7 +37,7 @@
             <ComboBox Name="cboType"   SelectionChanged="cboType_SelectionChanged"  Width="120" />
         </StackPanel>
 
-        <StackPanel Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+        <StackPanel Grid.Column="2" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom">
             <Label Content="Vendu pour client"  />
             <CheckBox  Name="chbVendu"  Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"    />
         </StackPanel>
@@ -45,7 +47,7 @@
             <ComboBox Name="cboMarqueBouteille" IsEnabled="False" SelectionChanged="cboMarqueBouteille_SelectionChanged"  Width="120"/>
         </StackPanel>
 
-        <StackPanel Grid.Column="2" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+        <StackPanel Grid.Column="2" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Bottom">
             <Label Content="Employé"   />
             <ComboBox Name="cboEmployé" SelectionChanged="cboEmployé_SelectionChanged"   Width="120"/>
         </StackPanel>
@@ -55,7 +57,7 @@
             <ComboBox x:Name="cboÉtiquette" SelectionChanged="cboÉtiquette_SelectionChanged" IsEnabled="False" Width="120"/>
         </StackPanel>
 
-        <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.ColumnSpan="3"  Grid.Row="4" HorizontalAlignment="Center">
+        <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.ColumnSpan="4"  Grid.Row="4" HorizontalAlignment="Center">
             <Button ToolTip="Retourner à l'accueil / se déconnecter" Name="btnAccueil" Margin="0,0,175,0" Content="Accueil"    VerticalAlignment="Center" Width="75" Click="btnAccueil_Click"/>
             <Button ToolTip="Confirmer la sortie de la bouteille de la réserve" Name="btnConfirmer" IsEnabled="False" Content="Confirmer" VerticalAlignment="Center" Width="75" Click="btnConfirmer_Click"/>
         </StackPanel>
