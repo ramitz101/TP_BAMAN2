@@ -32,9 +32,7 @@
         <Style TargetType="{x:Type Label}">
             <Setter Property="Foreground" Value="White"/>
         </Style>
-        <Style TargetType="{x:Type DataGrid}">
-            <Setter Property="Background" Value="{StaticResource GrayBlueGardientBrush}"/>
-        </Style>
+        
         <Style TargetType="{x:Type CheckBox}">
             <Setter Property="Foreground" Value="White"/>
         </Style>

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Authentification" Height="191.892" Width="275.676"
         WindowStartupLocation="CenterOwner">
-    <Grid>
+    <Grid Background="{StaticResource GrayBlackGardientBrush}">
         <Button Name="btnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="30,108,0,0" VerticalAlignment="Top" Width="93" Height="30" Click="btnAnnuler_Click"/>
         <Button Name="btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="157,108,0,0" VerticalAlignment="Top" Width="93" Height="30" Click="btnConfirmer_Click"/>
         <Label Content="Entrer votre code" HorizontalAlignment="Left" Margin="30,7,0,0" VerticalAlignment="Top"/>
