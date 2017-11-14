@@ -300,8 +300,8 @@ namespace Barman.EmployeDossier.view
         }
         private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
         {
-            DataGridRow row = sender as DataGridRow;
-
+            //DataGridRow row = sender as DataGridRow;
+            btnGerer_Click(sender, e);
             
         }
     }

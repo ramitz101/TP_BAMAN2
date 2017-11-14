@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Barman"
         mc:Ignorable="d"
         Title="Accès refuser" Height="160.405" Width="435.26" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" >
-    <Grid>
+    <Grid Background="{StaticResource GrayBlackGardientBrush}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>

@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="430" d:DesignWidth="600">
     <Grid>
-        <CheckBox Content="Affiche les employés inactif" Checked="chbAfficherEmployeInactif_Checked" Unchecked="chbAfficherEmployeInactif_Unchecked" VerticalAlignment="Top" IsChecked="False" Name="chbAfficherEmployeInactif" Margin="197,32,237,0" />
+        <CheckBox Content="Affiche les employés inactif" Checked="chbAfficherEmployeInactif_Checked" Unchecked="chbAfficherEmployeInactif_Unchecked" VerticalAlignment="Top" IsChecked="False" Name="chbAfficherEmployeInactif" Margin="197,32,192,0" />
         <TextBox Name="txtRecherche"  KeyUp="txtRecherche_KeyUp_1" Height="22" VerticalAlignment="Top" Text="Rechercher" LostFocus="txtRecherche_LostFocus" GotFocus="txtRecherche_GotFocus" Margin="197,52,19,0"/>
         
         <DataGrid Name="dtgEmploye"  AutoGenerateColumns="False" HorizontalAlignment="Left" Height="299" VerticalAlignment="Top" Width="384" Margin="197,79,0,0" >
@@ -32,31 +32,31 @@
                 <DataGridTextColumn Header="Code" Binding="{Binding CodeEmploye}" />
             </DataGrid.Columns>
         </DataGrid>
-        <Button ToolTip="Modifier les informations d'un employé" HorizontalAlignment="Left" Margin="10,33,0,0" Background="White" VerticalAlignment="Top"  Width="163" Height="65" Grid.ColumnSpan="2" Click="btnGerer_Click" >
+        <Button ToolTip="Modifier les informations d'un employé" HorizontalAlignment="Left" Margin="10,33,0,0"  VerticalAlignment="Top"  Width="163" Height="65" Grid.ColumnSpan="2" Click="btnGerer_Click" >
             <StackPanel Width="140" Orientation="Horizontal">
                 <Image Source="../../images/Gerer.png" Width="40" Height="40" />
                 <TextBlock HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="21"><Run Text="Gérer"/></TextBlock>
             </StackPanel>
         </Button>
-        <Button ToolTip="Enregistrer la liste d'employés en format PDF" Name="btnImprimerEmploye" FontSize="21" HorizontalAlignment="Left" Background="White" Margin="10,103,0,0" VerticalAlignment="Top" Width="163" Height="65" Click="btnImprimerEmploye_Click">
+        <Button ToolTip="Enregistrer la liste d'employés en format PDF" Name="btnImprimerEmploye" FontSize="21" HorizontalAlignment="Left"  Margin="10,103,0,0" VerticalAlignment="Top" Width="163" Height="65" Click="btnImprimerEmploye_Click">
             <StackPanel Width="140" Orientation="Horizontal">
                 <Image Source="../../images/Imprimante.png" Width="40" Height="40"  />
                 <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Imprimer"/></TextBlock>
             </StackPanel>
         </Button>
-        <Button ToolTip="Ajouter un employé dans la liste" FontSize="21" HorizontalAlignment="Left" Background="White" Margin="10,173,0,0" VerticalAlignment="Top" Width="163" Height="65" Click="btnAjouterEmploye_Click">
+        <Button ToolTip="Ajouter un employé dans la liste" FontSize="21" HorizontalAlignment="Left"  Margin="10,173,0,0" VerticalAlignment="Top" Width="163" Height="65" Click="btnAjouterEmploye_Click">
             <StackPanel Width="140" Orientation="Horizontal">
                 <Image Source="../../images/NouvelUtilisateur.png" Width="40" Height="40"  />
                 <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Ajouter"/></TextBlock>
             </StackPanel>
         </Button>
-        <Button ToolTip="Retourner à l'accueil / se déconnecter" FontSize="21" HorizontalAlignment="Left" Background="White" Margin="10,313,0,0" VerticalAlignment="Top" Width="163" Height="65" Click="btnAccueil_Click">
+        <Button ToolTip="Retourner à l'accueil / se déconnecter" FontSize="21" HorizontalAlignment="Left"  Margin="10,313,0,0" VerticalAlignment="Top" Width="163" Height="65" Click="btnAccueil_Click">
             <StackPanel Width="140" Orientation="Horizontal">
                 <Image Source="../../images/Flechearriere.png" Width="40" Height="40"  />
                 <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Accueil"/></TextBlock>
             </StackPanel>
         </Button>
-        <Button ToolTip="Supprime les employés sélectionnés" Name="btnSuppression" FontSize="21" HorizontalAlignment="Left" Background="White" Margin="10,243,0,0" VerticalAlignment="Top" Width="163" Height="65" Click="btnSuppression_Click">
+        <Button ToolTip="Supprime les employés sélectionnés" Name="btnSuppression" FontSize="21" HorizontalAlignment="Left"  Margin="10,243,0,0" VerticalAlignment="Top" Width="163" Height="65" Click="btnSuppression_Click">
             <StackPanel Width="150" Orientation="Horizontal">
                 <Image Source="../../images/poubelle.png" Width="35" Height="35"  />
                 <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Suppression"/></TextBlock>
