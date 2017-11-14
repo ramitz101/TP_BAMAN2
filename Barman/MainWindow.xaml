@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Barman"
         mc:Ignorable="d"
         Title="Barman" Height="450" Width="600" >
-    <Grid Name="GrdPrincipale"  >
+    <Grid Name="GrdPrincipale" Background="{StaticResource GrayBlackGardientBrush}"  >
       
 
     </Grid>
