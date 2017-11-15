@@ -3,11 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Barman"
+             
              mc:Ignorable="d" 
-             d:DesignHeight="429.5" 
-             d:DesignWidth="615">
-    <Grid HorizontalAlignment="Left">
+             d:DesignHeight="600" 
+             d:DesignWidth="820">
+    <Grid HorizontalAlignment="Left" Height="auto" Width="auto">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="10*"/>
@@ -51,35 +51,35 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <ToggleButton Grid.Row="0" ToolTip="Pour modifier l'information d'une bouteille" Name="btnGerer"  Click="btnGerer_Click">
-                <StackPanel  Orientation="Horizontal">
+            <Button Grid.Row="0" Height="auto" ToolTip="Pour modifier l'information d'une bouteille" Name="btnGerer"  FontSize="21"  Click="btnGerer_Click">
+                <StackPanel Width="140" Orientation="Horizontal">
                     <Image Source="../../images/Gerer.png" Width="40" Height="40" />
                     <TextBlock HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="21"><Run Text="Gérer"/></TextBlock>
                 </StackPanel>
-            </ToggleButton>
+            </Button>
 
-            <Button Grid.Row="1" ToolTip="Enregistre la liste de bouteilles en fomrat PDF" Name="btnImprimer" FontSize="21"   Click="btnImprimer_Click">
+            <Button Grid.Row="1" Height="auto" ToolTip="Enregistre la liste de bouteilles en fomrat PDF" Name="btnImprimer" FontSize="21"   Click="btnImprimer_Click">
                 <StackPanel Width="140" Orientation="Horizontal">
                     <Image Source="../../images/Imprimante.png" Width="40" Height="40"  />
                     <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Imprimer"/></TextBlock>
                 </StackPanel>
             </Button>
 
-            <Button Grid.Row="2" Name="btnAjout" ToolTip="Ajouter une marque de bouteille ou un type d'alcool"  FontSize="21" Click="btnAjout_Click"    >
+            <Button Grid.Row="2" Height="auto" Name="btnAjout" ToolTip="Ajouter une marque de bouteille ou un type d'alcool"  FontSize="21" Click="btnAjout_Click"    >
                 <StackPanel Width="140" Orientation="Horizontal">
                     <Image Source="../../images/add.png" Width="40" Height="40"  />
                     <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Ajouter"/></TextBlock>
                 </StackPanel>
             </Button>
 
-            <Button Grid.Row="3" Name="btnSuppression" ToolTip="Supprime les bouteilles sélectionnées" FontSize="21"  Click="btnSuppression_Click" >
+            <Button Grid.Row="3" Height="auto" Name="btnSuppression" ToolTip="Supprime les bouteilles sélectionnées" FontSize="21"  Click="btnSuppression_Click" >
                 <StackPanel Width="155" Orientation="Horizontal">
                     <Image Source="../../images/poubelle.png" Width="35" Height="35"  />
                     <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Suppression"/></TextBlock>
                 </StackPanel>
             </Button>
 
-            <Button Grid.Row="4" ToolTip="Retourner à l'accueil / se déconnecter" FontSize="21"    Click="btnAccueil_Click" >
+            <Button Grid.Row="4" Height="auto" ToolTip="Retourner à l'accueil / se déconnecter" FontSize="21"    Click="btnAccueil_Click" >
                 <StackPanel Width="140" Orientation="Horizontal">
                     <Image Source="../../images/Flechearriere.png" Width="40" Height="40"  />
                     <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Accueil"/></TextBlock>
