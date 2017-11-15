@@ -5,12 +5,26 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
             
              mc:Ignorable="d" 
-             d:DesignHeight="430" d:DesignWidth="600">
-    <Grid>
-        <CheckBox Content="Affiche les employés inactif" Checked="chbAfficherEmployeInactif_Checked" Unchecked="chbAfficherEmployeInactif_Unchecked" VerticalAlignment="Top" IsChecked="False" Name="chbAfficherEmployeInactif" Margin="197,32,192,0" />
-        <TextBox Name="txtRecherche"  KeyUp="txtRecherche_KeyUp_1" Height="22" VerticalAlignment="Top" Text="Rechercher" LostFocus="txtRecherche_LostFocus" GotFocus="txtRecherche_GotFocus" Margin="197,52,19,0"/>
+             d:DesignHeight="600" d:DesignWidth="820">
+    <Grid HorizontalAlignment="Left" Height="auto" Width="auto">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <CheckBox Grid.Column="1"  Grid.Row="1" Content="Affiche les employés inactif" Checked="chbAfficherEmployeInactif_Checked" Unchecked="chbAfficherEmployeInactif_Unchecked" VerticalAlignment="Top" IsChecked="False" Name="chbAfficherEmployeInactif"  />
+            <TextBox Grid.Column="1" Margin="10,5,5,5" Grid.Row="1" Name="txtRecherche"  KeyUp="txtRecherche_KeyUp_1" Height="22" VerticalAlignment="Top" Text="Rechercher" LostFocus="txtRecherche_LostFocus" GotFocus="txtRecherche_GotFocus" />
+        </StackPanel>
         
-        <DataGrid Name="dtgEmploye"  AutoGenerateColumns="False" HorizontalAlignment="Left" Height="299" VerticalAlignment="Top" Width="384" Margin="197,79,0,0" >
+        <DataGrid Grid.Column="1" Grid.Row="1" Name="dtgEmploye"  Margin="0,42,0,0" AutoGenerateColumns="False" HorizontalAlignment="Left"  VerticalAlignment="Top"  >
             <DataGrid.Resources>
                 <Style TargetType="DataGridRow">
                     <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
@@ -32,36 +46,53 @@
                 <DataGridTextColumn Header="Code" Binding="{Binding CodeEmploye}" />
             </DataGrid.Columns>
         </DataGrid>
-        <Button ToolTip="Modifier les informations d'un employé" HorizontalAlignment="Left" Margin="10,33,0,0"  VerticalAlignment="Top"  Width="163" Height="65" Grid.ColumnSpan="2" Click="btnGerer_Click" >
-            <StackPanel Width="140" Orientation="Horizontal">
-                <Image Source="../../images/Gerer.png" Width="40" Height="40" />
-                <TextBlock HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="21"><Run Text="Gérer"/></TextBlock>
-            </StackPanel>
-        </Button>
-        <Button ToolTip="Enregistrer la liste d'employés en format PDF" Name="btnImprimerEmploye" FontSize="21" HorizontalAlignment="Left"  Margin="10,103,0,0" VerticalAlignment="Top" Width="163" Height="65" Click="btnImprimerEmploye_Click">
-            <StackPanel Width="140" Orientation="Horizontal">
-                <Image Source="../../images/Imprimante.png" Width="40" Height="40"  />
-                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Imprimer"/></TextBlock>
-            </StackPanel>
-        </Button>
-        <Button ToolTip="Ajouter un employé dans la liste" FontSize="21" HorizontalAlignment="Left"  Margin="10,173,0,0" VerticalAlignment="Top" Width="163" Height="65" Click="btnAjouterEmploye_Click">
-            <StackPanel Width="140" Orientation="Horizontal">
-                <Image Source="../../images/NouvelUtilisateur.png" Width="40" Height="40"  />
-                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Ajouter"/></TextBlock>
-            </StackPanel>
-        </Button>
-        <Button ToolTip="Retourner à l'accueil / se déconnecter" FontSize="21" HorizontalAlignment="Left"  Margin="10,313,0,0" VerticalAlignment="Top" Width="163" Height="65" Click="btnAccueil_Click">
-            <StackPanel Width="140" Orientation="Horizontal">
-                <Image Source="../../images/Flechearriere.png" Width="40" Height="40"  />
-                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Accueil"/></TextBlock>
-            </StackPanel>
-        </Button>
-        <Button ToolTip="Supprime les employés sélectionnés" Name="btnSuppression" FontSize="21" HorizontalAlignment="Left"  Margin="10,243,0,0" VerticalAlignment="Top" Width="163" Height="65" Click="btnSuppression_Click">
-            <StackPanel Width="150" Orientation="Horizontal">
-                <Image Source="../../images/poubelle.png" Width="35" Height="35"  />
-                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Suppression"/></TextBlock>
-            </StackPanel>
-        </Button>
-        <Label Name="lblMessage" Content="Message modif" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+
+        <Grid Name="grdBtn" Grid.Column="0" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+                <Button Grid.Row="0" Margin="5,5,5,5" Height="auto" ToolTip="Modifier les informations d'un employé" Click="btnGerer_Click" >
+                    <StackPanel Width="140" Orientation="Horizontal">
+                        <Image Source="../../images/Gerer.png" Width="40" Height="40" />
+                        <TextBlock HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="21"><Run Text="Gérer"/></TextBlock>
+                    </StackPanel>
+                </Button>
+
+            <Button Grid.Row="1" Margin="5,5,5,5" Height="auto" ToolTip="Enregistrer la liste d'employés en format PDF" Name="btnImprimerEmploye" FontSize="21"   Click="btnImprimerEmploye_Click">
+                    <StackPanel Width="140" Orientation="Horizontal">
+                        <Image Source="../../images/Imprimante.png" Width="40" Height="40"  />
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Imprimer"/></TextBlock>
+                    </StackPanel>
+                </Button>
+
+            <Button Grid.Row="2" Margin="5,5,5,5" Height="auto" ToolTip="Ajouter un employé dans la liste" FontSize="21"  Click="btnAjouterEmploye_Click">
+                    <StackPanel Width="140" Orientation="Horizontal">
+                        <Image Source="../../images/NouvelUtilisateur.png" Width="40" Height="40"  />
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Ajouter"/></TextBlock>
+                    </StackPanel>
+                </Button>
+
+            <Button Grid.Row="3" Margin="5,5,5,5" Height="auto" ToolTip="Supprime les employés sélectionnés" Name="btnSuppression" FontSize="21"  Click="btnSuppression_Click">
+                    <StackPanel Width="150" Orientation="Horizontal">
+                        <Image Source="../../images/poubelle.png" Width="35" Height="35"  />
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Suppression"/></TextBlock>
+                    </StackPanel>
+                </Button>
+
+            <Button Grid.Row="4" Margin="5,5,5,5" Height="auto" ToolTip="Retourner à l'accueil / se déconnecter" FontSize="21" Click="btnAccueil_Click">
+                    <StackPanel Width="140" Orientation="Horizontal">
+                        <Image Source="../../images/Flechearriere.png" Width="40" Height="40"  />
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Accueil"/></TextBlock>
+                    </StackPanel>
+                </Button>
+
+
+        </Grid>
+        <Label Name="lblMessage" Grid.Row="2" Grid.Column="1" Content="Message modif" HorizontalAlignment="left"/>
     </Grid>
 </UserControl>

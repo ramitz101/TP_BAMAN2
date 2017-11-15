@@ -193,6 +193,7 @@ namespace Barman.BouteilleDossier.view
       private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
       {
          cboEmplacement.IsEnabled = true;
+         btnConfirmer.IsEnabled = false;
       }
 
       private bool FormulaireRempli()
