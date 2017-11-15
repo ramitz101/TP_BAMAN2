@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Barman"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="FenetreModifierEmploye" Height="285.749" Width="481.814"
+        Title="FenetreModifierEmploye" Height="359.316" Width="521.308"
         WindowStartupLocation="CenterOwner">
     <Grid>
         <TextBox GotFocus="txtNom_GotFocus" LostFocus="txtNom_LostFocus" PreviewTextInput="NumberValidationTextBox" ToolTip="Le nom de l'employé" Name="txtNom" HorizontalAlignment="Left" Height="23" Margin="10,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
@@ -23,7 +23,7 @@
         <RadioButton Name="rdbUtilisateur" Content="Utilisateur" HorizontalAlignment="Left" Margin="368,105,0,0" VerticalAlignment="Top"/>
         <Button ToolTip="Confirmer la modification de l'employé" Name="btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="342,195,0,0" VerticalAlignment="Top" Width="90" Height="26" Click="btnConfirmer_Click"/>
         <Button ToolTip="Annuler la modification de l'employé" Name="btnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="23,195,0,0" VerticalAlignment="Top" Width="90" Height="26" Click="btnAnnuler_Click" />
-        <Calendar SelectedDatesChanged="CalendarModifierEmploye_SelectedDatesChanged" Name="CalendarModifierEmploye" HorizontalAlignment="Left" Margin="140,28,0,0" VerticalAlignment="Top"/>
+        <Calendar SelectedDatesChanged="CalendarModifierEmploye_SelectedDatesChanged" Name="CalendarModifierEmploye" HorizontalAlignment="Left" Margin="135,48,0,0" VerticalAlignment="Top"  Height="140" Width="174"/>
         <Button ToolTip="Cliquer sur le + pour générer un nouveau code pour l'employé" Name="btnGenererNouveauCode" Content="+" HorizontalAlignment="Left" Margin="330,152,0,0" VerticalAlignment="Top" Width="23" Height="23" Click="btnGenererNouveauCode_Click"/>
         <TextBox Name="txtCode" IsReadOnly="true" HorizontalAlignment="Left" Height="23" Margin="358,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="97" />
         <Label Content="Nouveau code" HorizontalAlignment="Left" Margin="330,126,0,0" VerticalAlignment="Top"/>
