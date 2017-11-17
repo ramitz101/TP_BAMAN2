@@ -9,7 +9,7 @@
 
     <Grid>
         <Label Content="Ajouter Marque d'alcool" FontWeight="Bold" FontSize="15" HorizontalAlignment="Left" Margin="6,55,0,0" VerticalAlignment="Top"/>
-        <Label Content="nom" HorizontalAlignment="Left" Margin="20,85,0,0" VerticalAlignment="Top"/>
+        <Label Content="Nom" HorizontalAlignment="Left" Margin="20,85,0,0" VerticalAlignment="Top"/>
         <Label Content="Type d'alcool" HorizontalAlignment="Left" Margin="238,84,0,0" VerticalAlignment="Top"/>
         <TextBox ToolTip="Le nom d'une nouvelle Marque d'alcool" Name="txtMarque" HorizontalAlignment="Left" Height="23" Margin="20,110,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <ComboBox ToolTip="Le type d'alcool attribué à cette marque" Name="cboTypeAlcool" HorizontalAlignment="Left" Margin="238,110,0,0" VerticalAlignment="Top" Width="110"/>
