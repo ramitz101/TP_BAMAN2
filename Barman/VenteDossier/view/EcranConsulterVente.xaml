@@ -27,14 +27,14 @@
         <StackPanel Grid.Row="1">
             <Button ToolTip="Enregistre la liste de ventes en format PDF" Name="btnImprimer" Grid.Row="1" Click="btnImprimer_Click" Margin="0,5,0,0"  HorizontalAlignment="Left"  VerticalAlignment="Top" Width="163" Height="70" >
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="../../images/Imprimante.png" Width="20" Height="20"  ></Image>
-                    <TextBlock Text="Imprimer" Height="31" FontSize="21"></TextBlock>
+                    <Image Source="../../images/printer.png" Width="20" Height="20"  ></Image>
+                    <TextBlock Text=" Imprimer" Height="31" FontSize="21"></TextBlock>
                 </StackPanel>
             </Button>
             <Button ToolTip="retourner à l'écran ventes" Name="btnRetour"  Grid.Row="1" HorizontalAlignment="Left" Margin="0,5,0,0"  VerticalAlignment="Top" Width="163" Height="70" Click="btnRetour_Click">
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="../../images/FlecheArriere.png" Width="20" Height="20"></Image>
-                    <TextBlock Text="Retour" FontSize="21" Height="30"></TextBlock>
+                    <Image Source="../../images/back-arrow.png" Width="20" Height="20"></Image>
+                    <TextBlock Text=" Retour" FontSize="21" Height="30"></TextBlock>
                 </StackPanel>
               </Button>
         </StackPanel>

@@ -299,28 +299,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\FlecheArriere.png" />
-    <Resource Include="images\Gerer.png" />
-    <Resource Include="images\Imprimante.png" />
-    <Resource Include="images\NouvelUtilisateur.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\commande.png" />
-    <Resource Include="images\employe.png" />
-    <Resource Include="images\formulaire.png" />
-    <Resource Include="images\inventaire.png" />
-    <Resource Include="images\vente.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\add.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\negative.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\windowWarning.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.6.1 %28x86 et x64%29</ProductName>
@@ -333,13 +311,27 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\poubelle.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="EmplacementDossier\view\" />
     <Folder Include="MarqueDossier\view\" />
     <Folder Include="RoleDossier\view\" />
     <Folder Include="TypeDossier\view\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\archive.png" />
+    <Resource Include="images\avatar.png" />
+    <Resource Include="images\back-arrow.png" />
+    <Resource Include="images\check-form.png" />
+    <Resource Include="images\coin.png" />
+    <Resource Include="images\garbage.png" />
+    <Resource Include="images\minus-sign.png" />
+    <Resource Include="images\padnote.png" />
+    <Resource Include="images\printer.png" />
+    <Resource Include="images\settings.png" />
+    <Resource Include="images\user.png" />
+    <Resource Include="images\warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\add.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

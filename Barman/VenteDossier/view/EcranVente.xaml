@@ -68,22 +68,22 @@
 
             <Button ToolTip="Consulter et modifier les ventes de chaque employé" Grid.Row="0" HorizontalAlignment="Left"   VerticalAlignment="Top" Name="btnGerer" Click="btnGerer_Click" Width="163" Height="71" >
                     <StackPanel  Orientation="Horizontal">
-                        <!--<Image Source="../../images/settings.png" Width="40" Height="40" />-->
-                        <TextBlock HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="21"><Run Text="Gérer"/></TextBlock>
+                        <Image Source="../../images/settings.png" Width="40" Height="40" />
+                        <TextBlock HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="21"><Run Text=" Gérer"/></TextBlock>
                     </StackPanel>
                 </Button>
 
             <Button ToolTip="Consulter les ventes de l'employé connecté" Grid.Row="1"  FontSize="21"  HorizontalAlignment="Left"   VerticalAlignment="Top" Width="163" Height="70" Click="Consulter_Click" >
                     <StackPanel  Orientation="Horizontal">
-                        <Image Source="../../images/employe.png" Width="40" Height="40"  />
-                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Consulter"/></TextBlock>
+                        <Image Source="../../images/padnote.png" Width="40" Height="40"  />
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text=" Consulter"/></TextBlock>
                     </StackPanel>
                 </Button>
 
             <Button ToolTip="Retourner à l'accueil / se déconnecter" FontSize="21"   Grid.Row="2"  HorizontalAlignment="Left"   VerticalAlignment="Top" Width="163" Height="70" Click="btnAccueil_Click">
                     <StackPanel  Orientation="Horizontal" Width="121">
-                        <Image Source="../../images/Flechearriere.png" Width="40" Height="40"  />
-                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Accueil"/></TextBlock>
+                        <Image Source="../../images/back-arrow.png" Width="40" Height="40"  />
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text=" Accueil"/></TextBlock>
                     </StackPanel>
                 </Button>
 

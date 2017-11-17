@@ -58,36 +58,36 @@
 
             <Button Grid.Row="0" Height="auto" Margin="5,5,5,5" ToolTip="Pour modifier l'information d'une bouteille" Name="btnGerer"  FontSize="21"  Click="btnGerer_Click">
                 <StackPanel Width="140" Orientation="Horizontal">
-                    <!--<Image Source="../../images/settings.png" Width="40" Height="40" />-->
-                    <TextBlock HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="21"><Run Text="Gérer"/></TextBlock>
+                    <Image Source="../../images/settings.png" Width="40" Height="40" />
+                    <TextBlock HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="21"><Run Text=" Gérer"/></TextBlock>
                 </StackPanel>
             </Button>
 
             <Button Grid.Row="1" Height="auto"  Margin="5,5,5,5" ToolTip="Enregistre la liste de bouteilles en fomrat PDF" Name="btnImprimer" FontSize="21"   Click="btnImprimer_Click">
                 <StackPanel Width="140" Orientation="Horizontal">
-                    <!--<Image Source="../../images/Imprimante.png" Width="40" Height="40"  />-->
-                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Imprimer"/></TextBlock>
+                    <Image Source="../../images/printer.png" Width="40" Height="40"  />
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text=" Imprimer"/></TextBlock>
                 </StackPanel>
             </Button>
 
             <Button Grid.Row="2" Height="auto"  Margin="5,5,5,5" Name="btnAjout" ToolTip="Ajouter une marque de bouteille ou un type d'alcool"  FontSize="21" Click="btnAjout_Click"    >
                 <StackPanel Width="140" Orientation="Horizontal">
-                    <!--<Image Source="../../images/add.png" Width="40" Height="40"  />-->
-                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Ajouter"/></TextBlock>
+                    <Image Source="../../images/add.png" Width="40" Height="40"  />
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text=" Ajouter"/></TextBlock>
                 </StackPanel>
             </Button>
 
             <Button Grid.Row="3" Height="auto"  Margin="5,5,5,5" Name="btnSuppression" ToolTip="Supprime les bouteilles sélectionnées" FontSize="21"  Click="btnSuppression_Click" >
                 <StackPanel Width="155" Orientation="Horizontal">
-                    <!--<Image Source="../../images/poubelle.png" Width="35" Height="35"  />-->
-                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Suppression"/></TextBlock>
+                    <Image Source="../../images/garbage.png" Width="35" Height="35"  />
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text=" Suppression"/></TextBlock>
                 </StackPanel>
             </Button>
 
             <Button Grid.Row="4" Height="auto"  Margin="5,5,5,5" ToolTip="Retourner à l'accueil / se déconnecter" FontSize="21"    Click="btnAccueil_Click" >
                 <StackPanel Width="140" Orientation="Horizontal">
-                    <!--<Image Source="../../images/Flechearriere.png" Width="40" Height="40"  />-->
-                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Accueil"/></TextBlock>
+                    <Image Source="../../images/back-arrow.png" Width="40" Height="40"  />
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text=" Accueil"/></TextBlock>
                 </StackPanel>
             </Button>
 
