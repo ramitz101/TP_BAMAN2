@@ -28,14 +28,14 @@
         <Label Content="Projet Barmans"  Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="DodgerBlue" />
 
 
-        <Button ToolTip="l'inventaire de bouteilles" Name="btnInventaire" Click="btnInventaire_Click"  Grid.Column="1" Height="Auto" Grid.Row="1" Margin="0,5,0,5"  >
+        <Button ToolTip="Inventaire de bouteilles" Name="btnInventaire" Click="btnInventaire_Click"  Grid.Column="1" Height="Auto" Grid.Row="1" Margin="0,5,0,5"  >
             <StackPanel Orientation="Horizontal" Height="36">
                 <Image Source="../images/archive.png" />
                 <TextBlock VerticalAlignment="Center" Text=" INVENTAIRE" FontSize="19" />
             </StackPanel>
         </Button>
 
-        <Button ToolTip="Les employés du bar" Name="btnEmploye" Click="btnEmploye_Click"  Grid.Column="1" Grid.Row="2"   Height="Auto" Margin="0,5,0,5">
+        <Button ToolTip="Employés du bar" Name="btnEmploye" Click="btnEmploye_Click"  Grid.Column="1" Grid.Row="2"   Height="Auto" Margin="0,5,0,5">
             <StackPanel Orientation="Horizontal"  Height="36">
                 <Image Source="../images/avatar.png"/>
                 <TextBlock VerticalAlignment="Center" Text=" EMPLOYÉS" FontSize="20" ></TextBlock>
@@ -48,7 +48,7 @@
                 <TextBlock VerticalAlignment="Center" Text=" VENTES" FontSize="20" ></TextBlock>
             </StackPanel>
         </Button>
-        <Button ToolTip="Les commandes d'alcool" Name="btnCommande" Click="btnCommande_Click"  Grid.Column="1" Grid.Row="4"  Height="Auto" Margin="0,5,0,5">
+        <Button ToolTip="Commandes d'alcool" Name="btnCommande" Click="btnCommande_Click"  Grid.Column="1" Grid.Row="4"  Height="Auto" Margin="0,5,0,5">
             <StackPanel Orientation="Horizontal" Height="36">
                 <Image Source="../images/check-form.png" />
                 <TextBlock VerticalAlignment="Center" Text=" COMMANDES" FontSize="20" ></TextBlock>
