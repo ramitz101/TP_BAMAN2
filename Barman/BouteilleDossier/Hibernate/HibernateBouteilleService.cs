@@ -114,6 +114,8 @@ namespace Barman.BouteilleDossier.Hibernate
 
             return result.ToList();
          }
+
+        
         public static List<Bouteille> RetrieveByEtat(string s, bool? sup)
         {
             var bouteilles = session.Query<Bouteille>().AsQueryable();
@@ -148,7 +150,11 @@ namespace Barman.BouteilleDossier.Hibernate
 
             return result.ToList();
         }
-      public static List<Bouteille> RetrieveByMarqueId(int pIdMarque, bool? sup)
+
+     
+
+
+        public static List<Bouteille> RetrieveByMarqueId(int pIdMarque, bool? sup)
       {
             
          var bouteilles = session.Query<Bouteille>().AsQueryable();

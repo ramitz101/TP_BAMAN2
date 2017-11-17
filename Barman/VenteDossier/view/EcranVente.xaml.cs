@@ -21,6 +21,9 @@ using Barman.EmplacementDossier.Hibernate;
 using Barman.MarqueDossier.Hibernate;
 using Barman.VenteDossier.Hibernate;
 using Barman.ViewAutreDossier;
+using Barman.TypeDossier.Hibernate;
+using Barman.TypeDossier;
+using Barman.MarqueDossier;
 
 namespace Barman.VenteDossier.view
 {
@@ -49,6 +52,7 @@ namespace Barman.VenteDossier.view
 
             btnAjouter.IsEnabled = false;
             cboMarque.IsEnabled = false;
+            cboType.IsEnabled = false;
 
             //ComboBox 
             lstEmplacement.Remove(lstEmplacement.Where(x => x.Nom == "Aucun").ToList()[0]);
@@ -59,8 +63,10 @@ namespace Barman.VenteDossier.view
             cboEmplacement.DisplayMemberPath = "Nom";
             cboEmplacement.SelectedValuePath = "IdEmplacement";
 
+            cboType.DisplayMemberPath = "Nom";
+            cboType.SelectedValuePath = "IdType";
 
-          
+
             cboMarque.DisplayMemberPath = "SaMarque.Nom";
             cboMarque.SelectedValuePath = "IdBouteille";
             
@@ -72,9 +78,34 @@ namespace Barman.VenteDossier.view
             List<Bouteille> listB = new List<Bouteille>(HibernateBouteilleService.RetrieveBouteilleEmplacement((int)cboEmplacement.SelectedValue));
             foreach(var i in listB)
             {
-                i.SaMarque = HibernateMarqueService.Retrieve((int)i.IdMarque)[0];               
+                i.SaMarque = HibernateMarqueService.Retrieve((int)i.IdMarque)[0];
+                i.SaMarque.SonTypeAlcool = HibernateTypeAlcoolService.RetrieveTypeAlcool((int)i.SaMarque.IdTypeAlcool)[0];
             }
             return listB;
+        }
+
+        private List<TypeAlcool> ChargerListType()
+        {
+
+            List<TypeAlcool> listT = new List<TypeAlcool>();
+            foreach (var i in ChargerListBouteille())
+            {
+                if (!listT.Contains(i.SaMarque.SonTypeAlcool))
+                    listT.Add(i.SaMarque.SonTypeAlcool);
+            }
+            return listT;
+        }
+        private List<Bouteille> ChargerListMarque()
+        {
+           
+            List<Bouteille> listB = new List<Bouteille>(ChargerListBouteille());
+            List<Bouteille> listBouteille = new List<Bouteille>();
+            foreach(var i in listB)
+            {
+                if (i.SaMarque.SonTypeAlcool == (TypeAlcool)cboType.SelectedItem)
+                    listBouteille.Add(i);
+            }
+            return listBouteille;
         }
 
         private static List<Emplacement> ChargerListEmplacement()
@@ -123,6 +154,8 @@ namespace Barman.VenteDossier.view
                     lblPrixVente.Content = "";
                     txtQuantite.Text = "1";
                     btnAjouter.IsEnabled = false;
+                    cboMarque.IsEnabled = false;
+                    cboType.IsEnabled = false;
                     HibernateBouteilleService.Update(LaBouteilleVendu);
 
                 }            
@@ -215,9 +248,9 @@ namespace Barman.VenteDossier.view
 
         private void cboEmplacement_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            cboMarque.ItemsSource = ChargerListBouteille();
+            cboType.ItemsSource = ChargerListType();
             LaBouteilleVendu = null;
-            cboMarque.IsEnabled = true;
+            cboType.IsEnabled = true;
             btnAjouter.IsEnabled = false;
         }
 
@@ -273,6 +306,12 @@ namespace Barman.VenteDossier.view
 
                
             }
+        }
+
+        private void cboType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            cboMarque.ItemsSource = ChargerListMarque();
+            cboMarque.IsEnabled = true;
         }
     }
 }
