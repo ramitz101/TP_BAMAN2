@@ -273,6 +273,7 @@ namespace Barman.BouteilleDossier.view
         private void btnImprimer_Click(object sender, RoutedEventArgs e)
         {
             lstBouteilles = new ObservableCollection<Bouteille>(ChargerListBouteille(chbAfficherSupprimee.IsChecked));
+            
 
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
 

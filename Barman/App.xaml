@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"          
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+       
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
@@ -11,6 +12,7 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
+        
         <!--<LinearGradientBrush x:Key="GrayBlackGardientBrush"  
                              StartPoint="0.5,0" EndPoint="0.5,1">
             <GradientStop Color="Gray" Offset="1"/>
@@ -42,7 +44,6 @@
         <Style TargetType="{x:Type CheckBox}">
             <Setter Property="Foreground" Value="White"/>
         </Style>-->
-
 
     </Application.Resources>
 </Application>
