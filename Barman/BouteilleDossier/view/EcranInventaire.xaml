@@ -7,23 +7,23 @@
              mc:Ignorable="d" 
              d:DesignHeight="600" 
              d:DesignWidth="820">
-    <Grid HorizontalAlignment="Left" Height="auto" Width="auto">
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height=".8*"/>
             <RowDefinition Height="10*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
         <StackPanel VerticalAlignment="Top" Grid.Column="1" Grid.Row="1">
-            <CheckBox Grid.Column="1" Grid.Row="1" Content="Afficher les bouteilles supprimées" Checked="chbAfficherSupprimee_Checked" Unchecked="chbAfficherSupprimee_Unchecked" VerticalAlignment="Bottom" IsChecked="False" Name="chbAfficherSupprimee" Margin="0,0,174,0" />
-            <TextBox Name="txtRecherche"  KeyUp="txtRecherche_KeyUp_1"   Grid.Column="1" VerticalAlignment="Top" Text="Rechercher" LostFocus="txtRecherche_LostFocus" GotFocus="txtRecherche_GotFocus"  Grid.Row="2" ></TextBox>
+            <CheckBox Grid.Column="1" Grid.Row="1" Content="Afficher les bouteilles supprimées" Checked="chbAfficherSupprimee_Checked" Unchecked="chbAfficherSupprimee_Unchecked" VerticalAlignment="Bottom" IsChecked="False" Name="chbAfficherSupprimee" HorizontalAlignment="Left"  />
+            <TextBox x:Name="txtRecherche"  KeyUp="txtRecherche_KeyUp_1" VerticalAlignment="Top" Text="Rechercher" LostFocus="txtRecherche_LostFocus" GotFocus="txtRecherche_GotFocus" />
         </StackPanel>
 
-        <DataGrid  Name="dtgInventaire" AutoGenerateColumns="False" HorizontalAlignment="Left"  VerticalAlignment="Top"  Margin="0,42,0,0" Grid.Column="1" Grid.Row="1">
+        <DataGrid  Name="dtgInventaire" AutoGenerateColumns="False" HorizontalAlignment="Left"  VerticalAlignment="Top"  Margin="0,48,0,0" Grid.Column="1" Grid.Row="1">
             <DataGrid.Resources>
                 <Style TargetType="DataGridRow">
                     <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
@@ -58,45 +58,45 @@
 
             <Button Grid.Row="0" Height="auto" Margin="5,5,5,5" ToolTip="Pour modifier l'information d'une bouteille" Name="btnGerer"  FontSize="21"  Click="btnGerer_Click">
                 <StackPanel Width="140" Orientation="Horizontal">
-                    <Image Source="../../images/Gerer.png" Width="40" Height="40" />
+                    <!--<Image Source="../../images/settings.png" Width="40" Height="40" />-->
                     <TextBlock HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="21"><Run Text="Gérer"/></TextBlock>
                 </StackPanel>
             </Button>
 
             <Button Grid.Row="1" Height="auto"  Margin="5,5,5,5" ToolTip="Enregistre la liste de bouteilles en fomrat PDF" Name="btnImprimer" FontSize="21"   Click="btnImprimer_Click">
                 <StackPanel Width="140" Orientation="Horizontal">
-                    <Image Source="../../images/Imprimante.png" Width="40" Height="40"  />
+                    <!--<Image Source="../../images/Imprimante.png" Width="40" Height="40"  />-->
                     <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Imprimer"/></TextBlock>
                 </StackPanel>
             </Button>
 
             <Button Grid.Row="2" Height="auto"  Margin="5,5,5,5" Name="btnAjout" ToolTip="Ajouter une marque de bouteille ou un type d'alcool"  FontSize="21" Click="btnAjout_Click"    >
                 <StackPanel Width="140" Orientation="Horizontal">
-                    <Image Source="../../images/add.png" Width="40" Height="40"  />
+                    <!--<Image Source="../../images/add.png" Width="40" Height="40"  />-->
                     <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Ajouter"/></TextBlock>
                 </StackPanel>
             </Button>
 
             <Button Grid.Row="3" Height="auto"  Margin="5,5,5,5" Name="btnSuppression" ToolTip="Supprime les bouteilles sélectionnées" FontSize="21"  Click="btnSuppression_Click" >
                 <StackPanel Width="155" Orientation="Horizontal">
-                    <Image Source="../../images/poubelle.png" Width="35" Height="35"  />
+                    <!--<Image Source="../../images/poubelle.png" Width="35" Height="35"  />-->
                     <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Suppression"/></TextBlock>
                 </StackPanel>
             </Button>
 
             <Button Grid.Row="4" Height="auto"  Margin="5,5,5,5" ToolTip="Retourner à l'accueil / se déconnecter" FontSize="21"    Click="btnAccueil_Click" >
                 <StackPanel Width="140" Orientation="Horizontal">
-                    <Image Source="../../images/Flechearriere.png" Width="40" Height="40"  />
+                    <!--<Image Source="../../images/Flechearriere.png" Width="40" Height="40"  />-->
                     <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Accueil"/></TextBlock>
                 </StackPanel>
             </Button>
 
-        
+
 
         </Grid>
 
-       
-    
+
+
 
         <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="left" Grid.RowSpan="2">
             <Label Grid.Column="1" Grid.Row="2" Name="lblNbEntamee" Content="Entamées: "/>
@@ -104,7 +104,7 @@
             <Label Grid.Column="1" Grid.Row="2" Name="lblNbSupprimee" Content="Supprimées: "/>
             <Label Grid.Column="1" Grid.Row="2" Name="lblNbReserve" Content="En réserve: "/>
         </StackPanel>
-        <TextBox Name="lblMessage"  BorderThickness="0"  TextChanged="lblMessage_TextChanged" Grid.Column="1" Grid.Row="2" IsReadOnly="True" Text="" Margin="0,20,0,0" SelectionOpacity="0.9"/>
+        <TextBox Name="lblMessage"  BorderThickness="0"  TextChanged="lblMessage_TextChanged" Grid.Column="1" Grid.Row="2" IsReadOnly="True" IsManipulationEnabled="False" Text="" Margin="0,20,0,0" SelectionOpacity="0.9"/>
 
 
     </Grid>

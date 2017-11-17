@@ -8,18 +8,18 @@
              d:DesignHeight="400" d:DesignWidth="600">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="147*"/>
-            <ColumnDefinition Width="370*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="120*" />
-            <RowDefinition Height="120*" />
-            <RowDefinition Height="120*" />
-            <RowDefinition Height="120*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="*" />
+
 
         </Grid.RowDefinitions>
 
-        <DataGrid Grid.Column="1" Grid.RowSpan="4" Name="dtgCommande" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="Auto" Margin="0,40,0,0">
+        <DataGrid Grid.Column="1" Name="dtgCommande" IsReadOnly="True" AutoGenerateColumns="False" Height="auto"  Width="auto" Margin="0,40,0,0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Date" Width="2*" Binding="{Binding DateCommande}" />
                 <DataGridTextColumn Header="Quantite" Width="2*" Binding="{Binding ListBouteille.Count}"/>
@@ -30,34 +30,45 @@
             </DataGrid.Columns>
 
         </DataGrid>
-        <StackPanel Grid.Column="0" Grid.RowSpan="4" Margin="0,40,0,0" >
-        <Button Grid.Column="0" Grid.Row="0" Margin="0,0,0,0" ToolTip="Faire une nouvelle commande d'alcool" Name="btnNouvelleCommande" Click="btnNouvelleCommande_Click"  HorizontalAlignment="Left"   VerticalAlignment="Top"  Width="163" Height="71" >
-            <StackPanel Width="140" Orientation="Horizontal">
-                <Image Source="../../images/add.png" Width="40" Height="40" />
-                <TextBlock HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="21"><Run Text="Nouvelle"/></TextBlock>
-            </StackPanel>
-        </Button>
-            <Button Grid.Column="0" Grid.Row="1" Margin="0,10,0,0" ToolTip="Enregistre la liste de commande dans un format PDF" Name="btnImprimer" Click="btnImprimer_Click" FontSize="21" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="163" Height="70" >
-            <StackPanel Width="140" Orientation="Horizontal">
-                <Image Source="../../images/Imprimante.png" Width="40" Height="40"  />
-                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Imprimer"/></TextBlock>
-            </StackPanel>
-        </Button>
+        <Grid Name="grdBtn" Grid.Column="0" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+             
+            </Grid.RowDefinitions>
 
-            <Button Grid.Column="0" Grid.Row="2" Margin="0,10,0,0" ToolTip="Confirmer ou modifier la réception d'une commande" Name="btnRecevoirCommande" Click="btnRecevoirCommande_Click"  HorizontalAlignment="Left"   VerticalAlignment="Top"  Width="163" Height="71" >
-            <StackPanel Width="140" Orientation="Horizontal">
-                <Image Source="../../images/commande.png" Width="40" Height="40" />
-                <TextBlock HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="21"><Run Text="Recevoir"/></TextBlock>
-            </StackPanel>
-        </Button>
 
-            <Button Grid.Column="0" Grid.Row="3" Margin="0,10,0,0" ToolTip="Retourner à l'accueil / se déconnecter"  Name="btnAccueil" Click="btnAccueil_Click" FontSize="21" HorizontalAlignment="Left"   VerticalAlignment="Top" Width="163" Height="70" >
-            <StackPanel Width="140" Orientation="Horizontal">
-                <Image Source="../../images/Flechearriere.png" Width="40" Height="40"  />
-                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Accueil"/></TextBlock>
-            </StackPanel>
-        </Button>
-        </StackPanel>
+
+            <Button  Grid.Row="0" Height="auto" Margin="5,5,5,5" ToolTip="Faire une nouvelle commande d'alcool" Name="btnNouvelleCommande" Click="btnNouvelleCommande_Click"   >
+                <StackPanel Width="140" Orientation="Horizontal">
+                    <!--<Image Source="../../images/add.png" Width="40" Height="40" />-->
+                    <TextBlock HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="21"><Run Text="Nouvelle"/></TextBlock>
+                </StackPanel>
+            </Button>
+            <Button  Grid.Row="1" Height="auto"  Margin="5,5,5,5" ToolTip="Enregistre la liste de commande dans un format PDF" Name="btnImprimer" Click="btnImprimer_Click" FontSize="21"   >
+                <StackPanel Width="140" Orientation="Horizontal">
+                    <!--<Image Source="../../images/Imprimante.png" Width="40" Height="40"  />-->
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Imprimer"/></TextBlock>
+                </StackPanel>
+            </Button>
+
+            <Button  Grid.Row="2" Height="auto" Margin="5,5,5,5"  ToolTip="Confirmer ou modifier la réception d'une commande" Name="btnRecevoirCommande" Click="btnRecevoirCommande_Click"    >
+                <StackPanel Width="140" Orientation="Horizontal">
+                    <!--<Image Source="../../images/commande.png" Width="40" Height="40" />-->
+                    <TextBlock HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="21"><Run Text="Recevoir"/></TextBlock>
+                </StackPanel>
+            </Button>
+
+            <Button  Grid.Row="3" Height="auto"  Margin="5,5,5,5"  ToolTip="Retourner à l'accueil / se déconnecter"  Name="btnAccueil" Click="btnAccueil_Click" FontSize="21"  >
+                <StackPanel Width="140" Orientation="Horizontal">
+                    <!--<Image Source="../../images/Flechearriere.png" Width="40" Height="40"  />-->
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text="Accueil"/></TextBlock>
+                </StackPanel>
+            </Button>
+
+        </Grid>
         <!-- <Label Name="lblMessage" Content="Message modif" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
         -->
     </Grid>
