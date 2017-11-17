@@ -124,7 +124,7 @@ namespace Barman.BouteilleDossier.view
                     }
                 }
 
-                dtgInventaire.ItemsSource = new ObservableCollection<Bouteille>(ChargerListBouteille(false));
+                dtgInventaire.ItemsSource = new ObservableCollection<Bouteille>(ChargerListBouteille(chbAfficherSupprimee.IsChecked));
                 //dtgInventaire.Items.Refresh();
 
             }            
@@ -164,12 +164,12 @@ namespace Barman.BouteilleDossier.view
             // si le user a sélectionné plus d'une bouteille
             else if (dtgInventaire.SelectedItems.Count > 1)
             {
-                MessageBox.Show("Vous avez trops de bouteilles selectionnées");
+                MessageBox.Show("Vous avez trop de bouteilles selectionnées","Mauvaise sélection",MessageBoxButton.OK,MessageBoxImage.Information,MessageBoxResult.OK);
                 return false;
             }
             else
             {
-                MessageBox.Show("Vous devez selectionner une bouteille");
+                MessageBox.Show("Vous devez selectionner une bouteille","Mauvaise sélection",MessageBoxButton.OK,MessageBoxImage.Information,MessageBoxResult.OK);
                 return false;
             }
         }
@@ -180,7 +180,7 @@ namespace Barman.BouteilleDossier.view
                 return true;
             else
             {
-                MessageBox.Show("Vous devez selectionner une bouteille");
+                MessageBox.Show("Vous devez selectionner une bouteille", "Mauvaise sélection", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.OK);
                 return false;
             }
         }
@@ -332,7 +332,7 @@ namespace Barman.BouteilleDossier.view
             {                
                 if (AuMoinsUneBouteilleSelectionne())
                 {
-                    MessageBoxResult resultat = MessageBox.Show("Êtes vous sûr de vouloire supprimer la sélection de bouteilles?", "Question", MessageBoxButton.YesNo);
+                    MessageBoxResult resultat = MessageBox.Show("Êtes vous sûr de vouloire supprimer la sélection de bouteilles?", "Question", MessageBoxButton.YesNo,MessageBoxImage.Warning,MessageBoxResult.No);
 
                     if (resultat == MessageBoxResult.Yes)
                     {

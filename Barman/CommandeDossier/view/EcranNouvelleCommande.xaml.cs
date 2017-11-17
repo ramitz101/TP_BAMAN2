@@ -21,6 +21,8 @@ using Barman.MarqueDossier.Hibernate;
 using Barman.TypeDossier;
 using Barman.TypeDossier.Hibernate;
 using Barman.ViewAutreDossier;
+using System.Timers;
+using System.Windows.Threading;
 
 namespace Barman.CommandeDossier.view
 {
@@ -34,11 +36,16 @@ namespace Barman.CommandeDossier.view
         private List<TypeAlcool> lstType = new List<TypeAlcool>(HibernateTypeAlcoolService.RetrieveAll());
         private List<Marque> lstMarques = new List<Marque>();
         private List<Bouteille> lstNouvelleBouteille = new List<Bouteille>();
+
         private Commande CommandeCours;
         public EcranNouvelleCommande()
         {
             InitializeComponent();
 
+
+          
+
+            
 
             cboMarqueBouteille.ItemsSource = listMarque;
             cboMarqueBouteille.DisplayMemberPath = "Nom";
@@ -56,6 +63,9 @@ namespace Barman.CommandeDossier.view
             HibernateCommandeService.Create(CommandeCours);
 
         }
+
+      
+  
 
         private void btnAnnuler_Click(object sender, RoutedEventArgs e)
         {
@@ -197,6 +207,7 @@ namespace Barman.CommandeDossier.view
         {
             btnSupprimer.IsEnabled = true;
             btnConfirmer.IsEnabled = true;
+            bool estDansList = false;
             try
             {
                 for (int i = 0; i < int.Parse(txtQuantite.Text); i++)
@@ -205,6 +216,9 @@ namespace Barman.CommandeDossier.view
                                                 9, int.Parse(cboMarqueBouteille.SelectedValue.ToString()), (int)CommandeCours.IdCommande);
                     b.SaMarque = HibernateMarqueService.Retrieve((int)b.IdMarque)[0];
                     b.SaMarque.SonTypeAlcool = HibernateTypeAlcoolService.RetrieveTypeAlcool((int)b.SaMarque.IdTypeAlcool)[0];
+
+                    
+
                     lstNouvelleBouteille.Add(b);
                 }
 
@@ -249,5 +263,7 @@ namespace Barman.CommandeDossier.view
                 MessageBox.Show("Vous devez sélectionner une bouteille pour supprimer", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
+
+        
     }
 }

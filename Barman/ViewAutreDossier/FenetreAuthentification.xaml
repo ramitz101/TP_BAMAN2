@@ -8,8 +8,8 @@
         Title="Authentification" Height="191.892" Width="275.676"
         WindowStartupLocation="CenterOwner">
     <Grid >
-        <Button Name="btnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="30,108,0,0" VerticalAlignment="Top" Width="93" Height="30" Click="btnAnnuler_Click"/>
-        <Button Name="btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="157,108,0,0" VerticalAlignment="Top" Width="93" Height="30" Click="btnConfirmer_Click"/>
+        <Button Name="btnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="20,108,0,0" VerticalAlignment="Top" Width="93" Height="30" Click="btnAnnuler_Click"/>
+        <Button Name="btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="140,108,0,0" VerticalAlignment="Top" Width="110" Height="30" Click="btnConfirmer_Click"/>
         <Label Content="Entrer votre code" HorizontalAlignment="Left" Margin="30,7,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblErreur" Content="" Foreground="Red" HorizontalAlignment="Left" Margin="30,61,0,0" VerticalAlignment="Top" Width="208"/>
         <PasswordBox Name="pwdBox" HorizontalAlignment="Left" KeyDown="txtCode_KeyDown" Margin="30,33,0,0" VerticalAlignment="Top" Width="123" Height="23"/>
