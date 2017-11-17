@@ -8,12 +8,12 @@
         Title="FenetreModifierBouteille" Height="254.472" Width="612.195"
         WindowStartupLocation="CenterOwner">
     <Grid>
-        <Label Content="nom" FontSize="18" HorizontalAlignment="Left" Margin="33,29,0,0" VerticalAlignment="Top"/>
-        <Label Content="Format" FontSize="18" HorizontalAlignment="Left" Margin="148,29,0,0" VerticalAlignment="Top"/>
-        <Label Content="Emplacement" FontSize="18" HorizontalAlignment="Left" Margin="421,29,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.572,0.524"/>
+        <Label Content="Nom" FontSize="18" HorizontalAlignment="Left" Margin="30,29,0,0" VerticalAlignment="Top"/>
+        <Label Content="Format" FontSize="18" HorizontalAlignment="Left" Margin="145,29,0,0" VerticalAlignment="Top"/>
+        <Label Content="Emplacement" FontSize="18" HorizontalAlignment="Left" Margin="415,29,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.572,0.524"/>
         <Label Name="txtMarque" HorizontalAlignment="Left" Margin="33,63,0,0" VerticalAlignment="Top" Height="31" Width="100"/>
         <Label Name="txtFormatBouteille" HorizontalAlignment="Left" Margin="148,63,0,0" VerticalAlignment="Top" Height="31" Width="100"/>
-        <Label Content="Volume restant" FontSize="18" HorizontalAlignment="Left" Margin="260,29,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.835,0.526"/>
+        <Label Content="Volume restant" FontSize="18" HorizontalAlignment="Left" Margin="255,29,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.835,0.526"/>
         <ComboBox Name="cboVolumeRestant" HorizontalAlignment="Left" Margin="260,63,0,0" VerticalAlignment="Top" Width="120" />
         <ComboBox Name="cboEmplacement" ItemsSource="{Binding Emplacement.Nom}"  HorizontalAlignment="Left" Margin="421,63,0,0" VerticalAlignment="Top" Width="120"/>
         <Button ToolTip="Annuler la modification de la bouteille" Name="btnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="80,120,0,0" VerticalAlignment="Top" Width="120" Height="40" Click="btnAnnuler_Click"/>

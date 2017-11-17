@@ -273,6 +273,7 @@ namespace Barman.BouteilleDossier.view
         private void btnImprimer_Click(object sender, RoutedEventArgs e)
         {
             lstBouteilles = new ObservableCollection<Bouteille>(ChargerListBouteille(chbAfficherSupprimee.IsChecked));
+            
 
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
 
@@ -388,6 +389,12 @@ namespace Barman.BouteilleDossier.view
             dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
             dispatcherTimer.Interval = new TimeSpan(0, 0, 5);
             dispatcherTimer.Start();
+        }
+
+        private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
+        {        
+            btnGerer_Click(sender, e);
+
         }
     }
 }

@@ -15,7 +15,7 @@
         <ComboBox ToolTip="Le type d'alcool attribué à cette marque" Name="cboTypeAlcool" HorizontalAlignment="Left" Margin="238,110,0,0" VerticalAlignment="Top" Width="110"/>
         <Button ToolTip="Confirmer l'ajout d'une marque d'alcool" Name="btnAjouterNouvelleM" Content="Ajouter" HorizontalAlignment="Left" Margin="461,110,0,0" VerticalAlignment="Top" Width="85" Height="24" Click="btnAjouterNouvelleM_Click"/>
         <Label Content="Ajouter type d'alcool" FontWeight="Bold" FontSize="15" HorizontalAlignment="Left" Margin="6,155,0,0" VerticalAlignment="Top"/>
-        <Label Content="Nouveau type d'alcool" HorizontalAlignment="Left" Margin="20,190,0,0" VerticalAlignment="Top"/>
+        <Label Content="Nouveau type d'alcool" HorizontalAlignment="Left" Margin="16,190,0,0" VerticalAlignment="Top"/>
         <TextBox PreviewTextInput="NumberValidationTextBox" ToolTip="le nom d'un nouveau type d'alcool"  Name="txtNouveauType" HorizontalAlignment="Left" Height="23" Margin="20,216,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Button ToolTip="Confirmer l'ajout d'un type d'alcool" Name="btnAjouterNouveauTypeA" Content="Ajouter" HorizontalAlignment="Left" Margin="461,216,0,0" VerticalAlignment="Top" Width="85" Height="24" Click="btnAjouterNouveauTypeA_Click"/>
         <Button ToolTip="Annuler l'ajout d'un type ou d'une marque et retourner à l'écran inventaire" Name="btnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="58,287,0,0" VerticalAlignment="Top" Width="136" Height="49" Click="btnAnnuler_Click"/>

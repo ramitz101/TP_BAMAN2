@@ -37,6 +37,7 @@ namespace Barman.VenteDossier.view
         public EcranConsulterVente()
         {
             InitializeComponent();
+            
             cldVente.SelectedDate = DateTime.Now;
 
             List<Vente> lstAllVente = new List<Vente>();

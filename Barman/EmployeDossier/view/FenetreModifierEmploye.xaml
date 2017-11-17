@@ -6,28 +6,28 @@
         xmlns:local="clr-namespace:Barman"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="FenetreModifierEmploye" Height="359.316" Width="521.308"
+        Title="Fenetre Modifier Employe" Height="490.774" Width="528.124"
         WindowStartupLocation="CenterOwner">
     <Grid>
         <TextBox GotFocus="txtNom_GotFocus" LostFocus="txtNom_LostFocus" PreviewTextInput="NumberValidationTextBox" ToolTip="Le nom de l'employé" Name="txtNom" HorizontalAlignment="Left" Height="23" Margin="10,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox GotFocus="txtPrenom_GotFocus" LostFocus="txtPrenom_LostFocus" PreviewTextInput="NumberValidationTextBox" ToolTip="Le prénom de l'employé" Name="txtPrenom" HorizontalAlignment="Left" Height="23" Margin="10,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <xctk:MaskedTextBox  GotFocus="txtTelephone_GotFocus" LostFocus="txtTelephone_LostFocus" Mask="(000) 000-0000" ToolTip="Le numéro de téléphone pour rejoindre l'employé" Name="txtTelephone" HorizontalAlignment="Left" Height="23" Margin="10,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <xctk:MaskedTextBox GotFocus="txtNAS_GotFocus" LostFocus="txtNAS_LostFocus" Mask="000-000-000"  ToolTip="Le numéro d'assurance social" Name="txtNAS" HorizontalAlignment="Left" Height="23" Margin="330,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <xctk:MaskedTextBox GotFocus="txtNAS_GotFocus" LostFocus="txtNAS_LostFocus" Mask="000-000-000"  ToolTip="Le numéro d'assurance social" Name="txtNAS" HorizontalAlignment="Left" Height="23" Margin="10,218,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Nom" HorizontalAlignment="Left" Margin="10,2,0,0" VerticalAlignment="Top"/>
         <Label Content="Date d'embauche" HorizontalAlignment="Left" Margin="182,2,0,0" VerticalAlignment="Top"/>
-        <Label Content="NAS" HorizontalAlignment="Left" Margin="330,2,0,0" VerticalAlignment="Top"/>
+        <Label Content="NAS" HorizontalAlignment="Left" Margin="10,187,0,0" VerticalAlignment="Top"/>
         <Label Content="Prénom" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top"/>
         <Label Content="Téléphone" HorizontalAlignment="Left" Margin="10,121,0,0" VerticalAlignment="Top"/>
-        <Label Name="lblRole" ToolTip="Le niveau d'accès au composent du programme" Content="Rôle" HorizontalAlignment="Left" Margin="330,82,0,0" VerticalAlignment="Top"/>
-        <RadioButton Name="rdbAdministrateur" Content="Administrateur" HorizontalAlignment="Left" Margin="368,77,0,0" VerticalAlignment="Top"/>
-        <RadioButton Name="rdbUtilisateur" Content="Utilisateur" HorizontalAlignment="Left" Margin="368,105,0,0" VerticalAlignment="Top"/>
-        <Button ToolTip="Confirmer la modification de l'employé" Name="btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="342,195,0,0" VerticalAlignment="Top" Width="90" Height="26" Click="btnConfirmer_Click"/>
-        <Button ToolTip="Annuler la modification de l'employé" Name="btnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="23,195,0,0" VerticalAlignment="Top" Width="90" Height="26" Click="btnAnnuler_Click" />
-        <Calendar SelectedDatesChanged="CalendarModifierEmploye_SelectedDatesChanged" Name="CalendarModifierEmploye" HorizontalAlignment="Left" Margin="135,48,0,0" VerticalAlignment="Top"  Height="140" Width="174"/>
-        <Button ToolTip="Cliquer sur le + pour générer un nouveau code pour l'employé" Name="btnGenererNouveauCode" Content="+" HorizontalAlignment="Left" Margin="330,152,0,0" VerticalAlignment="Top" Width="23" Height="23" Click="btnGenererNouveauCode_Click"/>
-        <TextBox Name="txtCode" IsReadOnly="true" HorizontalAlignment="Left" Height="23" Margin="358,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="97" />
-        <Label Content="Nouveau code" HorizontalAlignment="Left" Margin="330,126,0,0" VerticalAlignment="Top"/>
-        <Label Name="lblInfoMessage" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="9,226,0,0" Height="23" Width="455"/>
+        <Label Name="lblRole" ToolTip="Le niveau d'accès au composent du programme" Content="Rôle" HorizontalAlignment="Left" Margin="10,267,0,0" VerticalAlignment="Top"/>
+        <RadioButton Name="rdbAdministrateur" Content="Administrateur" HorizontalAlignment="Left" Margin="48,262,0,0" VerticalAlignment="Top"/>
+        <RadioButton Name="rdbUtilisateur" Content="Utilisateur" HorizontalAlignment="Left" Margin="48,290,0,0" VerticalAlignment="Top"/>
+        <Button ToolTip="Confirmer la modification de l'employé" Name="btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="346,396,0,0" VerticalAlignment="Top" Width="90" Height="26" Click="btnConfirmer_Click"/>
+        <Button ToolTip="Annuler la modification de l'employé" Name="btnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="58,396,0,0" VerticalAlignment="Top" Width="90" Height="26" Click="btnAnnuler_Click" />
+        <Calendar SelectedDatesChanged="CalendarModifierEmploye_SelectedDatesChanged" Name="CalendarModifierEmploye" HorizontalAlignment="Left" Margin="182,33,0,0" VerticalAlignment="Top"  Height="340" Width="280"/>
+        <Button ToolTip="Cliquer sur le + pour générer un nouveau code pour l'employé" Name="btnGenererNouveauCode" Content="+" HorizontalAlignment="Left" Margin="10,350,0,0" VerticalAlignment="Top" Width="23" Height="23" Click="btnGenererNouveauCode_Click"/>
+        <TextBox Name="txtCode" IsReadOnly="true" HorizontalAlignment="Left" Height="23" Margin="38,350,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="97" />
+        <Label Content="Nouveau code" HorizontalAlignment="Left" Margin="10,324,0,0" VerticalAlignment="Top"/>
+        <Label Name="lblInfoMessage" HorizontalAlignment="Left" Margin="10,425,0,0" Width="500"/>
 
     </Grid>
 </Window>
