@@ -389,5 +389,11 @@ namespace Barman.BouteilleDossier.view
             dispatcherTimer.Interval = new TimeSpan(0, 0, 5);
             dispatcherTimer.Start();
         }
+
+        private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
+        {        
+            btnGerer_Click(sender, e);
+
+        }
     }
 }
