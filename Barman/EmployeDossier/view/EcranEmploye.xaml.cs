@@ -35,6 +35,7 @@ namespace Barman.EmployeDossier.view
     public partial class EcranEmploye : UserControl
     {
         public string ContenuHeader { get; set; }
+        DependencyObject mainDep = new DependencyObject();
 
         private static ObservableCollection<Employe> lstEmployes = new ObservableCollection<Employe>();
 
@@ -294,15 +295,12 @@ namespace Barman.EmployeDossier.view
             dtgEmploye.ItemsSource = lstEmployes;
         }
 
-        private void dtgEmploye_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-
-        }
         private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
         {
             //DataGridRow row = sender as DataGridRow;
             btnGerer_Click(sender, e);
             
         }
+        
     }
 }

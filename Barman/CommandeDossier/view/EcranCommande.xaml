@@ -12,14 +12,14 @@
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
+            <RowDefinition Height=".8*" />
             <RowDefinition Height="10*" />
             <RowDefinition Height="*" />
 
 
         </Grid.RowDefinitions>
 
-        <DataGrid Grid.Column="1" Name="dtgCommande" IsReadOnly="True" AutoGenerateColumns="False" Height="auto"  Width="auto" Margin="0,40,0,0">
+        <DataGrid Grid.Column="1" Name="dtgCommande" IsReadOnly="True" AutoGenerateColumns="False" Grid.Row="1" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Date" Width="2*" Binding="{Binding DateCommande}" />
                 <DataGridTextColumn Header="Quantite" Width="2*" Binding="{Binding ListBouteille.Count}"/>

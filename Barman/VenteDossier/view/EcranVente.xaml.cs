@@ -281,27 +281,32 @@ namespace Barman.VenteDossier.view
                 if (LaBouteilleVendu.PrixBouteille <= 40)
                 {
                     prix = 6 * int.Parse(txtQuantite.Text);
-                    lblPrixVente.Content = (6 * int.Parse(txtQuantite.Text)).ToString("0.00" + " $");                
+                    lblPrixTotal.Content = (5.95 * int.Parse(txtQuantite.Text)).ToString("0.00" + " $"); 
+                    lblPrixVente.Content = (5.95.ToString("0.00" + " $ /oz"));
                 }
                 else if (LaBouteilleVendu.PrixBouteille <= 50)
                 {
                     prix = 7 * int.Parse(txtQuantite.Text);
-                    lblPrixVente.Content = (7 * int.Parse(txtQuantite.Text)).ToString("0.00"+ " $");
+                    lblPrixTotal.Content = (6.95 * int.Parse(txtQuantite.Text)).ToString("0.00"+ " $");
+                    lblPrixVente.Content = (6.95.ToString("0.00" + " $ /oz"));
                 }
                 else if (LaBouteilleVendu.PrixBouteille <= 60)
                 {
                     prix = 8 * int.Parse(txtQuantite.Text);
-                    lblPrixVente.Content = (8 * int.Parse(txtQuantite.Text)).ToString("0.00" + " $");
+                    lblPrixTotal.Content = (7.95 * int.Parse(txtQuantite.Text)).ToString("0.00" + " $");
+                    lblPrixVente.Content = (7.95.ToString("0.00" + " $ /oz"));
                 }
                 else if (LaBouteilleVendu.PrixBouteille <= 70)
                 {
                     prix = 9 * int.Parse(txtQuantite.Text);
-                    lblPrixVente.Content = (9 * int.Parse(txtQuantite.Text)).ToString("0.00" + " $");
+                    lblPrixTotal.Content = (8.95 * int.Parse(txtQuantite.Text)).ToString("0.00" + " $");
+                    lblPrixVente.Content = (8.95.ToString("0.00" + " $ /oz"));
                 }
                 else
                 {
                     prix = 10 * int.Parse(txtQuantite.Text);
-                    lblPrixVente.Content = (10 * int.Parse(txtQuantite.Text)).ToString("0.00" + " $");
+                    lblPrixTotal.Content = (9.95 * int.Parse(txtQuantite.Text)).ToString("0.00" + " $");
+                    lblPrixVente.Content = (9.95.ToString("0.00" + " $ /oz"));
                 }
 
                

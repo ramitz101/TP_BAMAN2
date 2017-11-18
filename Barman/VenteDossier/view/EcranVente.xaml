@@ -6,53 +6,58 @@
              xmlns:local="clr-namespace:Barman"
              mc:Ignorable="d" 
              d:DesignHeight="600" Width="820">
-    <Grid>
+    <Grid >
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
+            <RowDefinition Height=".8*" />
+            <RowDefinition Height="7*" />
+            <RowDefinition Height="4*" />
+
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1.5*" />
+            <ColumnDefinition Width="1.5*" />
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="1" Margin="0,40,0,0">
-            <Label Name="lblTypeEmploye" Grid.Column="1" Content="Employé" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
-            <Label  ToolTip="Employé connecté" Name="lblEmploye" Content="" FontWeight="Bold" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="137"/>
+        <StackPanel Grid.Column="1" Grid.Row="1" >
+            <Label Name="lblTypeEmploye"  Content="Employé"  HorizontalContentAlignment="Center" VerticalAlignment="Top"/>
+            <Label  ToolTip="Employé connecté" Name="lblEmploye" Margin="0,0,0,15" Content="" FontWeight="Bold"  HorizontalContentAlignment="Center" VerticalAlignment="Top" />
+            <Label Content="Emplacement"  Margin="0,0,80,0" HorizontalContentAlignment="Center" VerticalAlignment="Top"/>
+            <ComboBox Name="cboEmplacement"   SelectionChanged="cboEmplacement_SelectionChanged"   VerticalAlignment="Top" Width="150"/>
+
+            <Label Content="Type" Margin="0,0,125,0" HorizontalContentAlignment="Center"  VerticalAlignment="Top"/>
+            <ComboBox Name="cboType"   SelectionChanged="cboType_SelectionChanged"  VerticalAlignment="Top" Width="150"/>
+
+            <Label Content="Marque" Margin="0,0,110,0" HorizontalContentAlignment="Center"  VerticalAlignment="Top" />
+            <ComboBox Name="cboMarque"   SelectionChanged="cboMarque_SelectionChanged"  VerticalAlignment="Top" Width="150"/>
+
         </StackPanel>
 
-        <StackPanel Grid.Column="2" Grid.RowSpan="2" Margin="0,40,0,0" >
-            <Label Content="Emplacement" Grid.Column="2" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
-            <ComboBox Name="cboEmplacement" Grid.Column="2"  SelectionChanged="cboEmplacement_SelectionChanged" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="120"/>
-            
-            <Label Content="Type" Grid.Column="2" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
-            <ComboBox Name="cboType" Grid.Column="2"  SelectionChanged="cboType_SelectionChanged"  HorizontalAlignment="Left"  VerticalAlignment="Top" Width="120"/>
+        <StackPanel Grid.Column="2" Grid.Row="1" Margin="0,66,0,0" >
 
-            <Label Content="Marque" Grid.Column="2"  HorizontalAlignment="Left"  VerticalAlignment="Top" />
-            <ComboBox Name="cboMarque" Grid.Column="2"  SelectionChanged="cboMarque_SelectionChanged" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="120"/>
-            <Label Content="Quantité" Grid.Column="2"  HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+            <Label Content="Quantité"   HorizontalAlignment="Left"  VerticalAlignment="Top"/>
 
-            <StackPanel Orientation="Horizontal">
-            <TextBox Name="txtQuantite" Grid.Column="2"  HorizontalAlignment="Left" Height="23"  TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="29"/>
+            <StackPanel Orientation="Horizontal" Margin="10,0,0,0" >
+                <TextBox Name="txtQuantite"   HorizontalAlignment="Left" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="29"/>
                 <StackPanel >
-                     <Button Name="btnAugmenteQ" Grid.Column="2"  Click="btnAugmenteQ_Click" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="13" Height="15">
-                         <Image Source="../../images/add.png"></Image>
-                     </Button>
-                     <Button Name="btnReduireQ" Grid.Column="2"  Click="btnReduireQ_Click"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="13" Height="15">
-                         <Image Source="../../images/negative.png" ></Image>
-                     </Button>
+                    <Button Name="btnAugmenteQ"   Click="btnAugmenteQ_Click" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="13" Height="15">
+                        <Image Source="../../images/add.png"></Image>
+                    </Button>
+                    <Button Name="btnReduireQ"  Click="btnReduireQ_Click"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="13" Height="15">
+                        <Image Source="../../images/minus-sign.png" ></Image>
+                    </Button>
                 </StackPanel>
             </StackPanel>
             <Label Content="Prix" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="40"/>
             <StackPanel Orientation="Horizontal">
-            <Label Name="lblPrixVente" Content=""  HorizontalAlignment="Left"  VerticalAlignment="Top" Width="86" Height="32">
-            </Label>
+                <Label Name="lblPrixVente" Content=""  HorizontalAlignment="Left"  VerticalAlignment="Top" Width="auto" Height="32"/>
 
-            <Label Content="oz" Grid.Column="2"  HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+
+                <!--<Label Content="/oz" Grid.Column="2"  HorizontalAlignment="Left"  VerticalAlignment="Top"/>-->
             </StackPanel>
-            <Button ToolTip="Confirme la vente du verre d'alcool" Grid.Column="2"  Name="btnAjouter" Click="btnAjouter_Click" Content="Ajouter" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="120" Height="45"/>
+            <Label Content="Total" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="40"/>
+            <Label Name="lblPrixTotal" Content=""  HorizontalAlignment="Left"  VerticalAlignment="Top" Width="86" Height="32"/>
+            <Button ToolTip="Confirme la vente du verre d'alcool" Margin="0,5,5,0"  Name="btnAjouter" Click="btnAjouter_Click" Content="Ajouter" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="120" Height="45"/>
             <Label x:Name="lblComfirmationAjout" Content="" Foreground="Green" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="177"/>
         </StackPanel>
         <!--="Accueil" HorizontalAlignment="Left" Margin="10,180,0,0" VerticalAlignment="Top" Width="107" Height="45"/>
@@ -60,38 +65,37 @@
         -->
 
 
-        <Grid Name="grdBtn" Grid.Column="0" Grid.RowSpan="2" Margin="0,40,0,0">
+        <Grid Name="grdBtn" Grid.Column="0" Grid.Row="1"  >
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-               
-               
+
+
+
             </Grid.RowDefinitions>
 
 
-            <Button ToolTip="Consulter et modifier les ventes de chaque employé" Grid.Row="0" Margin="0,5,0,0" HorizontalAlignment="Left"   VerticalAlignment="Bottom" Name="btnGerer" Click="btnGerer_Click" Width="163" Height="71" >
-                    <StackPanel  Orientation="Horizontal">
-                        <Image Source="../../images/settings.png" Width="40" Height="40" />
-                        <TextBlock HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="21"><Run Text=" Gérer"/></TextBlock>
-                    </StackPanel>
-                </Button>
+            <Button ToolTip="Consulter et modifier les ventes de chaque employé" Grid.Row="0" Margin="5,5,5,5"   Name="btnGerer" Click="btnGerer_Click" Height="auto" >
+                <StackPanel  Orientation="Horizontal">
+                    <Image Source="../../images/settings.png" Width="40" Height="40" />
+                    <TextBlock   VerticalAlignment="Center" FontSize="21"><Run Text=" Gérer"/></TextBlock>
+                </StackPanel>
+            </Button>
 
-            <Button ToolTip="Consulter les ventes de l'employé connecté" Grid.Row="1" Margin="0,5,0,0"  FontSize="21"  HorizontalAlignment="Left"   VerticalAlignment="Top" Width="163" Height="70" Click="Consulter_Click" >
-                    <StackPanel  Orientation="Horizontal">
-                        <Image Source="../../images/padnote.png" Width="40" Height="40"  />
-                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text=" Consulter"/></TextBlock>
-                    </StackPanel>
-                </Button>
+            <Button ToolTip="Consulter les ventes de l'employé connecté" Grid.Row="1" Margin="5,5,5,5"  FontSize="21" Height="auto" Click="Consulter_Click" >
+                <StackPanel  Orientation="Horizontal">
+                    <Image Source="../../images/padnote.png" Width="40" Height="40"  />
+                    <TextBlock  VerticalAlignment="Center" FontSize="21"><Run Text=" Consulter"/></TextBlock>
+                </StackPanel>
+            </Button>
 
-            <Button ToolTip="Retourner à l'accueil / se déconnecter" FontSize="21" Margin="0,5,0,0"   Grid.Row="2"  HorizontalAlignment="Left"   VerticalAlignment="Top" Width="163" Height="70" Click="btnAccueil_Click">
-                    <StackPanel  Orientation="Horizontal" Width="121">
-                        <Image Source="../../images/back-arrow.png" Width="40" Height="40"  />
-                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text=" Accueil"/></TextBlock>
-                    </StackPanel>
-                </Button>
+            <Button ToolTip="Retourner à l'accueil / se déconnecter" FontSize="21" Margin="5,5,5,5"   Grid.Row="2"  Height="auto" Click="btnAccueil_Click">
+                <StackPanel  Orientation="Horizontal" Width="121">
+                    <Image Source="../../images/back-arrow.png" Width="40" Height="40"  />
+                    <TextBlock VerticalAlignment="Center" FontSize="21"><Run Text=" Accueil"/></TextBlock>
+                </StackPanel>
+            </Button>
 
         </Grid>
     </Grid>

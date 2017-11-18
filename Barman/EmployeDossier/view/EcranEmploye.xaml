@@ -24,17 +24,15 @@
             <TextBox Grid.Column="1"  Grid.Row="1" Name="txtRecherche"  KeyUp="txtRecherche_KeyUp_1" Height="25" VerticalAlignment="Top" Text="Rechercher" LostFocus="txtRecherche_LostFocus" GotFocus="txtRecherche_GotFocus" />
         </StackPanel>
         
-        <DataGrid Grid.Column="1" Grid.Row="1" Name="dtgEmploye"  Margin="0,48,0,0" AutoGenerateColumns="False" HorizontalAlignment="Left"  VerticalAlignment="Top"  >
+        <DataGrid Grid.Column="1" Grid.Row="1" Name="dtgEmploye"  Margin="0,48,0,0" AutoGenerateColumns="False"  >
             <DataGrid.Resources>
                 <Style TargetType="DataGridRow">
                     <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
                 </Style>
-            </DataGrid.Resources>
-            <DataGrid.ColumnHeaderStyle>
                 <Style TargetType="DataGridColumnHeader">
                     <EventSetter Event="Click" Handler="columnHeader_Click" />
                 </Style>
-            </DataGrid.ColumnHeaderStyle>
+            </DataGrid.Resources>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nom" Binding="{Binding Nom}" />
                 <DataGridTextColumn Header="Prénom" Binding="{Binding Prenom}" />
@@ -79,13 +77,13 @@
 
             <Button Grid.Row="3" Margin="5,5,5,5" Height="auto" ToolTip="Supprime les employés sélectionnés" Name="btnSuppression" FontSize="21"  Click="btnSuppression_Click">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="../../images/garbage.png" Width="40" Height="40"  />
+                        <Image Source="../../images/garbage.png" Width="35" Height="35"  />
                         <TextBlock  VerticalAlignment="Center" FontSize="21"><Run Text=" Suppression"/></TextBlock>
                     </StackPanel>
                 </Button>
 
             <Button Grid.Row="4" Margin="5,5,5,5" Height="auto" ToolTip="Retourner à l'accueil / se déconnecter" FontSize="21" Click="btnAccueil_Click">
-                    <StackPanel Orientation="Horizontal" Margin="0,0,40,0">
+                    <StackPanel Orientation="Horizontal">
                         <Image Source="../../images/back-arrow.png" Width="40" Height="40"  />
                         <TextBlock  VerticalAlignment="Center" FontSize="21"><Run Text=" Accueil"/></TextBlock>
                     </StackPanel>
