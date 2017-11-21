@@ -188,7 +188,7 @@ namespace Barman.EmployeDossier.view
             }
 
             lblInfoMessage.Foreground = Brushes.Red;
-            lblInfoMessage.Content = "Une erreur est survenue. Passé votre souris sur le rouge pour en connaitre la cause.";
+            lblInfoMessage.Content = "Une erreur est survenue. Passé votre souris sur la ou les zones rouges pour en connaître la cause.";
             return estValide;
         }
 
@@ -258,7 +258,7 @@ namespace Barman.EmployeDossier.view
             if (!(oldValueNAS == txtNAS.Text))
             {
                 txtNAS.ClearValue(Border.BorderBrushProperty);
-                txtNAS.ToolTip = "Le numéro d'assurance social";
+                txtNAS.ToolTip = "Le numéro d'assurance social de l'employé";
             }
         }
 

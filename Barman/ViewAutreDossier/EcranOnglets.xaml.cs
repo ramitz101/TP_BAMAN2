@@ -107,10 +107,18 @@ namespace Barman.ViewAutreDossier
             }
             else if (tbcOnglet.SelectedItem == tbiFormulaireB)
             {
-                if (OngletCreer)
-                    ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
-                EcranFormulaireBouteille EFB = new EcranFormulaireBouteille();
-                ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0,EFB);
+                if (EcranAccueil.employe.IdEmploye == null)
+                {
+                    FenetreAuthentification FA = new FenetreAuthentification();
+                    FA.ShowDialog();
+                }
+                if (EcranAccueil.employe.IdEmploye != null)
+                {
+                    if (OngletCreer)
+                        ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
+                    EcranFormulaireBouteille EFB = new EcranFormulaireBouteille();
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0, EFB);
+                }
             }
             
         }

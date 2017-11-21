@@ -28,14 +28,14 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Button Grid.Row="0" Height="auto" Margin="5,5,5,5" ToolTip="Pour modifier l'information d'une bouteille" Name="btnGerer"  FontSize="21"  Click="btnGerer_Click">
+            <Button Grid.Row="0" Height="auto" Margin="5,5,5,5" ToolTip="Modifier l'information d'une bouteille" Name="btnGerer"  FontSize="21"  Click="btnGerer_Click">
                 <StackPanel  Orientation="Horizontal">
                     <Image Source="../../images/settings.png" Width="40" Height="40" />
                     <TextBlock  VerticalAlignment="Center" FontSize="21"><Run Text=" Gérer"/></TextBlock>
                 </StackPanel>
             </Button>
 
-            <Button Grid.Row="1" Height="auto"  Margin="5,5,5,5" ToolTip="Enregistre la liste de bouteilles en fomrat PDF" Name="btnImprimer" FontSize="21"   Click="btnImprimer_Click">
+            <Button Grid.Row="1" Height="auto"  Margin="5,5,5,5" ToolTip="Enregistrer la liste de bouteilles en format PDF" Name="btnImprimer" FontSize="21"   Click="btnImprimer_Click">
                 <StackPanel  Orientation="Horizontal">
                     <Image Source="../../images/printer.png" Width="40" Height="40"  />
                     <TextBlock  VerticalAlignment="Center" FontSize="21"><Run Text=" Imprimer"/></TextBlock>
@@ -49,14 +49,14 @@
                 </StackPanel>
             </Button>
 
-            <Button Grid.Row="3" Height="auto"  Margin="5,5,5,5" Name="btnSuppression" ToolTip="Supprime les bouteilles sélectionnées" FontSize="21"  Click="btnSuppression_Click" >
+            <Button Grid.Row="3" Height="auto"  Margin="5,5,5,5" Name="btnSuppression" ToolTip="Supprimer les bouteilles sélectionnées" FontSize="21"  Click="btnSuppression_Click" >
                 <StackPanel Orientation="Horizontal">
                     <Image Source="../../images/garbage.png" Width="35" Height="35"  />
                     <TextBlock  VerticalAlignment="Center" FontSize="21"><Run Text=" Suppression"/></TextBlock>
                 </StackPanel>
             </Button>
 
-            <Button Grid.Row="4" Height="auto"  Margin="5,5,5,5" ToolTip="Retourner à l'accueil / se déconnecter" FontSize="21"    Click="btnAccueil_Click" >
+            <Button Grid.Row="4" Height="auto"  Margin="5,5,5,5" ToolTip="Retourner à l'accueil et se déconnecter" FontSize="21"    Click="btnAccueil_Click" >
                 <StackPanel  Orientation="Horizontal">
                     <Image Source="../../images/back-arrow.png" Width="40" Height="40"  />
                     <TextBlock  VerticalAlignment="Center" FontSize="21"><Run Text=" Accueil"/></TextBlock>

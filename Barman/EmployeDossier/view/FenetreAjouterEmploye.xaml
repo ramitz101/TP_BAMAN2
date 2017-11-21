@@ -9,10 +9,17 @@
         WindowStartupLocation="CenterOwner"
         Title="FenetreAjouterEmploye" Height="514.64" Width="526.151">
     <Grid >
-        <TextBox PreviewTextInput="NumberValidationTextBox" ToolTip="Le nom du nouvel employé" GotFocus="txtNom_GotFocus" LostFocus="txtNom_LostFocus" Name="txtNom" HorizontalAlignment="Left" Height="23" Margin="10,33,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox PreviewTextInput="NumberValidationTextBox" ToolTip="Le prénom du nouvel employé" GotFocus="txtPrenom_GotFocus" LostFocus="txtPrenom_LostFocus" Name="txtPrenom" HorizontalAlignment="Left" Height="23" Margin="10,93,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox PreviewTextInput="NumberValidationTextBox" ToolTip="Nom du nouvel employé" GotFocus="txtNom_GotFocus" LostFocus="txtNom_LostFocus" Name="txtNom" HorizontalAlignment="Left" Height="23" Margin="10,33,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox PreviewTextInput="NumberValidationTextBox" ToolTip="Prénom du nouvel employé" GotFocus="txtPrenom_GotFocus" LostFocus="txtPrenom_LostFocus" Name="txtPrenom" HorizontalAlignment="Left" Height="23" Margin="10,93,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
         <xctk:MaskedTextBox  GotFocus="txtTelephone_GotFocus" LostFocus="txtTelephone_LostFocus" Mask="(000) 000-0000" ToolTip="Le numéro de téléphone pour rejoindre l'employé" Name="txtTelephone" HorizontalAlignment="Left" Height="23" Margin="10,152,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
         <xctk:MaskedTextBox  LostFocus="txtNAS_LostFocus" GotFocus="txtNAS_GotFocus" Mask="000-000-000" ToolTip="Le numéro d'assurance social" Name="txtNAS" HorizontalAlignment="Left" Height="23" Margin="10,222,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <Label Content="Nom" HorizontalAlignment="Left" Margin="10,2,0,0" VerticalAlignment="Top"/>
+        <Label Content="Date d'embauche" HorizontalAlignment="Left" Margin="212,2,0,0" VerticalAlignment="Top"/>
+        <Label Content="NAS" HorizontalAlignment="Left" Margin="10,191,0,0" VerticalAlignment="Top"/>
+        <Label Content="Prénom" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top"/>
+        <Label Content="Téléphone" HorizontalAlignment="Left" Margin="10,121,0,0" VerticalAlignment="Top"/>
+        <Label Name="lblRole" ToolTip="Le niveau d'accès aux fonctionnalités du programme" Content="Rôle" HorizontalAlignment="Left" Margin="13,292,0,0" VerticalAlignment="Top"/>
+        <Calendar  SelectedDatesChanged="calendarDate_SelectedDatesChanged"  Name="calendarDate" HorizontalAlignment="Left" Margin="212,28,0,0" VerticalAlignment="Top" Height="344"/>
         <RadioButton Name="rdbAdministrateur" Content="Administrateur" HorizontalAlignment="Left" Margin="62,282,0,0" VerticalAlignment="Top"/>
         <RadioButton Name="rdbUtilisateur" Content="Utilisateur" HorizontalAlignment="Left" Margin="62,310,0,0" VerticalAlignment="Top"/>
         <Label Content="Nom" KeyboardNavigation.TabNavigation="None" HorizontalAlignment="Left" Margin="10,2,0,0" VerticalAlignment="Top"/>

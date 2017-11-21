@@ -38,7 +38,7 @@
         <TabItem ToolTip="Les employés du bar" Name="tbiEmploye" Header="EMPLOYÉS"  />
         <TabItem ToolTip="Faire une vente" Name="tbiVente" Header="VENTES"/>
         <TabItem ToolTip="Les commandes d'alcool" Name="tbiCommande"  Header="COMMANDES"/>
-        <TabItem ToolTip="Sortir une bouteille de l'inventaire" Name="tbiFormulaireB" Header="SORTIR BOUTEILLE"/>
+        <TabItem ToolTip="Sortir une bouteille de la réserve" Name="tbiFormulaireB" Header="SORTIR BOUTEILLE"/>
     </TabControl>
 
 </UserControl>

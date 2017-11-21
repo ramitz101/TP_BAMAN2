@@ -34,7 +34,7 @@
                     <TextBlock HorizontalAlignment="Right"  VerticalAlignment="Center" FontSize="21"><Run Text=" Nouvelle"/></TextBlock>
                 </StackPanel>
             </Button>
-            <Button  Grid.Row="1" Height="auto"  Margin="5,5,5,5" ToolTip="Enregistre la liste de commande dans un format PDF" Name="btnImprimer" Click="btnImprimer_Click" FontSize="21"   >
+            <Button  Grid.Row="1" Height="auto"  Margin="5,5,5,5" ToolTip="Enregistrer la liste de commande dans un format PDF" Name="btnImprimer" Click="btnImprimer_Click" FontSize="21"   >
                 <StackPanel Width="140" Orientation="Horizontal">
                     <Image Source="../../images/printer.png" Width="40" Height="40"  />
                     <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text=" Imprimer"/></TextBlock>
@@ -48,7 +48,7 @@
                 </StackPanel>
             </Button>
 
-            <Button  Grid.Row="3" Height="auto"  Margin="5,5,5,5"  ToolTip="Retourner à l'accueil / se déconnecter"  Name="btnAccueil" Click="btnAccueil_Click" FontSize="21"  >
+            <Button  Grid.Row="3" Height="auto"  Margin="5,5,5,5"  ToolTip="Retourner à l'accueil et se déconnecter"  Name="btnAccueil" Click="btnAccueil_Click" FontSize="21"  >
                 <StackPanel Width="140" Orientation="Horizontal">
                     <Image Source="../../images/back-arrow.png" Width="40" Height="40"  />
                     <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="21"><Run Text=" Accueil"/></TextBlock>

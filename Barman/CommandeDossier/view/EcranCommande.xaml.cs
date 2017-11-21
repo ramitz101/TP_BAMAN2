@@ -106,7 +106,7 @@ namespace Barman.CommandeDossier.view
             }
             else
             {
-                MessageBox.Show("Vous devez selectionner une commande");
+                MessageBox.Show("Vous devez selectionner une commande","Mauvaise sélection",MessageBoxButton.OK,MessageBoxImage.Warning,MessageBoxResult.OK);
             }
         }
 
