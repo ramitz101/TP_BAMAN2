@@ -88,9 +88,15 @@ namespace Barman.ViewAutreDossier
 
         private void btnFormulaireBouteille_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
-            EcranOnglets EO = new EcranOnglets(4);
-            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EO);
+            FenetreAuthentification FA = new FenetreAuthentification();
+            FA.ShowDialog();
+
+            if (employe.IdEmploye != null)
+            {
+                ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
+                EcranOnglets EO = new EcranOnglets(4);
+                ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EO);
+            }
         }
     }
 }

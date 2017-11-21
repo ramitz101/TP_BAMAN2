@@ -95,12 +95,12 @@ namespace Barman.EmployeDossier.view
             // si le user a sélectionné plus d'une inscription 
             else if (dtgEmploye.SelectedItems.Count > 1)
             {
-                MessageBox.Show("Vous avez trops d'employé selectionnées");
+                MessageBox.Show("Vous devez selectionner un seul employé.","Avertissement",MessageBoxButton.OK,MessageBoxImage.Information,MessageBoxResult.OK);
                 return false;
             }
             else
             {
-                MessageBox.Show("Vous devez selectionner un employé");
+                MessageBox.Show("Vous devez selectionner un seul employé.", "Avertissement", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.OK);
                 return false;
             }
         }
@@ -110,7 +110,7 @@ namespace Barman.EmployeDossier.view
             if (AuMoinsUnEmployeSelectionne())
             {
 
-                MessageBoxResult resultat = MessageBox.Show("Êtes vous sûr de vouloire supprimer la sélection d'employés?", "Question", MessageBoxButton.YesNo);
+                MessageBoxResult resultat = MessageBox.Show("Êtes-vous sûr de vouloir supprimer les employés sélectionnés?","Suppression d'employé",MessageBoxButton.YesNo,MessageBoxImage.Warning,MessageBoxResult.No);
 
                 if (resultat == MessageBoxResult.Yes)
                 {
@@ -133,7 +133,7 @@ namespace Barman.EmployeDossier.view
                 return true;
             else
             {
-                MessageBox.Show("Vous devez selectionner un employe");
+                MessageBox.Show("Vous devez selectionner au moins un employé.", "Avertissement", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.OK);
                 return false;
             }
         }

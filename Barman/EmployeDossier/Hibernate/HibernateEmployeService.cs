@@ -34,7 +34,7 @@ namespace Barman.EmployeDossier.Hibernate
             return result.ToList();
         }
 
-        public static List<Employe> Retrieve(int pIdEmploye)
+        public static List<Employe> Retrieve(int? pIdEmploye)
         {
             var employes = session.Query<Employe>().AsQueryable();
 

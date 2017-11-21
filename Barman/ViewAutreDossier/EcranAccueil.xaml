@@ -42,7 +42,7 @@
             </StackPanel>
         </Button>
 
-        <Button ToolTip="Faire une vente" Name="btnVente" Click="btnVente_Click"   Grid.Column="1" Grid.Row="3" Height="Auto" Margin="0,5,0,5">
+        <Button ToolTip="Faire des ventes" Name="btnVente" Click="btnVente_Click"   Grid.Column="1" Grid.Row="3" Height="Auto" Margin="0,5,0,5">
             <StackPanel Orientation="Horizontal"  Height="36">
                 <Image Source="../images/coin.png" />
                 <TextBlock VerticalAlignment="Center" Text=" VENTES" FontSize="20" ></TextBlock>
@@ -58,7 +58,7 @@
         <Button ToolTip="Sortir une bouteille de l'inventaire" Name="btnFormulaireBouteille"  Grid.Column="1" Grid.Row="5" Click="btnFormulaireBouteille_Click"  Height="Auto" Margin="0,5,0,5">
             <StackPanel Orientation="Horizontal"  Height="36">
                 <Image VerticalAlignment="Center" Source="../images/padnote.png" />
-                <TextBlock VerticalAlignment="Center" Text=" SORTIR BTLE" FontSize="20" ></TextBlock>
+                <TextBlock VerticalAlignment="Center" Text=" SORTIR BOUTEILLES" FontSize="20" ></TextBlock>
             </StackPanel>
         </Button>
 

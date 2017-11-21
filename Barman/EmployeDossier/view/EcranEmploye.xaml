@@ -54,7 +54,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-                <Button Grid.Row="0" Margin="5,5,5,5" Height="auto" ToolTip="Modifier les informations d'un employé" Click="btnGerer_Click" >
+                <Button Grid.Row="0" Margin="5,5,5,5" Height="auto" ToolTip="Modifier les informations d'un employé sélectionné" Click="btnGerer_Click" >
                     <StackPanel  Orientation="Horizontal">
                         <Image Source="../../images/settings.png" Width="40" Height="40" />
                         <TextBlock  VerticalAlignment="Center" FontSize="21"><Run Text=" Gérer"/></TextBlock>
@@ -75,14 +75,14 @@
                     </StackPanel>
                 </Button>
 
-            <Button Grid.Row="3" Margin="5,5,5,5" Height="auto" ToolTip="Supprime les employés sélectionnés" Name="btnSuppression" FontSize="21"  Click="btnSuppression_Click">
+            <Button Grid.Row="3" Margin="5,5,5,5" Height="auto" ToolTip="Supprimer les employés sélectionnés" Name="btnSuppression" FontSize="21"  Click="btnSuppression_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="../../images/garbage.png" Width="35" Height="35"  />
                         <TextBlock  VerticalAlignment="Center" FontSize="21"><Run Text=" Suppression"/></TextBlock>
                     </StackPanel>
                 </Button>
 
-            <Button Grid.Row="4" Margin="5,5,5,5" Height="auto" ToolTip="Retourner à l'accueil / se déconnecter" FontSize="21" Click="btnAccueil_Click">
+            <Button Grid.Row="4" Margin="5,5,5,5" Height="auto" ToolTip="Retourner à l'accueil et se déconnecter" FontSize="21" Click="btnAccueil_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="../../images/back-arrow.png" Width="40" Height="40"  />
                         <TextBlock  VerticalAlignment="Center" FontSize="21"><Run Text=" Accueil"/></TextBlock>

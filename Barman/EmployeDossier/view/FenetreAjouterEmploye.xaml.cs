@@ -134,13 +134,13 @@ namespace Barman.EmployeDossier.view
             }
             if (txtTelephone.Text.Count(Char.IsDigit) < 10 && txtTelephone.Text.Count(Char.IsDigit) > 0)
             {              
-                txtTelephone.ToolTip = "Le numéro de téléphone n'est pas complet.";
+                txtTelephone.ToolTip = "Le numéro de téléphone entré n'est pas complet.";
                 txtTelephone.BorderBrush = new SolidColorBrush(Colors.Red);
                 estValide = false;
             }
             
             lblInfoMessage.Foreground = Brushes.Red;
-            lblInfoMessage.Content = "Une erreur est survenue. Passé votre souris sur le rouge pour en connaitre la cause.";
+            lblInfoMessage.Content = "Une erreur est survenue. Passé votre souris sur la ou les zones rouges pour en connaître la cause.";
             return estValide;
         }
 
@@ -214,7 +214,7 @@ namespace Barman.EmployeDossier.view
             if (!(oldValueTelephone == txtTelephone.Text))
             {
                 txtTelephone.ClearValue(Border.BorderBrushProperty);
-                txtTelephone.ToolTip = "Le numéro de téléphone pour rejoindre l'employé";
+                txtTelephone.ToolTip = "Le numéro de téléphone pour rejoindre le nouvel employé";
             }
         }
 
@@ -223,7 +223,7 @@ namespace Barman.EmployeDossier.view
             if (!(oldValueNAS == txtNAS.Text))
             {
                 txtNAS.ClearValue(Border.BorderBrushProperty);
-                txtNAS.ToolTip = "Le numéro d'assurance social";
+                txtNAS.ToolTip = "Le numéro d'assurance social du nouvel employé";
             }
         }
 

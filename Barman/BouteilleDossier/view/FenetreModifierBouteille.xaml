@@ -17,7 +17,7 @@
         <ComboBox Name="cboVolumeRestant" HorizontalAlignment="Left" Margin="260,63,0,0" VerticalAlignment="Top" Width="120" />
         <ComboBox Name="cboEmplacement" ItemsSource="{Binding Emplacement.Nom}"  HorizontalAlignment="Left" Margin="421,63,0,0" VerticalAlignment="Top" Width="120"/>
         <Button ToolTip="Annuler la modification de la bouteille" Name="btnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="80,120,0,0" VerticalAlignment="Top" Width="120" Height="40" Click="btnAnnuler_Click"/>
-        <Button ToolTip="Confirmer la modification de la boutielle" Name="btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="361,120,0,0" VerticalAlignment="Top" Width="120" Height="40" Click="btnConfirmer_Click"/>
+        <Button ToolTip="Confirmer la modification de la bouteille" Name="btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="361,120,0,0" VerticalAlignment="Top" Width="120" Height="40" Click="btnConfirmer_Click"/>
 
     </Grid>
 </Window>

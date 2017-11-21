@@ -164,12 +164,12 @@ namespace Barman.BouteilleDossier.view
             // si le user a sélectionné plus d'une bouteille
             else if (dtgInventaire.SelectedItems.Count > 1)
             {
-                MessageBox.Show("Vous avez trop de bouteilles selectionnées","Mauvaise sélection",MessageBoxButton.OK,MessageBoxImage.Information,MessageBoxResult.OK);
+                MessageBox.Show("Vous devez selectionner une seule bouteille.", "Mauvaise sélection",MessageBoxButton.OK,MessageBoxImage.Warning,MessageBoxResult.OK);
                 return false;
             }
             else
             {
-                MessageBox.Show("Vous devez selectionner une bouteille","Mauvaise sélection",MessageBoxButton.OK,MessageBoxImage.Information,MessageBoxResult.OK);
+                MessageBox.Show("Vous devez selectionner une bouteille.","Mauvaise sélection",MessageBoxButton.OK,MessageBoxImage.Warning,MessageBoxResult.OK);
                 return false;
             }
         }
@@ -180,7 +180,7 @@ namespace Barman.BouteilleDossier.view
                 return true;
             else
             {
-                MessageBox.Show("Vous devez selectionner une bouteille", "Mauvaise sélection", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.OK);
+                MessageBox.Show("Vous devez selectionner une bouteille.", "Mauvaise sélection", MessageBoxButton.OK, MessageBoxImage.Warning, MessageBoxResult.OK);
                 return false;
             }
         }

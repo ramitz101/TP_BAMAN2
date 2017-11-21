@@ -36,7 +36,7 @@ namespace Barman.BouteilleDossier.view
       private List<TypeAlcool> lstType = new List<TypeAlcool>();
       private List<Emplacement> lstEmplacements = new List<Emplacement>(HibernateEmplacementService.RetrieveAllForFormulaire());
       private List<Marque> lstMarques = new List<Marque>();
-      private List<Employe> lstEmployes = new List<Employe>(HibernateEmployeService.RetrieveAll(null));
+      private List<Employe> lstEmployes = new List<Employe>();
       private List<int?> lstIdMarquesEnReserve = new List<int?>();
       private List<int?> lstIdTypeEnReserve = new List<int?>();
 
@@ -67,8 +67,9 @@ namespace Barman.BouteilleDossier.view
          cboEmplacement.ItemsSource = lstEmplacements;
          cboEmplacement.DisplayMemberPath = "Nom";
 
-         cboEmployé.ItemsSource = lstEmployes;
-         cboEmployé.DisplayMemberPath = "Nom";
+
+         lstEmployes = HibernateEmployeService.Retrieve(EcranAccueil.employe.IdEmploye);
+         lblEmployeConnecte.Content = EcranAccueil.employe.Prenom + " " + EcranAccueil.employe.Nom;
 
       }
 
@@ -198,7 +199,7 @@ namespace Barman.BouteilleDossier.view
 
       private bool FormulaireRempli()
       {
-         if (cboType.SelectedItem != null&&cboMarqueBouteille.SelectedItem!=null&&cboEmployé.SelectedItem != null&&cboÉtiquette.SelectedItem != null)
+         if (cboType.SelectedItem != null&&cboMarqueBouteille.SelectedItem!=null&&cboÉtiquette.SelectedItem != null)
          {
             if(chbVendu.IsChecked==true&&cboEmplacement.SelectedItem==null)
             {
@@ -238,16 +239,6 @@ namespace Barman.BouteilleDossier.view
             }
         }
 
-        private void cboEmployé_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (FormulaireRempli())
-            {
-                btnConfirmer.IsEnabled = true;
-            }
-            else
-            {
-                btnConfirmer.IsEnabled = false;
-            }
-        }
+        
     }
 }

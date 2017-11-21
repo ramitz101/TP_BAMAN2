@@ -83,14 +83,14 @@ namespace Barman.CommandeDossier.view
                 {
                     HibernateBouteilleService.Create(i);
                 }
-                MessageBox.Show("La commande a bien été envoyé", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Commande envoyée.", "Information", MessageBoxButton.OK, MessageBoxImage.Information,MessageBoxResult.OK);
                 ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
                 EcranCommande EC = new EcranCommande();
                 ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0, EC);
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Une erreur c'est produite " + ex, "Attention", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Une erreur c'est produite: " + ex, "Erreur", MessageBoxButton.OK, MessageBoxImage.Error,MessageBoxResult.OK);
             }
 
            
@@ -225,7 +225,7 @@ namespace Barman.CommandeDossier.view
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Une erreur est survenu lors de l'ajout", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Une erreur est survenue lors de l'ajout", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error,MessageBoxResult.OK);
             }
 
             dtgNouvelleCommande.ItemsSource = lstNouvelleBouteille;
@@ -239,7 +239,7 @@ namespace Barman.CommandeDossier.view
 
                 Bouteille b = new Bouteille();
                 b = (Bouteille)dtgNouvelleCommande.SelectedItem;
-                var result = MessageBox.Show(("Êtes-vous sur de vouloir supprimer " + b.SaMarque.Nom), "Avertissement", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                var result = MessageBox.Show(("Êtes-vous sur de vouloir supprimer " + b.SaMarque.Nom + "?"), "Avertissement", MessageBoxButton.YesNo, MessageBoxImage.Warning,MessageBoxResult.No);
                 if (result == MessageBoxResult.Yes)
                 {
                     HibernateBouteilleService.Delete((Bouteille)b);
@@ -260,7 +260,7 @@ namespace Barman.CommandeDossier.view
             }
             else
             {
-                MessageBox.Show("Vous devez sélectionner une bouteille pour supprimer", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Vous devez sélectionner une bouteille pour la supprimer.", "Mauvaise sélection", MessageBoxButton.OK, MessageBoxImage.Warning,MessageBoxResult.OK);
             }
         }
 
