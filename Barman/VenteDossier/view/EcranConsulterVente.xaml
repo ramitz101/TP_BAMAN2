@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Barman"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="820">
+             d:DesignHeight="600" d:DesignWidth="960">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
@@ -16,14 +16,6 @@
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
         <Calendar  Name="cldVente" Grid.Column="0" Margin="0,40,0,0"   SelectedDatesChanged="cldVente_SelectedDatesChanged"  HorizontalAlignment="Stretch" Width="Auto" Height="Auto"  VerticalAlignment="Stretch"/>
-        <DataGrid Name="dtgVenteEmploye" Margin="0,40,0,0"  Grid.Column="1" Grid.RowSpan="2" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="Auto"  VerticalAlignment="Top" Width="Auto">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Bouteille" Width="1.3*" Binding="{Binding laBouteille.SaMarque.Nom}" />
-                <DataGridTextColumn Header="Date vente" Width="1.6*" Binding="{Binding DateVente}"/>
-                <DataGridTextColumn Header="Volume(oz)" Width="1.3*" Binding="{Binding Volume}"/>
-                <DataGridTextColumn Header="Prix once"  Width="1.3*"   Binding="{Binding PrixOnce , StringFormat=C}"/>
-            </DataGrid.Columns>
-        </DataGrid>
         <StackPanel Grid.Row="1">
             <Button ToolTip="Enregistre la liste de ventes en format PDF" Name="btnImprimer" Grid.Row="1" Click="btnImprimer_Click" Margin="0,5,0,0"  HorizontalAlignment="Left"  VerticalAlignment="Top" Width="163" Height="70" >
                 <StackPanel Orientation="Horizontal">
@@ -39,6 +31,14 @@
               </Button>
         </StackPanel>
         <CheckBox Grid.Column="0" Grid.Row="2" Margin="160,20,0,0" Name="chbToutVente" Click="chbToutVente_Click" Content="Toutes les ventes" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+        <DataGrid Name="dtgVenteEmploye" Margin="0,40,0,0"  Grid.Column="1" Grid.RowSpan="2" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="Auto"  VerticalAlignment="Top" Width="Auto">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Bouteille" Width="1.3*" Binding="{Binding laBouteille.SaMarque.Nom}" />
+                <DataGridTextColumn Header="Date vente" Width="1.6*" Binding="{Binding DateVente}"/>
+                <DataGridTextColumn Header="Volume(oz)" Width="1.3*" Binding="{Binding Volume}"/>
+                <DataGridTextColumn Header="Prix once"  Width="1.3*"   Binding="{Binding PrixOnce , StringFormat=C}"/>
+            </DataGrid.Columns>
+        </DataGrid>
 
 
     </Grid>

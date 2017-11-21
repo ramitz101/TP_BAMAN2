@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Barman"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="820">
+             d:DesignHeight="600" d:DesignWidth="960">
     <Grid>
 
         <Grid.ColumnDefinitions>
@@ -17,10 +17,14 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        
+
         <Calendar  Name="cldVente" Margin="0,40,0,0" Grid.Column="0" Grid.Row="0" SelectedDatesChanged="cldVente_SelectedDatesChanged" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="Auto"/>
+        <StackPanel Grid.Row="1">
+            <Label Content="Employé" KeyboardNavigation.TabNavigation="None" FontWeight="Bold" FontSize="15" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+            <ComboBox ToolTip="Les ventes de l'employé sélectionné" Grid.Row="1" Name="cboEmploye" SelectionChanged="cboEmploye_SelectionChanged" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="157"/>
+        </StackPanel>
         <DataGrid Name="dtgVenteEmploye" Margin="0,40,0,0" Grid.Column="1" Grid.RowSpan="2" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="247"  VerticalAlignment="Top" Width="Auto">
-            
+
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Bouteille" Width="1.3*" Binding="{Binding laBouteille.SaMarque.Nom}" />
                 <DataGridTextColumn Header="Date vente" Width="1.6*" Binding="{Binding DateVente}"/>
@@ -28,12 +32,8 @@
                 <DataGridTextColumn Header="Prix once"  Width="1.3*"   Binding="{Binding PrixOnce, StringFormat=C}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <StackPanel Grid.Row="1">
-         <Label Content="Employé"  FontWeight="Bold" FontSize="15" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
-         <ComboBox ToolTip="Les ventes de l'employé sélectionné" Grid.Row="1" Name="cboEmploye" SelectionChanged="cboEmploye_SelectionChanged" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="157"/>
-        </StackPanel>
         <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalAlignment="Center">
-                <Button ToolTip="Retourner à l'écran ventes" Name="btnRetour" Margin="100,0,50,0" Content="Retour" HorizontalAlignment="Left" VerticalAlignment="Top" Width="136" Height="49" Click="btnRetour_Click"/>
+            <Button ToolTip="Retourner à l'écran ventes" Name="btnRetour" Margin="100,0,50,0" Content="Retour" HorizontalAlignment="Left" VerticalAlignment="Top" Width="136" Height="49" Click="btnRetour_Click"/>
             <Button ToolTip="Supprime la vente sélectionnée dans la liste" Margin="50,0,50,0" Name="btnSupprimer" Content="Supprimer" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="136" Height="49" Click="btnSupprimer_Click"/>
             <Button ToolTip="Enregistre les ventes de la journée sélectionnée et de l'employé sélectionné dans un format PDF" Name="btnImprimer" Margin="50,0,50,0" Content="Imprimer" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="136" Height="49" Click="btnImprimer_Click"/>
         </StackPanel>

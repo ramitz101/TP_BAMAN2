@@ -23,38 +23,35 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Column="0" Grid.Row="0"  Grid.ColumnSpan="4" VerticalAlignment="Bottom" HorizontalAlignment="Center">
-            <Label  FontWeight="Bold" FontSize="25"  Foreground="DodgerBlue"  HorizontalAlignment="Center" VerticalAlignment="Bottom" Content="Sortir une bouteille de la réserve" />
+            <Label  FontWeight="Bold" KeyboardNavigation.TabNavigation="None" FontSize="25"  Foreground="DodgerBlue"  HorizontalAlignment="Center" VerticalAlignment="Bottom" Content="Sortir une bouteille de la réserve" />
             <Separator   />
         </StackPanel>
-
-        <StackPanel Grid.Column="2" Grid.Row="3"   Margin="20,0,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Left">
-            <Label Content="Emplacement" FontWeight="Bold"  FontSize="20" />
-            <ComboBox Name="cboEmplacement" FontSize="15" SelectionChanged="cboEmplacement_SelectionChanged" Width="120" />
-        </StackPanel>
-
-        <StackPanel Grid.Column="1" Grid.Row="1"  Margin="0,0,20,0" VerticalAlignment="Bottom" HorizontalAlignment="Right">
-            <Label Content="Type" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left"   />
+        <StackPanel Grid.Column="1"  Grid.Row="1"  Margin="0,0,20,0" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+            <Label Content="Type" KeyboardNavigation.TabNavigation="None" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left"   />
             <ComboBox Name="cboType"   FontSize="15" SelectionChanged="cboType_SelectionChanged"  Width="120"  />
         </StackPanel>
 
-        <StackPanel Grid.Column="2" Grid.Row="1"  Margin="20,0,0,0" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Bottom">
-            <Label Content="Vendue au client" FontWeight="Bold" FontSize="20" />
-            <CheckBox  Name="chbVendu"  Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"    />
-        </StackPanel>
-
         <StackPanel Grid.Column="1" Grid.Row="2"  Margin="0,0,20,0" VerticalAlignment="Bottom" HorizontalAlignment="Right">
-            <Label Content="Marque" FontSize="20" FontWeight="Bold"  />
+            <Label Content="Marque" KeyboardNavigation.TabNavigation="None" FontSize="20" FontWeight="Bold"  />
             <ComboBox Name="cboMarqueBouteille"  FontSize="15" IsEnabled="False" SelectionChanged="cboMarqueBouteille_SelectionChanged"  Width="120"/>
         </StackPanel>
 
+        <StackPanel  Grid.Column="1" Grid.Row="3"  Margin="0,0,20,0" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Label Content="Étiquette" KeyboardNavigation.TabNavigation="None" FontWeight="Bold" FontSize="20" />
+            <ComboBox x:Name="cboÉtiquette" FontSize="15" SelectionChanged="cboÉtiquette_SelectionChanged" IsEnabled="False" Width="120"/>
+        </StackPanel>
+        <StackPanel Grid.Column="2" Grid.Row="1"  Margin="20,0,0,0" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+            <Label Content="Vendue au client" KeyboardNavigation.TabNavigation="None" FontWeight="Bold" FontSize="20" />
+            <CheckBox  Name="chbVendu"  Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"    />
+        </StackPanel>
         <StackPanel Grid.Column="2" Grid.Row="2"  Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom">
-            <Label Content="Employé" FontWeight="Bold" FontSize="20" />
+            <Label Content="Employé" KeyboardNavigation.TabNavigation="None" FontWeight="Bold" FontSize="20" />
             <ComboBox Name="cboEmployé" FontSize="15" SelectionChanged="cboEmployé_SelectionChanged"   Width="120"/>
         </StackPanel>
 
-        <StackPanel  Grid.Column="1" Grid.Row="3"  Margin="0,0,20,0" HorizontalAlignment="Right" VerticalAlignment="Bottom">
-            <Label Content="Étiquette" FontWeight="Bold" FontSize="20" />
-            <ComboBox x:Name="cboÉtiquette" FontSize="15" SelectionChanged="cboÉtiquette_SelectionChanged" IsEnabled="False" Width="120"/>
+        <StackPanel Grid.Column="2" Grid.Row="3"   Margin="20,0,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+            <Label Content="Emplacement" KeyboardNavigation.TabNavigation="None" FontWeight="Bold"  FontSize="20" />
+            <ComboBox Name="cboEmplacement" FontSize="15" SelectionChanged="cboEmplacement_SelectionChanged" Width="120" />
         </StackPanel>
 
         <Button Grid.Row="4" FontSize="20" Height="auto" MaxWidth="300" MaxHeight="100" Grid.Column="1" Margin="20,20,20,20" ToolTip="Retourner à l'accueil / se déconnecter" Name="btnAccueil"  Content="Accueil"    Width="auto" Click="btnAccueil_Click"/>

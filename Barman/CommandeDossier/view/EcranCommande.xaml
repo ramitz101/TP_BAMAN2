@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Barman"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="820">
+             d:DesignHeight="600" d:DesignWidth="960">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -15,28 +15,15 @@
             <RowDefinition Height=".8*" />
             <RowDefinition Height="10*" />
             <RowDefinition Height="*" />
-
-
         </Grid.RowDefinitions>
 
-        <DataGrid Grid.Column="1" Name="dtgCommande" IsReadOnly="True" AutoGenerateColumns="False" Grid.Row="1" >
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Date" Width="2*" Binding="{Binding DateCommande}" />
-                <DataGridTextColumn Header="Quantite" Width="2*" Binding="{Binding ListBouteille.Count}"/>
-                <DataGridTextColumn Header="Responsable" Width="2*" Binding="{Binding UnEmploye.Prenom}"/>
-                <DataGridTextColumn Header="Etat" Width="2*" Binding="{Binding Etat}"/>
-
-
-            </DataGrid.Columns>
-
-        </DataGrid>
         <Grid Name="grdBtn" Grid.Column="0" Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
-             
+
             </Grid.RowDefinitions>
 
 
@@ -69,7 +56,16 @@
             </Button>
 
         </Grid>
-        <!-- <Label Name="lblMessage" Content="Message modif" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-        -->
+
+        <DataGrid Grid.Column="1" Name="dtgCommande" IsReadOnly="True" AutoGenerateColumns="False" Grid.Row="1" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Date" Width="2*" Binding="{Binding DateCommande}" />
+                <DataGridTextColumn Header="Quantite" Width="2*" Binding="{Binding ListBouteille.Count}"/>
+                <DataGridTextColumn Header="Responsable" Width="2*" Binding="{Binding UnEmploye.Prenom}"/>
+                <DataGridTextColumn Header="Etat" Width="2*" Binding="{Binding Etat}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        
+       
     </Grid>
 </UserControl>

@@ -6,7 +6,7 @@
              
              mc:Ignorable="d" 
              d:DesignHeight="600" 
-             d:DesignWidth="820">
+             d:DesignWidth="960">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height=".8*"/>
@@ -18,35 +18,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel VerticalAlignment="Top" Grid.Column="1" Grid.Row="1">
-            <CheckBox Grid.Column="1" Grid.Row="1" Content="Afficher les bouteilles supprimées" Checked="chbAfficherSupprimee_Checked" Unchecked="chbAfficherSupprimee_Unchecked" VerticalAlignment="Bottom" IsChecked="False" Name="chbAfficherSupprimee" HorizontalAlignment="Left"  />
-            <TextBox x:Name="txtRecherche"  KeyUp="txtRecherche_KeyUp_1" VerticalAlignment="Top" Text="Rechercher" LostFocus="txtRecherche_LostFocus" GotFocus="txtRecherche_GotFocus" />
-        </StackPanel>
-
-        <DataGrid  Name="dtgInventaire" AutoGenerateColumns="False" HorizontalAlignment="Left"  VerticalAlignment="Top"  Margin="0,48,0,0" Grid.Column="1" Grid.Row="1">
-            <DataGrid.Resources>
-                <Style TargetType="DataGridRow">
-                    <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
-                </Style>
-            </DataGrid.Resources>
-            <DataGrid.ColumnHeaderStyle>
-                <Style TargetType="DataGridColumnHeader">
-                    <EventSetter Event="Click" Handler="columnHeader_Click" />
-                </Style>
-            </DataGrid.ColumnHeaderStyle>
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Nom" Width="2*" Binding="{Binding SaMarque.Nom}" />
-                <DataGridTextColumn Header="Volume" Width="1*" Binding="{Binding VolumeInitial}"/>
-                <DataGridTextColumn Header="V.Restant" Width="1*" Binding="{Binding VolumeRestant}"/>
-                <DataGridTextColumn Header="Numéro" Width="1*" Binding="{Binding Numero}"/>
-                <DataGridTextColumn Header="Type d'alcool" Width="2*" Binding="{Binding SaMarque.SonTypeAlcool.Nom}"/>
-                <DataGridTextColumn Header="État" Width="2*" Binding="{Binding Etat}"/>
-                <DataGridTextColumn Header="Emplacement" Width="3*" Binding="{Binding SonEmplacement.Nom}"/>
-
-            </DataGrid.Columns>
-
-        </DataGrid>
-
+        
         <Grid Name="grdBtn" Grid.Column="0" Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -94,9 +66,35 @@
 
 
         </Grid>
+        
+        <StackPanel VerticalAlignment="Top" Grid.Column="1" Grid.Row="1">
+            <CheckBox Grid.Column="1" Grid.Row="1" Content="Afficher les bouteilles supprimées" Checked="chbAfficherSupprimee_Checked" Unchecked="chbAfficherSupprimee_Unchecked" VerticalAlignment="Bottom" IsChecked="False" Name="chbAfficherSupprimee" HorizontalAlignment="Left"  />
+            <TextBox x:Name="txtRecherche"  KeyUp="txtRecherche_KeyUp_1" VerticalAlignment="Top" Text="Rechercher" LostFocus="txtRecherche_LostFocus" GotFocus="txtRecherche_GotFocus" />
+        </StackPanel>
 
+        <DataGrid  Name="dtgInventaire" AutoGenerateColumns="False" HorizontalAlignment="Left"  VerticalAlignment="Top"  Margin="0,48,0,0" Grid.Column="1" Grid.Row="1">
+            <DataGrid.Resources>
+                <Style TargetType="DataGridRow">
+                    <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
+                </Style>
+            </DataGrid.Resources>
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <EventSetter Event="Click" Handler="columnHeader_Click" />
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nom" Width="2*" Binding="{Binding SaMarque.Nom}" />
+                <DataGridTextColumn Header="Volume" Width="1*" Binding="{Binding VolumeInitial}"/>
+                <DataGridTextColumn Header="V.Restant" Width="1*" Binding="{Binding VolumeRestant}"/>
+                <DataGridTextColumn Header="Numéro" Width="1*" Binding="{Binding Numero}"/>
+                <DataGridTextColumn Header="Type d'alcool" Width="2*" Binding="{Binding SaMarque.SonTypeAlcool.Nom}"/>
+                <DataGridTextColumn Header="État" Width="2*" Binding="{Binding Etat}"/>
+                <DataGridTextColumn Header="Emplacement" Width="3*" Binding="{Binding SonEmplacement.Nom}"/>
 
+            </DataGrid.Columns>
 
+        </DataGrid>
 
         <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="left" Grid.RowSpan="2">
             <Label Grid.Column="1" Grid.Row="2" Name="lblNbEntamee" Content="Entamées: "/>
@@ -104,7 +102,7 @@
             <Label Grid.Column="1" Grid.Row="2" Name="lblNbSupprimee" Content="Supprimées: "/>
             <Label Grid.Column="1" Grid.Row="2" Name="lblNbReserve" Content="En réserve: "/>
         </StackPanel>
-        <TextBox Name="lblMessage"  BorderThickness="0"  TextChanged="lblMessage_TextChanged" Grid.Column="1" Grid.Row="2" IsReadOnly="True" IsManipulationEnabled="False" Text="" Margin="0,20,0,0" SelectionOpacity="0.9"/>
+        <TextBox Name="lblMessage" KeyboardNavigation.TabNavigation="None"  BorderThickness="0"  TextChanged="lblMessage_TextChanged" Grid.Column="1" Grid.Row="2" IsReadOnly="True" IsManipulationEnabled="False" Text="" Margin="0,20,0,0" SelectionOpacity="0.9"/>
 
 
     </Grid>

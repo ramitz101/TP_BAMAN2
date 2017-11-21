@@ -25,7 +25,7 @@
 
         </Grid.RowDefinitions>
 
-        <Label Content="Projet Barmans"  Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="DodgerBlue" />
+        <Label Content="Projet Barmans"  KeyboardNavigation.TabNavigation="None" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="DodgerBlue" />
 
 
         <Button ToolTip="Inventaire de bouteilles" Name="btnInventaire" Click="btnInventaire_Click"  Grid.Column="1" Height="Auto" Grid.Row="1" Margin="0,5,0,5"  >

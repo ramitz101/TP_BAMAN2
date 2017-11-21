@@ -12,7 +12,7 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         
-        Title="Barman" Height="600" Width="820" >
+        Title="Barman" Height="600" Width="960" >
     <Grid Name="GrdPrincipale">
         <!--Background="{StaticResource GrayBlackGardientBrush}"-->
        
