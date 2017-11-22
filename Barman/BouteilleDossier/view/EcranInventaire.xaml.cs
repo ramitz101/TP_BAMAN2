@@ -84,7 +84,6 @@ namespace Barman.BouteilleDossier.view
                 ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
                 EcranAjoutInventaire EAI = new EcranAjoutInventaire();
                 ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0, EAI);
-                
             }
 
             dtgInventaire.ItemsSource = new ObservableCollection<Bouteille>(ChargerListBouteille(false));
