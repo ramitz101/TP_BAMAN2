@@ -20,12 +20,7 @@
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
         
-        <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Vertical" Margin="0,40,0,0">
-            <Label Content="Type"  KeyboardNavigation.TabNavigation="None" HorizontalAlignment="Left" Width="94" Margin="4,0,0,0" />
-            <ComboBox ToolTip="Le type d'alcool" x:Name="cboType" SelectionChanged="cboType_SelectionChanged" Margin="10,0,0,0"  Height="23"  HorizontalAlignment="Left" Width="94"/>
-            <Label Content="Marque" KeyboardNavigation.TabNavigation="None"  HorizontalAlignment="Left" Width="94" Margin="4,0,0,0" />
-            <ComboBox ToolTip="La marque Choisi" x:Name="cboMarqueBouteille" Margin="10,0,0,0" SelectionChanged="cboMarqueBouteille_SelectionChanged"    HorizontalAlignment="Left" Width="94" Height="23"/>
-        </StackPanel>
+      
 
         <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
             <StackPanel  Orientation="Vertical" Margin="0,40,0,0">
@@ -48,7 +43,6 @@
             </StackPanel>
         </StackPanel>
         
-        <Button Grid.Column="3" ToolTip="Ajouter cette bouteille à la commande avec la quantité demandée" Name="btnAjouter" Click="btnAjouter_Click" Content="Ajouter" Margin="0,40,0,0" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="116"></Button>
 
         <DataGrid Grid.Row="1" Grid.ColumnSpan="4"  Name="dtgNouvelleCommande" AutoGenerateColumns="False" CanUserAddRows="False" HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="Auto" >
             <DataGrid.Columns>
@@ -70,7 +64,6 @@
 
         
         <Button Grid.Row="2" ToolTip="Annuler la commande de bouteille" Name="btnAnnuler"  Height="51"  Width="96" Content="Annuler"  Click="btnAnnuler_Click"></Button>
-        <Button Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Grid.ColumnSpan="2"  ToolTip="Supprime la bouteille sélectionnée de la commande/ fait moins un à la quantitée" Name="btnSupprimer" Click="btnSupprimer_Click" Content="Supprimer" Height="51"  Width="96"  />
         <Button Grid.Row="2" Grid.Column="3" ToolTip="Confirmer la commande de bouteille" Name="btnConfirmer"  Height="51"  Width="96" Content="Confirmer"  Click="btnConfirmer_Click"></Button>
         <Button Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Grid.ColumnSpan="2"  ToolTip="Supprimer la bouteille sélectionnée de la commande ou retirer un à la quantitée" Name="btnSupprimer" Click="btnSupprimer_Click" Content="Supprimer" Height="51"  Width="96"  />
 

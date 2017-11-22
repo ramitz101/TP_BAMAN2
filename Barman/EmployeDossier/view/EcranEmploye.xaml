@@ -18,50 +18,7 @@
 
         </Grid.RowDefinitions>
 
-        <Grid Name="grdBtn" Grid.Column="0" Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-
-            <Button Grid.Row="0" Margin="5,5,5,5" Height="auto" ToolTip="Modifier les informations d'un employé" Click="btnGerer_Click" >
-                <StackPanel  Orientation="Horizontal">
-                    <Image Source="../../images/settings.png" Width="40" Height="40" />
-                    <TextBlock  VerticalAlignment="Center" FontSize="21"><Run Text=" Gérer"/></TextBlock>
-                </StackPanel>
-            </Button>
-
-            <Button Grid.Row="1" Margin="5,5,5,5" Height="auto" ToolTip="Enregistrer la liste d'employés en format PDF" Name="btnImprimerEmploye" FontSize="21"   Click="btnImprimerEmploye_Click">
-                <StackPanel  Orientation="Horizontal">
-                    <Image Source="../../images/printer.png" Width="40" Height="40"  />
-                    <TextBlock  VerticalAlignment="Center" FontSize="21"><Run Text=" Imprimer"/></TextBlock>
-                </StackPanel>
-            </Button>
-
-            <Button Grid.Row="2" Margin="5,5,5,5" Height="auto" ToolTip="Ajouter un employé dans la liste" FontSize="21"  Click="btnAjouterEmploye_Click">
-                <StackPanel  Orientation="Horizontal">
-                    <Image Source="../../images/user.png" Width="40" Height="40"  />
-                    <TextBlock VerticalAlignment="Center" FontSize="21"><Run Text=" Ajouter"/></TextBlock>
-                </StackPanel>
-            </Button>
-
-            <Button Grid.Row="3" Margin="5,5,5,5" Height="auto" ToolTip="Supprime les employés sélectionnés" Name="btnSuppression" FontSize="21"  Click="btnSuppression_Click">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="../../images/garbage.png" Width="35" Height="35"  />
-                    <TextBlock  VerticalAlignment="Center" FontSize="21"><Run Text=" Suppression"/></TextBlock>
-                </StackPanel>
-            </Button>
-
-            <Button Grid.Row="4" Margin="5,5,5,5" Height="auto" ToolTip="Retourner à l'accueil / se déconnecter" FontSize="21" Click="btnAccueil_Click">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="../../images/back-arrow.png" Width="40" Height="40"  />
-                    <TextBlock  VerticalAlignment="Center" FontSize="21"><Run Text=" Accueil"/></TextBlock>
-                </StackPanel>
-            </Button>
-        </Grid>
+        
 
         <StackPanel Grid.Row="1" Grid.Column="1">
             <CheckBox Grid.Column="1"  Grid.Row="1" Content="Affiche les employés inactif" Checked="chbAfficherEmployeInactif_Checked" Unchecked="chbAfficherEmployeInactif_Unchecked" HorizontalAlignment="Left" IsChecked="False" Name="chbAfficherEmployeInactif"  />

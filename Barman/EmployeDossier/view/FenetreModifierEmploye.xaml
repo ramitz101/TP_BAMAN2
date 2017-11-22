@@ -26,13 +26,9 @@
         <Label Content="NAS" KeyboardNavigation.TabNavigation="None" HorizontalAlignment="Left" Margin="10,187,0,0" VerticalAlignment="Top"/>
         <Label Content="Prénom" KeyboardNavigation.TabNavigation="None" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top"/>
         <Label Content="Téléphone" KeyboardNavigation.TabNavigation="None" HorizontalAlignment="Left" Margin="10,121,0,0" VerticalAlignment="Top"/>
-        <Label Name="lblRole" KeyboardNavigation.TabNavigation="None" ToolTip="Le niveau d'accès au composent du programme" Content="Rôle" HorizontalAlignment="Left" Margin="10,267,0,0" VerticalAlignment="Top"/>
-        <Button ToolTip="Cliquer sur le + pour générer un nouveau code pour l'employé" Name="btnGenererNouveauCode" Content="+" HorizontalAlignment="Left" Margin="10,350,0,0" VerticalAlignment="Top" Width="23" Height="23" Click="btnGenererNouveauCode_Click"/>
         <Calendar SelectedDatesChanged="CalendarModifierEmploye_SelectedDatesChanged" Name="CalendarModifierEmploye" HorizontalAlignment="Left" Margin="182,33,0,0" VerticalAlignment="Top"  Height="340" Width="280"/>
         <Button ToolTip="Annuler la modification de l'employé" Name="btnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="58,396,0,0" VerticalAlignment="Top" Width="90" Height="26" Click="btnAnnuler_Click" />
         <Button ToolTip="Confirmer la modification de l'employé" Name="btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="346,396,0,0" VerticalAlignment="Top" Width="90" Height="26" Click="btnConfirmer_Click"/>
-        <Button ToolTip="Annuler la modification de l'employé" Name="btnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="58,396,0,0" VerticalAlignment="Top" Width="90" Height="26" Click="btnAnnuler_Click" />
-        <Calendar SelectedDatesChanged="CalendarModifierEmploye_SelectedDatesChanged" Name="CalendarModifierEmploye" HorizontalAlignment="Left" Margin="182,33,0,0" VerticalAlignment="Top"  Height="340" Width="280"/>
         <Button ToolTip="Cliquer sur ce bouton pour générer un nouveau code d'accès pour l'employé" Name="btnGenererNouveauCode" Content="+" HorizontalAlignment="Left" Margin="10,350,0,0" VerticalAlignment="Top" Width="23" Height="23" Click="btnGenererNouveauCode_Click"/>
         <TextBox Name="txtCode" IsReadOnly="true" HorizontalAlignment="Left" Height="23" Margin="38,350,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="97" />
         <Label Content="Nouveau code" HorizontalAlignment="Left" Margin="10,324,0,0" VerticalAlignment="Top"/>
