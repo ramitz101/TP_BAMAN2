@@ -26,17 +26,10 @@ using Barman.RoleDossier;
 
 namespace Barman.EmployeDossier.view
 {
-    /// <summary>
-    /// Logique d'interaction pour EcranEmploye.xaml
-    /// </summary>
-    /// 
-
-    // dfasdfasdf
     public partial class EcranEmploye : UserControl
     {
         public string ContenuHeader { get; set; }
-        DependencyObject mainDep = new DependencyObject();
-
+        DependencyObject mainDep = new DependencyObject();    
         private static ObservableCollection<Employe> lstEmployes = new ObservableCollection<Employe>();
 
         public EcranEmploye()
@@ -46,7 +39,6 @@ namespace Barman.EmployeDossier.view
             dtgEmploye.ItemsSource = lstEmployes;
             dtgEmploye.IsReadOnly = true;
             ContenuHeader = "Nom";
-
         }
 
         private void btnGerer_Click(object sender, RoutedEventArgs e)
@@ -55,20 +47,16 @@ namespace Barman.EmployeDossier.view
             {
                 FenetreModifierEmploye popup = new FenetreModifierEmploye(lstEmployes, dtgEmploye.SelectedItem as Employe, this);
                 popup.ShowDialog();
-
             }
 
-            dtgEmploye.ItemsSource = new ObservableCollection<Employe>(ChargerListEmploye(null));
-            //dtgEmploye.Items.Refresh();
+            dtgEmploye.ItemsSource = new ObservableCollection<Employe>(ChargerListEmploye(null));            
         }
 
         private void btnAjouterEmploye_Click(object sender, RoutedEventArgs e)
         {
             FenetreAjouterEmploye popup = new FenetreAjouterEmploye();
             popup.ShowDialog();
-
-            dtgEmploye.ItemsSource = new ObservableCollection<Employe>(ChargerListEmploye(null));
-            //dtgEmploye.Items.Refresh();
+            dtgEmploye.ItemsSource = new ObservableCollection<Employe>(ChargerListEmploye(null));            
         }
 
         private void btnAccueil_Click(object sender, RoutedEventArgs e)
@@ -109,13 +97,11 @@ namespace Barman.EmployeDossier.view
         {
             if (AuMoinsUnEmployeSelectionne())
             {
-
                 MessageBoxResult resultat = MessageBox.Show("Êtes-vous sûr de vouloir supprimer les employés sélectionnés?","Suppression d'employé",MessageBoxButton.YesNo,MessageBoxImage.Warning,MessageBoxResult.No);
 
                 if (resultat == MessageBoxResult.Yes)
                 {
                     List<Employe> lstEmploye = dtgEmploye.SelectedItems.Cast<Employe>().ToList();
-
                     foreach (var employe in lstEmploye)
                     {
                         employe.Etat = "I";
@@ -123,7 +109,6 @@ namespace Barman.EmployeDossier.view
                     }
                     dtgEmploye.ItemsSource = new ObservableCollection<Employe>(ChargerListEmploye(null));
                 }
-
             }
         }
 
@@ -146,91 +131,47 @@ namespace Barman.EmployeDossier.view
             {
                 switch (ContenuHeader)
                 {
-                    case "Prénom":
-                        lstEmploye = HibernateEmployeService.RetrievePrenom(txtRecherche.Text);
-
-                        if (lstEmploye.Count != 0)
-                            dtgEmploye.ItemsSource = lstEmploye;
-                        else
-                            dtgEmploye.ItemsSource = null;
-
+                    case "Prénom":                        
+                        SiLaListeEstVide(HibernateEmployeService.RetrievePrenom(txtRecherche.Text));                        
                         break;
                     case "Téléphone":
-                        lstEmploye = HibernateEmployeService.RetrieveTelephone(txtRecherche.Text);
-
-                        if (lstEmploye.Count != 0)
-                            dtgEmploye.ItemsSource = lstEmploye;
-                        else
-                            dtgEmploye.ItemsSource = null;
+                        SiLaListeEstVide(HibernateEmployeService.RetrieveTelephone(txtRecherche.Text));                                               
                         break;
                     case "Date d'embauche":
-                        lstEmploye = HibernateEmployeService.RetrieveDateEmbauche(txtRecherche.Text);
-
-                        if (lstEmploye.Count != 0)
-                            dtgEmploye.ItemsSource = lstEmploye;
-                        else
-                            dtgEmploye.ItemsSource = null;
+                        SiLaListeEstVide(HibernateEmployeService.RetrieveDateEmbauche(txtRecherche.Text));                                                
                         break;
                     case "NAS":
-                        lstEmploye = HibernateEmployeService.RetrieveNAS(txtRecherche.Text);
-
-                        if (lstEmploye.Count != 0)
-                            dtgEmploye.ItemsSource = lstEmploye;
-                        else
-                            dtgEmploye.ItemsSource = null;
+                        SiLaListeEstVide(HibernateEmployeService.RetrieveNAS(txtRecherche.Text));                       
                         break;
                     case "Role":
                         lstRole = HibernateRoleService.RetrieveRole(txtRecherche.Text);
-                        foreach (Role r in lstRole)
-                        {
+                        foreach (Role r in lstRole)                        
                             lstEmploye.AddRange(HibernateEmployeService.RetrieveRole((int)r.IdRole));
-                        }
-
-                        if (lstEmploye.Count != 0)
-                            dtgEmploye.ItemsSource = lstEmploye;
-                        else
-                            dtgEmploye.ItemsSource = null;
+                        SiLaListeEstVide(lstRole);                        
                         break;
                     case "Code":
-                        lstEmploye = HibernateEmployeService.RetrieveCode(txtRecherche.Text);
-
-                        if (lstEmploye.Count != 0)
-                            dtgEmploye.ItemsSource = lstEmploye;
-                        else
-                            dtgEmploye.ItemsSource = null;
+                        SiLaListeEstVide(HibernateEmployeService.RetrieveCode(txtRecherche.Text));                       
                         break;
                     default:
-                        lstEmploye = HibernateEmployeService.RetrieveNom(txtRecherche.Text);
-                        /*foreach (Employe employe in lstEmploye)
-                        {
-                            lstEmploye.AddRange(HibernateEmployeService.RetrieveByMarqueId((int)m.IdMarque));
-                        }*/
-
-                        if (lstEmploye.Count != 0)
-                            dtgEmploye.ItemsSource = lstEmploye;
-                        else
-                            dtgEmploye.ItemsSource = null;
+                        SiLaListeEstVide(HibernateEmployeService.RetrieveNom(txtRecherche.Text));                        
                         break;
                 }
             }
+            else                         
+                dtgEmploye.ItemsSource = HibernateEmployeService.RetrieveAll(null);            
+        }
+
+        private void SiLaListeEstVide<T>(List<T> lst)
+        {
+            if (lst.Count != 0)
+                dtgEmploye.ItemsSource = lst;
             else
-            {
-                lstEmploye = HibernateEmployeService.RetrieveAll(null);
-                dtgEmploye.ItemsSource = lstEmploye;
-            }
+                dtgEmploye.ItemsSource = null;
         }
 
         private void txtRecherche_GotFocus(object sender, RoutedEventArgs e)
         {
-            txtRecherche.Text = "";
-            //List<Employe> lstEmploye = HibernateEmployeService.RetrieveAll();
-            /*foreach (Bouteille b in lstBouteille)
-            {
-                b.SaMarque = HibernateMarqueService.Retrieve((int)b.IdMarque)[0];
-                b.SaMarque.SonTypeAlcool = HibernateTypeAlcoolService.RetrieveTypeAlcool((int)b.SaMarque.IdTypeAlcool)[0];
-                b.SonEmplacement = HibernateEmplacementService.retrieveEmplacement((int)b.IdEmplacement)[0];
-            }*/
-            //dtgEmploye.ItemsSource = lstEmploye;
+            txtRecherche.Text = "";            
         }
 
         private void txtRecherche_LostFocus(object sender, RoutedEventArgs e)
@@ -246,7 +187,6 @@ namespace Barman.EmployeDossier.view
         private void btnImprimerEmploye_Click(object sender, RoutedEventArgs e)
         {
             lstEmployes = new ObservableCollection<Employe>(ChargerListEmploye(null));
-
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
 
             saveFileDialog1.Filter = "Pdf Files|*.pdf";
@@ -254,7 +194,6 @@ namespace Barman.EmployeDossier.view
             if (saveFileDialog1.ShowDialog() == true)
             {
                 //Crée le fichier
-
                 Document doc = new Document();
                 FileStream fs = new System.IO.FileStream(saveFileDialog1.FileName, FileMode.Create, FileAccess.Write, FileShare.None);
                 PdfWriter writer = PdfWriter.GetInstance(doc, fs);
@@ -273,12 +212,10 @@ namespace Barman.EmployeDossier.view
                 PdfPTable table = new PdfPTable(7); //Le paramètre indique le nombre de colonne. S'il manque de cellules pour la dernière rangée, il ne mettra simplement pas la rangée
                 table = CreationDesTables.CreerTableEmploye(table, lstEmployes);
                 doc.Add(table);
-
                 
                 string fullPath = System.IO.Path.GetFullPath(saveFileDialog1.FileName);
                 doc.Close();
                 Process.Start(fullPath);
-
             }
         }
 
@@ -286,7 +223,6 @@ namespace Barman.EmployeDossier.view
         {
             lstEmployes = new ObservableCollection<Employe>(ChargerListEmploye(true));
             dtgEmploye.ItemsSource = lstEmployes;
-
         }
 
         private void chbAfficherEmployeInactif_Unchecked(object sender, RoutedEventArgs e)
@@ -296,11 +232,8 @@ namespace Barman.EmployeDossier.view
         }
 
         private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            //DataGridRow row = sender as DataGridRow;
-            btnGerer_Click(sender, e);
-            
-        }
-        
+        {            
+            btnGerer_Click(sender, e);            
+        }        
     }
 }

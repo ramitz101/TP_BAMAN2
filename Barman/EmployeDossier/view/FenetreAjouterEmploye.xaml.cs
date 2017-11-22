@@ -28,10 +28,7 @@ namespace Barman.EmployeDossier.view
         private String oldValueName = String.Empty;
         private String oldValuePrenom = String.Empty;
         private String oldValueTelephone = String.Empty;
-        private String oldValueNAS = String.Empty;
-        
-
-        //private bool btnConfirmerHasBeemClicked = false;
+        private String oldValueNAS = String.Empty;        
 
         public FenetreAjouterEmploye()
         {
@@ -53,15 +50,9 @@ namespace Barman.EmployeDossier.view
                 HibernateEmployeService.Create(new Employe(txtNom.Text, txtPrenom.Text, Extractdigits(txtTelephone.Text), Extractdigits(txtNAS.Text), calendarDate.SelectedDate.Value, RoleChoisi()));
                 this.Close();
 
-            }
-
-            //btnConfirmerHasBeemClicked = false;
+            }           
         }
-
-
-
-
-
+       
         private string Extractdigits(string pText)
         {
             string text = pText;
@@ -74,7 +65,7 @@ namespace Barman.EmployeDossier.view
             }
             return textResult;
         }
-
+        
         private bool ValidationChamps()
         {            
             bool estValide = true;
@@ -94,8 +85,7 @@ namespace Barman.EmployeDossier.view
                 txtNom.ToolTip = "Le nom entré est trop long.";
                 txtNom.BorderBrush = System.Windows.Media.Brushes.Red;
                 estValide = false;
-            }
-            
+            }           
             if (txtPrenom.Text == "")
             {                
                 txtPrenom.ToolTip = "Vous devez entrer un prénom.";
@@ -142,8 +132,7 @@ namespace Barman.EmployeDossier.view
             lblInfoMessage.Foreground = Brushes.Red;
             lblInfoMessage.Content = "Une erreur est survenue. Passé votre souris sur la ou les zones rouges pour en connaître la cause.";
             return estValide;
-        }
-
+        }    
 
         public bool UnRdbEstChoisi()
         {
@@ -155,7 +144,6 @@ namespace Barman.EmployeDossier.view
 
         private int RoleChoisi()
         {
-
             if (rdbAdministrateur.IsChecked == true)
             {
                 List<Role> lstRole = new List<Role>(HibernateRoleService.Retrieve("Admin"));
@@ -165,10 +153,7 @@ namespace Barman.EmployeDossier.view
             {
                 List<Role> lstRole = new List<Role>(HibernateRoleService.Retrieve("Utils"));
                 return (int)lstRole[0].IdRole;
-            }
-
-
-
+            }       
         }
 
         private void calendarDate_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
@@ -230,7 +215,6 @@ namespace Barman.EmployeDossier.view
         private void txtNAS_GotFocus(object sender, RoutedEventArgs e)
         {
             oldValueNAS = txtNAS.Text;
-
         }
 
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
