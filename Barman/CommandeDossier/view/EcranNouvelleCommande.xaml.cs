@@ -36,16 +36,11 @@ namespace Barman.CommandeDossier.view
         private List<TypeAlcool> lstType = new List<TypeAlcool>(HibernateTypeAlcoolService.RetrieveAll());
         private List<Marque> lstMarques = new List<Marque>();
         private List<Bouteille> lstNouvelleBouteille = new List<Bouteille>();
-
+        private List<List<Bouteille>> lstBouteille = new List<List<Bouteille>>(); // TEST A SUPP
         private Commande CommandeCours;
         public EcranNouvelleCommande()
         {
             InitializeComponent();
-
-
-          
-
-            
 
             cboMarqueBouteille.ItemsSource = listMarque;
             cboMarqueBouteille.DisplayMemberPath = "Nom";
@@ -102,16 +97,6 @@ namespace Barman.CommandeDossier.view
             listM = HibernateMarqueService.RetrieveAll();
             return listM;      
         }
-
-        //private void cboMarque_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
-        //    Marque m = HibernateMarqueService.Retrieve((int)int.Parse(cboMarque.SelectedValue.ToString()))[0];
-        //    m.SonTypeAlcool = HibernateTypeAlcoolService.RetrieveTypeAlcool((int)m.IdTypeAlcool)[0];
-        //    lblTypeAlcool.Content = m.SonTypeAlcool.Nom.ToString();
-
-            
-        //}
-
         private void cboMarqueBouteille_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
            
@@ -125,7 +110,7 @@ namespace Barman.CommandeDossier.view
         private void cboType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             
-                cboMarqueBouteille.IsEnabled = true;
+            cboMarqueBouteille.IsEnabled = true;
 
             lstMarques = HibernateMarqueService.RetrieveByType((TypeAlcool)cboType.SelectedItem);
 
@@ -134,14 +119,7 @@ namespace Barman.CommandeDossier.view
             cboMarqueBouteille.DisplayMemberPath = "Nom";
 
         }
-
-       
-
-        private void txtFormat_KeyDown(object sender, KeyEventArgs e)
-        {          
-            RefreshLabelPrix();          
-        }
-
+        
         private void RefreshLabelPrix()
         {
             lblPrix.Content = "";
@@ -207,7 +185,6 @@ namespace Barman.CommandeDossier.view
         {
             btnSupprimer.IsEnabled = true;
             btnConfirmer.IsEnabled = true;
-            bool estDansList = false;
             try
             {
                 for (int i = 0; i < int.Parse(txtQuantite.Text); i++)
@@ -216,10 +193,17 @@ namespace Barman.CommandeDossier.view
                                                 9, int.Parse(cboMarqueBouteille.SelectedValue.ToString()), (int)CommandeCours.IdCommande);
                     b.SaMarque = HibernateMarqueService.Retrieve((int)b.IdMarque)[0];
                     b.SaMarque.SonTypeAlcool = HibernateTypeAlcoolService.RetrieveTypeAlcool((int)b.SaMarque.IdTypeAlcool)[0];
-
-                    
-
-                    lstNouvelleBouteille.Add(b);
+                    /// TESTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+                    foreach(var k in lstBouteille)
+                    {
+                        foreach(var z in k)
+                        {
+                            if (z.SaMarque == b.SaMarque)
+                                k.Add(b);
+                        }
+                    }
+                    // ********************************
+                    //lstNouvelleBouteille.Add(b);
                 }
 
             }
@@ -227,8 +211,9 @@ namespace Barman.CommandeDossier.view
             {
                 MessageBox.Show("Une erreur est survenue lors de l'ajout", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error,MessageBoxResult.OK);
             }
-
-            dtgNouvelleCommande.ItemsSource = lstNouvelleBouteille;
+            /// TESTTTTTTTTTTTTTTTTTTT
+            dtgNouvelleCommande.ItemsSource = lstBouteille;
+            //dtgNouvelleCommande.ItemsSource = lstNouvelleBouteille;
             dtgNouvelleCommande.Items.Refresh();
         }
 
@@ -264,6 +249,9 @@ namespace Barman.CommandeDossier.view
             }
         }
 
-        
+        private void txtFormat_KeyUp(object sender, KeyEventArgs e)
+        {
+            RefreshLabelPrix();
+        }
     }
 }

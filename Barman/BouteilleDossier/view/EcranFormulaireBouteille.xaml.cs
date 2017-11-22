@@ -23,9 +23,8 @@ namespace Barman.BouteilleDossier.view
         private List<TypeAlcool> lstType = new List<TypeAlcool>();
         private List<Emplacement> lstEmplacements = new List<Emplacement>(HibernateEmplacementService.RetrieveAllForFormulaire());
         private List<Marque> lstMarques = new List<Marque>();
-        private List<Employe> lstEmployes = new List<Employe>();
-        private List<int?> lstIdMarquesEnReserve = new List<int?>();
-        private List<int?> lstIdTypeEnReserve = new List<int?>();
+        private Employe EmployeConnecter = new Employe();
+        private List<int?> lstIdMarquesEnReserve;
 
         public EcranFormulaireBouteille()
         {
@@ -33,15 +32,8 @@ namespace Barman.BouteilleDossier.view
             lstIdMarquesEnReserve = new List<int?>(HibernateBouteilleService.RetrieveIdMarqueEnReserve());
             lstIdTypeEnReserve = new List<int?>();
 
-            foreach (int? i in lstIdMarquesEnReserve)
-                lstIdTypeEnReserve.AddRange(HibernateMarqueService.RetrieveIdTypeEnReserve(i));
-            foreach (int? i in lstIdTypeEnReserve)
-            {
-                List<TypeAlcool> leType = HibernateTypeAlcoolService.RetrieveTypeAlcoolById(i);
-                if (lstType.Contains(leType[0]) == false)
-                    lstType.Add(leType[0]);
-            }
-
+         lstType = PeuplerListeTypeAlcool();
+           
             cboType.ItemsSource = lstType;
             cboType.DisplayMemberPath = "Nom";
             cboEmplacement.ItemsSource = lstEmplacements;
@@ -50,6 +42,18 @@ namespace Barman.BouteilleDossier.view
             lblEmployeConnecte.Content = EcranAccueil.employe.Prenom + " " + EcranAccueil.employe.Nom;
         }
 
+         
+
+         cboEmplacement.ItemsSource = lstEmplacements;
+         cboEmplacement.DisplayMemberPath = "Nom";
+
+        //Je vais chercher l'employé connecté pour savoir qui monte la bouteille
+         EmployeConnecter = HibernateEmployeService.Retrieve(EcranAccueil.employe.IdEmploye)[0];
+        //Je met le nom de l'employé connecter dans le label
+         lblEmployeConnecte.Content = EmployeConnecter.Prenom + " " + EmployeConnecter.Nom;
+
+      }
+
         private void btnAccueil_Click(object sender, RoutedEventArgs e)
         {
             EcranAccueil EA = new EcranAccueil();
@@ -57,10 +61,7 @@ namespace Barman.BouteilleDossier.view
             ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EA);
         }
 
-        //private void btnImprimer_Click(object sender, RoutedEventArgs e)
-        //{
-
-        //}
+        
 
         private void btnConfirmer_Click(object sender, RoutedEventArgs e)
         {
@@ -106,35 +107,19 @@ namespace Barman.BouteilleDossier.view
                 btnConfirmer.IsEnabled = false;
         }
 
-        private void cboType_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            cboMarqueBouteille.ItemsSource = lstMarques;
-            cboMarqueBouteille.SelectedValuePath = "IdMarque";
-            cboMarqueBouteille.DisplayMemberPath = "Nom";
+      private void cboType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+      {
+            //Si un type est choisi, j'active la liste de marque
+            if(cboMarqueBouteille.IsEnabled==false)
+            cboMarqueBouteille.IsEnabled = true;
 
-            lstMarques = new List<Marque>();        
-            List<Marque> lstMarqueDuType;
-            lstIdMarquesEnReserve = HibernateBouteilleService.RetrieveIdMarqueEnReserve();
-            lstMarqueDuType = HibernateMarqueService.RetrieveByType((TypeAlcool)cboType.SelectedItem);
+            lstMarques = PeuplerListeMarqueAlcool();
+           
 
-            if (cboMarqueBouteille.IsEnabled == false)
-                cboMarqueBouteille.IsEnabled = true;
-
-            foreach (Marque m in lstMarqueDuType)
-            {
-                if (lstIdMarquesEnReserve.Contains(m.IdMarque) && !lstMarques.Contains(m))               
-                    lstMarques.Add(m);                
-            }            
-            if (FormulaireRempli())            
-                btnConfirmer.IsEnabled = true;            
-            else            
-                btnConfirmer.IsEnabled = false;            
-        }
-
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-            cboEmplacement.SelectedIndex = -1;
-            cboEmplacement.IsEnabled = false;
+         
+             cboMarqueBouteille.ItemsSource = lstMarques;
+             cboMarqueBouteille.SelectedValuePath = "IdMarque";
+             cboMarqueBouteille.DisplayMemberPath = "Nom";
 
             if (FormulaireRempli())
             {
@@ -193,6 +178,54 @@ namespace Barman.BouteilleDossier.view
             {
                 btnConfirmer.IsEnabled = false;
             }
+        }
+
+        private List<TypeAlcool> PeuplerListeTypeAlcool()
+        {
+            //Retrouve les id des marques des bouteilles en réserve
+            lstIdMarquesEnReserve = new List<int?>(HibernateBouteilleService.RetrieveIdMarqueEnReserve());
+            List<int?> lstIdTypeEnReserve = new List<int?>();
+
+            //Pour chaque idMarque dans la liste, je trouve le type de cette marque, donc c'est les types d'alcool en réserve
+            foreach (int? i in lstIdMarquesEnReserve)
+            {
+                
+                lstIdTypeEnReserve.AddRange(HibernateMarqueService.RetrieveIdTypeEnReserve(i));
+            }
+            //Pour chaque idType dans la liste des types en réserve, je trouve le type d'alcool associé en BD
+            foreach (int? i in lstIdTypeEnReserve)
+            {
+                List<TypeAlcool> leType = HibernateTypeAlcoolService.RetrieveTypeAlcoolById(i);
+                //Si le type n'est pas déjà dans la liste des types, je l'ajoute
+                if (lstType.Contains(leType[0]) == false)
+                    lstType.Add(leType[0]);
+            }
+
+            return lstType;
+        }
+        private List<Marque> PeuplerListeMarqueAlcool()
+        {
+            
+
+            lstMarques = new List<Marque>();
+            List<Marque> lstMarqueDuType;
+
+            //Je trouve tous les id des marques en réserve
+            lstIdMarquesEnReserve = HibernateBouteilleService.RetrieveIdMarqueEnReserve();
+            //Je trouve toutes les marques du type sélectionné
+            lstMarqueDuType = HibernateMarqueService.RetrieveByType((TypeAlcool)cboType.SelectedItem);
+
+            //Pour chaque Marque du type sélectionné, je vérifie si cette marque est en réserve grâce à la liste des idMarques en réserve
+            // et si elle est déjà dans la liste de marques. Si ces conditions sont respecté, je l'ajoute dans la liste de marque
+            foreach (Marque m in lstMarqueDuType)
+            {
+                if (lstIdMarquesEnReserve.Contains(m.IdMarque) && !lstMarques.Contains(m))
+                {
+                    lstMarques.Add(m);
+                }
+            }
+
+            return lstMarques;
         }
 
 

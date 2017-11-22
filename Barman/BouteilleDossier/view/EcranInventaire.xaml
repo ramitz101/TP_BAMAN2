@@ -10,6 +10,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height=".8*"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="10*"/>
             <RowDefinition Height="*"/>
             
@@ -18,8 +19,10 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
-        
-        <Grid Name="grdBtn" Grid.Column="0" Grid.Row="1">
+
+        <Label Content="Liste des bouteilles" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" FontSize="25" FontWeight="Bold"/>
+
+        <Grid Name="grdBtn" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -67,12 +70,12 @@
 
         </Grid>
         
-        <StackPanel VerticalAlignment="Top" Grid.Column="1" Grid.Row="1">
+        <StackPanel VerticalAlignment="Top" Grid.Column="1" Grid.Row="2">
             <CheckBox Grid.Column="1" Grid.Row="1" Content="Afficher les bouteilles supprimées" Checked="chbAfficherSupprimee_Checked" Unchecked="chbAfficherSupprimee_Unchecked" VerticalAlignment="Bottom" IsChecked="False" Name="chbAfficherSupprimee" HorizontalAlignment="Left"  />
             <TextBox x:Name="txtRecherche"  KeyUp="txtRecherche_KeyUp_1" VerticalAlignment="Top" Text="Rechercher" LostFocus="txtRecherche_LostFocus" GotFocus="txtRecherche_GotFocus" />
         </StackPanel>
 
-        <DataGrid  Name="dtgInventaire" AutoGenerateColumns="False" HorizontalAlignment="Left"  VerticalAlignment="Top"  Margin="0,48,0,0" Grid.Column="1" Grid.Row="1">
+        <DataGrid  Name="dtgInventaire" AutoGenerateColumns="False" HorizontalAlignment="Left"  VerticalAlignment="Top"  Margin="0,48,0,0" Grid.Column="1" Grid.Row="2">
             <DataGrid.Resources>
                 <Style TargetType="DataGridRow">
                     <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
@@ -84,7 +87,7 @@
                 </Style>
             </DataGrid.ColumnHeaderStyle>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Nom" Width="2*" Binding="{Binding SaMarque.Nom}" />
+                <DataGridTextColumn Header="Marque" Width="2*" Binding="{Binding SaMarque.Nom}" />
                 <DataGridTextColumn Header="Volume" Width="1*" Binding="{Binding VolumeInitial}"/>
                 <DataGridTextColumn Header="V.Restant" Width="1*" Binding="{Binding VolumeRestant}"/>
                 <DataGridTextColumn Header="Numéro" Width="1*" Binding="{Binding Numero}"/>
@@ -96,13 +99,13 @@
 
         </DataGrid>
 
-        <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="left" Grid.RowSpan="2">
+        <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="left" Grid.RowSpan="2">
             <Label Grid.Column="1" Grid.Row="2" Name="lblNbEntamee" Content="Entamées: "/>
             <Label Grid.Column="1" Grid.Row="2" Name="lblNbPlein" Content="Pleines: "/>
             <Label Grid.Column="1" Grid.Row="2" Name="lblNbSupprimee" Content="Supprimées: "/>
             <Label Grid.Column="1" Grid.Row="2" Name="lblNbReserve" Content="En réserve: "/>
         </StackPanel>
-        <TextBox Name="lblMessage" KeyboardNavigation.TabNavigation="None"  BorderThickness="0"  TextChanged="lblMessage_TextChanged" Grid.Column="1" Grid.Row="2" IsReadOnly="True" IsManipulationEnabled="False" Text="" Margin="0,20,0,0" SelectionOpacity="0.9"/>
+        <TextBox Name="lblMessage" KeyboardNavigation.TabNavigation="None"  BorderThickness="0"  TextChanged="lblMessage_TextChanged" Grid.Column="1" Grid.Row="3" IsReadOnly="True" IsManipulationEnabled="False" Text="" Margin="0,20,0,0" SelectionOpacity="0.9"/>
 
 
     </Grid>

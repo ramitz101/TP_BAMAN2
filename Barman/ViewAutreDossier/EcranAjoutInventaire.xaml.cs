@@ -18,6 +18,7 @@ using System.Windows.Shapes;
 using Barman.MarqueDossier;
 using Barman.MarqueDossier.Hibernate;
 using Barman.TypeDossier;
+using Barman.BouteilleDossier.view;
 using Barman.TypeDossier.Hibernate;
 
 namespace Barman.ViewAutreDossier
@@ -57,10 +58,13 @@ namespace Barman.ViewAutreDossier
 
         private void btnAnnuler_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
-            EcranOnglets EO = new EcranOnglets(0);
-            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EO);
-            btnConfirmer.IsEnabled = false;
+            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
+           // EcranOnglets EO = new EcranOnglets(0);
+            EcranInventaire EI = new EcranInventaire();
+            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0,EI);
+            EI.lblMessage.Text = "Ajout annulé.";
+            EI.lblMessage.Foreground = Brushes.Red;
+
         }
 
         private void btnConfirmer_Click(object sender, RoutedEventArgs e)
@@ -84,10 +88,12 @@ namespace Barman.ViewAutreDossier
             }
             else
             {
-                ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
-                EcranOnglets EO = new EcranOnglets(0);
-                ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EO);
-                btnAnnuler.IsEnabled = false;
+                ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
+                // EcranOnglets EO = new EcranOnglets(0);
+                EcranInventaire EI = new EcranInventaire();
+                ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0, EI);
+                EI.lblMessage.Text = "Ajout effectué avec succès.";
+                EI.lblMessage.Foreground = Brushes.Green;
             }
 
         }
