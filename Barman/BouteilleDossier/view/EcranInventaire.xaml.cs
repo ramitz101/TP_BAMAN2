@@ -4,10 +4,8 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-
 using System.Windows;
 using System.Windows.Controls;
-
 using System.Windows.Input;
 using System.Windows.Media;
 using Barman.BouteilleDossier.Hibernate;
@@ -38,8 +36,6 @@ namespace Barman.BouteilleDossier.view
         public EcranInventaire()
         {
             InitializeComponent();
-            
-            
 
             lstBouteilles = new ObservableCollection<Bouteille>(ChargerListBouteille(false));
             dtgInventaire.ItemsSource = lstBouteilles;
@@ -55,9 +51,7 @@ namespace Barman.BouteilleDossier.view
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
             lblMessage.Text = "";
-
             CommandManager.InvalidateRequerySuggested();
-           
         }
 
         private void btnAjout_Click(object sender, RoutedEventArgs e)
@@ -70,18 +64,14 @@ namespace Barman.BouteilleDossier.view
             if (EcranAccueil.employe.IdRole != 1 && EcranAccueil.employe.IdRole != null)
             {
                 FenetreErreur FE = new FenetreErreur();
-                 FE.ShowDialog();
-               
-
+                FE.ShowDialog();
             }
             if (EcranAccueil.employe.IdRole == 1)
             {
                 ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
                 EcranAjoutInventaire EAI = new EcranAjoutInventaire();
                 ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0, EAI);
-                
             }
-
             dtgInventaire.ItemsSource = new ObservableCollection<Bouteille>(ChargerListBouteille(false));
         }
 
@@ -89,7 +79,6 @@ namespace Barman.BouteilleDossier.view
         {
             if (UneBouteilleSelectionne())
             {
-
                 if (EcranAccueil.employe.IdRole == null)
                 {
                     FenetreAuthentification FN = new FenetreAuthentification();
@@ -104,34 +93,27 @@ namespace Barman.BouteilleDossier.view
                 {
                     FenetreModifierBouteille popup = new FenetreModifierBouteille(lstBouteilles, dtgInventaire.SelectedItem as Bouteille, this);
                     popup.ShowDialog();
-                    if(popup.btnConfirmer.IsEnabled)
+                    if (popup.btnConfirmer.IsEnabled)
                     {
                         lblMessage.Text = "Bouteille modifié avec succès.";
                         lblMessage.Foreground = Brushes.Green;
-
-
                     }
-                    else if(popup.btnAnnuler.IsEnabled)
+                    else if (popup.btnAnnuler.IsEnabled)
                     {
                         lblMessage.Text = "Modification de bouteille annulée.";
                         lblMessage.Foreground = Brushes.Red;
-
                     }
                 }
-
                 dtgInventaire.ItemsSource = new ObservableCollection<Bouteille>(ChargerListBouteille(chbAfficherSupprimee.IsChecked));
-                //dtgInventaire.Items.Refresh();
-
-            }            
+            }
         }
-        
+
         private void btnAccueil_Click(object sender, RoutedEventArgs e)
         {
             EcranAccueil EA = new EcranAccueil();
             ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
             ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EA);
         }
-
 
         // fonction charger tous les bouteille de l'inventaire (chargerListeBouteille) elle retourne la liste de la BD
         private static List<Bouteille> ChargerListBouteille(bool? sup)
@@ -142,15 +124,9 @@ namespace Barman.BouteilleDossier.view
                 b.SaMarque = HibernateMarqueService.Retrieve((int)b.IdMarque)[0];
                 b.SaMarque.SonTypeAlcool = HibernateTypeAlcoolService.RetrieveTypeAlcool((int)b.SaMarque.IdTypeAlcool)[0];
                 b.SonEmplacement = HibernateEmplacementService.retrieveEmplacement((int)b.IdEmplacement)[0];
-
             }
-
             return listB;
         }
-        
-       
-
-
 
         private bool UneBouteilleSelectionne()
         {
@@ -159,12 +135,12 @@ namespace Barman.BouteilleDossier.view
             // si le user a sélectionné plus d'une bouteille
             else if (dtgInventaire.SelectedItems.Count > 1)
             {
-                MessageBox.Show("Vous devez selectionner une seule bouteille.", "Mauvaise sélection",MessageBoxButton.OK,MessageBoxImage.Warning,MessageBoxResult.OK);
+                MessageBox.Show("Vous devez selectionner une seule bouteille.", "Mauvaise sélection", MessageBoxButton.OK, MessageBoxImage.Warning, MessageBoxResult.OK);
                 return false;
             }
             else
             {
-                MessageBox.Show("Vous devez selectionner une bouteille.","Mauvaise sélection",MessageBoxButton.OK,MessageBoxImage.Warning,MessageBoxResult.OK);
+                MessageBox.Show("Vous devez selectionner une bouteille.", "Mauvaise sélection", MessageBoxButton.OK, MessageBoxImage.Warning, MessageBoxResult.OK);
                 return false;
             }
         }
@@ -183,93 +159,61 @@ namespace Barman.BouteilleDossier.view
         private void txtRecherche_GotFocus(object sender, RoutedEventArgs e)
         {
             txtRecherche.Text = "";
-            List<Bouteille> lstBouteille = HibernateBouteilleService.RetrieveAll(chbAfficherSupprimee.IsChecked);
-            /*foreach (Bouteille b in lstBouteille)
-            {
-                b.SaMarque = HibernateMarqueService.Retrieve((int)b.IdMarque)[0];
-                b.SaMarque.SonTypeAlcool = HibernateTypeAlcoolService.RetrieveTypeAlcool((int)b.SaMarque.IdTypeAlcool)[0];
-                b.SonEmplacement = HibernateEmplacementService.retrieveEmplacement((int)b.IdEmplacement)[0];
-            }*/
-            dtgInventaire.ItemsSource = lstBouteille;
+            //List<Bouteille> lstBouteille = HibernateBouteilleService.RetrieveAll(chbAfficherSupprimee.IsChecked);            
+            dtgInventaire.ItemsSource = HibernateBouteilleService.RetrieveAll(chbAfficherSupprimee.IsChecked);
         }
 
         private void txtRecherche_LostFocus(object sender, RoutedEventArgs e)
         {
             txtRecherche.Text = "Rechercher";
         }
-
-
-
-
         private void txtRecherche_KeyUp_1(object sender, KeyEventArgs e)
         {
             List<Bouteille> lstBouteille = new List<Bouteille>();
             List<Marque> lstMarque = new List<Marque>();
             List<TypeAlcool> lstType = new List<TypeAlcool>();
-            List<Emplacement> lstEmplacement= new List<Emplacement>();
-            if (txtRecherche.Text != "" && txtRecherche.Text != "Recherche" )
+            List<Emplacement> lstEmplacement = new List<Emplacement>();
+            if (txtRecherche.Text != "" && txtRecherche.Text != "Recherche")
             {
                 switch (ContenuHeader)
                 {
                     case "Nom":
                         lstMarque = HibernateMarqueService.Retrieve(txtRecherche.Text);
                         foreach (Marque m in lstMarque)
-                        {
-                            lstBouteille.AddRange(HibernateBouteilleService.RetrieveByMarqueId((int)m.IdMarque,chbAfficherSupprimee.IsChecked));
-                        }
+                            lstBouteille.AddRange(HibernateBouteilleService.RetrieveByMarqueId((int)m.IdMarque, chbAfficherSupprimee.IsChecked));
                         break;
                     case "Emplacement":
                         lstEmplacement = HibernateEmplacementService.Retrieve(txtRecherche.Text);
-                        foreach (Emplacement m in lstEmplacement)
-                        {
-                            lstBouteille.AddRange(HibernateBouteilleService.RetrieveByEmplacementId((int)m.IdEmplacement,chbAfficherSupprimee.IsChecked));
-                        }
+                        foreach (Emplacement m in lstEmplacement)                       
+                            lstBouteille.AddRange(HibernateBouteilleService.RetrieveByEmplacementId((int)m.IdEmplacement, chbAfficherSupprimee.IsChecked));                        
                         break;
                     case "État":
-                        lstBouteille.AddRange(HibernateBouteilleService.RetrieveByEtat(txtRecherche.Text,chbAfficherSupprimee.IsChecked));
+                        lstBouteille.AddRange(HibernateBouteilleService.RetrieveByEtat(txtRecherche.Text, chbAfficherSupprimee.IsChecked));
                         break;
                     case "Type d'alcool":
                         lstType = HibernateTypeAlcoolService.Retrieve(txtRecherche.Text);
-                        foreach (TypeAlcool t in lstType)
-                        {
-                            lstMarque.AddRange(HibernateMarqueService.RetrieveByType(t));
-                               
-                        }
-                        foreach (Marque m in lstMarque)
-                        {
-                            lstBouteille.AddRange(HibernateBouteilleService.RetrieveByMarqueId((int)m.IdMarque,chbAfficherSupprimee.IsChecked));
-                        }
+                        foreach (TypeAlcool t in lstType)                        
+                            lstMarque.AddRange(HibernateMarqueService.RetrieveByType(t));                        
+                        foreach (Marque m in lstMarque)                        
+                            lstBouteille.AddRange(HibernateBouteilleService.RetrieveByMarqueId((int)m.IdMarque, chbAfficherSupprimee.IsChecked));                        
                         break;
                 }
-               
-
+            
                 if (lstBouteille.Count != 0)
                     dtgInventaire.ItemsSource = lstBouteille;
-                else
-                {
-                    dtgInventaire.ItemsSource = null;
-                }
+                else                
+                    dtgInventaire.ItemsSource = null;                
             }
             else
             {
-                lstBouteille = HibernateBouteilleService.RetrieveAll(chbAfficherSupprimee.IsChecked);
-                /*foreach (Bouteille b in lstBouteille)
-                {
-                    b.SaMarque = HibernateMarqueService.Retrieve((int)b.IdMarque)[0];
-                    b.SaMarque.SonTypeAlcool = HibernateTypeAlcoolService.RetrieveTypeAlcool((int)b.SaMarque.IdTypeAlcool)[0];
-                    b.SonEmplacement = HibernateEmplacementService.retrieveEmplacement((int)b.IdEmplacement)[0];
-                }*/
-
-                dtgInventaire.ItemsSource = lstBouteille;
+                //lstBouteille = HibernateBouteilleService.RetrieveAll(chbAfficherSupprimee.IsChecked);               
+                dtgInventaire.ItemsSource = HibernateBouteilleService.RetrieveAll(chbAfficherSupprimee.IsChecked);
             }
         }
 
-
         private void btnImprimer_Click(object sender, RoutedEventArgs e)
         {
-            lstBouteilles = new ObservableCollection<Bouteille>(ChargerListBouteille(chbAfficherSupprimee.IsChecked));
-            
-
+            lstBouteilles = new ObservableCollection<Bouteille>(ChargerListBouteille(chbAfficherSupprimee.IsChecked));        
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
 
             saveFileDialog1.Filter = "Pdf Files|*.pdf";
@@ -277,10 +221,9 @@ namespace Barman.BouteilleDossier.view
             if (saveFileDialog1.ShowDialog() == true)
             {
                 //Crée le fichier
-
                 Document doc = new Document();
                 FileStream fs = new System.IO.FileStream(saveFileDialog1.FileName, FileMode.Create, FileAccess.Write, FileShare.None);
-                PdfWriter writer = PdfWriter.GetInstance(doc,fs);
+                PdfWriter writer = PdfWriter.GetInstance(doc, fs);
                 doc.Open();
 
                 //Entête
@@ -297,20 +240,12 @@ namespace Barman.BouteilleDossier.view
                 table = CreationDesTables.CreerTableInventaire(table, lstBouteilles);
                 doc.Add(table);
 
-
-
-
                 string fullPath = System.IO.Path.GetFullPath(saveFileDialog1.FileName);
                 doc.Close();
-                Process.Start(fullPath);
-            
-
+                Process.Start(fullPath);            
             }
         }
-
-        
-        
-
+       
         private void btnSuppression_Click(object sender, RoutedEventArgs e)
         {
             if (EcranAccueil.employe.IdRole == null)
@@ -324,15 +259,14 @@ namespace Barman.BouteilleDossier.view
                 FE.ShowDialog();
             }
             if (EcranAccueil.employe.IdRole == 1)
-            {                
+            {
                 if (AuMoinsUneBouteilleSelectionne())
                 {
-                    MessageBoxResult resultat = MessageBox.Show("Êtes vous sûr de vouloire supprimer la sélection de bouteilles?", "Question", MessageBoxButton.YesNo,MessageBoxImage.Warning,MessageBoxResult.No);
+                    MessageBoxResult resultat = MessageBox.Show("Êtes vous sûr de vouloire supprimer la sélection de bouteilles?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No);
 
                     if (resultat == MessageBoxResult.Yes)
                     {
                         List<Bouteille> lstBouteille = dtgInventaire.SelectedItems.Cast<Bouteille>().ToList();
-
                         foreach (var bouteille in lstBouteille)
                         {
                             bouteille.Etat = "Supprimée";
@@ -341,7 +275,6 @@ namespace Barman.BouteilleDossier.view
                             HibernateBouteilleService.Update(bouteille);
                             lblMessage.Text = "Bouteille supprimé avec succès.";
                             lblMessage.Foreground = Brushes.Green;
-
                         }
                         dtgInventaire.ItemsSource = new ObservableCollection<Bouteille>(ChargerListBouteille(chbAfficherSupprimee.IsChecked));
                     }
@@ -354,12 +287,10 @@ namespace Barman.BouteilleDossier.view
             }
         }
 
-        private PdfPTable CreerEnteteFichier(PdfPTable table)
-        {
-
-
-            return table;
-        }
+        //private PdfPTable CreerEnteteFichier(PdfPTable table)
+        //{            
+        //    return table;
+        //}
         private void columnHeader_Click(object sender, RoutedEventArgs e)
         {
             ContenuHeader = ((DataGridColumnHeader)sender).Content.ToString();
@@ -368,9 +299,7 @@ namespace Barman.BouteilleDossier.view
         private void chbAfficherSupprimee_Checked(object sender, RoutedEventArgs e)
         {
             lstBouteilles = new ObservableCollection<Bouteille>(ChargerListBouteille(true));
-            dtgInventaire.ItemsSource = lstBouteilles;
-
-
+            dtgInventaire.ItemsSource = lstBouteilles;            
         }
 
         private void chbAfficherSupprimee_Unchecked(object sender, RoutedEventArgs e)
@@ -387,9 +316,8 @@ namespace Barman.BouteilleDossier.view
         }
 
         private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
-        {        
-            btnGerer_Click(sender, e);
-
+        {
+            btnGerer_Click(sender, e);        
         }
     }
 }

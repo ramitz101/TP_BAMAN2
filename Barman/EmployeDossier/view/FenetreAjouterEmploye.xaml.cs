@@ -28,7 +28,7 @@ namespace Barman.EmployeDossier.view
         private String oldValueName = String.Empty;
         private String oldValuePrenom = String.Empty;
         private String oldValueTelephone = String.Empty;
-        private String oldValueNAS = String.Empty;        
+        private String oldValueNAS = String.Empty;
 
         public FenetreAjouterEmploye()
         {
@@ -49,10 +49,9 @@ namespace Barman.EmployeDossier.view
             {
                 HibernateEmployeService.Create(new Employe(txtNom.Text, txtPrenom.Text, Extractdigits(txtTelephone.Text), Extractdigits(txtNAS.Text), calendarDate.SelectedDate.Value, RoleChoisi()));
                 this.Close();
-
-            }           
+            }
         }
-       
+
         private string Extractdigits(string pText)
         {
             string text = pText;
@@ -65,74 +64,71 @@ namespace Barman.EmployeDossier.view
             }
             return textResult;
         }
-        
+
         private bool ValidationChamps()
-        {            
+        {
             bool estValide = true;
-            
-            if (txtNom.Text != "" && txtNom.Text.Length < 100 && txtPrenom.Text != "" && txtPrenom.Text.Length < 100  && UnRdbEstChoisi() && txtNAS.Text.Count(Char.IsDigit) == 9 && txtTelephone.Text.Count(Char.IsDigit) == 10)
-            {
+            if (txtNom.Text != "" && txtNom.Text.Length < 100 && txtPrenom.Text != "" && txtPrenom.Text.Length < 100 && UnRdbEstChoisi() && txtNAS.Text.Count(Char.IsDigit) == 9 && txtTelephone.Text.Count(Char.IsDigit) == 10)
                 estValide = true;
-            }
             if (txtNom.Text == "")
-            {                                
+            {
                 txtNom.ToolTip = "Vous devez entrer un nom.";
                 txtNom.BorderBrush = System.Windows.Media.Brushes.Red;
                 estValide = false;
             }
             if (txtNom.Text.Length > 100)
-            {                
+            {
                 txtNom.ToolTip = "Le nom entré est trop long.";
                 txtNom.BorderBrush = System.Windows.Media.Brushes.Red;
                 estValide = false;
-            }           
+            }
             if (txtPrenom.Text == "")
-            {                
+            {
                 txtPrenom.ToolTip = "Vous devez entrer un prénom.";
                 txtPrenom.BorderBrush = System.Windows.Media.Brushes.Red;
                 estValide = false;
             }
             if (txtPrenom.Text.Length > 100)
-            {               
+            {
                 txtPrenom.ToolTip = "Le prénom entré est trop long.";
                 txtPrenom.BorderBrush = System.Windows.Media.Brushes.Red;
                 estValide = false;
-            }          
+            }
             if (!UnRdbEstChoisi())
-            {          
+            {
                 lblRole.ToolTip = "Vous devez sélectionner un niveau d'accès.";
                 lblRole.Foreground = Brushes.Red;
                 estValide = false;
             }
             if (txtNAS.Text.Count(Char.IsDigit) == 0)
-            {               
+            {
                 txtNAS.ToolTip = "Vous devez entrer un numéro d'assurance social.";
                 txtNAS.BorderBrush = Brushes.Red;
                 estValide = false;
             }
             if (txtNAS.Text.Count(Char.IsDigit) < 9 && txtNAS.Text.Count(Char.IsDigit) > 0)
-            {        
+            {
                 txtNAS.ToolTip = "Le numéro d'assurance social n'est pas complet.";
                 txtNAS.BorderBrush = new SolidColorBrush(Colors.Red);
                 estValide = false;
             }
             if (txtTelephone.Text.Count(Char.IsDigit) == 0)
-            {               
+            {
                 txtTelephone.ToolTip = "Vous devez entrer un numéro de téléphone.";
                 txtTelephone.BorderBrush = new SolidColorBrush(Colors.Red);
                 estValide = false;
             }
             if (txtTelephone.Text.Count(Char.IsDigit) < 10 && txtTelephone.Text.Count(Char.IsDigit) > 0)
-            {              
+            {
                 txtTelephone.ToolTip = "Le numéro de téléphone entré n'est pas complet.";
                 txtTelephone.BorderBrush = new SolidColorBrush(Colors.Red);
                 estValide = false;
             }
-            
+
             lblInfoMessage.Foreground = Brushes.Red;
             lblInfoMessage.Content = "Une erreur est survenue. Passé votre souris sur la ou les zones rouges pour en connaître la cause.";
             return estValide;
-        }    
+        }
 
         public bool UnRdbEstChoisi()
         {
@@ -153,7 +149,7 @@ namespace Barman.EmployeDossier.view
             {
                 List<Role> lstRole = new List<Role>(HibernateRoleService.Retrieve("Utils"));
                 return (int)lstRole[0].IdRole;
-            }       
+            }
         }
 
         private void calendarDate_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
@@ -162,8 +158,8 @@ namespace Barman.EmployeDossier.view
         }
 
         private void txtNom_GotFocus(object sender, RoutedEventArgs e)
-        {          
-                oldValueName = txtNom.Text;            
+        {
+            oldValueName = txtNom.Text;
         }
 
         private void txtNom_LostFocus(object sender, RoutedEventArgs e)

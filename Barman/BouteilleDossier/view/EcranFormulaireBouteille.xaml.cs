@@ -1,19 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Barman.BouteilleDossier;
 using Barman.BouteilleDossier.Hibernate;
 using Barman.EmplacementDossier;
 using Barman.EmplacementDossier.Hibernate;
@@ -46,8 +33,8 @@ namespace Barman.BouteilleDossier.view
             lstIdMarquesEnReserve = new List<int?>(HibernateBouteilleService.RetrieveIdMarqueEnReserve());
             lstIdTypeEnReserve = new List<int?>();
 
-            foreach (int? i in lstIdMarquesEnReserve)            
-                lstIdTypeEnReserve.AddRange(HibernateMarqueService.RetrieveIdTypeEnReserve(i));            
+            foreach (int? i in lstIdMarquesEnReserve)
+                lstIdTypeEnReserve.AddRange(HibernateMarqueService.RetrieveIdTypeEnReserve(i));
             foreach (int? i in lstIdTypeEnReserve)
             {
                 List<TypeAlcool> leType = HibernateTypeAlcoolService.RetrieveTypeAlcoolById(i);
@@ -70,10 +57,10 @@ namespace Barman.BouteilleDossier.view
             ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EA);
         }
 
-        private void btnImprimer_Click(object sender, RoutedEventArgs e)
-        {
+        //private void btnImprimer_Click(object sender, RoutedEventArgs e)
+        //{
 
-        }
+        //}
 
         private void btnConfirmer_Click(object sender, RoutedEventArgs e)
         {
@@ -82,87 +69,66 @@ namespace Barman.BouteilleDossier.view
 
                 Bouteille bouteilleAChanger = HibernateBouteilleService.RetrieveByUnique((int)HibernateMarqueService.Retrieve(cboMarqueBouteille.Text)[0].IdMarque, (int)HibernateEmplacementService.retrieveEmplacementByNom("Réserve")[0].IdEmplacement, cboÉtiquette.Text)[0];
                 if (chbVendu.IsChecked == false)
-                {
                     bouteilleAChanger.IdEmplacement = (int)HibernateEmplacementService.retrieveEmplacementByNom(cboEmplacement.Text)[0].IdEmplacement;
-                }
                 else
                 {
                     bouteilleAChanger.IdEmplacement = (int)HibernateEmplacementService.retrieveEmplacementByNom("Aucun")[0].IdEmplacement;
                     bouteilleAChanger.Etat = "Vendue";
                 }
-                HibernateBouteilleService.Update(bouteilleAChanger);
 
+                HibernateBouteilleService.Update(bouteilleAChanger);
                 MessageBox.Show("Modification éffectuée avec succès!", "Avertissement", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
                 ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0, new EcranFormulaireBouteille());
-
             }
             else
-            {
                 MessageBox.Show("Refusé");
-            }
         }
 
         private void cboMarqueBouteille_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             cboÉtiquette.IsEnabled = true;
-            if (cboMarqueBouteille.SelectedItem != null)
-                lstBouteilles = HibernateBouteilleService.RetrieveByMarque((Marque)cboMarqueBouteille.SelectedItem);
             cboÉtiquette.ItemsSource = lstBouteilles;
             cboÉtiquette.DisplayMemberPath = "Numero";
+
+            if (cboMarqueBouteille.SelectedItem != null)
+                lstBouteilles = HibernateBouteilleService.RetrieveByMarque((Marque)cboMarqueBouteille.SelectedItem);
 
             if (cboÉtiquette.Items.Count == 0 && cboMarqueBouteille.SelectedItem != null)
             {
                 MessageBox.Show("Il n'y a plus de bouteille de la marque sélectionnée dans la réserve.", "Manque de bouteille", MessageBoxButton.OK, MessageBoxImage.Warning);
                 cboÉtiquette.IsEnabled = false;
             }
-
             if (FormulaireRempli())
-            {
                 btnConfirmer.IsEnabled = true;
-            }
             else
-            {
                 btnConfirmer.IsEnabled = false;
-            }
-
         }
 
         private void cboType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (cboMarqueBouteille.IsEnabled == false)
-                cboMarqueBouteille.IsEnabled = true;
-
-            lstMarques = new List<Marque>();
-
-            List<Marque> lstMarqueDuType;
-
-            lstIdMarquesEnReserve = HibernateBouteilleService.RetrieveIdMarqueEnReserve();
-            lstMarqueDuType = HibernateMarqueService.RetrieveByType((TypeAlcool)cboType.SelectedItem);
-
-            foreach (Marque m in lstMarqueDuType)
-            {
-                if (lstIdMarquesEnReserve.Contains(m.IdMarque) && !lstMarques.Contains(m))
-                {
-                    lstMarques.Add(m);
-                }
-            }
-
-
             cboMarqueBouteille.ItemsSource = lstMarques;
             cboMarqueBouteille.SelectedValuePath = "IdMarque";
             cboMarqueBouteille.DisplayMemberPath = "Nom";
 
-            if (FormulaireRempli())
-            {
-                btnConfirmer.IsEnabled = true;
-            }
-            else
-            {
-                btnConfirmer.IsEnabled = false;
-            }
+            lstMarques = new List<Marque>();        
+            List<Marque> lstMarqueDuType;
+            lstIdMarquesEnReserve = HibernateBouteilleService.RetrieveIdMarqueEnReserve();
+            lstMarqueDuType = HibernateMarqueService.RetrieveByType((TypeAlcool)cboType.SelectedItem);
 
+            if (cboMarqueBouteille.IsEnabled == false)
+                cboMarqueBouteille.IsEnabled = true;
+
+            foreach (Marque m in lstMarqueDuType)
+            {
+                if (lstIdMarquesEnReserve.Contains(m.IdMarque) && !lstMarques.Contains(m))               
+                    lstMarques.Add(m);                
+            }            
+            if (FormulaireRempli())            
+                btnConfirmer.IsEnabled = true;            
+            else            
+                btnConfirmer.IsEnabled = false;            
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)

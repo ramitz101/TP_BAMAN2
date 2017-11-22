@@ -36,8 +36,6 @@ namespace Barman.EmployeDossier.view
             this.Owner = App.Current.MainWindow;
             if (employe != null)
             {
-
-
                 EmployeModifier = employe;
                 txtNom.Text = employe.Nom;
                 txtPrenom.Text = employe.Prenom;
@@ -45,17 +43,13 @@ namespace Barman.EmployeDossier.view
                 txtNAS.Text = employe.NAS;
                 CalendarModifierEmploye.SelectedDate = employe.DateEmbauche;
                 CalendarModifierEmploye.DisplayDate = employe.DateEmbauche;
+                txtCode.Text = employe.CodeEmploye;
                 // à améliorer
                 if (employe.IdRole == 1)
                     rdbAdministrateur.IsChecked = true;
                 else
                     rdbUtilisateur.IsChecked = true;
-                txtCode.Text = employe.CodeEmploye;
-                
-
             }
-
-
         }
         private void btnAnnuler_Click(object sender, RoutedEventArgs e)
         {
@@ -68,9 +62,6 @@ namespace Barman.EmployeDossier.view
             {
                 string telephone = txtTelephone.Text;
                 string numro = string.Empty;
-
-
-                
                 for (int i = 0; i < telephone.Length; i++)
                 {
                     if (Char.IsDigit(telephone[i]))
@@ -85,11 +76,8 @@ namespace Barman.EmployeDossier.view
                 EmployeModifier.CodeEmploye = txtCode.Text;
 
                 HibernateEmployeService.Update(EmployeModifier);
-
                 this.Close();
-
             }
-              
         }
 
         private string Extractdigits(string pText)
@@ -107,7 +95,6 @@ namespace Barman.EmployeDossier.view
 
         private int RoleChoisi()
         {
-
             if (rdbAdministrateur.IsChecked == true)
             {
                 List<Role> lstRole = new List<Role>(HibernateRoleService.Retrieve("Admin"));
@@ -118,9 +105,6 @@ namespace Barman.EmployeDossier.view
                 List<Role> lstRole = new List<Role>(HibernateRoleService.Retrieve("Utils"));
                 return (int)lstRole[0].IdRole;
             }
-
-
-
         }
 
         private bool ValidationChamps()
@@ -128,9 +112,7 @@ namespace Barman.EmployeDossier.view
             bool estValide = true;
 
             if (txtNom.Text != "" && txtNom.Text.Length < 100 && txtPrenom.Text != "" && txtPrenom.Text.Length < 100 && UnRdbEstChoisi() && txtNAS.Text.Count(Char.IsDigit) == 9 && txtTelephone.Text.Count(Char.IsDigit) == 10)
-            {
                 estValide = true;
-            }
             if (txtNom.Text == "")
             {
                 txtNom.ToolTip = "Vous devez entrer un nom.";
@@ -143,7 +125,6 @@ namespace Barman.EmployeDossier.view
                 txtNom.BorderBrush = System.Windows.Media.Brushes.Red;
                 estValide = false;
             }
-
             if (txtPrenom.Text == "")
             {
                 txtPrenom.ToolTip = "Vous devez entrer un prénom.";
@@ -203,7 +184,6 @@ namespace Barman.EmployeDossier.view
         private void btnGenererNouveauCode_Click(object sender, RoutedEventArgs e)
         {
             txtCode.Text = Generer.genererCode(Employe.GetCodeEmployeDejaExistant());
-            //txtCode.Text = Employe.genererCodeEmploye();
         }
 
         private void CalendarModifierEmploye_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
@@ -265,7 +245,6 @@ namespace Barman.EmployeDossier.view
         private void txtNAS_GotFocus(object sender, RoutedEventArgs e)
         {
             oldValueNAS = txtNAS.Text;
-
         }
 
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
