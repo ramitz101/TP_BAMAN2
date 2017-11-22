@@ -12,6 +12,7 @@ using Barman.TypeDossier;
 using Barman.TypeDossier.Hibernate;
 using Barman.ViewAutreDossier;
 
+
 namespace Barman.BouteilleDossier.view
 {
     /// <summary>
@@ -30,7 +31,7 @@ namespace Barman.BouteilleDossier.view
         {
             InitializeComponent();
             lstIdMarquesEnReserve = new List<int?>(HibernateBouteilleService.RetrieveIdMarqueEnReserve());
-            lstIdTypeEnReserve = new List<int?>();
+            //lstIdTypeEnReserve = new List<int?>();
 
          lstType = PeuplerListeTypeAlcool();
            
@@ -38,9 +39,9 @@ namespace Barman.BouteilleDossier.view
             cboType.DisplayMemberPath = "Nom";
             cboEmplacement.ItemsSource = lstEmplacements;
             cboEmplacement.DisplayMemberPath = "Nom";
-            lstEmployes = HibernateEmployeService.Retrieve(EcranAccueil.employe.IdEmploye);
+            //lstEmployes = HibernateEmployeService.Retrieve(EcranAccueil.employe.IdEmploye);
             lblEmployeConnecte.Content = EcranAccueil.employe.Prenom + " " + EcranAccueil.employe.Nom;
-        }
+        
 
          
 
@@ -151,9 +152,7 @@ namespace Barman.BouteilleDossier.view
                     return true;
                 }
             }
-            return false;
-
-
+            return false;            
         }
 
         private void cboÉtiquette_SelectionChanged(object sender, SelectionChangedEventArgs e)
