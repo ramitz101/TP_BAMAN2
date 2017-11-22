@@ -44,7 +44,7 @@ namespace Barman.VenteDossier.view
             cldVente.SelectedDate = DateTime.Now;
             dtgVenteEmploye.SelectedValuePath = "Vente";
 
-            // Ajout d'un employé fixif tous
+            // Ajout d'un employé fixif tous dans le comboBox employé
             Employe t = new Employe();
             t.IdEmploye = -1;
             t.Nom = "Tous";
@@ -52,7 +52,7 @@ namespace Barman.VenteDossier.view
             cboEmploye.ItemsSource = lstEmploye;
             cboEmploye.DisplayMemberPath = "Nom";
             cboEmploye.SelectedValuePath = "IdEmploye";
-            cboEmploye.SelectedItem = EcranAccueil.employe;
+            cboEmploye.SelectedItem = EcranAccueil.employe; // met l'employé connecté par défaut
         }
 
         private void btnRetour_Click(object sender, RoutedEventArgs e)
@@ -91,9 +91,7 @@ namespace Barman.VenteDossier.view
                 table = CreationDesTables.CreerTableVente(table, lstVente);
                 doc.Add(table);
 
-
-
-
+                
                 string fullPath = System.IO.Path.GetFullPath(saveFileDialog1.FileName);
                 doc.Close();
                 Process.Start(fullPath);
@@ -121,6 +119,11 @@ namespace Barman.VenteDossier.view
                         RefreshList();
                     }
 
+                    // Remettre la quantité dans la bouteille
+                    v.laBouteille.VolumeRestant = v.laBouteille.VolumeRestant + v.Volume;
+                    if (v.laBouteille.VolumeInitial == v.laBouteille.VolumeRestant)
+                        v.laBouteille.Etat = "Pleine";
+
                 }
                 catch(Exception ex)
                 {
@@ -131,9 +134,6 @@ namespace Barman.VenteDossier.view
 
         private void cboEmploye_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
-            
-          
             
             cldVente.BlackoutDates.Clear();
             lstAllVente = new List<Vente>();
@@ -183,7 +183,6 @@ namespace Barman.VenteDossier.view
         private void cldVente_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
             RefreshList();
-
         }
 
 
@@ -192,8 +191,7 @@ namespace Barman.VenteDossier.view
             DateTime? d = cldVente.SelectedDate;
             List<Vente> LalistPourCollection = new List<Vente>();
 
-           
-
+          
             if (d == null)
                 d = DateTime.Today;
             if (cboEmploye.SelectedValue != null)

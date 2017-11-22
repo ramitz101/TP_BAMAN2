@@ -49,12 +49,12 @@ namespace Barman.VenteDossier.view
             s.Append(EcranAccueil.employe.Prenom + " " + EcranAccueil.employe.Nom);
             lblEmploye.Content = s.ToString();
             
-
+            // Disable le bouton ajouter et les combo box
             btnAjouter.IsEnabled = false;
             cboMarque.IsEnabled = false;
             cboType.IsEnabled = false;
 
-            //ComboBox 
+            //ComboBox emplacement, il faut enlevé les emplacement non nécéssaire lors d'une vente 
             lstEmplacement.Remove(lstEmplacement.Where(x => x.Nom == "Aucun").ToList()[0]);
             lstEmplacement.Remove(lstEmplacement.Where(x => x.Nom == "Réserve").ToList()[0]);
 
@@ -118,17 +118,12 @@ namespace Barman.VenteDossier.view
         {
             try
             {
+                // Vérification si la bouteille contient le volume à enlever
                 if (LaBouteilleVendu.VolumeRestant < int.Parse(txtQuantite.Text))
                 {
                     lblComfirmationAjout.Foreground = Brushes.Red;
                     lblComfirmationAjout.Content = "Erreur, quantité restante insuffisante";
-
-                }
-                else if( LaBouteilleVendu.IdEmplacement == 9)
-                {
-                    lblComfirmationAjout.Foreground = Brushes.Red;
-                    lblComfirmationAjout.Content = "Erreur, cette bouteille n'existe plus";
-                }
+                }               
                 else
                 {
                     
@@ -137,18 +132,22 @@ namespace Barman.VenteDossier.view
                     lblComfirmationAjout.Foreground = Brushes.Green;
                     lblComfirmationAjout.Content = "Vente ajoutée";
 
-                    if (LaBouteilleVendu.Etat == "Pleine")
-                        LaBouteilleVendu.Etat = "Entamée";
-
+                    // Enlève la quantité d'alcool vendu dans la bouteille
                     LaBouteilleVendu.VolumeRestant -= v.Volume;
 
-                    if (LaBouteilleVendu.VolumeRestant == 0)
+                    // Changement d'état de la bouteille si pleine ou si rendu vide
+                    if (LaBouteilleVendu.Etat == "Pleine")
+                        LaBouteilleVendu.Etat = "Entamée";
+                    else if(LaBouteilleVendu.VolumeRestant == 0)
                     {
                         LaBouteilleVendu.Etat = "Vide";
-                        LaBouteilleVendu.IdEmplacement = 9;
-
+                        LaBouteilleVendu.IdEmplacement = HibernateEmplacementService.retrieveEmplacementByNom("Aucun")[0].IdEmplacement;
                     }
 
+                    HibernateBouteilleService.Update(LaBouteilleVendu);
+                    
+                    
+                    //Remet tous les champs à défaut
                     cboEmplacement.SelectedValue = null;
                     cboMarque.SelectedValue = null;
                     lblPrixVente.Content = "";
@@ -156,7 +155,6 @@ namespace Barman.VenteDossier.view
                     btnAjouter.IsEnabled = false;
                     cboMarque.IsEnabled = false;
                     cboType.IsEnabled = false;
-                    HibernateBouteilleService.Update(LaBouteilleVendu);
 
                 }            
 
@@ -277,36 +275,36 @@ namespace Barman.VenteDossier.view
             
             if (LaBouteilleVendu != null)
             {
-                // FAIRE UN FOR 
+                
                 if (LaBouteilleVendu.PrixBouteille <= 40)
                 {
                     prix = 6 * int.Parse(txtQuantite.Text);
-                    lblPrixTotal.Content = (5.95 * int.Parse(txtQuantite.Text)).ToString("0.00" + " $"); 
-                    lblPrixVente.Content = (5.95.ToString("0.00" + " $ /oz"));
+                    lblPrixTotal.Content = (6.00 * int.Parse(txtQuantite.Text)).ToString("0.00" + " $"); 
+                    lblPrixVente.Content = (6.00.ToString("0.00" + " $ /oz"));
                 }
                 else if (LaBouteilleVendu.PrixBouteille <= 50)
                 {
                     prix = 7 * int.Parse(txtQuantite.Text);
-                    lblPrixTotal.Content = (6.95 * int.Parse(txtQuantite.Text)).ToString("0.00"+ " $");
-                    lblPrixVente.Content = (6.95.ToString("0.00" + " $ /oz"));
+                    lblPrixTotal.Content = (7.00 * int.Parse(txtQuantite.Text)).ToString("0.00"+ " $");
+                    lblPrixVente.Content = (7.00.ToString("0.00" + " $ /oz"));
                 }
                 else if (LaBouteilleVendu.PrixBouteille <= 60)
                 {
                     prix = 8 * int.Parse(txtQuantite.Text);
-                    lblPrixTotal.Content = (7.95 * int.Parse(txtQuantite.Text)).ToString("0.00" + " $");
-                    lblPrixVente.Content = (7.95.ToString("0.00" + " $ /oz"));
+                    lblPrixTotal.Content = (8.00 * int.Parse(txtQuantite.Text)).ToString("0.00" + " $");
+                    lblPrixVente.Content = (8.00.ToString("0.00" + " $ /oz"));
                 }
                 else if (LaBouteilleVendu.PrixBouteille <= 70)
                 {
                     prix = 9 * int.Parse(txtQuantite.Text);
-                    lblPrixTotal.Content = (8.95 * int.Parse(txtQuantite.Text)).ToString("0.00" + " $");
-                    lblPrixVente.Content = (8.95.ToString("0.00" + " $ /oz"));
+                    lblPrixTotal.Content = (9.00 * int.Parse(txtQuantite.Text)).ToString("0.00" + " $");
+                    lblPrixVente.Content = (9.00.ToString("0.00" + " $ /oz"));
                 }
                 else
                 {
                     prix = 10 * int.Parse(txtQuantite.Text);
-                    lblPrixTotal.Content = (9.95 * int.Parse(txtQuantite.Text)).ToString("0.00" + " $");
-                    lblPrixVente.Content = (9.95.ToString("0.00" + " $ /oz"));
+                    lblPrixTotal.Content = (10.00 * int.Parse(txtQuantite.Text)).ToString("0.00" + " $");
+                    lblPrixVente.Content = (10.00.ToString("0.00" + " $ /oz"));
                 }
 
                
