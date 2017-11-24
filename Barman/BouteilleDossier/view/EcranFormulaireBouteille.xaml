@@ -42,7 +42,7 @@
         </StackPanel>
         <StackPanel Grid.Column="2" Grid.Row="1"  Margin="20,0,0,0" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Bottom">
             <Label Content="Vendue au client" KeyboardNavigation.TabNavigation="None" FontWeight="Bold" FontSize="20" />
-            <CheckBox  Name="chbVendu"  Checked="chbVendu_Checked"  Unchecked="CheckBox_Unchecked"/>
+            <CheckBox  Name="chbVendu"  Checked="chbVendu_Checked"  Unchecked="chbVendu_Unchecked"/>
         </StackPanel>
         <StackPanel Grid.Column="2" Grid.Row="2"  Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom">
             <Label Content="Employé" KeyboardNavigation.TabNavigation="None" FontWeight="Bold" FontSize="20" />

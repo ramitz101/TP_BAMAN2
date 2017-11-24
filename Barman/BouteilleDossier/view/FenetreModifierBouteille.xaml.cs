@@ -88,6 +88,10 @@ namespace Barman.BouteilleDossier.view
             else
             {
                 bouteilleModifier.VolumeRestant = (int)cboVolumeRestant.SelectedValue;
+                if(bouteilleModifier.VolumeRestant<bouteilleModifier.VolumeInitial)
+                {
+                    bouteilleModifier.Etat = "Entamée";
+                }
                 bouteilleModifier.IdEmplacement = (int)cboEmplacement.SelectedValue;
                 HibernateBouteilleService.Update(bouteilleModifier);
                 this.Close();
