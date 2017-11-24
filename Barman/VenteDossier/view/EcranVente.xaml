@@ -82,8 +82,8 @@
             </StackPanel>
             <Label Content="Total" KeyboardNavigation.TabNavigation="None" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="40"/>
             <Label Name="lblPrixTotal" KeyboardNavigation.TabNavigation="None" Content=""  HorizontalAlignment="Left"  VerticalAlignment="Top" Width="86" Height="32"/>
-            <Button ToolTip="Confirme la vente du verre d'alcool" Margin="0,5,5,0"  Name="btnAjouter" Click="btnAjouter_Click" Content="Ajouter" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="120" Height="45"/>
-            <Label x:Name="lblComfirmationAjout" KeyboardNavigation.TabNavigation="None" Content="" Foreground="Green" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="177"/>
+            <Button ToolTip="Confirme la vente du verre d'alcool" Margin="0,5,5,0"  Name="btnAjouter" Click="btnAjouter_Click" Content="Vendre" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="120" Height="45"/>
+            <Label x:Name="lblComfirmationAjout" KeyboardNavigation.TabNavigation="None" Content="" Foreground="Green" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="291"/>
         </StackPanel>
     </Grid>
 </UserControl>
