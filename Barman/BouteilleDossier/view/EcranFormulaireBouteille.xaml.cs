@@ -227,6 +227,20 @@ namespace Barman.BouteilleDossier.view
             return lstMarques;
         }
 
+        private void chbVendu_Checked(object sender, RoutedEventArgs e)
+        {
+            cboEmplacement.SelectedIndex = -1;
+            cboEmplacement.IsEnabled = false;
 
+            if (FormulaireRempli())
+            {
+                btnConfirmer.IsEnabled = true;
+            }
+            else
+            {
+                btnConfirmer.IsEnabled = false;
+            }
+
+        }
     }
 }
