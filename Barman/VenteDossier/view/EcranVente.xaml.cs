@@ -210,7 +210,7 @@ namespace Barman.VenteDossier.view
                 }
               
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 quantite = 1;
                 txtQuantite.Text = quantite.ToString();
@@ -228,7 +228,7 @@ namespace Barman.VenteDossier.view
                     quantite--;
                 txtQuantite.Text = quantite.ToString();
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 quantite = 1;
                 txtQuantite.Text = quantite.ToString();

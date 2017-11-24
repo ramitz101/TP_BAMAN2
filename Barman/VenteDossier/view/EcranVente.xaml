@@ -33,12 +33,12 @@
                     <TextBlock   VerticalAlignment="Center" FontSize="21"><Run Text=" Gérer"/></TextBlock>
                 </StackPanel>
             </Button>
-            <Button ToolTip="Consulter les ventes de l'employé connecté" Grid.Row="1" Margin="5,5,5,5"  FontSize="21" Height="auto"  >
+            <!--<Button ToolTip="Consulter les ventes de l'employé connecté" Grid.Row="1" Margin="5,5,5,5"  FontSize="21" Height="auto"  >
                 <StackPanel  Orientation="Horizontal">
                     <Image Source="../../images/padnote.png" Width="40" Height="40"  />
                     <TextBlock  VerticalAlignment="Center" FontSize="21"><Run Text=" Prix"/></TextBlock>
                 </StackPanel>
-            </Button>
+            </Button>-->
             <Button ToolTip="Retourner à l'accueil / se déconnecter" FontSize="21" Margin="5,5,5,5"   Grid.Row="2"  Height="auto" Click="btnAccueil_Click">
                 <StackPanel  Orientation="Horizontal" Width="121">
                     <Image Source="../../images/back-arrow.png" Width="40" Height="40"  />
