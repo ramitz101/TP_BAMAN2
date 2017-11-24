@@ -36,7 +36,6 @@ namespace Barman.CommandeDossier.view
         private List<TypeAlcool> lstType = new List<TypeAlcool>(HibernateTypeAlcoolService.RetrieveAll());
         private List<Marque> lstMarques = new List<Marque>();
         private List<Bouteille> lstNouvelleBouteille = new List<Bouteille>();
-        private List<List<Bouteille>> lstBouteille = new List<List<Bouteille>>(); // TEST A SUPP
         private Commande CommandeCours;
         public EcranNouvelleCommande()
         {
@@ -193,17 +192,8 @@ namespace Barman.CommandeDossier.view
                                                 9, int.Parse(cboMarqueBouteille.SelectedValue.ToString()), (int)CommandeCours.IdCommande);
                     b.SaMarque = HibernateMarqueService.Retrieve((int)b.IdMarque)[0];
                     b.SaMarque.SonTypeAlcool = HibernateTypeAlcoolService.RetrieveTypeAlcool((int)b.SaMarque.IdTypeAlcool)[0];
-                    /// TESTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
-                    foreach(var k in lstBouteille)
-                    {
-                        foreach(var z in k)
-                        {
-                            if (z.SaMarque == b.SaMarque)
-                                k.Add(b);
-                        }
-                    }
-                    // ********************************
-                    //lstNouvelleBouteille.Add(b);
+                   
+                    lstNouvelleBouteille.Add(b);
                 }
 
             }
@@ -211,9 +201,8 @@ namespace Barman.CommandeDossier.view
             {
                 MessageBox.Show("Une erreur est survenue lors de l'ajout", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error,MessageBoxResult.OK);
             }
-            /// TESTTTTTTTTTTTTTTTTTTT
-            dtgNouvelleCommande.ItemsSource = lstBouteille;
-            //dtgNouvelleCommande.ItemsSource = lstNouvelleBouteille;
+            
+            dtgNouvelleCommande.ItemsSource = lstNouvelleBouteille;
             dtgNouvelleCommande.Items.Refresh();
         }
 
