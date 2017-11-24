@@ -39,6 +39,11 @@ namespace Barman.EmployeDossier.view
             dtgEmploye.ItemsSource = lstEmployes;
             dtgEmploye.IsReadOnly = true;
             ContenuHeader = "Nom";
+
+            if (EcranAccueil.Employe.SonRole.Code == Constante.ADMINISTRATEUR)
+                App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Administrateur" + " - Employés";
+            else
+                App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Utilisateur" + " - Employés";
         }
 
         private void btnGerer_Click(object sender, RoutedEventArgs e)

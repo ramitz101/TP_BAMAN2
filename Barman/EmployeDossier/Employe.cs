@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Barman.EmployeDossier.Hibernate;
 using Barman.RoleDossier;
 using Barman.VenteDossier;
+using Barman.RoleDossier.Hibernate;
 
 namespace Barman.EmployeDossier
 {
@@ -38,9 +39,7 @@ namespace Barman.EmployeDossier
             Prenom = String.Empty;
             Telephone = String.Empty;
             DateEmbauche = DateTime.MinValue;
-            NAS = String.Empty;
-
-
+            NAS = String.Empty;        
 
             SonRole = new Role();
             ListVente = new List<Vente>();
@@ -56,6 +55,10 @@ namespace Barman.EmployeDossier
             CodeEmploye = Generer.genererCode(Employe.GetCodeEmployeDejaExistant());
            
             IdRole = pIdRole;
+
+            SonRole = HibernateRoleService.Retrieve(IdRole)[0];
+
+
         }
 
         public static List<string> GetCodeEmployeDejaExistant()
@@ -97,64 +100,6 @@ namespace Barman.EmployeDossier
         public override int GetHashCode()
         {
             return base.GetHashCode();
-        }
-        //public static bool ValiderNumeroTelephone(string telephone)
-        //{
-        //    int i = 0;
-        //    bool resultat = true;
-
-        //    if (telephone.Length == MAX_LENGTH_TELEPHONE)
-        //    {
-        //        while (i < MAX_LENGTH_TELEPHONE && resultat == true)
-        //        {
-        //            try
-        //            {
-        //                Convert.ToInt32(telephone.Substring(i, 1));
-        //            }
-        //            catch (FormatException)
-        //            {
-        //                resultat = false;
-        //            }
-
-        //            i++;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        resultat = false;
-        //    }
-
-        //    return resultat;
-        //}
-
-        //public static bool ValiderNAS(string nas)
-        //{
-        //    int i = 0;
-        //    bool resultat = true;
-
-        //    if (nas.Length == MAX_LENGTH_NAS)
-        //    {
-        //        while (i < MAX_LENGTH_NAS && resultat == true)
-        //        {
-        //            try
-        //            {
-        //                Convert.ToInt32(nas.Substring(i, 1));
-        //            }
-        //            catch (FormatException)
-        //            {
-        //                resultat = false;
-        //            }
-
-        //            i++;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        resultat = false;
-        //    }
-
-        //    return resultat;
-        //}
-
+        }      
     }
 }

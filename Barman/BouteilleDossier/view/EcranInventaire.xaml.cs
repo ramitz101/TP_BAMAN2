@@ -56,17 +56,17 @@ namespace Barman.BouteilleDossier.view
 
         private void btnAjout_Click(object sender, RoutedEventArgs e)
         {
-            if (EcranAccueil.employe.IdRole == null)
+            if (EcranAccueil.Employe.IdRole == null)
             {
-                FenetreAuthentification FN = new FenetreAuthentification();
+                FenetreAuthentification FN = new FenetreAuthentification(null);
                 FN.ShowDialog();
             }
-            if (EcranAccueil.employe.IdRole != 1 && EcranAccueil.employe.IdRole != null)
+            if (EcranAccueil.Employe.IdRole != 1 && EcranAccueil.Employe.IdRole != null)
             {
                 FenetreErreur FE = new FenetreErreur();
                 FE.ShowDialog();
             }
-            if (EcranAccueil.employe.IdRole == 1)
+            if (EcranAccueil.Employe.IdRole == 1)
             {
                 ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
                 EcranAjoutInventaire EAI = new EcranAjoutInventaire();
@@ -79,17 +79,17 @@ namespace Barman.BouteilleDossier.view
         {
             if (UneBouteilleSelectionne())
             {
-                if (EcranAccueil.employe.IdRole == null)
+                if (EcranAccueil.Employe.IdRole == null)
                 {
-                    FenetreAuthentification FN = new FenetreAuthentification();
+                    FenetreAuthentification FN = new FenetreAuthentification(null);
                     FN.ShowDialog();
                 }
-                if (EcranAccueil.employe.IdRole != 1 && EcranAccueil.employe.IdRole != null)
+                if (EcranAccueil.Employe.IdRole != 1 && EcranAccueil.Employe.IdRole != null)
                 {
                     FenetreErreur FE = new FenetreErreur();
                     FE.ShowDialog();
                 }
-                if (EcranAccueil.employe.IdRole == 1)
+                if (EcranAccueil.Employe.IdRole == 1)
                 {
                     FenetreModifierBouteille popup = new FenetreModifierBouteille(lstBouteilles, dtgInventaire.SelectedItem as Bouteille, this);
                     popup.ShowDialog();
@@ -248,17 +248,17 @@ namespace Barman.BouteilleDossier.view
        
         private void btnSuppression_Click(object sender, RoutedEventArgs e)
         {
-            if (EcranAccueil.employe.IdRole == null)
+            if (EcranAccueil.Employe.IdRole == null)
             {
-                FenetreAuthentification FN = new FenetreAuthentification();
+                FenetreAuthentification FN = new FenetreAuthentification(null);
                 FN.ShowDialog();
             }
-            if (EcranAccueil.employe.IdRole != 1 && EcranAccueil.employe.IdRole != null)
+            if (EcranAccueil.Employe.IdRole != 1 && EcranAccueil.Employe.IdRole != null)
             {
                 FenetreErreur FE = new FenetreErreur();
                 FE.ShowDialog();
             }
-            if (EcranAccueil.employe.IdRole == 1)
+            if (EcranAccueil.Employe.IdRole == 1)
             {
                 if (AuMoinsUneBouteilleSelectionne())
                 {

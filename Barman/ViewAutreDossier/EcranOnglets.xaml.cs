@@ -24,6 +24,9 @@ namespace Barman.ViewAutreDossier
     /// </summary>
     public partial class EcranOnglets : UserControl
     {
+
+        private TabItem LastSelected { get; set; }
+        
         private bool OngletCreer { get; set; } = false;
         public EcranOnglets(int tbiIndex)
         {
@@ -48,7 +51,7 @@ namespace Barman.ViewAutreDossier
 
         private void tbcOnglet_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            Authentification auth = new Authentification();
             if (tbcOnglet.SelectedItem == tbiInventaire)
             {
                 if(OngletCreer)
@@ -66,37 +69,19 @@ namespace Barman.ViewAutreDossier
                 
             }
             else if (tbcOnglet.SelectedItem == tbiEmploye)
-            {
-                if (EcranAccueil.employe.IdEmploye == null)
-                {
-                    FenetreAuthentification FA = new FenetreAuthentification();
-                    FA.ShowDialog();
-                }
-
-                if (EcranAccueil.employe.IdRole != 1 && EcranAccueil.employe.IdRole != null) // obliger de rajouter null sinon si on fait annuler, il popup l'erreur
-                {
-                    FenetreErreur FE = new FenetreErreur();
-                    FE.ShowDialog();
-                }
-
-                if (EcranAccueil.employe.IdRole == 1)
+            {                
+                if (auth.ValiderRoleAdmin())
                 {
                     if (OngletCreer)
                         ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
                     EcranEmploye EE = new EcranEmploye();
                     ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0, EE);
-
                 }
                 
             }
             else if (tbcOnglet.SelectedItem == tbiVente)
-            {
-                if(EcranAccueil.employe.IdEmploye == null)
-                {
-                    FenetreAuthentification FA = new FenetreAuthentification();
-                    FA.ShowDialog();
-                }
-                if (EcranAccueil.employe.IdEmploye != null)
+            {                
+                if (auth.ValiderRoleAdmin())
                 {
                     if (OngletCreer)
                         ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
@@ -106,21 +91,15 @@ namespace Barman.ViewAutreDossier
                 }
             }
             else if (tbcOnglet.SelectedItem == tbiFormulaireB)
-            {
-                if (EcranAccueil.employe.IdEmploye == null)
-                {
-                    FenetreAuthentification FA = new FenetreAuthentification();
-                    FA.ShowDialog();
-                }
-                if (EcranAccueil.employe.IdEmploye != null)
+            {                
+                if (!(auth.ValiderRoleAdmin()))
                 {
                     if (OngletCreer)
                         ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
                     EcranFormulaireBouteille EFB = new EcranFormulaireBouteille();
                     ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0, EFB);
                 }
-            }
-            
-        }
+            }            
+        }          
     }
 }

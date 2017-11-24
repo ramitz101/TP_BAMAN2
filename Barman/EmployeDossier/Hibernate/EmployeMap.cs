@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Barman.VenteDossier;
+using Barman.RoleDossier;
 
 namespace Barman.EmployeDossier.Hibernate
 {
-    public class EmployeMap: ClassMap<Employe>
+    public class EmployeMap : ClassMap<Employe>
     {
         public EmployeMap()
         {
@@ -80,22 +81,22 @@ namespace Barman.EmployeDossier.Hibernate
              .Generated.Never()
              .CustomSqlType("INTEGER");
 
-            // Autre class
-            //References(x => x.SonRole)
-            //    .Class<Role>()
-            //    .Access.Property()
-            //    .LazyLoad(Laziness.False)
-            //    .Cascade.None()
-            //    .Columns("idRole");
+            //Autre class
+            References(x => x.SonRole)
+                 .Class<Role>()
+                 .Access.Property()
+                 .LazyLoad(Laziness.False)
+                 .Cascade.None()
+                 .Columns("idRole");
 
 
             HasMany<Vente>(x => x.ListVente)
-            .Not.LazyLoad()
-            .Access.Property()
-            .Cascade.All()
-            .KeyColumns.Add("idEmploye", map => map.Name("idEmploye")
-                                                .SqlType("INTEGER")
-                                                .Nullable());
+                .Not.LazyLoad()
+                .Access.Property()
+                .Cascade.All()
+                .KeyColumns.Add("idEmploye", map => map.Name("idEmploye")
+                                                    .SqlType("INTEGER")
+                                                    .Nullable());
 
 
         }

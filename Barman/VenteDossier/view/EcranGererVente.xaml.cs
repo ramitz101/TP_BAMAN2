@@ -52,7 +52,7 @@ namespace Barman.VenteDossier.view
             cboEmploye.ItemsSource = lstEmploye;
             cboEmploye.DisplayMemberPath = "Nom";
             cboEmploye.SelectedValuePath = "IdEmploye";
-            cboEmploye.SelectedItem = EcranAccueil.employe; // met l'employé connecté par défaut
+            cboEmploye.SelectedItem = EcranAccueil.Employe; // met l'employé connecté par défaut
         }
 
         private void btnRetour_Click(object sender, RoutedEventArgs e)

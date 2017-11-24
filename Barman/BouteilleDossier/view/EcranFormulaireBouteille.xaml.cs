@@ -40,7 +40,7 @@ namespace Barman.BouteilleDossier.view
             cboEmplacement.ItemsSource = lstEmplacements;
             cboEmplacement.DisplayMemberPath = "Nom";
             //lstEmployes = HibernateEmployeService.Retrieve(EcranAccueil.employe.IdEmploye);
-            lblEmployeConnecte.Content = EcranAccueil.employe.Prenom + " " + EcranAccueil.employe.Nom;
+            lblEmployeConnecte.Content = EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom;
         
 
          
@@ -49,7 +49,7 @@ namespace Barman.BouteilleDossier.view
          cboEmplacement.DisplayMemberPath = "Nom";
 
         //Je vais chercher l'employé connecté pour savoir qui monte la bouteille
-         EmployeConnecter = HibernateEmployeService.Retrieve(EcranAccueil.employe.IdEmploye)[0];
+         EmployeConnecter = HibernateEmployeService.Retrieve(EcranAccueil.Employe.IdEmploye)[0];
         //Je met le nom de l'employé connecter dans le label
          lblEmployeConnecte.Content = EmployeConnecter.Prenom + " " + EmployeConnecter.Nom;
 

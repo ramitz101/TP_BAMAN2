@@ -22,7 +22,7 @@ namespace Barman.RoleDossier
             Code = code;
         }
 
-        public Role(string code, int pIdRole)
+        public Role(string code, int? pIdRole)
         {
             Code = code;
             IdRole = pIdRole;

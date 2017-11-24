@@ -20,15 +20,15 @@ namespace Barman.ViewAutreDossier
     /// Logique d'interaction pour EcranAccueil.xaml
     /// </summary>
     /// 
-    //TESSSSTTTTTTTTTTT12367
+
     public partial class EcranAccueil : UserControl
     {
-        static public Employe employe {get;set;} // A la création de la fenetre accueil le role d'un utilisateur est réinitialisé
+        static public Employe Employe {get;set;} // A la création de la fenetre accueil le role d'un utilisateur est réinitialisé
         public EcranAccueil()
         {
             InitializeComponent();
-            App.Current.MainWindow.Title = "Barman";
-            employe = new Employe();
+            App.Current.MainWindow.Title = Constante.APPTITLE;
+            Employe = new Employe();
         }
 
         private void btnInventaire_Click(object sender, RoutedEventArgs e)
@@ -41,26 +41,24 @@ namespace Barman.ViewAutreDossier
         }
         private void btnEmploye_Click(object sender, RoutedEventArgs e)
         {
-            FenetreAuthentification FA = new FenetreAuthentification();
-            FA.ShowDialog();
-
-            if (employe.IdRole == 1)
+            Authentification auth = new Authentification();
+            if (auth.ValiderRoleAdmin())
             {
                 ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
                 EcranOnglets EO = new EcranOnglets(1);
                 ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EO);
             }
-            else if (employe.IdRole != null)
+            /*else if (Employe.IdRole != null)
             {
                 FenetreErreur FE = new FenetreErreur();
                 FE.ShowDialog();
-                if (employe.IdRole == 1)
+                if (auth.ValiderRoleAdmin())
                 {
                     ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
                     EcranOnglets EO = new EcranOnglets(1);
                     ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EO);
                 }
-            }
+            }*/
                     
             
         }
@@ -68,9 +66,9 @@ namespace Barman.ViewAutreDossier
         private void btnVente_Click(object sender, RoutedEventArgs e)
         {
             
-            FenetreAuthentification FA = new FenetreAuthentification();
+            FenetreAuthentification FA = new FenetreAuthentification(null);
             FA.ShowDialog();            
-            if (employe.IdEmploye != null)
+            if (Employe.IdEmploye != null)
             {
                ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
                 EcranOnglets EO = new EcranOnglets(2);
@@ -88,10 +86,10 @@ namespace Barman.ViewAutreDossier
 
         private void btnFormulaireBouteille_Click(object sender, RoutedEventArgs e)
         {
-            FenetreAuthentification FA = new FenetreAuthentification();
+            FenetreAuthentification FA = new FenetreAuthentification(null);
             FA.ShowDialog();
 
-            if (employe.IdEmploye != null)
+            if (Employe.IdEmploye != null)
             {
                 ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
                 EcranOnglets EO = new EcranOnglets(4);

@@ -53,7 +53,7 @@ namespace Barman.CommandeDossier.view
 
             cboMarqueBouteille.IsEnabled = false;
 
-            CommandeCours = new Commande(DateTime.Now, (int)EcranAccueil.employe.IdEmploye, null, "Envoyé");
+            CommandeCours = new Commande(DateTime.Now, (int)EcranAccueil.Employe.IdEmploye, null, "Envoyé");
             HibernateCommandeService.Create(CommandeCours);
 
         }

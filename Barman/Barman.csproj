@@ -112,9 +112,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Authentification.cs" />
     <Compile Include="BouteilleDossier\Hibernate\BouteilleMap.cs" />
     <Compile Include="CommandeDossier\Commande.cs" />
     <Compile Include="CommandeDossier\Hibernate\CommandeMap.cs" />
+    <Compile Include="Constante.cs" />
     <Compile Include="CreationDesTables.cs" />
     <Compile Include="CommandeDossier\view\EcranRecevoirCommande.xaml.cs">
       <DependentUpon>EcranRecevoirCommande.xaml</DependentUpon>

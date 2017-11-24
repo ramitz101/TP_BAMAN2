@@ -17,7 +17,7 @@ namespace Barman.RoleDossier.Hibernate
             return session.Query<Role>().ToList();
         }
 
-        public static List<Role> Retrieve(int pIdRole)
+        public static List<Role> Retrieve(int? pIdRole)
         {
             var roles = session.Query<Role>().AsQueryable();
 
@@ -46,8 +46,6 @@ namespace Barman.RoleDossier.Hibernate
                          select m;
 
             return result.ToList();
-
-
         }
 
             public static void Create(Role role)

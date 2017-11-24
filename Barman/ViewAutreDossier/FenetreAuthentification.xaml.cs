@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using Barman.EmployeDossier;
 using Barman.EmployeDossier.Hibernate;
 using Barman.RoleDossier.Hibernate;
+using System.Data.SqlClient;
 
 namespace Barman.ViewAutreDossier
 {
@@ -22,15 +23,14 @@ namespace Barman.ViewAutreDossier
     /// </summary>
     public partial class FenetreAuthentification : Window
     {
-        
-        public FenetreAuthentification()
+        private Authentification VerifierConfirmer { get; set; }
+        public FenetreAuthentification(Authentification classAuthentification)
         {
             InitializeComponent();
             this.Owner = App.Current.MainWindow;
             pwdBox.Focus();
-            
-            
-           
+
+            VerifierConfirmer = classAuthentification;
         }
 
         private void btnAnnuler_Click(object sender, RoutedEventArgs e)
@@ -40,53 +40,74 @@ namespace Barman.ViewAutreDossier
 
         private void btnConfirmer_Click(object sender, RoutedEventArgs e)
         {
-            Employe em = new Employe();
-            em = Authentification();
-
-            if (em.IdEmploye != null)
-            {
-                em.SonRole = HibernateRoleService.Retrieve((int)em.IdRole)[0];
-                EcranAccueil.employe = em;
-                this.Close();
-                if(EcranAccueil.employe.SonRole.Code=="Utils")
-                   App.Current.MainWindow.Title ="Barmans - " + EcranAccueil.employe.Prenom + " " + EcranAccueil.employe.Nom+ " - " +"Utilisateur"  ;
+            Authentification auth = new Authentification();
+            if (ValiderAuthentification())
+            {                
+                if (EcranAccueil.Employe.SonRole.Code == Constante.ADMINISTRATEUR)
+                    App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Administrateur";
                 else
-                    App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.employe.Prenom + " " + EcranAccueil.employe.Nom + " - " + "Administrateur";
+                    App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Utilisateur";
+
+                VerifierConfirmer.Confirmer = true;
+
+                this.Close();
             }
         }
 
-        private Employe Authentification()
+        private bool ValiderAuthentification()
         {
-            try
-            {
-                List<Employe> listEmploye = new List<Employe>(HibernateEmployeService.RetrieveAll(null));
-        
-                foreach(var i in listEmploye)
-                {
-                    if(i.CodeEmploye == pwdBox.Password.ToString()  )
-                    {
-                        listEmploye = new List<Employe>(HibernateEmployeService.Retrieve((int)i.IdEmploye));
-                        return listEmploye.ElementAt(0);
-                    }
-                }
+            List<Employe> listEmploye = new List<Employe>();
 
-            }
-            catch(Exception e)
+            if (ValiderConnection())
             {
-                lblErreur.Content = "Erreur, le code n'existe pas";
-                return new Employe();
+                listEmploye = HibernateEmployeService.RetrieveAll(null);
+
+                if (ValiderCodeEmploye(listEmploye, pwdBox.Password.ToString()))                
+                    return true;               
+                else
+                {
+                    lblErreur.Content = "Erreur, le code n'existe pas";
+                    pwdBox.SelectAll();
+                    return false;
+                }
             }
-            lblErreur.Content = "Erreur, le code n'existe pas";
-            pwdBox.SelectAll();
-            return new Employe();
+            else
+            {
+                lblErreur.Content = "Erreur de connexion à la base de données";
+                return false;            
+            }
+        }
+
+        private bool ValiderCodeEmploye(List<Employe> listEmploye, string codeEntre)
+        {
+
+            foreach (var e in listEmploye)
+            {
+                if (e.CodeEmploye == codeEntre)
+                {
+                    EcranAccueil.Employe = e;
+                    return true;
+                }
+            }
+            return false;
         }
 
         private void txtCode_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.Key == Key.Enter)
+            if (e.Key == Key.Enter)            
+                btnConfirmer_Click(this, new RoutedEventArgs());            
+        }
+        private bool ValiderConnection()
+        {
+            try
             {
-                btnConfirmer_Click(this, new RoutedEventArgs());
+                NHibernateConnexion.OpenSession();
             }
+            catch (Exception)
+            {
+                return false;                
+            }
+            return true;
         }
     }
 }

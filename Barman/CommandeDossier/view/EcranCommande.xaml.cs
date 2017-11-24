@@ -57,17 +57,8 @@ namespace Barman.CommandeDossier.view
 
         private void btnNouvelleCommande_Click(object sender, RoutedEventArgs e)
         {
-            if (EcranAccueil.employe.IdRole == null)
-            {
-                FenetreAuthentification FN = new FenetreAuthentification();
-                FN.ShowDialog();
-            }
-            if (EcranAccueil.employe.SonRole.Code == "Utils" && EcranAccueil.employe.IdRole != null)
-            {
-                FenetreErreur FE = new FenetreErreur();
-                FE.ShowDialog();
-            }
-            if (EcranAccueil.employe.SonRole.Code == "Admin")
+            Authentification auth = new Authentification();            
+            if (auth.ValiderRoleAdmin())
             {
                 ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
                 EcranNouvelleCommande EcranNouvelCommand = new EcranNouvelleCommande();
@@ -84,20 +75,10 @@ namespace Barman.CommandeDossier.view
 
         private void btnRecevoirCommande_Click(object sender, RoutedEventArgs e)
         {
+            Authentification auth = new Authentification();
             if (dtgCommande.SelectedItems.Count == 1)
-            {
-                if (EcranAccueil.employe.IdRole == null)
-                {
-                    FenetreAuthentification FN = new FenetreAuthentification();
-                    FN.ShowDialog();
-                }
-                if (EcranAccueil.employe.SonRole.Code == "Utils" && EcranAccueil.employe.IdRole != null)
-                {
-                    FenetreErreur FE = new FenetreErreur();
-                    FE.ShowDialog();
-                    
-                }
-                if (EcranAccueil.employe.SonRole.Code == "Admin")
+            {                
+                if (auth.ValiderRoleAdmin())
                 {
                     ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
                     EcranRecevoirCommande EcranRecevoirCommande = new EcranRecevoirCommande((Commande)dtgCommande.SelectedItem);
@@ -141,8 +122,6 @@ namespace Barman.CommandeDossier.view
                 PdfPTable table = new PdfPTable(4); //Le paramètre indique le nombre de colonne. S'il manque de cellules pour la dernière rangée, il ne mettra simplement pas la rangée
                 table = CreationDesTables.CreerTableCommande(table, lstCommandes);
                 doc.Add(table);
-
-
 
 
                 string fullPath = System.IO.Path.GetFullPath(saveFileDialog1.FileName);

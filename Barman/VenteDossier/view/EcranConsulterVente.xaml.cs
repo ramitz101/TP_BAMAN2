@@ -41,7 +41,7 @@ namespace Barman.VenteDossier.view
             cldVente.SelectedDate = DateTime.Now;
 
             List<Vente> lstAllVente = new List<Vente>();
-            lstAllVente = HibernateVenteService.RetrieveAllVenteEmploye((int)EcranAccueil.employe.IdEmploye);
+            lstAllVente = HibernateVenteService.RetrieveAllVenteEmploye((int)EcranAccueil.Employe.IdEmploye);
             lstworkDate = new List<DateTime>();
             foreach(var i in lstAllVente)
             {
@@ -118,7 +118,7 @@ namespace Barman.VenteDossier.view
             DateTime? d = cldVente.SelectedDate;
             List<Vente> LalistPourCollection = new List<Vente>();
 
-            LalistPourCollection = HibernateVenteService.RetrieveVenteEmploye((int)EcranAccueil.employe.IdEmploye, (DateTime)d);
+            LalistPourCollection = HibernateVenteService.RetrieveVenteEmploye((int)EcranAccueil.Employe.IdEmploye, (DateTime)d);
             lstVente = new ObservableCollection<Vente>(LalistPourCollection);
             foreach(var i in lstVente)
             {
@@ -176,7 +176,7 @@ namespace Barman.VenteDossier.view
             if ((bool)chbToutVente.IsChecked)
             {
                 List<Vente> lstAllVente = new List<Vente>();
-                lstAllVente = HibernateVenteService.RetrieveAllVenteEmploye((int)EcranAccueil.employe.IdEmploye);
+                lstAllVente = HibernateVenteService.RetrieveAllVenteEmploye((int)EcranAccueil.Employe.IdEmploye);
                 foreach (var i in lstAllVente)
                 {
                     i.laBouteille = HibernateBouteilleService.Retrieve((int)i.IdBouteille)[0];
