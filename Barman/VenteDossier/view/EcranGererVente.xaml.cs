@@ -54,16 +54,16 @@ namespace Barman.VenteDossier.view
             cboEmploye.SelectedValuePath = "IdEmploye";
             cboEmploye.SelectedItem = EcranAccueil.Employe; // met l'employé connecté par défaut
 
-            if (EcranAccueil.employe.SonRole.Code == "Utils")
+            if (EcranAccueil.Employe.SonRole.Code == "Utils")
             {
                 cboEmploye.IsEnabled = false;
                 btnSupprimer.IsEnabled = false;
             }
 
-            if (EcranAccueil.employe.SonRole.Code == "Utils")
-                App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.employe.Prenom + " " + EcranAccueil.employe.Nom + " - " + "Utilisateur" + " - Ventes";
+            if (EcranAccueil.Employe.SonRole.Code == "Utils")
+                App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Utilisateur" + " - Ventes";
             else
-                App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.employe.Prenom + " " + EcranAccueil.employe.Nom + " - " + "Administrateur" + " - Ventes";
+                App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Administrateur" + " - Ventes";
 
         }
 
@@ -182,7 +182,7 @@ namespace Barman.VenteDossier.view
                             {
                                 cldVente.BlackoutDates.Add(new CalendarDateRange(new DateTime(cldVente.SelectedDate.Value.Year, i, day)));
                             }
-                            catch (Exception ex) { }
+                            catch (Exception ) { }
                         }
                     }
 
@@ -224,7 +224,7 @@ namespace Barman.VenteDossier.view
                                 LalistPourCollection.Add(k);
                             }
                         }
-                        catch (Exception ex) { } // Le try catch ici sert pour l'employe (tous) qui a id -1..Empeche de planter.
+                        catch (Exception ) { } // Le try catch ici sert pour l'employe (tous) qui a id -1..Empeche de planter.
                     }
                 }
                 lstVente = new ObservableCollection<Vente>(LalistPourCollection);

@@ -70,10 +70,10 @@ namespace Barman.VenteDossier.view
             cboMarque.DisplayMemberPath = "SaMarque.Nom";
             cboMarque.SelectedValuePath = "IdBouteille";
 
-            if (EcranAccueil.employe.SonRole.Code == "Utils")
-                App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.employe.Prenom + " " + EcranAccueil.employe.Nom + " - " + "Utilisateur" + " - Ventes";
+            if (EcranAccueil.Employe.SonRole.Code == "Utils")
+                App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Utilisateur" + " - Ventes";
             else
-                App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.employe.Prenom + " " + EcranAccueil.employe.Nom + " - " + "Administrateur" + " - Ventes";
+                App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Administrateur" + " - Ventes";
 
 
         }
@@ -165,7 +165,7 @@ namespace Barman.VenteDossier.view
                 }            
 
             }
-            catch(Exception z)
+            catch(Exception )
             {
                 //MessageBox.Show(z.ToString());
                 lblComfirmationAjout.Foreground = Brushes.Red;

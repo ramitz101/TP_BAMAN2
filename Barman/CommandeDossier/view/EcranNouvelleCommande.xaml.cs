@@ -56,10 +56,10 @@ namespace Barman.CommandeDossier.view
             CommandeCours = new Commande(DateTime.Now, (int)EcranAccueil.Employe.IdEmploye, null, "Envoyé");
             HibernateCommandeService.Create(CommandeCours);
 
-            if (EcranAccueil.employe.SonRole.Code == "Utils")
-                App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.employe.Prenom + " " + EcranAccueil.employe.Nom + " - " + "Utilisateur" + " - Commandes";
+            if (EcranAccueil.Employe.SonRole.Code == "Utils")
+                App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Utilisateur" + " - Commandes";
             else
-                App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.employe.Prenom + " " + EcranAccueil.employe.Nom + " - " + "Administrateur" + " - Commandes";
+                App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Administrateur" + " - Commandes";
 
         }
 
@@ -134,7 +134,7 @@ namespace Barman.CommandeDossier.view
             {
                 listB = HibernateBouteilleService.RetrieveByMarqueEtVolInitial((int)int.Parse(cboMarqueBouteille.SelectedValue.ToString()), int.Parse(txtFormat.Text));
             }
-            catch (Exception ex) { }
+            catch (Exception ) { }
 
             if (listB.Count > 0)
             {
@@ -160,7 +160,7 @@ namespace Barman.CommandeDossier.view
                 quantite++;
                 txtQuantite.Text = quantite.ToString();
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 quantite = 1;
                 txtQuantite.Text = quantite.ToString();
@@ -178,7 +178,7 @@ namespace Barman.CommandeDossier.view
                     quantite--;
                 txtQuantite.Text = quantite.ToString();
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 quantite = 1;
                 txtQuantite.Text = quantite.ToString();
@@ -202,7 +202,7 @@ namespace Barman.CommandeDossier.view
                 }
 
             }
-            catch(Exception ex)
+            catch(Exception )
             {
                 MessageBox.Show("Une erreur est survenue lors de l'ajout", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error,MessageBoxResult.OK);
             }

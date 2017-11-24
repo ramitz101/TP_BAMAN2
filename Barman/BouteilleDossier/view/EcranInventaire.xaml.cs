@@ -37,10 +37,10 @@ namespace Barman.BouteilleDossier.view
         {
             InitializeComponent();
 
-            if (EcranAccueil.employe.SonRole.Code == "Utils")
-                App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.employe.Prenom + " " + EcranAccueil.employe.Nom + " - " + "Utilisateur" + " - Inventaire du bar";
+            if (EcranAccueil.Employe.SonRole.Code == "Utils")
+                App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Utilisateur" + " - Inventaire du bar";
             else
-                App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.employe.Prenom + " " + EcranAccueil.employe.Nom + " - " + "Administrateur" + " - Inventaire du bar";
+                App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Administrateur" + " - Inventaire du bar";
 
 
 

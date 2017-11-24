@@ -44,10 +44,10 @@ namespace Barman.BouteilleDossier.view
         {
             InitializeComponent();
 
-            if (EcranAccueil.employe.SonRole.Code == "Utils")
-                App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.employe.Prenom + " " + EcranAccueil.employe.Nom + " - " + "Utilisateur"+" - Sortir une bouteille de la réserve";
+            if (EcranAccueil.Employe.SonRole.Code == "Utils")
+                App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Utilisateur"+" - Sortir une bouteille de la réserve";
             else
-                App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.employe.Prenom + " " + EcranAccueil.employe.Nom + " - " + "Administrateur" + " - Sortir une bouteille de la réserve";
+                App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Administrateur" + " - Sortir une bouteille de la réserve";
 
             lstIdMarquesEnReserve = new List<int?>(HibernateBouteilleService.RetrieveIdMarqueEnReserve());
             lstIdTypeEnReserve = new List<int?>();
@@ -76,8 +76,8 @@ namespace Barman.BouteilleDossier.view
         
 
 
-            lstEmployes = HibernateEmployeService.Retrieve(EcranAccueil.employe.IdEmploye);
-            lblEmployeConnecte.Content = EcranAccueil.employe.Prenom + " " + EcranAccueil.employe.Nom;
+            lstEmployes = HibernateEmployeService.Retrieve(EcranAccueil.Employe.IdEmploye);
+            lblEmployeConnecte.Content = EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom;
 
         }
 
