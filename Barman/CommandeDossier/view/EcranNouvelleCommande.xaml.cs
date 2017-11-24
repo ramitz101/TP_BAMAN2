@@ -56,6 +56,11 @@ namespace Barman.CommandeDossier.view
             CommandeCours = new Commande(DateTime.Now, (int)EcranAccueil.employe.IdEmploye, null, "Envoyé");
             HibernateCommandeService.Create(CommandeCours);
 
+            if (EcranAccueil.employe.SonRole.Code == "Utils")
+                App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.employe.Prenom + " " + EcranAccueil.employe.Nom + " - " + "Utilisateur" + " - Commandes";
+            else
+                App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.employe.Prenom + " " + EcranAccueil.employe.Nom + " - " + "Administrateur" + " - Commandes";
+
         }
 
       

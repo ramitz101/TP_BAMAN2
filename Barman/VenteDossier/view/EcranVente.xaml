@@ -8,16 +8,20 @@
     <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height=".8*" />
+            <RowDefinition Height=".8*" />
             <RowDefinition Height="7*" />
             <RowDefinition Height="4*" />
 
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
+        <Grid.ColumnDefinitions >
             <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="1.5*" />
             <ColumnDefinition Width="1.5*" />
         </Grid.ColumnDefinitions>
-        <Grid Name="grdBtn" Grid.Column="0" Grid.Row="1"  >
+
+        <Label Grid.Column="1" Grid.Row="1" FontSize="26" HorizontalAlignment="Center" Content="Ventes" Margin="0,0,0,0" FontWeight="Bold"></Label>
+        
+        <Grid Name="grdBtn" Grid.Column="0" Grid.Row="2"  >
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -29,10 +33,10 @@
                     <TextBlock   VerticalAlignment="Center" FontSize="21"><Run Text=" Gérer"/></TextBlock>
                 </StackPanel>
             </Button>
-            <Button ToolTip="Consulter les ventes de l'employé connecté" Grid.Row="1" Margin="5,5,5,5"  FontSize="21" Height="auto" Click="Consulter_Click" >
+            <Button ToolTip="Consulter les ventes de l'employé connecté" Grid.Row="1" Margin="5,5,5,5"  FontSize="21" Height="auto"  >
                 <StackPanel  Orientation="Horizontal">
                     <Image Source="../../images/padnote.png" Width="40" Height="40"  />
-                    <TextBlock  VerticalAlignment="Center" FontSize="21"><Run Text=" Consulter"/></TextBlock>
+                    <TextBlock  VerticalAlignment="Center" FontSize="21"><Run Text=" Prix"/></TextBlock>
                 </StackPanel>
             </Button>
             <Button ToolTip="Retourner à l'accueil / se déconnecter" FontSize="21" Margin="5,5,5,5"   Grid.Row="2"  Height="auto" Click="btnAccueil_Click">
@@ -43,9 +47,9 @@
             </Button>
         </Grid>
 
-        <StackPanel Grid.Column="1" Grid.Row="1" >
-            <Label Name="lblTypeEmploye" KeyboardNavigation.TabNavigation="None"  Content="Employé"  HorizontalContentAlignment="Center" VerticalAlignment="Top"/>
-            <Label  ToolTip="Employé connecté" KeyboardNavigation.TabNavigation="None" Name="lblEmploye" Margin="0,0,0,15" Content="" FontWeight="Bold"  HorizontalContentAlignment="Center" VerticalAlignment="Top" />
+        <StackPanel Grid.Column="1" Grid.Row="2" >
+            <Label Name="lblTypeEmploye" KeyboardNavigation.TabNavigation="None" Margin="0,0,80,0"  Content="Employé"  HorizontalContentAlignment="Center" VerticalAlignment="Top"/>
+            <Label  ToolTip="Employé connecté" KeyboardNavigation.TabNavigation="None" Name="lblEmploye" Margin="0,0,80,15" Content="" FontWeight="Bold"  HorizontalContentAlignment="Center" VerticalAlignment="Top" />
             <Label Content="Emplacement" KeyboardNavigation.TabNavigation="None"  Margin="0,0,80,0" HorizontalContentAlignment="Center" VerticalAlignment="Top"/>
             <ComboBox Name="cboEmplacement"   SelectionChanged="cboEmplacement_SelectionChanged"   VerticalAlignment="Top" Width="150"/>
 
@@ -57,17 +61,17 @@
 
         </StackPanel>
 
-        <StackPanel Grid.Column="2" Grid.Row="1" Margin="0,66,0,0" >
+        <StackPanel Grid.Column="2" Grid.Row="2" Margin="0,66,0,0" >
 
-            <Label Content="Quantité" KeyboardNavigation.TabNavigation="None"   HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+            <Label Name="lblTitreQuantite" Content="Quantité" KeyboardNavigation.TabNavigation="None"   HorizontalAlignment="Left"  VerticalAlignment="Top"/>
 
             <StackPanel Orientation="Horizontal" Margin="10,0,0,0" >
                 <TextBox Name="txtQuantite"   HorizontalAlignment="Left" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="29"/>
                 <StackPanel >
-                    <RepeatButton Name="btnAugmenteQ"   Click="btnAugmenteQ_Click" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="13" Height="15">
+                    <RepeatButton Name="btnAugmenteQ"   Click="btnAugmenteQ_Click" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="25" Width="40">
                         <Image Source="../../images/add.png"></Image>
                     </RepeatButton>
-                    <RepeatButton Name="btnReduireQ"  Click="btnReduireQ_Click"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="13" Height="15">
+                    <RepeatButton Name="btnReduireQ"  Click="btnReduireQ_Click"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="25" Width="40">
                         <Image Source="../../images/minus-sign.png" ></Image>
                     </RepeatButton>
                 </StackPanel>
