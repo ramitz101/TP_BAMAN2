@@ -34,7 +34,7 @@
             <Button Grid.Row="0" Height="auto" Margin="5,5,5,5" ToolTip="Modifier l'information d'une bouteille" Name="btnGerer"  FontSize="21"  Click="btnGerer_Click">
                 <StackPanel  Orientation="Horizontal">
                     <Image Source="../../images/settings.png" Width="40" Height="40" />
-                    <TextBlock  VerticalAlignment="Center" FontSize="21"><Run Text=" Gérer"/></TextBlock>
+                    <TextBlock  VerticalAlignment="Center" FontSize="21"><Run Text=" Modifier"/></TextBlock>
                 </StackPanel>
             </Button>
 

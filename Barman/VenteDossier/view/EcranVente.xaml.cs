@@ -69,7 +69,13 @@ namespace Barman.VenteDossier.view
 
             cboMarque.DisplayMemberPath = "SaMarque.Nom";
             cboMarque.SelectedValuePath = "IdBouteille";
-            
+
+            if (EcranAccueil.employe.SonRole.Code == "Utils")
+                App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.employe.Prenom + " " + EcranAccueil.employe.Nom + " - " + "Utilisateur" + " - Ventes";
+            else
+                App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.employe.Prenom + " " + EcranAccueil.employe.Nom + " - " + "Administrateur" + " - Ventes";
+
+
         }
 
         private List<Bouteille> ChargerListBouteille()
@@ -178,13 +184,7 @@ namespace Barman.VenteDossier.view
 
         }
 
-        private void Consulter_Click(object sender, RoutedEventArgs e)
-        {
-            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
-            EcranConsulterVente EAI = new EcranConsulterVente();
-            ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0, EAI);           
-
-        }
+      
 
         private void btnGerer_Click(object sender, RoutedEventArgs e)
         {
@@ -214,11 +214,16 @@ namespace Barman.VenteDossier.view
             int quantite;
             try
             {
-                quantite = Int32.Parse(txtQuantite.Text);
-                quantite++;
-                txtQuantite.Text = quantite.ToString();
+                lblTitreQuantite.Content ="Quantité (MAX:"+ LaBouteilleVendu.VolumeRestant.ToString() + "oz)";
+                if (LaBouteilleVendu.VolumeRestant >= int.Parse(txtQuantite.Text) + 1)
+                {
+                    quantite = Int32.Parse(txtQuantite.Text);
+                    quantite++;
+                    txtQuantite.Text = quantite.ToString();
+                }
+              
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 quantite = 1;
                 txtQuantite.Text = quantite.ToString();
@@ -236,7 +241,7 @@ namespace Barman.VenteDossier.view
                     quantite--;
                 txtQuantite.Text = quantite.ToString();
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 quantite = 1;
                 txtQuantite.Text = quantite.ToString();

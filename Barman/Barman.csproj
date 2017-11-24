@@ -156,7 +156,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="VenteDossier\view\EcranConsulterVente.xaml">
+    <Page Include="VenteDossier\view\EcranPrixVente.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -230,8 +230,8 @@
     <Compile Include="CommandeDossier\view\EcranCommande.xaml.cs">
       <DependentUpon>EcranCommande.xaml</DependentUpon>
     </Compile>
-    <Compile Include="VenteDossier\view\EcranConsulterVente.xaml.cs">
-      <DependentUpon>EcranConsulterVente.xaml</DependentUpon>
+    <Compile Include="VenteDossier\view\EcranPrixVente.xaml.cs">
+      <DependentUpon>EcranPrixVente.xaml</DependentUpon>
     </Compile>
     <Compile Include="EmployeDossier\view\EcranEmploye.xaml.cs">
       <DependentUpon>EcranEmploye.xaml</DependentUpon>

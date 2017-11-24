@@ -36,7 +36,7 @@ namespace Barman.VenteDossier.view
         private ObservableCollection<Vente> lstVente;
         private List<Vente> lstAllVente;
         private List<DateTime> lstworkDate;
-
+        
         public EcranGererVente()
         {
             InitializeComponent();
@@ -53,6 +53,18 @@ namespace Barman.VenteDossier.view
             cboEmploye.DisplayMemberPath = "Nom";
             cboEmploye.SelectedValuePath = "IdEmploye";
             cboEmploye.SelectedItem = EcranAccueil.Employe; // met l'employé connecté par défaut
+
+            if (EcranAccueil.employe.SonRole.Code == "Utils")
+            {
+                cboEmploye.IsEnabled = false;
+                btnSupprimer.IsEnabled = false;
+            }
+
+            if (EcranAccueil.employe.SonRole.Code == "Utils")
+                App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.employe.Prenom + " " + EcranAccueil.employe.Nom + " - " + "Utilisateur" + " - Ventes";
+            else
+                App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.employe.Prenom + " " + EcranAccueil.employe.Nom + " - " + "Administrateur" + " - Ventes";
+
         }
 
         private void btnRetour_Click(object sender, RoutedEventArgs e)

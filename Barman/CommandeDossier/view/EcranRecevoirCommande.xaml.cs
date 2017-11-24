@@ -17,6 +17,7 @@ using Barman.BouteilleDossier;
 using Barman.BouteilleDossier.Hibernate;
 using Barman.MarqueDossier.Hibernate;
 using Barman.TypeDossier.Hibernate;
+using Barman.ViewAutreDossier;
 
 namespace Barman.CommandeDossier.view
 {
@@ -51,9 +52,12 @@ namespace Barman.CommandeDossier.view
                 btnConfirmer.IsEnabled = false;
                 btnSupprimer.IsEnabled = false;
             }
-            
 
-            
+
+            if (EcranAccueil.employe.SonRole.Code == "Utils")
+                App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.employe.Prenom + " " + EcranAccueil.employe.Nom + " - " + "Utilisateur" + " - Commandes";
+            else
+                App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.employe.Prenom + " " + EcranAccueil.employe.Nom + " - " + "Administrateur" + " - Commandes";
         }
 
         private void btnAnnuler_Click(object sender, RoutedEventArgs e)

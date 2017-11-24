@@ -37,6 +37,13 @@ namespace Barman.BouteilleDossier.view
         {
             InitializeComponent();
 
+            if (EcranAccueil.employe.SonRole.Code == "Utils")
+                App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.employe.Prenom + " " + EcranAccueil.employe.Nom + " - " + "Utilisateur" + " - Inventaire du bar";
+            else
+                App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.employe.Prenom + " " + EcranAccueil.employe.Nom + " - " + "Administrateur" + " - Inventaire du bar";
+
+
+
             lstBouteilles = new ObservableCollection<Bouteille>(ChargerListBouteille(false));
             dtgInventaire.ItemsSource = lstBouteilles;
             dtgInventaire.Items.Refresh();
@@ -95,8 +102,12 @@ namespace Barman.BouteilleDossier.view
                     popup.ShowDialog();
                     if (popup.btnConfirmer.IsEnabled)
                     {
-                        lblMessage.Text = "Bouteille modifié avec succès.";
+                        lblMessage.Text = "Bouteille modifiée avec succès.";
                         lblMessage.Foreground = Brushes.Green;
+                        lblNbSupprimee.Content = "Suprimées:" + HibernateBouteilleService.CountNbSupprimee().ToString();
+                        lblNbEntamee.Content = "Entamées:"+HibernateBouteilleService.CountNbEntamee().ToString();
+                        lblNbPlein.Content = "Pleines:"+HibernateBouteilleService.CountNbPleine().ToString();
+                        lblNbReserve.Content = "En réserve:"+HibernateBouteilleService.CountNbReserve().ToString();
                     }
                     else if (popup.btnAnnuler.IsEnabled)
                     {
@@ -273,10 +284,14 @@ namespace Barman.BouteilleDossier.view
                             bouteille.VolumeRestant = 0;
                             bouteille.IdEmplacement = HibernateEmplacementService.retrieveEmplacementByNom("Aucun")[0].IdEmplacement;
                             HibernateBouteilleService.Update(bouteille);
-                            lblMessage.Text = "Bouteille supprimé avec succès.";
+                            lblMessage.Text = "Bouteille(s) supprimée(s) avec succès.";
                             lblMessage.Foreground = Brushes.Green;
                         }
                         dtgInventaire.ItemsSource = new ObservableCollection<Bouteille>(ChargerListBouteille(chbAfficherSupprimee.IsChecked));
+                        lblNbSupprimee.Content = "Suprimées:"+HibernateBouteilleService.CountNbSupprimee().ToString();
+                        lblNbEntamee.Content = "Entamées:" + HibernateBouteilleService.CountNbEntamee().ToString();
+                        lblNbPlein.Content = "Pleines:" + HibernateBouteilleService.CountNbPleine().ToString();
+                        lblNbReserve.Content = "En réserve:" + HibernateBouteilleService.CountNbReserve().ToString();
                     }
                     else
                     {
