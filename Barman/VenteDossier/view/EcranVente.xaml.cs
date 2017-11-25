@@ -70,7 +70,7 @@ namespace Barman.VenteDossier.view
             cboMarque.DisplayMemberPath = "SaMarque.Nom";
             cboMarque.SelectedValuePath = "IdBouteille";
 
-            if (EcranAccueil.Employe.SonRole.Code == "Utils")
+            if (EcranAccueil.Employe.SonRole.Code == Constante.UTILISATEUR)
                 App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Utilisateur" + " - Ventes";
             else
                 App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Administrateur" + " - Ventes";

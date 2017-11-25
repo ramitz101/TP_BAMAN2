@@ -37,7 +37,7 @@ namespace Barman.BouteilleDossier.view
         {
             InitializeComponent();
 
-            if (EcranAccueil.Employe.SonRole.Code == "Utils")
+            if (EcranAccueil.Employe.SonRole.Code == Constante.UTILISATEUR)
                 App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Utilisateur" + " - Inventaire du bar";
             else
                 App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Administrateur" + " - Inventaire du bar";
@@ -63,17 +63,8 @@ namespace Barman.BouteilleDossier.view
 
         private void btnAjout_Click(object sender, RoutedEventArgs e)
         {
-            if (EcranAccueil.Employe.IdRole == null)
-            {
-                FenetreAuthentification FN = new FenetreAuthentification(null);
-                FN.ShowDialog();
-            }
-            if (EcranAccueil.Employe.IdRole != 1 && EcranAccueil.Employe.IdRole != null)
-            {
-                FenetreErreur FE = new FenetreErreur();
-                FE.ShowDialog();
-            }
-            if (EcranAccueil.Employe.IdRole == 1)
+            Authentification auth = new Authentification();
+            if (auth.ValiderRoleAdmin())
             {
                 ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
                 EcranAjoutInventaire EAI = new EcranAjoutInventaire();
@@ -84,19 +75,10 @@ namespace Barman.BouteilleDossier.view
 
         private void btnGerer_Click(object sender, RoutedEventArgs e)
         {
+            Authentification auth = new Authentification();
             if (UneBouteilleSelectionne())
             {
-                if (EcranAccueil.Employe.IdRole == null)
-                {
-                    FenetreAuthentification FN = new FenetreAuthentification(null);
-                    FN.ShowDialog();
-                }
-                if (EcranAccueil.Employe.IdRole != 1 && EcranAccueil.Employe.IdRole != null)
-                {
-                    FenetreErreur FE = new FenetreErreur();
-                    FE.ShowDialog();
-                }
-                if (EcranAccueil.Employe.IdRole == 1)
+                if (auth.ValiderRoleAdmin())
                 {
                     FenetreModifierBouteille popup = new FenetreModifierBouteille(lstBouteilles, dtgInventaire.SelectedItem as Bouteille, this);
                     popup.ShowDialog();
@@ -259,17 +241,8 @@ namespace Barman.BouteilleDossier.view
        
         private void btnSuppression_Click(object sender, RoutedEventArgs e)
         {
-            if (EcranAccueil.Employe.IdRole == null)
-            {
-                FenetreAuthentification FN = new FenetreAuthentification(null);
-                FN.ShowDialog();
-            }
-            if (EcranAccueil.Employe.IdRole != 1 && EcranAccueil.Employe.IdRole != null)
-            {
-                FenetreErreur FE = new FenetreErreur();
-                FE.ShowDialog();
-            }
-            if (EcranAccueil.Employe.IdRole == 1)
+            Authentification auth = new Authentification();
+            if (auth.ValiderRoleAdmin())
             {
                 if (AuMoinsUneBouteilleSelectionne())
                 {
@@ -301,11 +274,7 @@ namespace Barman.BouteilleDossier.view
                 }
             }
         }
-
-        //private PdfPTable CreerEnteteFichier(PdfPTable table)
-        //{            
-        //    return table;
-        //}
+      
         private void columnHeader_Click(object sender, RoutedEventArgs e)
         {
             ContenuHeader = ((DataGridColumnHeader)sender).Content.ToString();

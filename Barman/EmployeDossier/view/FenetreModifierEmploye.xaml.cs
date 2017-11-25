@@ -97,12 +97,12 @@ namespace Barman.EmployeDossier.view
         {
             if (rdbAdministrateur.IsChecked == true)
             {
-                List<Role> lstRole = new List<Role>(HibernateRoleService.Retrieve("Admin"));
+                List<Role> lstRole = new List<Role>(HibernateRoleService.Retrieve(Constante.ADMINISTRATEUR));
                 return (int)lstRole[0].IdRole;
             }
             else
             {
-                List<Role> lstRole = new List<Role>(HibernateRoleService.Retrieve("Utils"));
+                List<Role> lstRole = new List<Role>(HibernateRoleService.Retrieve(Constante.UTILISATEUR));
                 return (int)lstRole[0].IdRole;
             }
         }

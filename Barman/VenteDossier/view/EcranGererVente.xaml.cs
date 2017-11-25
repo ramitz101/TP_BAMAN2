@@ -54,13 +54,13 @@ namespace Barman.VenteDossier.view
             cboEmploye.SelectedValuePath = "IdEmploye";
             cboEmploye.SelectedItem = EcranAccueil.Employe; // met l'employé connecté par défaut
 
-            if (EcranAccueil.Employe.SonRole.Code == "Utils")
+            if (EcranAccueil.Employe.SonRole.Code == Constante.UTILISATEUR)
             {
                 cboEmploye.IsEnabled = false;
                 btnSupprimer.IsEnabled = false;
             }
 
-            if (EcranAccueil.Employe.SonRole.Code == "Utils")
+            if (EcranAccueil.Employe.SonRole.Code == Constante.UTILISATEUR)
                 App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Utilisateur" + " - Ventes";
             else
                 App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Administrateur" + " - Ventes";

@@ -31,8 +31,8 @@ namespace Barman.ViewAutreDossier
 
         private void btnConnection_Click(object sender, RoutedEventArgs e)
         {
-            FenetreAuthentification FN = new FenetreAuthentification(null);
-            FN.ShowDialog();
+            Authentification auth = new Authentification();
+            auth.SAuthentifier();
             this.Close();
         }
     }

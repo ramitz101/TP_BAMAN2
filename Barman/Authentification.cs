@@ -54,7 +54,7 @@ namespace Barman
                 return true;
         }
 
-        private void SAuthentifier()
+        public void SAuthentifier()
         {
             FenetreAuthentification FN = new FenetreAuthentification(this);
             FN.ShowDialog();

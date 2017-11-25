@@ -23,7 +23,7 @@ namespace Barman.ViewAutreDossier
 
     public partial class EcranAccueil : UserControl
     {
-        static public Employe Employe {get;set;} // A la création de la fenetre accueil le role d'un utilisateur est réinitialisé
+        static public Employe Employe { get; set; } // A la création de la fenetre accueil le role d'un utilisateur est réinitialisé
         public EcranAccueil()
         {
             InitializeComponent();
@@ -59,18 +59,17 @@ namespace Barman.ViewAutreDossier
                     ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EO);
                 }
             }*/
-                    
-            
+
+
         }
 
         private void btnVente_Click(object sender, RoutedEventArgs e)
         {
-            
-            FenetreAuthentification FA = new FenetreAuthentification(null);
-            FA.ShowDialog();            
-            if (Employe.IdEmploye != null)
+
+            Authentification auth = new Authentification();
+            if (auth.ValiderRoleAdmin())
             {
-               ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
+                ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
                 EcranOnglets EO = new EcranOnglets(2);
                 ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EO);
 
@@ -80,16 +79,14 @@ namespace Barman.ViewAutreDossier
         private void btnCommande_Click(object sender, RoutedEventArgs e)
         {
             ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
-            EcranOnglets EO = new EcranOnglets(3);          
+            EcranOnglets EO = new EcranOnglets(3);
             ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Add(EO);
         }
 
         private void btnFormulaireBouteille_Click(object sender, RoutedEventArgs e)
         {
-            FenetreAuthentification FA = new FenetreAuthentification(null);
-            FA.ShowDialog();
-
-            if (Employe.IdEmploye != null)
+            Authentification auth = new Authentification();
+            if (auth.ValiderRoleAdmin())
             {
                 ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
                 EcranOnglets EO = new EcranOnglets(4);

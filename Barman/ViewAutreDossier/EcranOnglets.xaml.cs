@@ -24,8 +24,9 @@ namespace Barman.ViewAutreDossier
     /// </summary>
     public partial class EcranOnglets : UserControl
     {
-
         private TabItem LastSelected { get; set; }
+        private TabItem Temp { get; set; }
+        private TabItem LiveSelected { get; set; }
         
         private bool OngletCreer { get; set; } = false;
         public EcranOnglets(int tbiIndex)
@@ -51,6 +52,10 @@ namespace Barman.ViewAutreDossier
 
         private void tbcOnglet_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            
+                       
+            
+
             Authentification auth = new Authentification();
             if (tbcOnglet.SelectedItem == tbiInventaire)
             {
@@ -77,6 +82,8 @@ namespace Barman.ViewAutreDossier
                     EcranEmploye EE = new EcranEmploye();
                     ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0, EE);
                 }
+               
+                
                 
             }
             else if (tbcOnglet.SelectedItem == tbiVente)
@@ -89,16 +96,18 @@ namespace Barman.ViewAutreDossier
                     ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0, EV);
 
                 }
+               
             }
             else if (tbcOnglet.SelectedItem == tbiFormulaireB)
             {                
-                if (!(auth.ValiderRoleAdmin()))
+                if (auth.ValiderRoleAdmin())
                 {
                     if (OngletCreer)
                         ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
                     EcranFormulaireBouteille EFB = new EcranFormulaireBouteille();
                     ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0, EFB);
                 }
+                
             }            
         }          
     }

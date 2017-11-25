@@ -35,6 +35,8 @@ namespace Barman.ViewAutreDossier
 
         private void btnAnnuler_Click(object sender, RoutedEventArgs e)
         {
+            //EcranOnglets ecranOnglets = new EcranOnglets(0);
+            //ecranOnglets.tbcOnglet.SelectedItem = ecranOnglets.tbiInventaire;
             this.Close();
         }
 
