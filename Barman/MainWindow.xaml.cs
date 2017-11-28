@@ -16,21 +16,24 @@ using Barman.ViewAutreDossier;
 
 namespace Barman
 {
-   /// <summary>
-   /// Logique d'interaction pour MainWindow.xaml
-   /// </summary>
-   public partial class MainWindow : Window
-   {
-        private EcranAccueil EcranAccueil{ get; set; }
+    /// <summary>
+    /// Logique d'interaction pour MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        private EcranAccueil EcranAccueil { get; set; }
         public MainWindow()
-      {
-         InitializeComponent();
-         EcranAccueil = new EcranAccueil();
-         GrdPrincipale.Children.Add(EcranAccueil);
-         WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-            
-        }
+        {
+            InitializeComponent();
+            EcranAccueil = new EcranAccueil();
+            GrdPrincipale.Children.Add(EcranAccueil);
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
 
-    
+        }
+        /*private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+        }*/
+
     }
 }

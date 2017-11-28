@@ -29,7 +29,13 @@ namespace Barman.EmployeDossier.view
     public partial class EcranEmploye : UserControl
     {
         public string ContenuHeader { get; set; }
-        DependencyObject mainDep = new DependencyObject();    
+        public bool seulementOuvrir = false;
+        public bool seulementSauvegarder = false;
+        public bool ouvrirEtSauvegarder = false;
+
+
+
+        DependencyObject mainDep = new DependencyObject();
         private static ObservableCollection<Employe> lstEmployes = new ObservableCollection<Employe>();
 
         public EcranEmploye()
@@ -54,14 +60,14 @@ namespace Barman.EmployeDossier.view
                 popup.ShowDialog();
             }
 
-            dtgEmploye.ItemsSource = new ObservableCollection<Employe>(ChargerListEmploye(null));            
+            dtgEmploye.ItemsSource = new ObservableCollection<Employe>(ChargerListEmploye(null));
         }
 
         private void btnAjouterEmploye_Click(object sender, RoutedEventArgs e)
         {
             FenetreAjouterEmploye popup = new FenetreAjouterEmploye();
             popup.ShowDialog();
-            dtgEmploye.ItemsSource = new ObservableCollection<Employe>(ChargerListEmploye(null));            
+            dtgEmploye.ItemsSource = new ObservableCollection<Employe>(ChargerListEmploye(null));
         }
 
         private void btnAccueil_Click(object sender, RoutedEventArgs e)
@@ -88,7 +94,7 @@ namespace Barman.EmployeDossier.view
             // si le user a sélectionné plus d'une inscription 
             else if (dtgEmploye.SelectedItems.Count > 1)
             {
-                MessageBox.Show("Vous devez selectionner un seul employé.","Avertissement",MessageBoxButton.OK,MessageBoxImage.Information,MessageBoxResult.OK);
+                MessageBox.Show("Vous devez selectionner un seul employé.", "Avertissement", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.OK);
                 return false;
             }
             else
@@ -102,7 +108,7 @@ namespace Barman.EmployeDossier.view
         {
             if (AuMoinsUnEmployeSelectionne())
             {
-                MessageBoxResult resultat = MessageBox.Show("Êtes-vous sûr de vouloir supprimer les employés sélectionnés?","Suppression d'employé",MessageBoxButton.YesNo,MessageBoxImage.Warning,MessageBoxResult.No);
+                MessageBoxResult resultat = MessageBox.Show("Êtes-vous sûr de vouloir supprimer les employés sélectionnés?", "Suppression d'employé", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No);
 
                 if (resultat == MessageBoxResult.Yes)
                 {
@@ -136,34 +142,34 @@ namespace Barman.EmployeDossier.view
             {
                 switch (ContenuHeader)
                 {
-                    case "Prénom":                        
-                        SiLaListeEstVide(HibernateEmployeService.RetrievePrenom(txtRecherche.Text));                        
+                    case "Prénom":
+                        SiLaListeEstVide(HibernateEmployeService.RetrievePrenom(txtRecherche.Text));
                         break;
                     case "Téléphone":
-                        SiLaListeEstVide(HibernateEmployeService.RetrieveTelephone(txtRecherche.Text));                                               
+                        SiLaListeEstVide(HibernateEmployeService.RetrieveTelephone(txtRecherche.Text));
                         break;
                     case "Date d'embauche":
-                        SiLaListeEstVide(HibernateEmployeService.RetrieveDateEmbauche(txtRecherche.Text));                                                
+                        SiLaListeEstVide(HibernateEmployeService.RetrieveDateEmbauche(txtRecherche.Text));
                         break;
                     case "NAS":
-                        SiLaListeEstVide(HibernateEmployeService.RetrieveNAS(txtRecherche.Text));                       
+                        SiLaListeEstVide(HibernateEmployeService.RetrieveNAS(txtRecherche.Text));
                         break;
                     case "Role":
                         lstRole = HibernateRoleService.RetrieveRole(txtRecherche.Text);
-                        foreach (Role r in lstRole)                        
+                        foreach (Role r in lstRole)
                             lstEmploye.AddRange(HibernateEmployeService.RetrieveRole((int)r.IdRole));
-                        SiLaListeEstVide(lstRole);                        
+                        SiLaListeEstVide(lstRole);
                         break;
                     case "Code":
-                        SiLaListeEstVide(HibernateEmployeService.RetrieveCode(txtRecherche.Text));                       
+                        SiLaListeEstVide(HibernateEmployeService.RetrieveCode(txtRecherche.Text));
                         break;
                     default:
-                        SiLaListeEstVide(HibernateEmployeService.RetrieveNom(txtRecherche.Text));                        
+                        SiLaListeEstVide(HibernateEmployeService.RetrieveNom(txtRecherche.Text));
                         break;
                 }
             }
-            else                         
-                dtgEmploye.ItemsSource = HibernateEmployeService.RetrieveAll(null);            
+            else
+                dtgEmploye.ItemsSource = HibernateEmployeService.RetrieveAll(null);
         }
 
         private void SiLaListeEstVide<T>(List<T> lst)
@@ -176,7 +182,7 @@ namespace Barman.EmployeDossier.view
 
         private void txtRecherche_GotFocus(object sender, RoutedEventArgs e)
         {
-            txtRecherche.Text = "";            
+            txtRecherche.Text = "";
         }
 
         private void txtRecherche_LostFocus(object sender, RoutedEventArgs e)
@@ -191,36 +197,86 @@ namespace Barman.EmployeDossier.view
 
         private void btnImprimerEmploye_Click(object sender, RoutedEventArgs e)
         {
-            lstEmployes = new ObservableCollection<Employe>(ChargerListEmploye(null));
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
 
-            saveFileDialog1.Filter = "Pdf Files|*.pdf";
-            saveFileDialog1.FileName = "Employes";
-            if (saveFileDialog1.ShowDialog() == true)
+            FenetreOptionsImprimer optionsPDF = new FenetreOptionsImprimer(this);
+            optionsPDF.ShowDialog();
+
+            if (ouvrirEtSauvegarder || seulementOuvrir || seulementSauvegarder)
             {
-                //Crée le fichier
-                Document doc = new Document();
-                FileStream fs = new System.IO.FileStream(saveFileDialog1.FileName, FileMode.Create, FileAccess.Write, FileShare.None);
-                PdfWriter writer = PdfWriter.GetInstance(doc, fs);
-                doc.Open();
+                lstEmployes = new ObservableCollection<Employe>(ChargerListEmploye(null));
+                SaveFileDialog saveFileDialog = new SaveFileDialog();               
 
-                //Entête
-                iTextSharp.text.Paragraph titre = new iTextSharp.text.Paragraph("Employé");
-                titre.Alignment = Element.ALIGN_CENTER;
-                titre.Font.SetStyle(Font.BOLD);
-                titre.Font.Size = 20;
-                doc.Add(titre);
-                titre = new iTextSharp.text.Paragraph(" ");
-                doc.Add(titre);
 
-                //Création du tableau
-                PdfPTable table = new PdfPTable(7); //Le paramètre indique le nombre de colonne. S'il manque de cellules pour la dernière rangée, il ne mettra simplement pas la rangée
-                table = CreationDesTables.CreerTableEmploye(table, lstEmployes);
-                doc.Add(table);
-                
-                string fullPath = System.IO.Path.GetFullPath(saveFileDialog1.FileName);
-                doc.Close();
-                Process.Start(fullPath);
+                saveFileDialog.Filter = "Pdf Files|*.pdf";
+                saveFileDialog.FileName = "Employes";
+                if (ouvrirEtSauvegarder || seulementSauvegarder)
+                {
+
+                    if (saveFileDialog.ShowDialog() == true)
+                    {
+
+
+                        //Crée le fichier
+                        Document doc = new Document();
+                        FileStream fs = new System.IO.FileStream(saveFileDialog.FileName, FileMode.Create, FileAccess.Write, FileShare.None);
+                        PdfWriter writer = PdfWriter.GetInstance(doc, fs);
+                        doc.Open();
+
+                        //Entête
+                        iTextSharp.text.Paragraph titre = new iTextSharp.text.Paragraph("Employé");
+                        titre.Alignment = Element.ALIGN_CENTER;
+                        titre.Font.SetStyle(Font.BOLD);
+                        titre.Font.Size = 20;
+                        doc.Add(titre);
+                        titre = new iTextSharp.text.Paragraph(" ");
+                        doc.Add(titre);
+
+                        //Création du tableau
+                        PdfPTable table = new PdfPTable(7); //Le paramètre indique le nombre de colonne. S'il manque de cellules pour la dernière rangée, il ne mettra simplement pas la rangée
+                        table = CreationDesTables.CreerTableEmploye(table, lstEmployes);
+                        doc.Add(table);
+
+
+                        string fullPath = System.IO.Path.GetFullPath(saveFileDialog.FileName);
+                        doc.Close();
+                        if (ouvrirEtSauvegarder)
+                            Process.Start(fullPath);
+                    }
+                }
+                else
+                {
+                    string path = System.IO.Path.GetTempPath();
+                    path = path + "Temp\\";
+                    Directory.CreateDirectory(path);
+                    saveFileDialog.InitialDirectory = path;
+
+                    //Crée le fichier
+                    Document doc = new Document();
+                    FileStream fs = new System.IO.FileStream(saveFileDialog.FileName, FileMode.Create, FileAccess.Write, FileShare.None);
+                    PdfWriter writer = PdfWriter.GetInstance(doc, fs);
+                    doc.Open();
+
+                    //Entête
+                    iTextSharp.text.Paragraph titre = new iTextSharp.text.Paragraph("Employé");
+                    titre.Alignment = Element.ALIGN_CENTER;
+                    titre.Font.SetStyle(Font.BOLD);
+                    titre.Font.Size = 20;
+                    doc.Add(titre);
+                    titre = new iTextSharp.text.Paragraph(" ");
+                    doc.Add(titre);
+
+                    //Création du tableau
+                    PdfPTable table = new PdfPTable(7); //Le paramètre indique le nombre de colonne. S'il manque de cellules pour la dernière rangée, il ne mettra simplement pas la rangée
+                    table = CreationDesTables.CreerTableEmploye(table, lstEmployes);
+                    doc.Add(table);
+
+
+                    string fullPath = System.IO.Path.GetFullPath(saveFileDialog.FileName);
+                    doc.Close();
+
+                    Process.Start(fullPath);
+
+                }
             }
         }
 
@@ -237,8 +293,8 @@ namespace Barman.EmployeDossier.view
         }
 
         private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
-        {            
-            btnGerer_Click(sender, e);            
-        }        
+        {
+            btnGerer_Click(sender, e);
+        }
     }
 }
