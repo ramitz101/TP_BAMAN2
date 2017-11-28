@@ -53,25 +53,20 @@ namespace Barman.ViewAutreDossier
         private void tbcOnglet_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             
-                       
-            
-
             Authentification auth = new Authentification();
             if (tbcOnglet.SelectedItem == tbiInventaire)
             {
                 if(OngletCreer)
                     ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
                 EcranInventaire EI = new EcranInventaire();
-                    ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0,EI);
-                
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0,EI);                
             }
             else if (tbcOnglet.SelectedItem == tbiCommande)
             {
                 if (OngletCreer)
                     ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
                 EcranCommande EC = new EcranCommande();
-                ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0,EC);
-                
+                ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0,EC);                
             }
             else if (tbcOnglet.SelectedItem == tbiEmploye)
             {                
@@ -81,33 +76,27 @@ namespace Barman.ViewAutreDossier
                         ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
                     EcranEmploye EE = new EcranEmploye();
                     ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0, EE);
-                }
-               
-                
-                
+                }                                              
             }
             else if (tbcOnglet.SelectedItem == tbiVente)
             {                
-                if (auth.ValiderRoleAdmin())
+                if (auth.ValiderRoleUtils())
                 {
                     if (OngletCreer)
                         ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
                     EcranVente EV = new EcranVente();
                     ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0, EV);
-
-                }
-               
+                }               
             }
             else if (tbcOnglet.SelectedItem == tbiFormulaireB)
             {                
-                if (auth.ValiderRoleAdmin())
+                if (auth.ValiderRoleUtils())
                 {
                     if (OngletCreer)
                         ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
                     EcranFormulaireBouteille EFB = new EcranFormulaireBouteille();
                     ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0, EFB);
-                }
-                
+                }                
             }            
         }          
     }

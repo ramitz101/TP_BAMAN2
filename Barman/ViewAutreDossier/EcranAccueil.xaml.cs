@@ -67,7 +67,7 @@ namespace Barman.ViewAutreDossier
         {
 
             Authentification auth = new Authentification();
-            if (auth.ValiderRoleAdmin())
+            if (auth.ValiderRoleUtils())
             {
                 ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
                 EcranOnglets EO = new EcranOnglets(2);
@@ -86,7 +86,7 @@ namespace Barman.ViewAutreDossier
         private void btnFormulaireBouteille_Click(object sender, RoutedEventArgs e)
         {
             Authentification auth = new Authentification();
-            if (auth.ValiderRoleAdmin())
+            if (auth.ValiderRoleUtils())
             {
                 ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Clear();
                 EcranOnglets EO = new EcranOnglets(4);

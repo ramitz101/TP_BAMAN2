@@ -45,7 +45,41 @@ namespace Barman
                     return false;
             }
         }
+        public bool ValiderRoleUtils()
+        {
 
+            if (ValideEmploye())
+            {
+                if (EcranAccueil.Employe.SonRole.Code == Constante.ADMINISTRATEUR || EcranAccueil.Employe.SonRole.Code == Constante.UTILISATEUR)
+                    return true;
+                else
+                {
+                    SAuthentifier();
+                    if (Confirmer)
+                    {
+                        if (EcranAccueil.Employe.SonRole.Code == Constante.ADMINISTRATEUR || EcranAccueil.Employe.SonRole.Code == Constante.UTILISATEUR)
+                            return true;
+                        else
+                            return false;
+                    }
+                    else
+                        return false;
+                }
+            }
+            else
+            {
+                SAuthentifier();
+                if (Confirmer)
+                {
+                    if (EcranAccueil.Employe.SonRole.Code == Constante.ADMINISTRATEUR || EcranAccueil.Employe.SonRole.Code == Constante.UTILISATEUR)
+                        return true;
+                    else
+                        return false;
+                }
+                else
+                    return false;
+            }
+        }
         private bool ValideEmploye()
         {
             if (EcranAccueil.Employe == null)
