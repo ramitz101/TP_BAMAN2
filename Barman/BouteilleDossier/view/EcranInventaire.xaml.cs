@@ -39,8 +39,10 @@ namespace Barman.BouteilleDossier.view
 
             if (EcranAccueil.Employe.SonRole.Code == Constante.UTILISATEUR)
                 App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Utilisateur" + " - Inventaire du bar";
-            else
+            else if(EcranAccueil.Employe.SonRole.Code == Constante.ADMINISTRATEUR)
                 App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Administrateur" + " - Inventaire du bar";
+            else
+                App.Current.MainWindow.Title = "Barmans - Inventaire du bar";
 
 
 
