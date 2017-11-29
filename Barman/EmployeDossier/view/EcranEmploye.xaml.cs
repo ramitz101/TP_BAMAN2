@@ -244,15 +244,13 @@ namespace Barman.EmployeDossier.view
                     }
                 }
                 else
-                {
-                    string path = System.IO.Path.GetTempPath();
-                    path = path + "Temp\\";
-                    Directory.CreateDirectory(path);
-                    saveFileDialog.InitialDirectory = path;
+                {                    
+
+                    Directory.CreateDirectory("BarApp");                    
 
                     //Crée le fichier
                     Document doc = new Document();
-                    FileStream fs = new System.IO.FileStream(saveFileDialog.FileName, FileMode.Create, FileAccess.Write, FileShare.None);
+                    FileStream fs = new System.IO.FileStream("BarApp\\Employes.pdf", FileMode.Create, FileAccess.Write, FileShare.None);
                     PdfWriter writer = PdfWriter.GetInstance(doc, fs);
                     doc.Open();
 
@@ -271,7 +269,7 @@ namespace Barman.EmployeDossier.view
                     doc.Add(table);
 
 
-                    string fullPath = System.IO.Path.GetFullPath(saveFileDialog.FileName);
+                    string fullPath = System.IO.Path.GetFullPath("BarApp\\Employes.pdf");
                     doc.Close();
 
                     Process.Start(fullPath);

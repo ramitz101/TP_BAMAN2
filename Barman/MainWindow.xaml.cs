@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Barman.ViewAutreDossier;
+using System.IO;
 
 namespace Barman
 {
@@ -22,6 +23,8 @@ namespace Barman
     public partial class MainWindow : Window
     {
         private EcranAccueil EcranAccueil { get; set; }
+        public bool NonXClose { get; private set; }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -30,10 +33,12 @@ namespace Barman
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
 
         }
-        /*private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void Window_Closed(object sender,EventArgs e)
         {
-            e.Cancel = true;
-        }*/
+            string path = System.IO.Path.GetTempPath();
+            //path = path + "Temp\\";
+            //Directory.Delete(path, true);
+        }        
 
     }
 }

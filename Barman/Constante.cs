@@ -11,6 +11,6 @@ namespace Barman
         public const string UTILISATEUR = "Utils";
         public const string ADMINISTRATEUR = "Admin";
         public const string APPTITLE = "Barman";
-
+        
     }
 }
