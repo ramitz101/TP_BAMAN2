@@ -33,19 +33,24 @@ namespace Barman.BouteilleDossier.view
         DispatcherTimer dispatcherTimer = new DispatcherTimer();
         private static ObservableCollection<Bouteille> lstBouteilles = new ObservableCollection<Bouteille>(ChargerListBouteille(false));
         public string ContenuHeader { get; set; }
+        private int PrixTotal { get; set; }
+        private int VolumeTotal { get; set; }
         public EcranInventaire()
         {
             InitializeComponent();
 
             if (EcranAccueil.Employe.SonRole.Code == Constante.UTILISATEUR)
                 App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Utilisateur" + " - Inventaire du bar";
-            else if(EcranAccueil.Employe.SonRole.Code == Constante.ADMINISTRATEUR)
+            else if (EcranAccueil.Employe.SonRole.Code == Constante.ADMINISTRATEUR)
                 App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Administrateur" + " - Inventaire du bar";
             else
                 App.Current.MainWindow.Title = "Barmans - Inventaire du bar";
 
 
 
+
+            lblQuantitePertes.Visibility = Visibility.Hidden;
+            lblTotalPertes.Visibility = Visibility.Hidden;
             lstBouteilles = new ObservableCollection<Bouteille>(ChargerListBouteille(false));
             dtgInventaire.ItemsSource = lstBouteilles;
             dtgInventaire.Items.Refresh();
@@ -89,9 +94,9 @@ namespace Barman.BouteilleDossier.view
                         lblMessage.Text = "Bouteille modifiée avec succès.";
                         lblMessage.Foreground = Brushes.Green;
                         lblNbPerdue.Content = "Pertes:" + HibernateBouteilleService.CountNbPerdue().ToString();
-                        lblNbEntamee.Content = "Entamées:"+HibernateBouteilleService.CountNbEntamee().ToString();
-                        lblNbPlein.Content = "Pleines:"+HibernateBouteilleService.CountNbPleine().ToString();
-                        lblNbReserve.Content = "En réserve:"+HibernateBouteilleService.CountNbReserve().ToString();
+                        lblNbEntamee.Content = "Entamées:" + HibernateBouteilleService.CountNbEntamee().ToString();
+                        lblNbPlein.Content = "Pleines:" + HibernateBouteilleService.CountNbPleine().ToString();
+                        lblNbReserve.Content = "En réserve:" + HibernateBouteilleService.CountNbReserve().ToString();
                     }
                     else if (popup.btnAnnuler.IsEnabled)
                     {
@@ -179,25 +184,25 @@ namespace Barman.BouteilleDossier.view
                         break;
                     case "Emplacement":
                         lstEmplacement = HibernateEmplacementService.Retrieve(txtRecherche.Text);
-                        foreach (Emplacement m in lstEmplacement)                       
-                            lstBouteille.AddRange(HibernateBouteilleService.RetrieveByEmplacementId((int)m.IdEmplacement, chbAfficherSupprimee.IsChecked));                        
+                        foreach (Emplacement m in lstEmplacement)
+                            lstBouteille.AddRange(HibernateBouteilleService.RetrieveByEmplacementId((int)m.IdEmplacement, chbAfficherSupprimee.IsChecked));
                         break;
                     case "État":
                         lstBouteille.AddRange(HibernateBouteilleService.RetrieveByEtat(txtRecherche.Text, chbAfficherSupprimee.IsChecked));
                         break;
                     case "Type d'alcool":
                         lstType = HibernateTypeAlcoolService.Retrieve(txtRecherche.Text);
-                        foreach (TypeAlcool t in lstType)                        
-                            lstMarque.AddRange(HibernateMarqueService.RetrieveByType(t));                        
-                        foreach (Marque m in lstMarque)                        
-                            lstBouteille.AddRange(HibernateBouteilleService.RetrieveByMarqueId((int)m.IdMarque, chbAfficherSupprimee.IsChecked));                        
+                        foreach (TypeAlcool t in lstType)
+                            lstMarque.AddRange(HibernateMarqueService.RetrieveByType(t));
+                        foreach (Marque m in lstMarque)
+                            lstBouteille.AddRange(HibernateBouteilleService.RetrieveByMarqueId((int)m.IdMarque, chbAfficherSupprimee.IsChecked));
                         break;
                 }
-            
+
                 if (lstBouteille.Count != 0)
                     dtgInventaire.ItemsSource = lstBouteille;
-                else                
-                    dtgInventaire.ItemsSource = null;                
+                else
+                    dtgInventaire.ItemsSource = null;
             }
             else
             {
@@ -208,7 +213,7 @@ namespace Barman.BouteilleDossier.view
 
         private void btnImprimer_Click(object sender, RoutedEventArgs e)
         {
-            lstBouteilles = new ObservableCollection<Bouteille>(ChargerListBouteille(chbAfficherSupprimee.IsChecked));        
+            lstBouteilles = new ObservableCollection<Bouteille>(ChargerListBouteille(chbAfficherSupprimee.IsChecked));
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
 
             saveFileDialog1.Filter = "Pdf Files|*.pdf";
@@ -237,10 +242,10 @@ namespace Barman.BouteilleDossier.view
 
                 string fullPath = System.IO.Path.GetFullPath(saveFileDialog1.FileName);
                 doc.Close();
-                Process.Start(fullPath);            
+                Process.Start(fullPath);
             }
         }
-       
+
         private void btnSuppression_Click(object sender, RoutedEventArgs e)
         {
             Authentification auth = new Authentification();
@@ -248,22 +253,21 @@ namespace Barman.BouteilleDossier.view
             {
                 if (AuMoinsUneBouteilleSelectionne())
                 {
-                    MessageBoxResult resultat = MessageBox.Show("Êtes vous sûr de vouloire supprimer la sélection de bouteilles?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No);
+                    MessageBoxResult resultat = MessageBox.Show("Êtes vous sûr de vouloir supprimer la sélection de bouteilles?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No);
 
                     if (resultat == MessageBoxResult.Yes)
                     {
                         List<Bouteille> lstBouteille = dtgInventaire.SelectedItems.Cast<Bouteille>().ToList();
                         foreach (var bouteille in lstBouteille)
                         {
-                            bouteille.Etat = "Perdue";
-                            bouteille.VolumeRestant = 0;
+                            bouteille.Etat = "Perdue";                            
                             bouteille.IdEmplacement = HibernateEmplacementService.retrieveEmplacementByNom("Aucun")[0].IdEmplacement;
                             HibernateBouteilleService.Update(bouteille);
                             lblMessage.Text = "Bouteille(s) supprimée(s) avec succès.";
                             lblMessage.Foreground = Brushes.Green;
                         }
                         dtgInventaire.ItemsSource = new ObservableCollection<Bouteille>(ChargerListBouteille(chbAfficherSupprimee.IsChecked));
-                        lblNbPerdue.Content = "Pertes:"+HibernateBouteilleService.CountNbPerdue().ToString();
+                        lblNbPerdue.Content = "Pertes:" + HibernateBouteilleService.CountNbPerdue().ToString();
                         lblNbEntamee.Content = "Entamées:" + HibernateBouteilleService.CountNbEntamee().ToString();
                         lblNbPlein.Content = "Pleines:" + HibernateBouteilleService.CountNbPleine().ToString();
                         lblNbReserve.Content = "En réserve:" + HibernateBouteilleService.CountNbReserve().ToString();
@@ -276,7 +280,7 @@ namespace Barman.BouteilleDossier.view
                 }
             }
         }
-      
+
         private void columnHeader_Click(object sender, RoutedEventArgs e)
         {
             ContenuHeader = ((DataGridColumnHeader)sender).Content.ToString();
@@ -284,14 +288,41 @@ namespace Barman.BouteilleDossier.view
 
         private void chbAfficherSupprimee_Checked(object sender, RoutedEventArgs e)
         {
+            lblQuantitePertes.Visibility = Visibility.Visible;
+            lblTotalPertes.Visibility = Visibility.Visible;
+
             lstBouteilles = new ObservableCollection<Bouteille>(ChargerListBouteille(true));
-            dtgInventaire.ItemsSource = lstBouteilles;            
+            dtgInventaire.ItemsSource = lstBouteilles;
+
+            foreach (Bouteille bouteille in lstBouteilles)
+            {
+
+                if (bouteille.PrixBouteille <= 40)
+                    PrixTotal += 6 * (int)bouteille.VolumeRestant;
+                else if (bouteille.PrixBouteille <= 50)
+                    PrixTotal += 7 * (int)bouteille.VolumeRestant;
+                else if (bouteille.PrixBouteille <= 60)
+                    PrixTotal += 8 * (int)bouteille.VolumeRestant;
+                else if (bouteille.PrixBouteille <= 70)
+                    PrixTotal += 9 * (int)bouteille.VolumeRestant;
+                else
+                    PrixTotal += 10 * (int)bouteille.VolumeRestant;
+
+                VolumeTotal += (int)bouteille.VolumeRestant;
+            }
+
+            lblQuantitePertes.Content = "Pertes: " + VolumeTotal.ToString() + " oz";
+            lblTotalPertes.Content = "Total Des Pertes: " + PrixTotal.ToString("0.00" + " $");
+
         }
 
         private void chbAfficherSupprimee_Unchecked(object sender, RoutedEventArgs e)
         {
             lstBouteilles = new ObservableCollection<Bouteille>(ChargerListBouteille(false));
             dtgInventaire.ItemsSource = lstBouteilles;
+
+            lblQuantitePertes.Visibility = Visibility.Hidden;
+            lblTotalPertes.Visibility = Visibility.Hidden;
         }
 
         private void lblMessage_TextChanged(object sender, TextChangedEventArgs e)
@@ -303,7 +334,7 @@ namespace Barman.BouteilleDossier.view
 
         private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
         {
-            btnGerer_Click(sender, e);        
+            btnGerer_Click(sender, e);
         }
     }
 }

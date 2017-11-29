@@ -70,28 +70,27 @@ namespace Barman.BouteilleDossier.view
 
         private void btnConfirmer_Click(object sender, RoutedEventArgs e)
         {
-            if ((int)cboVolumeRestant.SelectedValue == 0)
+
+            bouteilleModifier.VolumeRestant = (int)cboVolumeRestant.SelectedValue;
+            if (bouteilleModifier.VolumeRestant < bouteilleModifier.VolumeInitial)
             {
-
-                MessageBoxResult resultat = MessageBox.Show("La bouteille est vide et sera donc supprimée de l'inventaire. Est-ce bien ce que vous voulez faire?", "Question", MessageBoxButton.YesNo);
-
-                if (resultat == MessageBoxResult.Yes)
-                {
-
-                    bouteilleModifier.Etat = "perte";
-                    bouteilleModifier.IdEmplacement = HibernateEmplacementService.retrieveEmplacementByNom("Aucun")[0].IdEmplacement;                    
-                    HibernateBouteilleService.Update(bouteilleModifier);
-                    this.Close();
-                }
+                bouteilleModifier.Etat = "Entamée";
             }
-            else
+            bouteilleModifier.IdEmplacement = (int)cboEmplacement.SelectedValue;
+            HibernateBouteilleService.Update(bouteilleModifier);
+            this.Close();
+
+        }
+
+        private void btnPerte_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult resultat = MessageBox.Show("La bouteille sera condidérée comme perdue. Est-ce bien ce que vous voulez faire?", "Question", MessageBoxButton.YesNo);
+
+            if (resultat == MessageBoxResult.Yes)
             {
-                bouteilleModifier.VolumeRestant = (int)cboVolumeRestant.SelectedValue;
-                if(bouteilleModifier.VolumeRestant<bouteilleModifier.VolumeInitial)
-                {
-                    bouteilleModifier.Etat = "Entamée";
-                }
-                bouteilleModifier.IdEmplacement = (int)cboEmplacement.SelectedValue;
+
+                bouteilleModifier.Etat = "Perdue";
+                bouteilleModifier.IdEmplacement = HibernateEmplacementService.retrieveEmplacementByNom("Aucun")[0].IdEmplacement;
                 HibernateBouteilleService.Update(bouteilleModifier);
                 this.Close();
             }

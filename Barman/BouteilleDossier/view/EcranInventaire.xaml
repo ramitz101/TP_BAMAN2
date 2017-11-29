@@ -104,6 +104,8 @@
             <Label Grid.Column="1" Grid.Row="2" Name="lblNbPlein" Content="Pleines: "/>
             <Label Grid.Column="1" Grid.Row="2" Name="lblNbPerdue" Content="Pertes: "/>
             <Label Grid.Column="1" Grid.Row="2" Name="lblNbReserve" Content="En réserve: "/>
+            <Label Grid.Column="1" Grid.Row="2" Name="lblQuantitePertes" Content="Pertes: "/>
+            <Label Grid.Column="1" Grid.Row="2" Name="lblTotalPertes" Content="Total Des Pertes: "/>
         </StackPanel>
         <TextBox Name="lblMessage" KeyboardNavigation.TabNavigation="None"  BorderThickness="0"  TextChanged="lblMessage_TextChanged" Grid.Column="1" Grid.Row="3" IsReadOnly="True" IsManipulationEnabled="False" Text="" Margin="0,20,0,0" SelectionOpacity="0.9"/>
 
