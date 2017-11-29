@@ -35,7 +35,7 @@ namespace Barman.BouteilleDossier.view
                 txtMarque.Content = bouteille.SaMarque.Nom;
                 txtFormatBouteille.Content = bouteille.VolumeInitial.ToString();
                 List<int> lstVolumes = new List<int>();
-                for (int i = 0; i <= bouteille.VolumeInitial; i++)
+                for (int i = 1; i <= bouteille.VolumeInitial; i++)
                 {
                     lstVolumes.Add(i);
                 }
@@ -78,9 +78,8 @@ namespace Barman.BouteilleDossier.view
                 if (resultat == MessageBoxResult.Yes)
                 {
 
-                    bouteilleModifier.Etat = "Supprimée";
-                    bouteilleModifier.IdEmplacement = HibernateEmplacementService.retrieveEmplacementByNom("Aucun")[0].IdEmplacement;
-                    bouteilleModifier.VolumeRestant = 0;
+                    bouteilleModifier.Etat = "perte";
+                    bouteilleModifier.IdEmplacement = HibernateEmplacementService.retrieveEmplacementByNom("Aucun")[0].IdEmplacement;                    
                     HibernateBouteilleService.Update(bouteilleModifier);
                     this.Close();
                 }

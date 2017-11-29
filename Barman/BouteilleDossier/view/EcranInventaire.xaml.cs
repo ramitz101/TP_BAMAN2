@@ -54,7 +54,7 @@ namespace Barman.BouteilleDossier.view
             lblNbEntamee.Content += HibernateBouteilleService.CountNbEntamee().ToString();
             lblNbPlein.Content += HibernateBouteilleService.CountNbPleine().ToString();
             lblNbReserve.Content += HibernateBouteilleService.CountNbReserve().ToString();
-            lblNbSupprimee.Content += HibernateBouteilleService.CountNbSupprimee().ToString();
+            lblNbPerdue.Content += HibernateBouteilleService.CountNbPerdue().ToString();
         }
 
         private void dispatcherTimer_Tick(object sender, EventArgs e)
@@ -88,7 +88,7 @@ namespace Barman.BouteilleDossier.view
                     {
                         lblMessage.Text = "Bouteille modifiée avec succès.";
                         lblMessage.Foreground = Brushes.Green;
-                        lblNbSupprimee.Content = "Suprimées:" + HibernateBouteilleService.CountNbSupprimee().ToString();
+                        lblNbPerdue.Content = "Pertes:" + HibernateBouteilleService.CountNbPerdue().ToString();
                         lblNbEntamee.Content = "Entamées:"+HibernateBouteilleService.CountNbEntamee().ToString();
                         lblNbPlein.Content = "Pleines:"+HibernateBouteilleService.CountNbPleine().ToString();
                         lblNbReserve.Content = "En réserve:"+HibernateBouteilleService.CountNbReserve().ToString();
@@ -255,7 +255,7 @@ namespace Barman.BouteilleDossier.view
                         List<Bouteille> lstBouteille = dtgInventaire.SelectedItems.Cast<Bouteille>().ToList();
                         foreach (var bouteille in lstBouteille)
                         {
-                            bouteille.Etat = "Supprimée";
+                            bouteille.Etat = "Perdue";
                             bouteille.VolumeRestant = 0;
                             bouteille.IdEmplacement = HibernateEmplacementService.retrieveEmplacementByNom("Aucun")[0].IdEmplacement;
                             HibernateBouteilleService.Update(bouteille);
@@ -263,7 +263,7 @@ namespace Barman.BouteilleDossier.view
                             lblMessage.Foreground = Brushes.Green;
                         }
                         dtgInventaire.ItemsSource = new ObservableCollection<Bouteille>(ChargerListBouteille(chbAfficherSupprimee.IsChecked));
-                        lblNbSupprimee.Content = "Suprimées:"+HibernateBouteilleService.CountNbSupprimee().ToString();
+                        lblNbPerdue.Content = "Pertes:"+HibernateBouteilleService.CountNbPerdue().ToString();
                         lblNbEntamee.Content = "Entamées:" + HibernateBouteilleService.CountNbEntamee().ToString();
                         lblNbPlein.Content = "Pleines:" + HibernateBouteilleService.CountNbPleine().ToString();
                         lblNbReserve.Content = "En réserve:" + HibernateBouteilleService.CountNbReserve().ToString();

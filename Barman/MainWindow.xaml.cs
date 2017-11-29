@@ -35,9 +35,11 @@ namespace Barman
         }
         private void Window_Closed(object sender,EventArgs e)
         {
-            string path = System.IO.Path.GetTempPath();
-            //path = path + "Temp\\";
-            //Directory.Delete(path, true);
+            string fullPath = System.IO.Path.GetFullPath("BarApp\\");
+            if (File.Exists(fullPath))
+            {
+                Directory.Delete("BarApp\\", true);                
+            }
         }        
 
     }

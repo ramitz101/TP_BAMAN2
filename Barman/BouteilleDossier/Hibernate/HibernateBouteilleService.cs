@@ -29,13 +29,13 @@ namespace Barman.BouteilleDossier.Hibernate
             if (sup == false)
             {
                 result = from b in bouteilles
-                         where b.Etat != "Supprimée"
+                         where b.Etat != "Perdue"
                          select b;
             }
             else
             {
                 result = from b in bouteilles
-                         where b.Etat == "Supprimée"
+                         where b.Etat == "Perdue"
                          select b;
             }
             return result.ToList();
@@ -72,24 +72,24 @@ namespace Barman.BouteilleDossier.Hibernate
 
             return result.ToList().Count;
         }
-        public static int CountNbSupprimee()
+        public static int CountNbPerdue()
         {
             var bouteilles = session.Query<Bouteille>().ToList();
 
             var result = from b in bouteilles
-                         where b.Etat=="Supprimée"
+                         where b.Etat=="Perdue"
                          select b;
 
             return result.ToList().Count;
         }
 
 
-        public static List<Bouteille> RetrieveAllSupprimer()
+        public static List<Bouteille> RetrieveAllPerdue()
         {
             var bouteilles = session.Query<Bouteille>().ToList();
 
             var result = from b in bouteilles
-                         where b.Etat == "Supprimée"
+                         where b.Etat == "Perdue"
                          select b;
 
             return result.ToList();
