@@ -144,7 +144,7 @@ namespace Barman.VenteDossier.view
                     // Changement d'état de la bouteille si pleine ou si rendu vide
                     if (LaBouteilleVendu.Etat == "Pleine")
                         LaBouteilleVendu.Etat = "Entamée";
-                    else if(LaBouteilleVendu.VolumeRestant == 0)
+                    if(LaBouteilleVendu.VolumeRestant == 0)
                     {
                         LaBouteilleVendu.Etat = "Vide";
                         LaBouteilleVendu.IdEmplacement = HibernateEmplacementService.retrieveEmplacementByNom("Aucun")[0].IdEmplacement;
@@ -156,11 +156,14 @@ namespace Barman.VenteDossier.view
                     //Remet tous les champs à défaut
                     cboEmplacement.SelectedValue = null;
                     cboMarque.SelectedValue = null;
+                    cboType.SelectedValue = null;
                     lblPrixVente.Content = "";
                     txtQuantite.Text = "1";
                     btnAjouter.IsEnabled = false;
                     cboMarque.IsEnabled = false;
                     cboType.IsEnabled = false;
+                    lblPrixTotal.Content = "";
+                    lblTitreQuantite.Content = "Quantité";
 
                 }            
 

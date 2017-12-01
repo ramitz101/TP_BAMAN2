@@ -29,9 +29,7 @@ namespace Barman.EmployeDossier.view
     public partial class EcranEmploye : UserControl
     {
         public string ContenuHeader { get; set; }
-        public bool seulementOuvrir = false;
-        public bool seulementSauvegarder = false;
-        public bool ouvrirEtSauvegarder = false;
+       
 
 
 
@@ -198,10 +196,10 @@ namespace Barman.EmployeDossier.view
         private void btnImprimerEmploye_Click(object sender, RoutedEventArgs e)
         {
 
-            FenetreOptionsImprimer optionsPDF = new FenetreOptionsImprimer(this);
+            FenetreOptionsImprimer optionsPDF = new FenetreOptionsImprimer();
             optionsPDF.ShowDialog();
 
-            if (ouvrirEtSauvegarder || seulementOuvrir || seulementSauvegarder)
+            if (Constante.ouvrirEtSauvegarder || Constante.seulementOuvrir || Constante.seulementSauvegarder)
             {
                 lstEmployes = new ObservableCollection<Employe>(ChargerListEmploye(null));
                 SaveFileDialog saveFileDialog = new SaveFileDialog();               
@@ -209,7 +207,7 @@ namespace Barman.EmployeDossier.view
 
                 saveFileDialog.Filter = "Pdf Files|*.pdf";
                 saveFileDialog.FileName = "Employes";
-                if (ouvrirEtSauvegarder || seulementSauvegarder)
+                if (Constante.ouvrirEtSauvegarder || Constante.seulementSauvegarder)
                 {
 
                     if (saveFileDialog.ShowDialog() == true)
@@ -239,7 +237,7 @@ namespace Barman.EmployeDossier.view
 
                         string fullPath = System.IO.Path.GetFullPath(saveFileDialog.FileName);
                         doc.Close();
-                        if (ouvrirEtSauvegarder)
+                        if (Constante.ouvrirEtSauvegarder)
                             Process.Start(fullPath);
                     }
                 }
