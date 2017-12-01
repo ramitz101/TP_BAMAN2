@@ -20,7 +20,7 @@
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Content="Liste des bouteilles" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" FontSize="25" FontWeight="Bold"/>
+        <Label Content="Liste des bouteilles" KeyboardNavigation.TabNavigation="None" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" FontSize="25" FontWeight="Bold"/>
 
         <Grid Name="grdBtn" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2">
             <Grid.RowDefinitions>
@@ -66,8 +66,6 @@
                 </StackPanel>
             </Button>
 
-
-
         </Grid>
         
         <StackPanel VerticalAlignment="Top" Grid.Column="1" Grid.Row="2">
@@ -99,7 +97,7 @@
 
         </DataGrid>
 
-        <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="left" Grid.RowSpan="2">
+        <StackPanel Grid.Column="1" Grid.Row="3" KeyboardNavigation.TabNavigation="None" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="left" Grid.RowSpan="2">
             <Label Grid.Column="1" Grid.Row="2" Name="lblNbEntamee" Content="Entamées: "/>
             <Label Grid.Column="1" Grid.Row="2" Name="lblNbPlein" Content="Pleines: "/>
             <Label Grid.Column="1" Grid.Row="2" Name="lblNbPerdue" Content="Pertes: "/>

@@ -16,36 +16,8 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="10*"/>
             <RowDefinition Height="*"/>
-
         </Grid.RowDefinitions>
-
-        <Label Content="Liste des Employés" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" FontSize="25" FontWeight="Bold"/>
-
-        <StackPanel Grid.Row="2" Grid.Column="1">
-            <CheckBox Grid.Column="1"  Grid.Row="1" Content="Affiche les employés inactif" Checked="chbAfficherEmployeInactif_Checked" Unchecked="chbAfficherEmployeInactif_Unchecked" HorizontalAlignment="Left" IsChecked="False" Name="chbAfficherEmployeInactif"  />
-            <TextBox Grid.Column="1"  Grid.Row="1" Name="txtRecherche"  KeyUp="txtRecherche_KeyUp_1" Height="25" VerticalAlignment="Top" Text="Rechercher" LostFocus="txtRecherche_LostFocus" GotFocus="txtRecherche_GotFocus" />
-        </StackPanel>
-
-        <DataGrid Grid.Column="1" Grid.Row="2" Name="dtgEmploye"  Margin="0,48,0,0" AutoGenerateColumns="False"  >
-            <DataGrid.Resources>
-                <Style TargetType="DataGridRow">
-                    <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
-                </Style>
-                <Style TargetType="DataGridColumnHeader">
-                    <EventSetter Event="Click" Handler="columnHeader_Click" />
-                </Style>
-            </DataGrid.Resources>
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Nom" Binding="{Binding Nom}" />
-                <DataGridTextColumn Header="Prénom" Binding="{Binding Prenom}" />
-                <DataGridTextColumn Header="Téléphone" Binding="{Binding Telephone }"  />
-                <DataGridTextColumn Header="Date d'embauche" Binding="{Binding DateEmbauche, StringFormat=yyyy/MM/dd}" />
-                <DataGridTextColumn Header="NAS" Binding="{Binding NAS}" />
-                <DataGridTextColumn Header="Role" Binding="{Binding SonRole.Code}" />
-                <DataGridTextColumn Header="Code" Binding="{Binding CodeEmploye}" />
-            </DataGrid.Columns>
-        </DataGrid>
-
+        
         <Grid Name="grdBtn" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -92,6 +64,34 @@
 
 
         </Grid>
-        <Label Name="lblMessage" Grid.Row="3" Grid.Column="1" Content="Message modif" HorizontalAlignment="left"/>
+
+        <Label Content="Liste des Employés" KeyboardNavigation.TabNavigation="None" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" FontSize="25" FontWeight="Bold"/>
+
+        <StackPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="Top">
+            <CheckBox Grid.Column="1"  Grid.Row="1" Content="Affiche les employés inactif" Checked="chbAfficherEmployeInactif_Checked" Unchecked="chbAfficherEmployeInactif_Unchecked" HorizontalAlignment="Left" IsChecked="False" Name="chbAfficherEmployeInactif"  />
+            <TextBox Grid.Column="1"  Grid.Row="1" Name="txtRecherche"  KeyUp="txtRecherche_KeyUp_1" Height="25" VerticalAlignment="Top" Text="Rechercher" LostFocus="txtRecherche_LostFocus" GotFocus="txtRecherche_GotFocus" />
+        </StackPanel>
+
+        <DataGrid Grid.Column="1" Grid.Row="2" Name="dtgEmploye"  Margin="0,48,0,0" AutoGenerateColumns="False"  >
+            <DataGrid.Resources>
+                <Style TargetType="DataGridRow">
+                    <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
+                </Style>
+                <Style TargetType="DataGridColumnHeader">
+                    <EventSetter Event="Click" Handler="columnHeader_Click" />
+                </Style>
+            </DataGrid.Resources>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nom" Binding="{Binding Nom}" />
+                <DataGridTextColumn Header="Prénom" Binding="{Binding Prenom}" />
+                <DataGridTextColumn Header="Téléphone" Binding="{Binding Telephone }"  />
+                <DataGridTextColumn Header="Date d'embauche" Binding="{Binding DateEmbauche, StringFormat=yyyy/MM/dd}" />
+                <DataGridTextColumn Header="NAS" Binding="{Binding NAS}" />
+                <DataGridTextColumn Header="Role" Binding="{Binding SonRole.Code}" />
+                <DataGridTextColumn Header="Code" Binding="{Binding CodeEmploye}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Label Name="lblMessage" KeyboardNavigation.TabNavigation="None" Grid.Row="3" Grid.Column="1" Content="Message modif" HorizontalAlignment="left"/>
     </Grid>
 </UserControl>

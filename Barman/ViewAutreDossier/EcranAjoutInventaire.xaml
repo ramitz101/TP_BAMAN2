@@ -8,14 +8,14 @@
              d:DesignHeight="350" d:DesignWidth="550">
 
     <Grid>
-        <Label Content="Ajouter une marque de bouteille" FontWeight="Bold" FontSize="15" HorizontalAlignment="Left" Margin="6,55,0,0" VerticalAlignment="Top"/>
-        <Label Content="Nom de la marque" HorizontalAlignment="Left" Margin="20,85,0,0" VerticalAlignment="Top"/>
-        <Label Content="Type d'alcool" HorizontalAlignment="Left" Margin="238,84,0,0" VerticalAlignment="Top"/>
+        <Label Content="Ajouter une marque de bouteille" KeyboardNavigation.TabNavigation="None" FontWeight="Bold" FontSize="15" HorizontalAlignment="Left" Margin="6,55,0,0" VerticalAlignment="Top"/>
+        <Label Content="Nom de la marque" KeyboardNavigation.TabNavigation="None" HorizontalAlignment="Left" Margin="20,85,0,0" VerticalAlignment="Top"/>
+        <Label Content="Type d'alcool" KeyboardNavigation.TabNavigation="None" HorizontalAlignment="Left" Margin="238,84,0,0" VerticalAlignment="Top"/>
         <TextBox GotFocus="txtMarque_GotFocus" LostFocus="txtMarque_LostFocus" ToolTip="Nom de la nouvelle marque de bouteille" Name="txtMarque" HorizontalAlignment="Left" Height="23" Margin="20,110,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <ComboBox ToolTip="Type d'alcool de la nouvelle marque de bouteille" Name="cboTypeAlcool" HorizontalAlignment="Left" Margin="238,110,0,0" VerticalAlignment="Top" Width="110"/>
         <Button ToolTip="Confirmer l'ajout de la marque de bouteille" Name="btnAjouterNouvelleM" Content="Ajouter" HorizontalAlignment="Left" Margin="461,110,0,0" VerticalAlignment="Top" Width="85" Height="24" Click="btnAjouterNouvelleM_Click"/>
-        <Label Content="Ajouter un type d'alcool" FontWeight="Bold" FontSize="15" HorizontalAlignment="Left" Margin="6,155,0,0" VerticalAlignment="Top"/>
-        <Label Content="Nom du type" HorizontalAlignment="Left" Margin="16,190,0,0" VerticalAlignment="Top"/>
+        <Label Content="Ajouter un type d'alcool" KeyboardNavigation.TabNavigation="None" FontWeight="Bold" FontSize="15" HorizontalAlignment="Left" Margin="6,155,0,0" VerticalAlignment="Top"/>
+        <Label Content="Nom du type" KeyboardNavigation.TabNavigation="None" HorizontalAlignment="Left" Margin="16,190,0,0" VerticalAlignment="Top"/>
         <TextBox GotFocus="txtNouveauType_GotFocus" LostFocus="txtNouveauType_LostFocus" PreviewTextInput="NumberValidationTextBox" ToolTip="Nom du nouveau type d'alcool"  Name="txtNouveauType" HorizontalAlignment="Left" Height="23" Margin="20,216,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Button ToolTip="Confirmer l'ajout du type d'alcool" Name="btnAjouterNouveauTypeA" Content="Ajouter" HorizontalAlignment="Left" Margin="461,216,0,0" VerticalAlignment="Top" Width="85" Height="24" Click="btnAjouterNouveauTypeA_Click"/>
         <Button ToolTip="Annuler l'ajout du type d'alcool ou de la marque de bouteille et retourner à l'écran inventaire" Name="btnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="58,287,0,0" VerticalAlignment="Top" Width="136" Height="49" Click="btnAnnuler_Click"/>

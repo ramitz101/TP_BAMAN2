@@ -16,9 +16,9 @@
         <Label Content="Volume restant" KeyboardNavigation.TabNavigation="None" FontSize="18" HorizontalAlignment="Left" Margin="222,29,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.835,0.526"/>
         <ComboBox Name="cboVolumeRestant"  HorizontalAlignment="Left" Margin="227,63,0,0" VerticalAlignment="Top" Width="120" />
         <ComboBox Name="cboEmplacement"  ItemsSource="{Binding Emplacement.Nom}"  HorizontalAlignment="Left" Margin="371,63,0,0" VerticalAlignment="Top" Width="107"/>
+        <Button Name="btnPerte" Content="Perdue" HorizontalAlignment="Left" Height="26" Margin="495,65,0,0" VerticalAlignment="Top" Width="86" Click="btnPerte_Click"/>
         <Button ToolTip="Annuler la modification de la bouteille" Name="btnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="80,120,0,0" VerticalAlignment="Top" Width="120" Height="40" Click="btnAnnuler_Click"/>
         <Button ToolTip="Confirmer la modification de la bouteille" Name="btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="361,120,0,0" VerticalAlignment="Top" Width="120" Height="40" Click="btnConfirmer_Click"/>
-        <Button Name="btnPerte" Content="Perdue" HorizontalAlignment="Left" Height="26" Margin="495,65,0,0" VerticalAlignment="Top" Width="86" Click="btnPerte_Click"/>
 
     </Grid>
 </Window>
