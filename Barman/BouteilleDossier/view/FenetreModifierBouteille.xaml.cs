@@ -25,6 +25,7 @@ namespace Barman.BouteilleDossier.view
     {
         private Bouteille bouteilleModifier;
         private static ObservableCollection<Emplacement> lstEmplacements = new ObservableCollection<Emplacement>(ChargerListEmplacement());
+        
         public FenetreModifierBouteille(ObservableCollection<Bouteille> lstBouteille, Bouteille bouteille, EcranInventaire ecranInventaire)
         {
             InitializeComponent();

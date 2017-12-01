@@ -75,7 +75,7 @@
             <TextBox x:Name="txtRecherche"  KeyUp="txtRecherche_KeyUp_1" VerticalAlignment="Top" Text="Rechercher" LostFocus="txtRecherche_LostFocus" GotFocus="txtRecherche_GotFocus" />
         </StackPanel>
 
-        <DataGrid  Name="dtgInventaire" AutoGenerateColumns="False" HorizontalAlignment="Left"  VerticalAlignment="Top"  Margin="0,48,0,0" Grid.Column="1" Grid.Row="2">
+        <DataGrid  Name="dtgInventaire" AutoGenerateColumns="False" Margin="0,48,0,0" Grid.Column="1" Grid.Row="2">
             <DataGrid.Resources>
                 <Style TargetType="DataGridRow">
                     <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>

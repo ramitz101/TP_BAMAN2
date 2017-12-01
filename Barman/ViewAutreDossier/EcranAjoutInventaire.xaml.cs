@@ -29,6 +29,8 @@ namespace Barman.ViewAutreDossier
     public partial class EcranAjoutInventaire : UserControl
     {
 
+        private string oldMarque = string.Empty;
+        private string oldType = string.Empty;
         //private ObservableCollection<Bouteille> lstBouteilles = new ObservableCollection<Bouteille>(ChargerListBouteille());
         private ObservableCollection<Marque> lstMarques = new ObservableCollection<Marque>(ChargerListMarque());
         private ObservableCollection<TypeAlcool> lstTypeAlcool = new ObservableCollection<TypeAlcool>(ChargerListTypeAlcool());
@@ -44,18 +46,8 @@ namespace Barman.ViewAutreDossier
             cboTypeAlcool.DisplayMemberPath = "Nom";
             cboTypeAlcool.SelectedValuePath = "IdTypeAlcool";
             cboTypeAlcool.SelectedIndex = 0;
-
-
-
-
         }
-
-
-
-
-
-
-
+       
         private void btnAnnuler_Click(object sender, RoutedEventArgs e)
         {
             ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
@@ -69,8 +61,6 @@ namespace Barman.ViewAutreDossier
 
         private void btnConfirmer_Click(object sender, RoutedEventArgs e)
         {
-
-
             
             if (txtNouveauType.Text != "" || txtMarque.Text != "")
             {
@@ -119,6 +109,7 @@ namespace Barman.ViewAutreDossier
             if (ValideMarqueAlcool())
             {
                 HibernateMarqueService.Create(new Marque(txtMarque.Text, int.Parse(cboTypeAlcool.SelectedValue.ToString())));
+                lblInfoMessage.Content = "";
                 txtMarque.Clear();
             }
             else
@@ -162,6 +153,7 @@ namespace Barman.ViewAutreDossier
             if (ValidetypeAlcool())
             {
                 HibernateTypeAlcoolService.Create(new TypeAlcool(txtNouveauType.Text));
+                lblInfoMessage.Content = "";
                 txtNouveauType.Clear();
 
                 cboTypeAlcool.ItemsSource = new ObservableCollection<TypeAlcool>(ChargerListTypeAlcool());
@@ -218,6 +210,34 @@ namespace Barman.ViewAutreDossier
         {
             Regex regex = new Regex("[^a-zA-Z]");
             e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void txtMarque_GotFocus(object sender, RoutedEventArgs e)
+        {
+            oldMarque = txtMarque.Text;
+        }
+
+        private void txtMarque_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (!(oldMarque == txtMarque.Text))
+            {
+                txtMarque.ClearValue(Border.BorderBrushProperty);
+                txtMarque.ToolTip = "Nom de la nouvelle marque de bouteille";
+            }
+        }
+
+        private void txtNouveauType_GotFocus(object sender, RoutedEventArgs e)
+        {
+            oldType = txtNouveauType.Text;
+        }
+
+        private void txtNouveauType_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (!(oldType == txtNouveauType.Text))
+            {
+                txtNouveauType.ClearValue(Border.BorderBrushProperty);
+                txtNouveauType.ToolTip = "Nom du nouveau type d'alcool";
+            }
         }
     }
 }

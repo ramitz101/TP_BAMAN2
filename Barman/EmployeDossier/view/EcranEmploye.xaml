@@ -13,19 +13,20 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height=".8*"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="10*"/>
             <RowDefinition Height="*"/>
 
         </Grid.RowDefinitions>
 
-        
+        <Label Content="Liste des Employés" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" FontSize="25" FontWeight="Bold"/>
 
-        <StackPanel Grid.Row="1" Grid.Column="1">
+        <StackPanel Grid.Row="2" Grid.Column="1">
             <CheckBox Grid.Column="1"  Grid.Row="1" Content="Affiche les employés inactif" Checked="chbAfficherEmployeInactif_Checked" Unchecked="chbAfficherEmployeInactif_Unchecked" HorizontalAlignment="Left" IsChecked="False" Name="chbAfficherEmployeInactif"  />
             <TextBox Grid.Column="1"  Grid.Row="1" Name="txtRecherche"  KeyUp="txtRecherche_KeyUp_1" Height="25" VerticalAlignment="Top" Text="Rechercher" LostFocus="txtRecherche_LostFocus" GotFocus="txtRecherche_GotFocus" />
         </StackPanel>
 
-        <DataGrid Grid.Column="1" Grid.Row="1" Name="dtgEmploye"  Margin="0,48,0,0" AutoGenerateColumns="False"  >
+        <DataGrid Grid.Column="1" Grid.Row="2" Name="dtgEmploye"  Margin="0,48,0,0" AutoGenerateColumns="False"  >
             <DataGrid.Resources>
                 <Style TargetType="DataGridRow">
                     <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
@@ -45,7 +46,7 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Grid Name="grdBtn" Grid.Column="0" Grid.Row="1">
+        <Grid Name="grdBtn" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -57,7 +58,7 @@
                 <Button Grid.Row="0" Margin="5,5,5,5" Height="auto" ToolTip="Modifier les informations d'un employé sélectionné" Click="btnGerer_Click" >
                     <StackPanel  Orientation="Horizontal">
                         <Image Source="../../images/settings.png" Width="40" Height="40" />
-                        <TextBlock  VerticalAlignment="Center" FontSize="21"><Run Text=" Gérer"/></TextBlock>
+                        <TextBlock  VerticalAlignment="Center" FontSize="21"><Run Text=" Modifier"/></TextBlock>
                     </StackPanel>
                 </Button>
 
@@ -91,6 +92,6 @@
 
 
         </Grid>
-        <Label Name="lblMessage" Grid.Row="2" Grid.Column="1" Content="Message modif" HorizontalAlignment="left"/>
+        <Label Name="lblMessage" Grid.Row="3" Grid.Column="1" Content="Message modif" HorizontalAlignment="left"/>
     </Grid>
 </UserControl>
