@@ -56,8 +56,8 @@
             </Button>
 
         </Grid>
-
-        <DataGrid Grid.Column="1" Name="dtgCommande" IsReadOnly="True" AutoGenerateColumns="False" Grid.Row="1" >
+        <Label Grid.Column="1" Grid.Row="1" Content="Commandes" FontWeight="Bold"  FontSize="26"></Label>
+        <DataGrid Grid.Column="1"  Margin="0,40,0,0" Name="dtgCommande" IsReadOnly="True" AutoGenerateColumns="False" Grid.Row="1" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Date" Width="2*" Binding="{Binding DateCommande}" />
                 <DataGridTextColumn Header="Quantite" Width="2*" Binding="{Binding ListBouteille.Count}"/>

@@ -76,38 +76,82 @@ namespace Barman.VenteDossier.view
 
         private void btnImprimer_Click(object sender, RoutedEventArgs e)
         {
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
 
-            saveFileDialog1.Filter = "Pdf Files|*.pdf";
-            saveFileDialog1.FileName = "Ventes";
-            if (saveFileDialog1.ShowDialog() == true)
+            FenetreOptionsImprimer optionsPDF = new FenetreOptionsImprimer();
+            optionsPDF.ShowDialog();
+
+            if (Constante.ouvrirEtSauvegarder || Constante.seulementOuvrir || Constante.seulementSauvegarder)
             {
-                //Crée le fichier
 
-                Document doc = new Document();
-                FileStream fs = new System.IO.FileStream(saveFileDialog1.FileName, FileMode.Create, FileAccess.Write, FileShare.None);
-                PdfWriter writer = PdfWriter.GetInstance(doc, fs);
-                doc.Open();
 
-                //Entête
-                iTextSharp.text.Paragraph titre = new iTextSharp.text.Paragraph("Ventes");
-                titre.Alignment = Element.ALIGN_CENTER;
-                titre.Font.SetStyle(Font.BOLD);
-                titre.Font.Size = 20;
-                doc.Add(titre);
-                titre = new iTextSharp.text.Paragraph(" ");
-                doc.Add(titre);
+                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
 
-                //Création du tableau
-                PdfPTable table = new PdfPTable(4); //Le paramètre indique le nombre de colonne. S'il manque de cellules pour la dernière rangée, il ne mettra simplement pas la rangée
-                table = CreationDesTables.CreerTableVente(table, lstVente);
-                doc.Add(table);
+                saveFileDialog1.Filter = "Pdf Files|*.pdf";
+                saveFileDialog1.FileName = "Ventes";
+                if (Constante.ouvrirEtSauvegarder || Constante.seulementSauvegarder)
+                {
 
-                
-                string fullPath = System.IO.Path.GetFullPath(saveFileDialog1.FileName);
-                doc.Close();
-                Process.Start(fullPath);
 
+
+                    if (saveFileDialog1.ShowDialog() == true)
+                    {
+                        //Crée le fichier
+
+                        Document doc = new Document();
+                        FileStream fs = new System.IO.FileStream(saveFileDialog1.FileName, FileMode.Create, FileAccess.Write, FileShare.None);
+                        PdfWriter writer = PdfWriter.GetInstance(doc, fs);
+                        doc.Open();
+
+                        //Entête
+                        iTextSharp.text.Paragraph titre = new iTextSharp.text.Paragraph("Ventes");
+                        titre.Alignment = Element.ALIGN_CENTER;
+                        titre.Font.SetStyle(Font.BOLD);
+                        titre.Font.Size = 20;
+                        doc.Add(titre);
+                        titre = new iTextSharp.text.Paragraph(" ");
+                        doc.Add(titre);
+
+                        //Création du tableau
+                        PdfPTable table = new PdfPTable(4); //Le paramètre indique le nombre de colonne. S'il manque de cellules pour la dernière rangée, il ne mettra simplement pas la rangée
+                        table = CreationDesTables.CreerTableVente(table, lstVente);
+                        doc.Add(table);
+
+
+                        string fullPath = System.IO.Path.GetFullPath(saveFileDialog1.FileName);
+                        doc.Close();
+                        if (Constante.ouvrirEtSauvegarder)
+                            Process.Start(fullPath);
+
+                    }
+                }
+                else
+                {
+                    //Crée le fichier
+                    Directory.CreateDirectory("BarApp");
+                    Document doc = new Document();
+                    FileStream fs = new System.IO.FileStream("BarApp\\Ventes.pdf", FileMode.Create, FileAccess.Write, FileShare.None);
+                    PdfWriter writer = PdfWriter.GetInstance(doc, fs);
+                    doc.Open();
+
+                    //Entête
+                    iTextSharp.text.Paragraph titre = new iTextSharp.text.Paragraph("Ventes");
+                    titre.Alignment = Element.ALIGN_CENTER;
+                    titre.Font.SetStyle(Font.BOLD);
+                    titre.Font.Size = 20;
+                    doc.Add(titre);
+                    titre = new iTextSharp.text.Paragraph(" ");
+                    doc.Add(titre);
+
+                    //Création du tableau
+                    PdfPTable table = new PdfPTable(4); //Le paramètre indique le nombre de colonne. S'il manque de cellules pour la dernière rangée, il ne mettra simplement pas la rangée
+                    table = CreationDesTables.CreerTableVente(table, lstVente);
+                    doc.Add(table);
+
+
+                    string fullPath = System.IO.Path.GetFullPath("BarApp\\Ventes.pdf");
+                    doc.Close();
+                    Process.Start(fullPath);
+                }
             }
         }
 

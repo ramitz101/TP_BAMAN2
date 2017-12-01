@@ -20,30 +20,32 @@ namespace Barman.ViewAutreDossier
     /// </summary>
     public partial class FenetreOptionsImprimer : Window
     {
-        public EcranEmploye ecranEmploye { get; set; }
+        
 
-        public FenetreOptionsImprimer(EcranEmploye ecranEmpl)
+        public FenetreOptionsImprimer()
         {
             InitializeComponent();
-            ecranEmploye = ecranEmpl;
             this.Owner = App.Current.MainWindow;
+           Constante.seulementOuvrir = false;
+           Constante.seulementSauvegarder = false;
+           Constante.ouvrirEtSauvegarder = false;
         }
 
         private void btnSeulementOuvrir_Click(object sender, RoutedEventArgs e)
         {
-            ecranEmploye.seulementOuvrir = true;
+            Constante.seulementOuvrir = true;
             this.Close();
         }
 
         private void btnSeulementSauvegarder_Click(object sender, RoutedEventArgs e)
         {
-            ecranEmploye.seulementSauvegarder = true;
+            Constante.seulementSauvegarder = true;
             this.Close();
         }
 
         private void btnSauvegarderEtOuvrir_Click(object sender, RoutedEventArgs e)
         {
-            ecranEmploye.ouvrirEtSauvegarder = true;
+            Constante.ouvrirEtSauvegarder = true;
             this.Close();
         }
     }

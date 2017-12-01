@@ -8,6 +8,7 @@
              d:DesignHeight="380" d:DesignWidth="561">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
             <RowDefinition Height="1.5*" />
             <RowDefinition Height="1.8*" />
             <RowDefinition Height="0.7*" />
@@ -19,10 +20,10 @@
             <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
-        
-      
 
-        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+
+        <Label Grid.Column="1" Grid.ColumnSpan="2" Content="Nouvelle commande" Margin="0,35,0,0" FontWeight="Bold" FontSize="26"></Label>
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
             <StackPanel  Orientation="Vertical" Margin="0,40,0,0">
                 <Label Content="Format" KeyboardNavigation.TabNavigation="None"  HorizontalAlignment="Left" Width="49"/>
                 <TextBox x:Name="txtFormat" KeyUp="txtFormat_KeyUp" HorizontalAlignment="Left" Height="23"  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="49"/>
@@ -32,19 +33,19 @@
                 <Label Name="lblPrix" Content="" KeyboardNavigation.TabNavigation="None" HorizontalAlignment="Left" VerticalAlignment="Top"  Width="65"/>
             </StackPanel>
         </StackPanel>
-        <StackPanel Margin="0,40,0,0" Grid.Column="2" Grid.Row="0" Orientation="Horizontal">
+        <StackPanel Margin="0,40,0,0" Grid.Column="2" Grid.Row="1" Orientation="Horizontal">
             <StackPanel Grid.Column="2" Grid.Row="0" Orientation="Vertical">
                 <Label Content="Quantité" KeyboardNavigation.TabNavigation="None"   HorizontalAlignment="Left" Width="Auto"/>
                 <TextBox ToolTip="Le nombre de bouteille à commander de la marque choisi" Name="txtQuantite"  IsReadOnly="True" Height="25" Text="1"  HorizontalAlignment="Left" Width="39"></TextBox>
             </StackPanel>
-            <StackPanel Grid.Column="2" Grid.Row="0" Orientation="Vertical">
+            <StackPanel Grid.Column="2" Grid.Row="1" Orientation="Vertical">
                 <RepeatButton ToolTip="Augmenter le nombre de bouteille à commander"  Name="btnAugmenteQ" Click="btnAugmenteQ_Click"  Content="+"  HorizontalAlignment="Left" Height="25" Width="40"></RepeatButton>
                 <RepeatButton ToolTip="Diminuer le nombre de bouteille à commander" Name="btnReduireQ" Click="btnReduireQ_Click"  Content="-"  HorizontalAlignment="Left" Height="25" Width="40"></RepeatButton>
             </StackPanel>
         </StackPanel>
         
 
-        <DataGrid Grid.Row="1" Grid.ColumnSpan="4"  Name="dtgNouvelleCommande" AutoGenerateColumns="False" CanUserAddRows="False" HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="Auto" >
+        <DataGrid Grid.Row="2" Grid.ColumnSpan="4"  Name="dtgNouvelleCommande" AutoGenerateColumns="False" CanUserAddRows="False" HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="Auto" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Marque" Width="2*" Binding="{Binding SaMarque.Nom}"/>
                 <DataGridTextColumn Header="Type" Width="2*" Binding="{Binding SaMarque.SonTypeAlcool.Nom}"/>
@@ -52,10 +53,10 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button Grid.Column="3" ToolTip="Ajouter cette ou ces bouteilles à la commande avec la quantité demandée" Name="btnAjouter" Click="btnAjouter_Click" Content="Ajouter" Margin="0,40,0,0" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="116"></Button>
+        <Button Grid.Column="3" Grid.Row="1" ToolTip="Ajouter cette ou ces bouteilles à la commande avec la quantité demandée" Name="btnAjouter" Click="btnAjouter_Click" Content="Ajouter" Margin="0,40,0,0" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="116"></Button>
 
 
-        <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Vertical" Margin="0,40,0,0">
+        <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Vertical" Margin="0,40,0,0">
             <Label Content="Type"  HorizontalAlignment="Left" Width="94" Margin="4,0,0,0" />
             <ComboBox ToolTip="Le type d'alcool" x:Name="cboType" SelectionChanged="cboType_SelectionChanged" Margin="10,0,0,0"  Height="23"  HorizontalAlignment="Left" Width="94"/>
             <Label Content="Marque"  HorizontalAlignment="Left" Width="94" Margin="4,0,0,0" />
@@ -63,9 +64,9 @@
         </StackPanel>
 
         
-        <Button Grid.Row="2" ToolTip="Annuler la commande de bouteille" Name="btnAnnuler"  Height="51"  Width="96" Content="Annuler"  Click="btnAnnuler_Click"></Button>
-        <Button Grid.Row="2" Grid.Column="3" ToolTip="Confirmer la commande de bouteille" Name="btnConfirmer"  Height="51"  Width="96" Content="Confirmer"  Click="btnConfirmer_Click"></Button>
-        <Button Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Grid.ColumnSpan="2"  ToolTip="Supprimer la bouteille sélectionnée de la commande ou retirer un à la quantitée" Name="btnSupprimer" Click="btnSupprimer_Click" Content="Supprimer" Height="51"  Width="96"  />
+        <Button Grid.Row="3" ToolTip="Annuler la commande de bouteille" Name="btnAnnuler"  Height="51"  Width="96" Content="Annuler"  Click="btnAnnuler_Click"></Button>
+        <Button Grid.Row="3" Grid.Column="3" ToolTip="Confirmer la commande de bouteille" Name="btnConfirmer"  Height="51"  Width="96" Content="Confirmer"  Click="btnConfirmer_Click"></Button>
+        <Button Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" Grid.ColumnSpan="2"  ToolTip="Supprimer la bouteille sélectionnée de la commande ou retirer un à la quantitée" Name="btnSupprimer" Click="btnSupprimer_Click" Content="Supprimer" Height="51"  Width="96"  />
 
 
 

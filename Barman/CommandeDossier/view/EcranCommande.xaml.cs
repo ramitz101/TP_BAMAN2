@@ -98,42 +98,83 @@ namespace Barman.CommandeDossier.view
 
         private void btnImprimer_Click(object sender, RoutedEventArgs e)
         {
-            
 
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            FenetreOptionsImprimer optionsPDF = new FenetreOptionsImprimer();
+            optionsPDF.ShowDialog();
 
-            saveFileDialog1.Filter = "Pdf Files|*.pdf";
-            saveFileDialog1.FileName = "Commandes";
-
-            if (saveFileDialog1.ShowDialog() == true)
+            if (Constante.ouvrirEtSauvegarder || Constante.seulementOuvrir || Constante.seulementSauvegarder)
             {
-                //Crée le fichier
 
-                Document doc = new Document();
-                FileStream fs = new System.IO.FileStream(saveFileDialog1.FileName, FileMode.Create, FileAccess.Write, FileShare.None);
-                PdfWriter writer = PdfWriter.GetInstance(doc, fs);
-                doc.Open();
+                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
 
-                //Entête
-                iTextSharp.text.Paragraph titre = new iTextSharp.text.Paragraph("Commandes");
-                titre.Alignment = Element.ALIGN_CENTER;
-                titre.Font.SetStyle(Font.BOLD);
-                titre.Font.Size = 20;
-                doc.Add(titre);
-                titre = new iTextSharp.text.Paragraph(" ");
-                doc.Add(titre);
+                saveFileDialog1.Filter = "Pdf Files|*.pdf";
+                saveFileDialog1.FileName = "Commandes";
 
-                //Création du tableau
-                PdfPTable table = new PdfPTable(4); //Le paramètre indique le nombre de colonne. S'il manque de cellules pour la dernière rangée, il ne mettra simplement pas la rangée
-                table = CreationDesTables.CreerTableCommande(table, lstCommandes);
-                doc.Add(table);
+                if (Constante.ouvrirEtSauvegarder || Constante.seulementSauvegarder)
+                {
 
 
-                string fullPath = System.IO.Path.GetFullPath(saveFileDialog1.FileName);
-                doc.Close();
-                Process.Start(fullPath);
+
+                    if (saveFileDialog1.ShowDialog() == true)
+                    {
+                        //Crée le fichier
+
+                        Document doc = new Document();
+                        FileStream fs = new System.IO.FileStream(saveFileDialog1.FileName, FileMode.Create, FileAccess.Write, FileShare.None);
+                        PdfWriter writer = PdfWriter.GetInstance(doc, fs);
+                        doc.Open();
+
+                        //Entête
+                        iTextSharp.text.Paragraph titre = new iTextSharp.text.Paragraph("Commandes");
+                        titre.Alignment = Element.ALIGN_CENTER;
+                        titre.Font.SetStyle(Font.BOLD);
+                        titre.Font.Size = 20;
+                        doc.Add(titre);
+                        titre = new iTextSharp.text.Paragraph(" ");
+                        doc.Add(titre);
+
+                        //Création du tableau
+                        PdfPTable table = new PdfPTable(4); //Le paramètre indique le nombre de colonne. S'il manque de cellules pour la dernière rangée, il ne mettra simplement pas la rangée
+                        table = CreationDesTables.CreerTableCommande(table, lstCommandes);
+                        doc.Add(table);
 
 
+                        string fullPath = System.IO.Path.GetFullPath(saveFileDialog1.FileName);
+                        doc.Close();
+                        if (Constante.ouvrirEtSauvegarder)
+                            Process.Start(fullPath);
+
+
+                    }
+                }
+                else
+                {
+                    Directory.CreateDirectory("BarApp");
+                    Document doc = new Document();
+                    FileStream fs = new System.IO.FileStream("BarApp\\Commandes.pdf", FileMode.Create, FileAccess.Write, FileShare.None);
+                    PdfWriter writer = PdfWriter.GetInstance(doc, fs);
+                    doc.Open();
+
+                    //Entête
+                    iTextSharp.text.Paragraph titre = new iTextSharp.text.Paragraph("Commandes");
+                    titre.Alignment = Element.ALIGN_CENTER;
+                    titre.Font.SetStyle(Font.BOLD);
+                    titre.Font.Size = 20;
+                    doc.Add(titre);
+                    titre = new iTextSharp.text.Paragraph(" ");
+                    doc.Add(titre);
+
+                    //Création du tableau
+                    PdfPTable table = new PdfPTable(4); //Le paramètre indique le nombre de colonne. S'il manque de cellules pour la dernière rangée, il ne mettra simplement pas la rangée
+                    table = CreationDesTables.CreerTableCommande(table, lstCommandes);
+                    doc.Add(table);
+
+
+                    string fullPath = System.IO.Path.GetFullPath("BarApp\\Commandes.pdf");
+                    doc.Close();
+                   
+                        Process.Start(fullPath);
+                }
             }
         }
     }
