@@ -22,8 +22,8 @@
         <RadioButton Name="rdbAdministrateur" Content="Administrateur" HorizontalAlignment="Left" Margin="62,282,0,0" VerticalAlignment="Top"/>
         <RadioButton Name="rdbUtilisateur" Content="Utilisateur" HorizontalAlignment="Left" Margin="62,310,0,0" VerticalAlignment="Top"/>
         <Calendar  SelectedDatesChanged="calendarDate_SelectedDatesChanged"  Name="calendarDate" HorizontalAlignment="Left" Margin="212,28,0,0" VerticalAlignment="Top" Height="344"/>
-        <Button ToolTip="Annuler l'ajout du nouvel employé" Name="btnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="48,409,0,0" VerticalAlignment="Top" Width="90" Height="26" Click="btnAnnuler_Click" />
-        <Button ToolTip="Confirmer l'ajout du nouvel employé" Name="btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="370,409,0,0" VerticalAlignment="Top" Width="90" Height="26" Click="btnConfirmer_Click" />
-        <Label Name="lblInfoMessage" KeyboardNavigation.TabNavigation="None" HorizontalAlignment="Left" Margin="10,449,0,0" VerticalAlignment="Top" Width="498" Height="30"/>
+        <Button ToolTip="Annuler l'ajout du nouvel employé" Name="btnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="48,409,0,0" VerticalAlignment="Top" Width="100" Height="26" Click="btnAnnuler_Click" />
+        <Button ToolTip="Confirmer l'ajout du nouvel employé" Name="btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="370,409,0,0" VerticalAlignment="Top" Width="100" Height="26" Click="btnConfirmer_Click" />
+        <TextBlock TextWrapping="Wrap" Name="txtInfoMessage" KeyboardNavigation.TabNavigation="None" HorizontalAlignment="Left" Margin="10,435,0,0" VerticalAlignment="Top" Width="498" Height="44"/>
     </Grid>
 </Window>

@@ -23,11 +23,11 @@
         <RadioButton Name="rdbUtilisateur" Content="Utilisateur" HorizontalAlignment="Left" Margin="48,290,0,0" VerticalAlignment="Top"/>
         <Button ToolTip="Cliquer sur ce bouton pour générer un nouveau code d'accès pour l'employé" Name="btnGenererNouveauCode" Content="+" HorizontalAlignment="Left" Margin="10,350,0,0" VerticalAlignment="Top" Width="23" Height="23" Click="btnGenererNouveauCode_Click"/>
         <Calendar SelectedDatesChanged="CalendarModifierEmploye_SelectedDatesChanged" Name="CalendarModifierEmploye" HorizontalAlignment="Left" Margin="182,33,0,0" VerticalAlignment="Top"  Height="340" Width="280"/>
-        <Button ToolTip="Annuler la modification de l'employé" Name="btnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="58,396,0,0" VerticalAlignment="Top" Width="90" Height="26" Click="btnAnnuler_Click" />
-        <Button ToolTip="Confirmer la modification de l'employé" Name="btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="346,396,0,0" VerticalAlignment="Top" Width="90" Height="26" Click="btnConfirmer_Click"/>
+        <Button ToolTip="Annuler la modification de l'employé" Name="btnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="58,396,0,0" VerticalAlignment="Top" Width="100" Height="26" Click="btnAnnuler_Click" />
+        <Button ToolTip="Confirmer la modification de l'employé" Name="btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="346,396,0,0" VerticalAlignment="Top" Width="100" Height="26" Click="btnConfirmer_Click"/>
         <TextBox Name="txtCode" KeyboardNavigation.TabNavigation="None" IsReadOnly="true" HorizontalAlignment="Left" Height="23" Margin="38,350,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="97" />
         <Label Content="Nouveau code" HorizontalAlignment="Left" Margin="10,324,0,0" VerticalAlignment="Top"/>
-        <Label Name="lblInfoMessage" KeyboardNavigation.TabNavigation="None" HorizontalAlignment="Left" Margin="10,425,0,0" Width="500"/>
+        <TextBlock TextWrapping="Wrap" Name="txtInfoMessage" KeyboardNavigation.TabNavigation="None" HorizontalAlignment="Left" Margin="10,425,0,0" Width="500"/>
 
     </Grid>
 </Window>

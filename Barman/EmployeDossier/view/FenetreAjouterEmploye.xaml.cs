@@ -125,8 +125,8 @@ namespace Barman.EmployeDossier.view
                 estValide = false;
             }
 
-            lblInfoMessage.Foreground = Brushes.Red;
-            lblInfoMessage.Content = "Une erreur est survenue. Passé votre souris sur la ou les zones rouges pour en connaître la cause.";
+            txtInfoMessage.Foreground = Brushes.Red;
+            txtInfoMessage.Text = "Une erreur est survenue. Passé votre souris sur la ou les zones rouges pour en connaître la cause.";
             return estValide;
         }
 
