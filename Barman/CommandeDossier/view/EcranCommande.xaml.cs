@@ -54,9 +54,9 @@ namespace Barman.CommandeDossier.view
             
             dtgCommande.ItemsSource = lstCommandes;
             if (EcranAccueil.Employe.SonRole.Code == Constante.UTILISATEUR)
-                App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Utilisateur" + " - Commandes";
+                App.Current.MainWindow.Title = "Barman - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Utilisateur" + " - Commandes";
             else
-                App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Administrateur" + " - Commandes";
+                App.Current.MainWindow.Title = "Barman - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Administrateur" + " - Commandes";
 
         }
 
