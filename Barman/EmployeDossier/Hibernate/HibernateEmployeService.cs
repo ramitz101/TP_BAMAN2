@@ -141,7 +141,7 @@ namespace Barman.EmployeDossier.Hibernate
         {
             using (var transaction = session.BeginTransaction())
             {
-                session.Update(employe);
+                session.Merge(employe);
                 transaction.Commit();
             }
         }
