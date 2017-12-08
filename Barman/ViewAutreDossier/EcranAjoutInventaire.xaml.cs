@@ -109,7 +109,8 @@ namespace Barman.ViewAutreDossier
             if (ValideMarqueAlcool())
             {
                 HibernateMarqueService.Create(new Marque(txtMarque.Text, int.Parse(cboTypeAlcool.SelectedValue.ToString())));
-                lblInfoMessage.Content = "";
+                lblInfoMessage.Foreground = Brushes.Green;
+                lblInfoMessage.Content = "Ajout de la marque ajouté avec succès.";
                 txtMarque.Clear();
             }
             else
@@ -153,7 +154,8 @@ namespace Barman.ViewAutreDossier
             if (ValidetypeAlcool())
             {
                 HibernateTypeAlcoolService.Create(new TypeAlcool(txtNouveauType.Text));
-                lblInfoMessage.Content = "";
+                lblInfoMessage.Foreground = Brushes.Green;
+                lblInfoMessage.Content = "Ajout du nouveau type effectué avec succès.";
                 txtNouveauType.Clear();
 
                 cboTypeAlcool.ItemsSource = new ObservableCollection<TypeAlcool>(ChargerListTypeAlcool());

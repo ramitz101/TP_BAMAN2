@@ -92,6 +92,6 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Label Name="lblMessage" KeyboardNavigation.TabNavigation="None" Grid.Row="3" Grid.Column="1" Content="Message modif" HorizontalAlignment="left"/>
+        <Label Name="lblMessage" KeyboardNavigation.TabNavigation="None" Grid.Row="3" Grid.Column="1" Content="" HorizontalAlignment="left"/>
     </Grid>
 </UserControl>

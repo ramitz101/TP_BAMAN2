@@ -213,8 +213,15 @@ namespace Barman.BouteilleDossier.view
 
         private void btnImprimer_Click(object sender, RoutedEventArgs e)
         {
+
+            FenetreOptionsImprimer optionsPDF = new FenetreOptionsImprimer();
+            optionsPDF.ShowDialog();
+
+
+
             lstBouteilles = new ObservableCollection<Bouteille>(ChargerListBouteille(chbAfficherSupprimee.IsChecked));
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+
 
             saveFileDialog1.Filter = "Pdf Files|*.pdf";
             saveFileDialog1.FileName = "InventaireBouteilles";
@@ -293,7 +300,8 @@ namespace Barman.BouteilleDossier.view
 
             lstBouteilles = new ObservableCollection<Bouteille>(ChargerListBouteille(true));
             dtgInventaire.ItemsSource = lstBouteilles;
-
+            VolumeTotal = 0;
+            PrixTotal = 0;
             foreach (Bouteille bouteille in lstBouteilles)
             {
 
