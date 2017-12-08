@@ -78,9 +78,9 @@ namespace Barman.EmployeDossier.view
         private static List<Employe> ChargerListEmploye(bool? inactif)
         {
             List<Employe> listE = new List<Employe>(HibernateEmployeService.RetrieveAll(inactif));
-            foreach (var i in listE)
+            foreach (var e in listE)
             {
-                i.SonRole = HibernateRoleService.Retrieve((int)i.IdRole)[0];
+                e.SonRole = HibernateRoleService.Retrieve((int)e.SonRole.IdRole)[0];
             }
             return listE;
         }

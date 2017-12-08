@@ -19,7 +19,7 @@ namespace Barman
                     return true;
                 else
                 {
-                    SAuthentifier();
+                    SAuthentifier(Constante.ADMINISTRATEUR);
                     if (Confirmer)
                     {
                         if (EcranAccueil.Employe.SonRole.Code == Constante.ADMINISTRATEUR)
@@ -33,13 +33,16 @@ namespace Barman
             }
             else
             {
-                SAuthentifier();
+                SAuthentifier(Constante.ADMINISTRATEUR);
                 if (Confirmer)
                 {
                     if (EcranAccueil.Employe.SonRole.Code == Constante.ADMINISTRATEUR)
                         return true;
                     else
+                    {
+                        
                         return false;
+                    }
                 }
                 else
                     return false;
@@ -54,7 +57,7 @@ namespace Barman
                     return true;
                 else
                 {
-                    SAuthentifier();
+                    SAuthentifier(Constante.UTILISATEUR);
                     if (Confirmer)
                     {
                         if (EcranAccueil.Employe.SonRole.Code == Constante.ADMINISTRATEUR || EcranAccueil.Employe.SonRole.Code == Constante.UTILISATEUR)
@@ -68,7 +71,7 @@ namespace Barman
             }
             else
             {
-                SAuthentifier();
+                SAuthentifier(Constante.UTILISATEUR);
                 if (Confirmer)
                 {
                     if (EcranAccueil.Employe.SonRole.Code == Constante.ADMINISTRATEUR || EcranAccueil.Employe.SonRole.Code == Constante.UTILISATEUR)
@@ -88,9 +91,9 @@ namespace Barman
                 return true;
         }
 
-        public void SAuthentifier()
+        public void SAuthentifier(string pRoleDemander)
         {
-            FenetreAuthentification FN = new FenetreAuthentification(this);
+            FenetreAuthentification FN = new FenetreAuthentification(this, pRoleDemander);
             FN.ShowDialog();
         }
 

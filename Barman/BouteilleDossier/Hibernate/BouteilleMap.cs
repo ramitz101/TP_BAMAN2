@@ -81,14 +81,14 @@ namespace Barman.BouteilleDossier.Hibernate
             .CustomSqlType("INTEGER");
 
             // Autre class
-            //References(x => x.SaMarque)
+            // References(x => x.SaMarque)
             //    .Class<Marque>()
             //    .Access.Property()
             //    .LazyLoad(Laziness.False)
             //    .Cascade.None()
             //    .Columns("idMarque");
 
-            //References(x => x.SonEmplacement)
+            // References(x => x.SonEmplacement)
             //    .Class<Emplacement>()
             //    .Access.Property()
             //    .LazyLoad(Laziness.False)

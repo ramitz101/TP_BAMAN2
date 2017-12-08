@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Barman"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="Fenetre Modifier Employe" Height="490.774" Width="528.124"
+        Title="Fenetre Modifier Employe" Height="499.774" Width="528.124"
         WindowStartupLocation="CenterOwner">
     <Grid>
         <TextBox GotFocus="txtNom_GotFocus" LostFocus="txtNom_LostFocus" PreviewTextInput="NumberValidationTextBox" ToolTip="Le nom de l'employé" Name="txtNom" HorizontalAlignment="Left" Height="23" Margin="10,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>

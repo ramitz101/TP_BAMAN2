@@ -25,6 +25,14 @@ namespace Barman.EmployeDossier.Hibernate
              .Not.Nullable()
              .GeneratedBy.Identity();
 
+            //Autre class
+            References(x => x.SonRole)
+                 .Class<Role>()
+                 .Access.Property()
+                 .LazyLoad(Laziness.False)
+                 .Cascade.None()
+                 .Column("idRole");
+
             Map(x => x.Nom)
              .Column("nom")
              .CustomType<string>()
@@ -74,20 +82,13 @@ namespace Barman.EmployeDossier.Hibernate
             .Generated.Never()
             .CustomSqlType("date");
 
-            Map(x => x.IdRole)
-             .Column("idRole")
-             .CustomType<int?>()
-             .Access.Property()
-             .Generated.Never()
-             .CustomSqlType("INTEGER");
+            //Map(x => x.IdRole)
+            // .Column("idRole")
+            // .CustomType<int?>()
+            // .Access.Property()
+            // .Generated.Never()
+            // .CustomSqlType("INTEGER");
 
-            //Autre class
-            References(x => x.SonRole)
-                 .Class<Role>()
-                 .Access.Property()
-                 .LazyLoad(Laziness.False)
-                 .Cascade.None()
-                 .Columns("idRole");
 
 
             HasMany<Vente>(x => x.ListVente)

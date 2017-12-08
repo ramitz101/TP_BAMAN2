@@ -45,7 +45,7 @@ namespace Barman.EmployeDossier.view
                 CalendarModifierEmploye.DisplayDate = employe.DateEmbauche;
                 txtCode.Text = employe.CodeEmploye;
                 // à améliorer
-                if (employe.IdRole == 1)
+                if (employe.SonRole.IdRole == 1)
                     rdbAdministrateur.IsChecked = true;
                 else
                     rdbUtilisateur.IsChecked = true;
@@ -72,7 +72,7 @@ namespace Barman.EmployeDossier.view
                 EmployeModifier.Prenom = txtPrenom.Text;
                 EmployeModifier.Telephone = Extractdigits(txtTelephone.Text);
                 EmployeModifier.NAS = Extractdigits(txtNAS.Text);
-                EmployeModifier.IdRole = RoleChoisi();
+                EmployeModifier.SonRole.IdRole = RoleChoisi();
                 EmployeModifier.CodeEmploye = txtCode.Text;
 
                 HibernateEmployeService.Update(EmployeModifier);

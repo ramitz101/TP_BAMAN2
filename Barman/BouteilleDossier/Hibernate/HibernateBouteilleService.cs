@@ -125,13 +125,13 @@ namespace Barman.BouteilleDossier.Hibernate
             if (sup == false)
             {
                  result = from m in bouteilles
-                             where m.Etat.StartsWith(s) && m.Etat != "Supprimée"
-                             select m;
+                             where m.Etat.StartsWith(s) && m.Etat != "Perdue"
+                          select m;
             }
             else
             {
                 result = from m in bouteilles
-                         where m.Etat.StartsWith(s) && m.Etat == "Supprimée"
+                         where m.Etat.StartsWith(s) && m.Etat == "Perdue"
                          select m;
             }
             return result.ToList();
@@ -163,14 +163,14 @@ namespace Barman.BouteilleDossier.Hibernate
             if (sup==false)
             {
                  result = from m in bouteilles
-                             where m.IdMarque == pIdMarque && m.Etat != "Supprimée"
-                             select m;
+                             where m.IdMarque == pIdMarque && m.Etat != "Perdue"
+                          select m;
             }
             else
             {
                  result = from m in bouteilles
-                             where m.IdMarque == pIdMarque && m.Etat == "Supprimée"
-                             select m;
+                             where m.IdMarque == pIdMarque && m.Etat == "Perdue"
+                          select m;
             }
          
 
@@ -184,13 +184,13 @@ namespace Barman.BouteilleDossier.Hibernate
             if(sup==false)
             {
                 result = from m in bouteilles
-                         where m.IdEmplacement == pIdEmplacement && m.Etat != "Supprimée"
+                         where m.IdEmplacement == pIdEmplacement && m.Etat != "Perdue"
                          select m;
             }
             else
             {
                 result = from m in bouteilles
-                         where m.IdEmplacement == pIdEmplacement && m.Etat == "Supprimée"
+                         where m.IdEmplacement == pIdEmplacement && m.Etat == "Perdue"
                          select m;
             }
              
@@ -202,7 +202,7 @@ namespace Barman.BouteilleDossier.Hibernate
          var bouteilles = session.Query<Bouteille>().AsQueryable();
 
          var result = from m in bouteilles
-                      where m.SaMarque.Nom.StartsWith(pNomMarque) && m.Etat != "Supprimée"
+                      where m.SaMarque.Nom.StartsWith(pNomMarque) && m.Etat != "Perdue"
                       select m;
 
          return result.ToList();

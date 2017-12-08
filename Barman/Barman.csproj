@@ -124,9 +124,6 @@
     <Compile Include="EmplacementDossier\Hibernate\EmplacementMap.cs" />
     <Compile Include="EmployeDossier\Employe.cs" />
     <Compile Include="EmployeDossier\Hibernate\EmployeMap.cs" />
-    <Compile Include="ViewAutreDossier\FenetreErreur.xaml.cs">
-      <DependentUpon>FenetreErreur.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Generer.cs" />
     <Compile Include="BouteilleDossier\Hibernate\HibernateBouteilleService.cs" />
     <Compile Include="CommandeDossier\Hibernate\HibernateCommandeService.cs" />
@@ -196,10 +193,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ViewAutreDossier\FenetreAuthentification.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ViewAutreDossier\FenetreErreur.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

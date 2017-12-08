@@ -23,13 +23,15 @@ namespace Barman.ViewAutreDossier
     /// </summary>
     public partial class FenetreAuthentification : Window
     {
+        private string RoleDemander { get; set; }
         private Authentification VerifierConfirmer { get; set; }
-        public FenetreAuthentification(Authentification classAuthentification)
+        public FenetreAuthentification(Authentification classAuthentification, string pRoleDemander)
         {
             InitializeComponent();
             this.Owner = App.Current.MainWindow;
             pwdBox.Focus();
 
+            RoleDemander = pRoleDemander;
             VerifierConfirmer = classAuthentification;
         }
 
@@ -42,9 +44,11 @@ namespace Barman.ViewAutreDossier
 
         private void btnConfirmer_Click(object sender, RoutedEventArgs e)
         {
-            Authentification auth = new Authentification();
+            //Authentification auth = new Authentification();
             if (ValiderAuthentification())
-            {                
+            {
+
+
                 if (EcranAccueil.Employe.SonRole.Code == Constante.ADMINISTRATEUR)
                     App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Administrateur";
                 else
@@ -53,6 +57,7 @@ namespace Barman.ViewAutreDossier
                 VerifierConfirmer.Confirmer = true;
 
                 this.Close();
+
             }
         }
 
@@ -64,20 +69,37 @@ namespace Barman.ViewAutreDossier
             {
                 listEmploye = HibernateEmployeService.RetrieveAll(null);
 
-                if (ValiderCodeEmploye(listEmploye, pwdBox.Password.ToString()))                
-                    return true;               
+                if (ValiderCodeEmploye(listEmploye, pwdBox.Password.ToString()))
+                {
+                    if (ValideRoleDemmander())                    
+                        return true;                    
+                    else
+                    {
+                        txtErreur.Text = "Erreur, cette foncionnalitée demande un code administrateur";
+                        pwdBox.SelectAll();
+                        return false;
+                    }
+                }
                 else
                 {
-                    lblErreur.Content = "Erreur, le code n'existe pas";
+                    txtErreur.Text = "Erreur, le code n'existe pas";
                     pwdBox.SelectAll();
                     return false;
                 }
             }
             else
             {
-                lblErreur.Content = "Erreur de connexion à la base de données";
-                return false;            
+                txtErreur.Text = "Erreur de connexion à la base de données";
+                return false;
             }
+        }
+
+        private bool ValideRoleDemmander()
+        {
+            if (EcranAccueil.Employe.SonRole.Code == RoleDemander)            
+                return true;            
+            else
+                return false;
         }
 
         private bool ValiderCodeEmploye(List<Employe> listEmploye, string codeEntre)
@@ -86,7 +108,7 @@ namespace Barman.ViewAutreDossier
             foreach (var e in listEmploye)
             {
                 if (e.CodeEmploye == codeEntre)
-                {
+                {                   
                     EcranAccueil.Employe = e;
                     return true;
                 }
@@ -96,8 +118,8 @@ namespace Barman.ViewAutreDossier
 
         private void txtCode_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Enter)            
-                btnConfirmer_Click(this, new RoutedEventArgs());            
+            if (e.Key == Key.Enter)
+                btnConfirmer_Click(this, new RoutedEventArgs());
         }
         private bool ValiderConnection()
         {
@@ -107,7 +129,7 @@ namespace Barman.ViewAutreDossier
             }
             catch (Exception)
             {
-                return false;                
+                return false;
             }
             return true;
         }

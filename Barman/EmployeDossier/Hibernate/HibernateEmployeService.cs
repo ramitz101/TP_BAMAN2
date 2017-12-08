@@ -110,7 +110,7 @@ namespace Barman.EmployeDossier.Hibernate
             var employes = session.Query<Employe>().AsQueryable();
 
             var result = from m in employes
-                         where m.IdRole == pIdRole
+                         where m.SonRole.IdRole == pIdRole
                          select m;
 
             return result.ToList();
@@ -141,7 +141,8 @@ namespace Barman.EmployeDossier.Hibernate
         {
             using (var transaction = session.BeginTransaction())
             {
-                session.Merge(employe);
+                
+                session.Update(employe);
                 transaction.Commit();
             }
         }

@@ -176,12 +176,7 @@ namespace Barman.BouteilleDossier.view
             if (txtRecherche.Text != "" && txtRecherche.Text != "Recherche")
             {
                 switch (ContenuHeader)
-                {
-                    case "Nom":
-                        lstMarque = HibernateMarqueService.Retrieve(txtRecherche.Text);
-                        foreach (Marque m in lstMarque)
-                            lstBouteille.AddRange(HibernateBouteilleService.RetrieveByMarqueId((int)m.IdMarque, chbAfficherSupprimee.IsChecked));
-                        break;
+                {                    
                     case "Emplacement":
                         lstEmplacement = HibernateEmplacementService.Retrieve(txtRecherche.Text);
                         foreach (Emplacement m in lstEmplacement)
@@ -196,6 +191,11 @@ namespace Barman.BouteilleDossier.view
                             lstMarque.AddRange(HibernateMarqueService.RetrieveByType(t));
                         foreach (Marque m in lstMarque)
                             lstBouteille.AddRange(HibernateBouteilleService.RetrieveByMarqueId((int)m.IdMarque, chbAfficherSupprimee.IsChecked));
+                        break;
+                    default:
+                        lstMarque = HibernateMarqueService.Retrieve(txtRecherche.Text);
+                        foreach (Marque m in lstMarque)
+                            lstBouteille.AddRange(HibernateBouteilleService.RetrieveByMarqueId((int)m.IdMarque, chbAfficherSupprimee.IsChecked));                    
                         break;
                 }
 

@@ -41,9 +41,9 @@ namespace Barman.VenteDossier.view
             InitializeComponent();
            
             // Affichage de l'employé qui a ouvert la fenêtre
-            if (EcranAccueil.Employe.IdRole == 1)
+            if (EcranAccueil.Employe.SonRole.IdRole == 1)
                 lblTypeEmploye.Content = "Administrateur";
-            else if(EcranAccueil.Employe.IdRole == 2)
+            else if(EcranAccueil.Employe.SonRole.IdRole == 2)
                 lblTypeEmploye.Content = "Employé";
             StringBuilder s = new StringBuilder();
             s.Append(EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom);
@@ -215,24 +215,25 @@ namespace Barman.VenteDossier.view
 
         private void btnGerer_Click(object sender, RoutedEventArgs e)
         {
-            if (EcranAccueil.Employe.SonRole.Code == Constante.ADMINISTRATEUR)
+            Authentification auth = new Authentification();
+            if (auth.ValiderRoleAdmin())
             {
                 ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
                 EcranGererVente EAI = new EcranGererVente();
                 ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0, EAI);
             }
-            else
-            {
-                FenetreErreur FE = new FenetreErreur();
-                FE.ShowDialog();
-                if(EcranAccueil.Employe.SonRole.Code == Constante.ADMINISTRATEUR)
-                {
-                    ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
-                    EcranGererVente EAI = new EcranGererVente();
-                    ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0, EAI);
-                }
+            //else
+            //{
+                
+                
+            //    if(EcranAccueil.Employe.SonRole.Code == Constante.ADMINISTRATEUR)
+            //    {
+            //        ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.RemoveAt(0);
+            //        EcranGererVente EAI = new EcranGererVente();
+            //        ((MainWindow)System.Windows.Application.Current.MainWindow).GrdPrincipale.Children.Insert(0, EAI);
+            //    }
 
-            }
+            //}
     
          }
 

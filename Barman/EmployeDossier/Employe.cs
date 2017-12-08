@@ -39,7 +39,7 @@ namespace Barman.EmployeDossier
             Prenom = String.Empty;
             Telephone = String.Empty;
             DateEmbauche = DateTime.MinValue;
-            NAS = String.Empty;        
+            NAS = String.Empty;
 
             SonRole = new Role();
             ListVente = new List<Vente>();
@@ -53,10 +53,10 @@ namespace Barman.EmployeDossier
             NAS = nas;
             DateEmbauche = dateEmbauche;
             CodeEmploye = Generer.genererCode(Employe.GetCodeEmployeDejaExistant());
-           
-            IdRole = pIdRole;
+            Etat = "A";
 
-            SonRole = HibernateRoleService.Retrieve(IdRole)[0];
+
+            SonRole = HibernateRoleService.Retrieve(pIdRole)[0];
 
 
         }
@@ -67,17 +67,17 @@ namespace Barman.EmployeDossier
         }
 
 
-        public Employe(string nom, string prenom, string telephone, string nas, DateTime dateEmbauche, string codeEmploye, int pIdRole, int pIdEmploye)
-        {
-            Nom = nom;
-            Prenom = prenom;
-            Telephone = telephone;
-            NAS = nas;
-            DateEmbauche = dateEmbauche;
-            CodeEmploye = codeEmploye;
-            IdRole = pIdRole;
-            IdEmploye = pIdEmploye;
-        }
+        //public Employe(string nom, string prenom, string telephone, string nas, DateTime dateEmbauche, string codeEmploye, int pIdRole, int pIdEmploye)
+        //{
+        //    Nom = nom;
+        //    Prenom = prenom;
+        //    Telephone = telephone;
+        //    NAS = nas;
+        //    DateEmbauche = dateEmbauche;
+        //    CodeEmploye = codeEmploye;
+        //    IdRole = pIdRole;
+        //    IdEmploye = pIdEmploye;
+        //}
 
         // Pour utiliser NHibernate, il faut surcharger Equals et GetHashCode.
         public override bool Equals(object obj)
@@ -100,6 +100,6 @@ namespace Barman.EmployeDossier
         public override int GetHashCode()
         {
             return base.GetHashCode();
-        }      
+        }
     }
 }
