@@ -57,12 +57,12 @@ namespace Barman.VenteDossier.view
             //ComboBox emplacement, il faut enlevé les emplacement non nécéssaire lors d'une vente 
             try
             {
-            lstEmplacement.Remove(lstEmplacement.Where(x => x.Nom == "Aucun").ToList()[0]);
+                lstEmplacement.Remove(lstEmplacement.Where(x => x.Nom == "Aucun").ToList()[0]);
                         }
             catch { }
             try
             {             
-              lstEmplacement.Remove(lstEmplacement.Where(x => x.Nom == "Réserve").ToList()[0]);
+                lstEmplacement.Remove(lstEmplacement.Where(x => x.Nom == "Réserve").ToList()[0]);
             }
             catch { }
 
