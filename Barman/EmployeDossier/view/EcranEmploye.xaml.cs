@@ -45,9 +45,9 @@ namespace Barman.EmployeDossier.view
             ContenuHeader = "Nom";
 
             if (EcranAccueil.Employe.SonRole.Code == Constante.ADMINISTRATEUR)
-                App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Administrateur" + " - Employés";
+                App.Current.MainWindow.Title = "Barman - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Administrateur" + " - Employés";
             else
-                App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Utilisateur" + " - Employés";
+                App.Current.MainWindow.Title = "Barman - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Utilisateur" + " - Employés";
         }
 
         private void btnGerer_Click(object sender, RoutedEventArgs e)

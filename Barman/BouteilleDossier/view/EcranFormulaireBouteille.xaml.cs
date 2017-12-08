@@ -45,9 +45,9 @@ namespace Barman.BouteilleDossier.view
             InitializeComponent();
 
             if (EcranAccueil.Employe.SonRole.Code == Constante.UTILISATEUR)
-                App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Utilisateur"+" - Sortir une bouteille de la réserve";
+                App.Current.MainWindow.Title = "Barman - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Utilisateur"+" - Sortir une bouteille de la réserve";
             else
-                App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Administrateur" + " - Sortir une bouteille de la réserve";
+                App.Current.MainWindow.Title = "Barman - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Administrateur" + " - Sortir une bouteille de la réserve";
 
             lstIdMarquesEnReserve = new List<int?>(HibernateBouteilleService.RetrieveIdMarqueEnReserve());
             lstIdTypeEnReserve = new List<int?>();

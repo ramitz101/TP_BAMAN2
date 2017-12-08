@@ -40,11 +40,11 @@ namespace Barman.BouteilleDossier.view
             InitializeComponent();
 
             if (EcranAccueil.Employe.SonRole.Code == Constante.UTILISATEUR)
-                App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Utilisateur" + " - Inventaire du bar";
+                App.Current.MainWindow.Title = "Barman - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Utilisateur" + " - Inventaire du bar";
             else if (EcranAccueil.Employe.SonRole.Code == Constante.ADMINISTRATEUR)
-                App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Administrateur" + " - Inventaire du bar";
+                App.Current.MainWindow.Title = "Barman - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Administrateur" + " - Inventaire du bar";
             else
-                App.Current.MainWindow.Title = "Barmans - Inventaire du bar";
+                App.Current.MainWindow.Title = "Barman - Inventaire du bar";
 
 
 
