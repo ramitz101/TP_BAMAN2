@@ -37,6 +37,7 @@ namespace Barman.CommandeDossier.view
 
         private static List<Commande> ChargerListCommande()
         {
+
             List<Commande> listC = new List<Commande>(HibernateCommandeService.RetrieveAll());
             foreach(var i in listC)
             {

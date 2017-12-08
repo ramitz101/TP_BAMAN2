@@ -24,7 +24,7 @@ namespace Barman.VenteDossier
 
         public virtual Bouteille laBouteille { get; set; }
 
-
+        public virtual float Total { get { return (float)PrixOnce * (int)Volume; } set { Total = (float)PrixOnce * (int)Volume; } }
         public Vente()
         {
             IdVente = null;

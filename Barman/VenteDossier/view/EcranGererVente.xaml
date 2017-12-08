@@ -25,13 +25,12 @@
         <StackPanel Orientation="Vertical" Grid.Column="1" Margin="0,40,0,0">
             <Label Grid.Row="0" Grid.Column="2"  HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="26" Content="Consulter et gérer les ventes"></Label>
             <DataGrid Name="dtgVenteEmploye" Margin="0,0,0,0" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="247"  VerticalAlignment="Top" Width="Auto">
-
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Marque" Width="1.3*" Binding="{Binding laBouteille.SaMarque.Nom}" />
                     <DataGridTextColumn Header="Étiquette" Width="1.3*" Binding="{Binding laBouteille.Numero}" />
                     <DataGridTextColumn Header="Heure vente" Width="1.6*" Binding="{Binding DateVente, StringFormat=HH:mm:ss}"/>
                     <DataGridTextColumn Header="Volume(oz)" Width="1.3*" Binding="{Binding Volume}"/>
-                    <DataGridTextColumn Header="Prix once"  Width="1.3*"   Binding="{Binding PrixOnce, StringFormat=C}"/>
+                    <DataGridTextColumn Header="Total"  Width="1.3*"   Binding="{Binding Total , StringFormat=C}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>

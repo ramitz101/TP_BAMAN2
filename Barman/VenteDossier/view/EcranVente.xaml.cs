@@ -55,8 +55,16 @@ namespace Barman.VenteDossier.view
             cboType.IsEnabled = false;
 
             //ComboBox emplacement, il faut enlevé les emplacement non nécéssaire lors d'une vente 
-            lstEmplacement.Remove(lstEmplacement.Where(x => x.Nom == "Aucun").ToList()[0]);
-            lstEmplacement.Remove(lstEmplacement.Where(x => x.Nom == "Réserve").ToList()[0]);
+            try
+            {
+                lstEmplacement.Remove(lstEmplacement.Where(x => x.Nom == "Aucun").ToList()[0]);
+                        }
+            catch { }
+            try
+            {             
+                lstEmplacement.Remove(lstEmplacement.Where(x => x.Nom == "Réserve").ToList()[0]);
+            }
+            catch { }
 
 
             cboEmplacement.ItemsSource = lstEmplacement;
@@ -71,9 +79,9 @@ namespace Barman.VenteDossier.view
             cboMarque.SelectedValuePath = "IdBouteille";
 
             if (EcranAccueil.Employe.SonRole.Code == Constante.UTILISATEUR)
-                App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Utilisateur" + " - Ventes";
+                App.Current.MainWindow.Title = "Barman - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Utilisateur" + " - Ventes";
             else
-                App.Current.MainWindow.Title = "Barmans - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Administrateur" + " - Ventes";
+                App.Current.MainWindow.Title = "Barman - " + EcranAccueil.Employe.Prenom + " " + EcranAccueil.Employe.Nom + " - " + "Administrateur" + " - Ventes";
 
 
         }
@@ -117,6 +125,22 @@ namespace Barman.VenteDossier.view
         private static List<Emplacement> ChargerListEmplacement()
         {
             List<Emplacement> listE = new List<Emplacement>(HibernateEmplacementService.RetrieveAll());
+            List<int> listTempo = new List<int>();
+            // Retrouver les emplacement qui on rien dedans
+            foreach(var i in listE)
+            {
+                List<Bouteille> b = HibernateBouteilleService.RetrieveBouteilleEmplacement((int)i.IdEmplacement);
+                if (b.Count == 0)
+                    listTempo.Add((int)i.IdEmplacement);
+
+            }
+
+            // Supprimer de la list d'emplacement les emplacement sans bouteille
+            foreach(var i in listTempo)
+            {
+                listE.Remove(listE.Where(x => x.IdEmplacement == i).ToList()[0]);
+            }
+
             return listE;
         }
 
